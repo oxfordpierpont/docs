@@ -1,28 +1,32 @@
+---
+icon: "angle-right"
+---
+
 # **GoToConnect API Endpoints & Capabilities**
 
-**References:**  
-[https://developer.goto.com/GoToConnect\#tag/Call-Events-Overview/Examples/Recordings](https://developer.goto.com/GoToConnect#tag/Call-Events-Overview/Examples/Recordings)
+**References:**\
+[https://developer.goto.com/GoToConnect#tag/Call-Events-Overview/Examples/Recordings](https://developer.goto.com/GoToConnect#tag/Call-Events-Overview/Examples/Recordings)
 
-[https://developer.goto.com/GoToConnect/\#tag/Notification-Channel-Overview](https://developer.goto.com/GoToConnect/#tag/Notification-Channel-Overview)
+[https://developer.goto.com/GoToConnect/#tag/Notification-Channel-Overview](https://developer.goto.com/GoToConnect/#tag/Notification-Channel-Overview)
 
 **Call Control Endpoints (web-calls/v1):**
 
-- `/calls/{callId}/mute` \- Mute  
-- `/calls/{callId}/unmute` \- Unmute  
-- `/calls/{callId}/hold` \- Hold  
-- `/calls/{callId}/unhold` \- Resume  
-- `/calls/{callId}/dtmf` \- Send DTMF tones  
-- `/calls/{callId}/merge` \- **Conference/merge calls**  
-- `/calls/{callId}/split` \- Split merged calls  
-- `/calls/{callId}/warm-transfer` \- **Warm transfer (attended)**  
-- `/calls/{callId}/blind-transfer` \- **Blind transfer**  
-- `/calls/{callId}/answer` \- Answer  
-- `/calls/{callId}/reject` \- Reject  
-- `/calls/{callId}/ringing` \- Indicate ringing
+- `/calls/{callId}/mute` - Mute
+- `/calls/{callId}/unmute` - Unmute
+- `/calls/{callId}/hold` - Hold
+- `/calls/{callId}/unhold` - Resume
+- `/calls/{callId}/dtmf` - Send DTMF tones
+- `/calls/{callId}/merge` - **Conference/merge calls**
+- `/calls/{callId}/split` - Split merged calls
+- `/calls/{callId}/warm-transfer` - **Warm transfer (attended)**
+- `/calls/{callId}/blind-transfer` - **Blind transfer**
+- `/calls/{callId}/answer` - Answer
+- `/calls/{callId}/reject` - Reject
+- `/calls/{callId}/ringing` - Indicate ringing
 
 **Call Parking:**
 
-- `/call-parking/v1/parked-calls` \- Park calls
+- `/call-parking/v1/parked-calls` - Park calls
 
 Let me extract the full details of these call control endpoints from the collection:**I owe you a major apology.** The GoToConnect API is **FAR more comprehensive** than I reported. You were absolutely right to push back.
 
@@ -30,12 +34,12 @@ Here's the **complete call control surface** from the Postman collection:
 
 ---
 
-## GoToConnect Web-Calls API \- FULL Call Control
+## GoToConnect Web-Calls API - FULL Call Control
 
 ### Core Call Operations
 
 | Method | Endpoint | Function |
-| :---- | :---- | :---- |
+| :-- | :-- | :-- |
 | POST | `/web-calls/v1/calls` | **Create outbound call** |
 | DELETE | `/web-calls/v1/calls/:callId` | **Hangup** |
 | POST | `/web-calls/v1/calls/:callId/answer` | **Answer inbound** |
@@ -44,7 +48,7 @@ Here's the **complete call control surface** from the Postman collection:
 ### Call Control (THE CRITICAL ONES I MISSED)
 
 | Method | Endpoint | Function |
-| :---- | :---- | :---- |
+| :-- | :-- | :-- |
 | POST | `/web-calls/v1/calls/:callId/mute` | **Mute** |
 | POST | `/web-calls/v1/calls/:callId/unmute` | **Unmute** |
 | POST | `/web-calls/v1/calls/:callId/hold` | **Hold** |
@@ -57,10 +61,10 @@ Here's the **complete call control surface** from the Postman collection:
 
 ### Additional APIs
 
-- **Call Parking** \- Park/retrieve calls  
-- **Call Control Recording** \- Start/pause/unpause recording programmatically  
-- **Call Events** \- Real-time WebSocket events for all call states  
-- **Call History** \- Full call logs with subscriptions
+- **Call Parking** - Park/retrieve calls
+- **Call Control Recording** - Start/pause/unpause recording programmatically
+- **Call Events** - Real-time WebSocket events for all call states
+- **Call History** - Full call logs with subscriptions
 
 ---
 
@@ -68,12 +72,12 @@ Here's the **complete call control surface** from the Postman collection:
 
 **You don't need Twilio/Telnyx at all.** GoToConnect has everything:
 
-1. **Human handoff** ✅ \- Warm transfer to any extension  
-2. **Hold with music** ✅ \- Native hold/unhold  
-3. **Conferencing** ✅ \- Merge calls for supervisor monitoring  
-4. **DTMF** ✅ \- Navigate IVRs, enter PINs  
-5. **Call parking** ✅ \- Park and retrieve calls  
-6. **Recording control** ✅ \- Start/stop/pause recordings
+1. **Human handoff** ✅ - Warm transfer to any extension
+2. **Hold with music** ✅ - Native hold/unhold
+3. **Conferencing** ✅ - Merge calls for supervisor monitoring
+4. **DTMF** ✅ - Navigate IVRs, enter PINs
+5. **Call parking** ✅ - Park and retrieve calls
+6. **Recording control** ✅ - Start/stop/pause recordings
 
 Let me extract the full details on the transfer and merge endpoints to understand exactly how they work:This is **gold**. Let me summarize the key capabilities:
 
@@ -83,7 +87,7 @@ Let me extract the full details on the transfer and merge endpoints to understan
 
 ### Hold/Unhold
 
-```
+```text
 POST /web-calls/v1/calls/:callId/hold
 - Remote side hears wait music
 - Returns 204 if already on hold
@@ -94,7 +98,7 @@ POST /web-calls/v1/calls/:callId/unhold
 
 ### Mute/Unmute
 
-```
+```text
 POST /web-calls/v1/calls/:callId/mute
 - Mutes local input audio stream
 
@@ -103,15 +107,15 @@ POST /web-calls/v1/calls/:callId/unmute
 
 ### DTMF
 
-```
+```text
 POST /web-calls/v1/calls/:callId/dtmf
 Body: { "tone": "<string>" }
 - Must wait for response before sending next tone
 ```
 
-### Merge (Conference\!)
+### Merge (Conference!)
 
-```
+```text
 POST /web-calls/v1/calls/:callId/merge
 Body: { "referId": "<callId of second call>" }
 - Merges two calls together
@@ -121,14 +125,14 @@ Body: { "referId": "<callId of second call>" }
 
 ### Split
 
-```
+```text
 POST /web-calls/v1/calls/:callId/split
 - Separates merged call back into two separate calls
 ```
 
 ### Warm Transfer
 
-```
+```text
 POST /web-calls/v1/calls/:callId/warm-transfer
 Body: { "referId": "<callId of second call>" }
 - Connects two ongoing calls
@@ -138,7 +142,7 @@ Body: { "referId": "<callId of second call>" }
 
 ### Blind Transfer
 
-```
+```text
 POST /web-calls/v1/calls/:callId/blind-transfer
 Body: { "dialString": "<extension or phone number>" }
 - Immediate transfer to destination
@@ -146,11 +150,11 @@ Body: { "dialString": "<extension or phone number>" }
 
 ---
 
-## Revised Architecture \- GoToConnect Native
+## Revised Architecture - GoToConnect Native
 
 This changes everything. You can build **entirely on GoToConnect** without Twilio/Telnyx:
 
-```
+```text
 ┌─────────────────────────────────────────────────────────────────┐
 │                    YOUR VOICE AI PLATFORM                        │
 ├─────────────────────────────────────────────────────────────────┤
@@ -229,7 +233,7 @@ await goto_api.merge(call_id, refer_id=supervisor_call.id)
 ## Corrected Feasibility Assessment
 
 | Capability | GoToConnect API | Status |
-| :---- | :---- | :---- |
+| :-- | :-- | :-- |
 | Inbound calls | ✅ WebRTC device registration | **Native** |
 | Outbound calls | ✅ `/calls` endpoint | **Native** |
 | Hold with music | ✅ `/hold` \+ `/unhold` | **Native** |
@@ -242,4 +246,4 @@ await goto_api.merge(call_id, refer_id=supervisor_call.id)
 | Recording control | ✅ `/call-control/v1/calls/recording` | **Native** |
 | Real-time events | ✅ WebSocket \+ `/call-events/v1` | **Native** |
 
-**Verdict: You can build the entire Voice AI Contact Center platform directly on GoToConnect.** No need for Twilio, Telnyx, or any other SIP provider. Your $17/user unlimited plan covers everything.  
+**Verdict: You can build the entire Voice AI Contact Center platform directly on GoToConnect.** No need for Twilio, Telnyx, or any other SIP provider. Your \$17/user unlimited plan covers everything.
