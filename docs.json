@@ -167,7 +167,8 @@
                   {
                     "group": "Layout Manager",
                     "pages": [
-                      "what-is-the-layout-manager"
+                      "what-is-the-layout-manager",
+                      "layout-manager-codex-prd"
                     ]
                   }
                 ]
