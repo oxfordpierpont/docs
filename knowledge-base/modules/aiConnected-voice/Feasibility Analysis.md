@@ -1,3 +1,7 @@
+---
+icon: "angle-right"
+---
+
 # Technical Feasibility Analysis: White-Label Voice AI Contact Center Platform
 
 **GoToConnect \+ LiveKit integration is technically feasible with significant limitations.** The critical finding is that GoToConnect's public API lacks programmatic call transfer, hold, and conferencing capabilities—essential features for a full contact center platform. While basic inbound/outbound AI voice handling is achievable, advanced call control requires either workarounds or a different telephony provider. LiveKit's native SIP integration with Twilio/Telnyx offers a more complete solution path.
@@ -29,7 +33,7 @@ The response returns the remote SDP answer for WebRTC connection establishment. 
 ### Audio format and codec support
 
 | Parameter | Specification |
-| :---- | :---- |
+| :-- | :-- |
 | Primary codec | **Opus at 48kHz** (stereo capable) |
 | DTMF | telephone-event/8000 |
 | Transport | UDP/TLS/RTP/SAVPF (SRTP with DTLS) |
@@ -54,9 +58,9 @@ Events include `incoming` (inbound call), `ended` (termination with reason), and
 
 **This is the primary technical blocker.** GoToConnect's public API documentation reveals no endpoints for:
 
-- **Call transfer** — Cannot transfer calls mid-conversation programmatically  
-- **Call hold** — No PUT/PATCH endpoint to place calls on hold (though `isOnHold` state indicator exists)  
-- **Conferencing/bridging** — No API to add third parties to calls  
+- **Call transfer** — Cannot transfer calls mid-conversation programmatically
+- **Call hold** — No PUT/PATCH endpoint to place calls on hold (though `isOnHold` state indicator exists)
+- **Conferencing/bridging** — No API to add third parties to calls
 - **DTMF sending** — No explicit API for programmatic tone generation
 
 Only `answer` and `reject` operations are documented for mid-call actions. This means human handoff patterns requiring warm transfer, call parking, or conference bridges would need to rely on user-initiated actions through GoToConnect's UI rather than API automation.
@@ -96,10 +100,10 @@ The framework handles turn detection, interruption handling, and audio pipeline 
 ### STT plugin ecosystem
 
 | Provider | Streaming | Latency | Best for |
-| :---- | :---- | :---- | :---- |
-| Deepgram Nova-3 | ✓ | \~100-200ms | Production voice agents |
-| AssemblyAI Universal | ✓ | \~150-250ms | Multilingual support |
-| Whisper (OpenAI) | Non-streaming | \~500ms+ | Offline transcription |
+| :-- | :-- | :-- | :-- |
+| Deepgram Nova-3 | ✓ | ~100-200ms | Production voice agents |
+| AssemblyAI Universal | ✓ | ~150-250ms | Multilingual support |
+| Whisper (OpenAI) | Non-streaming | ~500ms\+ | Offline transcription |
 | Google/Azure | ✓ | Variable | Enterprise compliance |
 
 Deepgram configuration for voice agents:
@@ -271,7 +275,7 @@ async def bridge_to_livekit(gotoconnect_track):
 ### Latency budget for bridging
 
 | Component | Latency | Notes |
-| :---- | :---- | :---- |
+| :-- | :-- | :-- |
 | Network (SIP side) | 20-100ms | Varies by path |
 | Jitter buffer | 40-80ms | Adaptive sizing |
 | Transcoding | 0ms | Both use Opus 48kHz |
@@ -287,10 +291,10 @@ Since both GoToConnect and LiveKit use Opus at 48kHz, **no codec transcoding is 
 ### Latency-optimized options
 
 | Provider | Time-to-First-Audio | Self-hosted | Price per 1M chars | Best for |
-| :---- | :---- | :---- | :---- | :---- |
-| **Cartesia Sonic-3** | **40-90ms** | No | \~$30 | Lowest latency production |
-| **ElevenLabs Flash** | 75ms | No | $120-300 | Highest quality |
-| **Deepgram Aura-2** | \<200ms | Optional | $30 | Enterprise \+ unified STT |
+| :-- | :-- | :-- | :-- | :-- |
+| **Cartesia Sonic-3** | **40-90ms** | No | ~\$30 | Lowest latency production |
+| **ElevenLabs Flash** | 75ms | No | \$120-300 | Highest quality |
+| **Deepgram Aura-2** | \<200ms | Optional | \$30 | Enterprise \+ unified STT |
 | **Chatterbox Turbo** | \<200ms | Yes (MIT) | Free | Cost control, emotion |
 | **Orpheus TTS** | 100-200ms | Yes (Apache) | Free | LLM-based quality |
 | **Coqui XTTS-v2** | \<200ms | Yes (CPML) | Free | 17 languages |
@@ -324,7 +328,7 @@ wav = model.generate(
 )
 ```
 
-Requirements: Python 3.11, CUDA GPU (\~2GB model), sub-200ms latency achievable.
+Requirements: Python 3.11, CUDA GPU (~2GB model), sub-200ms latency achievable.
 
 ---
 
@@ -332,7 +336,7 @@ Requirements: Python 3.11, CUDA GPU (\~2GB model), sub-200ms latency achievable.
 
 ### Inbound call flow
 
-```
+```text
 PSTN → SIP Provider (Twilio/Telnyx) → LiveKit SIP Service → 
 LiveKit Room → Agent Session → STT (Deepgram) → 
 LLM (GPT-4o-mini) → TTS (Cartesia) → LiveKit Room → 
@@ -342,7 +346,7 @@ SIP Service → PSTN
 ### Target latency budget
 
 | Component | Target | Upper Limit |
-| :---- | :---- | :---- |
+| :-- | :-- | :-- |
 | Audio to media edge | 40ms | 80ms |
 | Jitter buffering | 30ms | 50ms |
 | **STT processing** | 350ms | 500ms |
@@ -412,7 +416,7 @@ Interstitial handling for latency: "Let me look that up for you..." plays while 
 ### Critical blockers with GoToConnect
 
 | Gap | Impact | Mitigation |
-| :---- | :---- | :---- |
+| :-- | :-- | :-- |
 | **No call transfer API** | Cannot implement warm/cold handoff programmatically | Use LiveKit SIP with Twilio/Telnyx instead |
 | **No hold API** | Cannot park calls during agent lookup | Conference bridge workaround |
 | **No conferencing API** | Cannot add supervisors to calls | Build conferencing in LiveKit room |
@@ -422,7 +426,7 @@ Interstitial handling for latency: "Let me look that up for you..." plays while 
 
 **Abandon GoToConnect for call control; use it only as a phone system if required.** The recommended architecture:
 
-```
+```text
 PSTN ← → Twilio/Telnyx SIP Trunk ← → LiveKit SIP Service
                                            ↓
                                     LiveKit Room
@@ -435,27 +439,27 @@ PSTN ← → Twilio/Telnyx SIP Trunk ← → LiveKit SIP Service
 
 This provides:
 
-- Full programmatic call control (transfer, hold, conference)  
-- Native DTMF handling  
-- Sub-second latency with streaming components  
+- Full programmatic call control (transfer, hold, conference)
+- Native DTMF handling
+- Sub-second latency with streaming components
 - LiveKit's built-in agent infrastructure
 
 ### Scaling considerations
 
 | Metric | LiveKit Cloud | Self-hosted |
-| :---- | :---- | :---- |
+| :-- | :-- | :-- |
 | Concurrent participants | 100,000 per session | Infrastructure-dependent |
-| Agent minutes | $0.01/minute | Free (compute costs) |
-| Audio-only | $0.005/minute | Free |
+| Agent minutes | \$0.01/minute | Free (compute costs) |
+| Audio-only | \$0.005/minute | Free |
 | API rate limit | 1,000 req/min | Configurable |
 
 Self-hosting requires Redis for SIP service state, plus GPU infrastructure for STT/TTS if not using cloud providers.
 
 ### Reliability concerns
 
-- **LiveKit SIP** depends on external trunk provider uptime  
-- **TTS provider failover** should be configured (Cartesia → Deepgram → cached audio)  
-- **LLM latency spikes** during high load—implement timeout with fallback responses  
+- **LiveKit SIP** depends on external trunk provider uptime
+- **TTS provider failover** should be configured (Cartesia → Deepgram → cached audio)
+- **LLM latency spikes** during high load—implement timeout with fallback responses
 - **WebSocket reconnection** needed for long-running bridge connections
 
 ---
@@ -464,10 +468,10 @@ Self-hosting requires Redis for SIP service state, plus GPU infrastructure for S
 
 Building a white-label Voice AI Contact Center is **technically feasible** but **not with GoToConnect as the primary telephony provider** for programmatic call control. The recommended path:
 
-1. **Use LiveKit's native SIP integration** with Twilio, Telnyx, or Plivo for full call control  
-2. **Deploy LiveKit Agents framework** for STT/LLM/TTS orchestration  
-3. **Choose Cartesia Sonic** for lowest-latency TTS (40-90ms)  
-4. **Implement warm handoff** via SIP REFER or LiveKit room conferencing  
+1. **Use LiveKit's native SIP integration** with Twilio, Telnyx, or Plivo for full call control
+2. **Deploy LiveKit Agents framework** for STT/LLM/TTS orchestration
+3. **Choose Cartesia Sonic** for lowest-latency TTS (40-90ms)
+4. **Implement warm handoff** via SIP REFER or LiveKit room conferencing
 5. **Target \<1s mouth-to-ear latency** with streaming components
 
-GoToConnect can remain as an existing phone system for users, but its API should not be relied upon for automated call handling—the missing transfer, hold, and conference APIs are fundamental blockers for contact center workflows. If GoToConnect integration is mandatory, expect manual user intervention for call control actions or significant custom development to work around these limitations.  
+GoToConnect can remain as an existing phone system for users, but its API should not be relied upon for automated call handling—the missing transfer, hold, and conference APIs are fundamental blockers for contact center workflows. If GoToConnect integration is mandatory, expect manual user intervention for call control actions or significant custom development to work around these limitations.
