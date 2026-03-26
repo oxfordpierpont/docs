@@ -155,7 +155,10 @@
               },
               {
                 "group": "Developer Platform",
-                "pages": []
+                "pages": [
+                  "untitled-page",
+                  "how-will-developers-use-the-ai-connected-platform"
+                ]
               },
               {
                 "group": "Personal Plaform",
@@ -175,7 +178,9 @@
                   {
                     "group": "Platform Shell",
                     "pages": [
-                      "shell-codex-prd"
+                      "shell-codex-prd",
+                      "platform-v1-context",
+                      "what-is-the-platform-shell"
                     ]
                   }
                 ]
