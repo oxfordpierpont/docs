@@ -1,7 +1,6 @@
 ---
 title: 'Shell Codex PRD'
 ---
-
 # aiConnected v2 Core Shell PRD (Canonical)
 Version: 1.0  
 Date: March 26, 2026  
@@ -289,6 +288,18 @@ Ownership rules:
 1. Events must retain at least 180 days online.
 2. Audit logs must retain at least 365 days online.
 
+### 12.6 Migration Rollback and Recovery Expectations
+1. Migrations `001` through `009` must be reversible in staging via explicit down scripts during pre-production validation.
+2. Migration `010_rls_policies.sql` is forward-only in production; rollback is performed by applying a superseding corrective migration, not destructive policy deletion.
+3. Migration `011_seed_role_templates.sql` must be idempotent and re-runnable safely.
+4. Production rollback strategy must prioritize data integrity:
+   - schema rollback only for non-destructive migrations
+   - entitlement and auth-impacting defects fixed by forward corrective migrations
+5. Every migration must include:
+   - pre-check query
+   - post-check query
+   - failure handling note
+
 ## 13. Authentication and Session Requirements
 Required behaviors:
 1. Sign-in and sign-out.
@@ -429,6 +440,48 @@ Required stable codes:
 17. `CONFLICT`
 18. `RATE_LIMITED`
 19. `INTERNAL_ERROR`
+
+### 20.3 Endpoint-Level Contract Baseline (Execution Required)
+All protected endpoints must require a validated session and resolved `WorkspaceContext`.
+
+Required auth claim shape for protected requests:
+1. `sub` (user id)
+2. `workspace_id` (active workspace)
+3. `role_template`
+4. `permissions` (effective capability array)
+5. `impersonation` (`active`, `actor_user_id`, `target_workspace_id`)
+6. `session_id`
+
+| Endpoint | Request body (minimum) | Response body (minimum) | Primary error codes |
+|---|---|---|---|
+| `POST /auth/sign-in` | `email`, `password` | `session`, `workspace_options`, `default_workspace_id` | `AUTH_REQUIRED`, `INTERNAL_ERROR` |
+| `POST /auth/sign-out` | none | `ok` | `SESSION_INVALID` |
+| `POST /auth/impersonation/start` | `target_workspace_id`, `reason` | `impersonation_state`, `effective_context` | `PERMISSION_DENIED`, `IMPERSONATION_FORBIDDEN` |
+| `POST /auth/impersonation/stop` | none | `impersonation_state`, `effective_context` | `SESSION_INVALID` |
+| `POST /workspaces` | `type`, `name`, `parent_workspace_id?` | `workspace` | `PERMISSION_DENIED`, `CONFLICT` |
+| `POST /workspaces/{id}/children` | `name`, `child_type` | `workspace` | `WORKSPACE_FORBIDDEN`, `PERMISSION_DENIED` |
+| `POST /workspaces/switch` | `workspace_id` | `effective_context` | `WORKSPACE_FORBIDDEN`, `SESSION_INVALID` |
+| `POST /memberships` | `workspace_id`, `email`, `role_template` | `membership`, `invite_status` | `PERMISSION_DENIED`, `CONFLICT` |
+| `PATCH /memberships/{id}` | `role_template?`, `active?`, `permission_overrides?` | `membership` | `PERMISSION_DENIED`, `WORKSPACE_FORBIDDEN` |
+| `GET /permissions/effective` | none | `effective_permissions`, `role_template` | `SESSION_INVALID` |
+| `GET /themes/current` | none | `theme_tokens`, `source_workspace_id`, `version` | `WORKSPACE_FORBIDDEN` |
+| `PUT /themes/current` | `theme_tokens`, `change_note` | `theme_version`, `theme_tokens` | `PERMISSION_DENIED`, `VALIDATION_BLOCKING` |
+| `POST /layouts/{id}/save` | `draft`, `history_cursor` | `layout_version`, `validation_summary` | `PERMISSION_DENIED`, `VALIDATION_BLOCKING` |
+| `POST /layouts/{id}/preview` | `draft_version_id` | `preview_url`, `validation_summary` | `VALIDATION_BLOCKING` |
+| `POST /layouts/{id}/test` | `draft_version_id` | `test_report` | `VALIDATION_BLOCKING` |
+| `POST /layouts/{id}/publish` | `draft_version_id`, `publish_note` | `published_version_id` | `PERMISSION_DENIED`, `VALIDATION_BLOCKING` |
+| `POST /layouts/{id}/rollback` | `target_version_id`, `reason` | `published_version_id` | `PERMISSION_DENIED`, `CONFLICT` |
+| `POST /modules/import` | `package_uri` or `manifest` | `assessment`, `registry_record` | `MANIFEST_INVALID`, `MANIFEST_INCOMPATIBLE` |
+| `POST /modules/{key}/install` | `workspace_id`, `config?` | `installation_state` | `MODULE_NOT_REGISTERED`, `PERMISSION_DENIED` |
+| `POST /modules/{key}/enable` | `workspace_id` | `installation_state` | `MODULE_TARGET_UNHEALTHY`, `BILLING_SUSPENDED` |
+| `POST /modules/{key}/disable` | `workspace_id` | `installation_state` | `PERMISSION_DENIED` |
+| `DELETE /modules/{key}/uninstall` | `workspace_id` | `ok` | `PERMISSION_DENIED`, `CONFLICT` |
+| `POST /events` | `event_name`, `payload`, `correlation_id`, `idempotency_key` | `event_id`, `delivery_state` | `EVENT_SCHEMA_INVALID`, `PERMISSION_DENIED` |
+| `GET /events` | query: `workspace_id`, `event_name?`, `cursor?` | `items`, `next_cursor` | `WORKSPACE_FORBIDDEN` |
+| `ALL /gateway/{module}/{path}` | proxied payload | proxied payload + normalized error envelope | `MODULE_NOT_ENABLED`, `MODULE_TARGET_UNHEALTHY`, `BILLING_SUSPENDED` |
+| `GET /billing/status` | none | `entitlement_state`, `subscription_state` | `WORKSPACE_FORBIDDEN` |
+| `POST /billing/recovery` | `action`, `workspace_id` | `entitlement_state`, `next_steps` | `BILLING_REQUIRED`, `CONFLICT` |
+| `POST /billing/reconcile` | `workspace_id?`, `force?` | `reconcile_result` | `PERMISSION_DENIED`, `INTERNAL_ERROR` |
 
 ## 21. Event Bus and Inter-Module Communication
 Required event behavior:
@@ -589,6 +642,21 @@ No phase may introduce module business logic into shell.
 | Audit coverage is complete for privileged ops | audit_logs | all privileged endpoints | audit UI | service-write immutable logs | integration |
 | No module business logic inside shell | package boundaries | n/a | all shell routes | architecture review and static checks | static + review gate |
 
+### 28.1 Supplemental Normative Traceability (Full-Coverage Controls)
+| Normative control | Primary section(s) | Verification artifact |
+|---|---|---|
+| Shell-only phase boundary is enforced | 4, 5, 29, 30 | architecture review checklist + static policy checks |
+| Module-absent mode is fully operable | 4.3, 28 | e2e module-absent test suite |
+| v1 parity decisions are explicit and auditable | 31, 34 | parity review sign-off + matrix diff |
+| Migration rollback strategy is defined | 12.6, 27 | migration dry-run report |
+| RLS and tenancy invariants are enforced | 12.3, 12.4, 14 | policy integration tests |
+| Endpoint-level contract detail is complete | 20.3 | OpenAPI lint + contract tests |
+| Event delivery + gateway semantics are explicit | 21, 22 | integration tests + failure-mode tests |
+| Billing entitlement transitions are deterministic | 23 | billing state machine tests |
+| SLO/NFRs are measurable and testable | 25 | performance test report |
+| Cutover and rollback are operationally scripted | 27, 33.1 | dry-run checklist execution report |
+| No unresolved shell-critical placeholders | 32, 33 | documentation lint check |
+
 ## 29. Out of Scope (Strict)
 Not part of Shell phase:
 1. Building any business module domain workflows.
@@ -609,22 +677,22 @@ Not part of Shell phase:
 8. No unresolved `TBD` is allowed in shell-critical sections.
 
 ## 31. v1 Parity Replication Matrix (Shell-Relevant)
-| v1 behavior | Disposition | Reason | v2 owner | Validation |
-|---|---|---|---|---|
-| permissions role primitives | Replicate now | shell-core | packages/permissions | unit tests |
-| app-local route ACL hardcoding | Retire | coupling risk | packages/permissions + middleware | static checks |
-| manifest normalize/validate/assess | Replicate now | module infra backbone | packages/module-sdk | contract tests |
-| hardcoded fallback app manifests | Retire | must be registry-driven | module_registry seed policy | empty-registry tests |
-| import assessment reports | Replicate now | admin operations value | module-sdk + platform admin | integration tests |
-| deep internal package imports | Retire | boundary fragility | all packages | lint rule |
-| db browser/server/admin wrappers | Replicate now | proven reusable shell pattern | packages/db | integration tests |
-| integration inheritance resolver pattern | Replicate now (genericized) | strong tenancy behavior | packages/db + theme | inheritance tests |
-| fragmented theming catalogs | Retire | single source of truth required | packages/theme | token consistency tests |
-| tenancy context + impersonation rules | Replicate now | operator-critical | permissions + db | scope/impersonation tests |
-| chat runtime behavior | Defer to modules phase | module business logic | n/a | shell code review |
-| kb runtime/worker behavior | Defer to modules phase | module business logic | n/a | shell code review |
-| plasmic host/render | Retire | out of shell principles | n/a | dependency scan |
-| duplicate route variants/.old files | Retire | maintainability risk | repo hygiene policy | CI file checks |
+| v1 behavior | Disposition | Reason | v2 owner | Validation | Evidence |
+|---|---|---|---|---|---|
+| permissions role primitives | Replicate now | shell-core | packages/permissions | unit tests | `/Users/MrBobHunter-MacPro/Code/platform.sec-admn.com-2/docs/v1-audit/03a-auth-and-permissions.md` |
+| app-local route ACL hardcoding | Retire | coupling risk | packages/permissions + middleware | static checks | `/Users/MrBobHunter-MacPro/Code/platform.sec-admn.com-2/docs/v1-audit/03a-auth-and-permissions.md` |
+| manifest normalize/validate/assess | Replicate now | module infra backbone | packages/module-sdk | contract tests | `/Users/MrBobHunter-MacPro/Code/platform.sec-admn.com-2/docs/v1-audit/03b-module-manifest-system.md` |
+| hardcoded fallback app manifests | Retire | must be registry-driven | module_registry seed policy | empty-registry tests | `/Users/MrBobHunter-MacPro/Code/platform.sec-admn.com-2/docs/v1-audit/03b-module-manifest-system.md` |
+| import assessment reports | Replicate now | admin operations value | module-sdk + platform admin | integration tests | `/Users/MrBobHunter-MacPro/Code/platform.sec-admn.com-2/docs/v1-audit/03b-module-manifest-system.md` |
+| deep internal package imports | Retire | boundary fragility | all packages | lint rule | `/Users/MrBobHunter-MacPro/Code/platform.sec-admn.com-2/docs/v1-audit/02-foundation-vs-apps.md` |
+| db browser/server/admin wrappers | Replicate now | proven reusable shell pattern | packages/db | integration tests | `/Users/MrBobHunter-MacPro/Code/platform.sec-admn.com-2/docs/v1-audit/03f-db-client-server-patterns.md` |
+| integration inheritance resolver pattern | Replicate now (genericized) | strong tenancy behavior | packages/db + theme | inheritance tests | `/Users/MrBobHunter-MacPro/Code/platform.sec-admn.com-2/docs/v1-audit/03f-db-client-server-patterns.md` and `/Users/MrBobHunter-MacPro/Code/platform.sec-admn.com-2/docs/v1-audit/07-multi-tenancy-clean-port-plan.md` |
+| fragmented theming catalogs | Retire | single source of truth required | packages/theme | token consistency tests | `/Users/MrBobHunter-MacPro/Code/platform.sec-admn.com-2/docs/v1-audit/03c-branding-and-theming.md` |
+| tenancy context + impersonation rules | Replicate now | operator-critical | permissions + db | scope/impersonation tests | `/Users/MrBobHunter-MacPro/Code/platform.sec-admn.com-2/docs/v1-audit/07-multi-tenancy-clean-port-plan.md` |
+| chat runtime behavior | Defer to modules phase | module business logic | n/a | shell code review | `/Users/MrBobHunter-MacPro/Code/platform.sec-admn.com-2/docs/v1-audit/02-foundation-vs-apps.md` |
+| kb runtime/worker behavior | Defer to modules phase | module business logic | n/a | shell code review | `/Users/MrBobHunter-MacPro/Code/platform.sec-admn.com-2/docs/v1-audit/02-foundation-vs-apps.md` |
+| plasmic host/render | Retire | out of shell principles | n/a | dependency scan | `/Users/MrBobHunter-MacPro/Code/platform.sec-admn.com-2/docs/v1-audit/08-v1-complete-capability-inventory.md` |
+| duplicate route variants/.old files | Retire | maintainability risk | repo hygiene policy | CI file checks | `/Users/MrBobHunter-MacPro/Code/platform.sec-admn.com-2/docs/v1-audit/08-v1-complete-capability-inventory.md` |
 
 ## 32. Documentation Quality and Readiness Validation
 ### 32.1 Completeness Checks
@@ -653,3 +721,15 @@ The shell PRD is implementation-ready only when:
 4. Independent review checks pass.
 5. No unresolved `TBD` exists in shell-critical sections.
 6. This document and the Layout Manager PRD are both marked ready.
+
+### 33.1 Mandatory Blank-Repo Dry-Run Checklist
+1. Reviewer receives only this PRD + Layout Manager PRD (no verbal context).
+2. Reviewer derives monorepo/package scaffold and confirms no unresolved ownership decisions.
+3. Reviewer derives migration order and validates rollback/recovery expectations are actionable.
+4. Reviewer derives endpoint contracts and confirms each protected route has required auth claims and stable error outcomes.
+5. Reviewer derives module-absent mode behavior and confirms deterministic expected outputs.
+6. Reviewer maps all acceptance rows to concrete test artifacts and confirms no unmapped normative controls remain.
+7. Reviewer issues one of two results:
+   - `READY`: no blocking ambiguity
+   - `NOT READY`: explicit blocking gaps with section references
+8. PRD is build-authorized only after `READY` result is documented.

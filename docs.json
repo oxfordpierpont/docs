@@ -181,7 +181,8 @@
                       "platform-v1-context",
                       "what-is-the-platform-shell"
                     ]
-                  }
+                  },
+                  "legacy-platform-v1-inventory"
                 ]
               }
             ]
