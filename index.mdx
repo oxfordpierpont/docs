@@ -1,97 +1,52 @@
 ---
-title: "Introduction"
-description: "Welcome to the new home for your documentation"
+title: "Welcome to aiConnected Docs"
+description: "The official home for aiConnected platform documentation, PRDs, API references, and developer resources."
 ---
 
-## Setting up
+## What is aiConnected?
 
-Get your documentation site up and running in minutes.
+aiConnected is a **B2B2B AI operating system** built for agencies and the businesses they serve. It replaces fragmented chatbots and siloed tools with a persistent cognitive workspace — a platform where specialized AI Personas collaborate, remember, and execute real work across every business function.
 
-<Card
-  title="Start here"
-  icon="rocket"
-  href="/quickstart"
-  horizontal
->
-  Follow our three step quickstart guide.
-</Card>
+At its core, aiConnected gives AI a **digital body**: persistent memory, bounded skill sets, and a multi-agent architecture that mirrors how a real team operates. Agencies deploy it under their own brand. Their clients experience it as an intelligent business partner, not a chatbot.
 
-## Make it yours
+## What's in these docs?
 
-Design a docs site that looks great and empowers your users.
+This documentation site is the single source of truth for everyone building on or with aiConnected — internal developers, agency partners, and third-party module developers.
 
-<Columns cols={2}>
-  <Card
-    title="Edit locally"
-    icon="pen-to-square"
-    href="/development"
-  >
-    Edit your docs locally and preview them in real time.
+<CardGroup cols={2}>
+  <Card title="Documentation" icon="book-open" href="/introduction">
+    Platform concepts, architecture, Persona configuration, and the Cognigraph memory system.
   </Card>
-  <Card
-    title="Customize your site"
-    icon="palette"
-    href="/essentials/settings"
-  >
-    Customize the design and colors of your site to match your brand.
+  <Card title="API Reference" icon="code" href="/api-reference/introduction">
+    Full REST API reference for integrating aiConnected into your stack.
   </Card>
-    <Card
-    title="Set up navigation"
-    icon="map"
-    href="/essentials/navigation"
-  >
-    Organize your docs to help users find what they need and succeed with your product.
+  <Card title="Webhook Events" icon="bolt" href="/webhooks/introduction">
+    Real-time event hooks for Persona activity, workflow completion, and platform triggers.
   </Card>
-  <Card
-    title="API documentation"
-    icon="terminal"
-    href="/api-reference/introduction"
-  >
-    Auto-generate API documentation from OpenAPI specifications.
+  <Card title="Knowledge Base" icon="circle-question" href="/knowledge-base/introduction">
+    Answers to common implementation questions, troubleshooting guides, and best practices.
   </Card>
-</Columns>
+</CardGroup>
 
-## Create beautiful pages
+## Platform highlights
 
-Everything you need to create world-class documentation.
+<AccordionGroup>
+  <Accordion title="Cognigraph Memory">
+    A dual-layer cognitive architecture with an Open Thinking Layer (fluid, working memory) and a Closed Thinking Layer (immutable rules and original intent). All learning passes CTL validation before it's retained.
+  </Accordion>
+  <Accordion title="Domain Capability Fabric">
+    A developer-extensible marketplace where Domain Capability Modules compete at runtime to execute user intents via n8n workflows. Third-party developers earn 80% of every module run.
+  </Accordion>
+  <Accordion title="Embodied Personas">
+    Specialized AI agents with finite skill slots, persistent memory, and sandboxed desktop environments for real-world task execution.
+  </Accordion>
+  <Accordion title="Fluid Context">
+    A turn-by-turn context system using four classes — Fixed, Topic, Hot Working, and Archived — to maintain coherent, lossless conversations far beyond standard context window limits.
+  </Accordion>
+</AccordionGroup>
 
-<Columns cols={2}>
-  <Card
-    title="Write with MDX"
-    icon="pen-fancy"
-    href="/essentials/markdown"
-  >
-    Use MDX to style your docs pages.
-  </Card>
-  <Card
-    title="Code samples"
-    icon="code"
-    href="/essentials/code"
-  >
-    Add sample code to demonstrate how to use your product.
-  </Card>
-  <Card
-    title="Images"
-    icon="image"
-    href="/essentials/images"
-  >
-    Display images and other media.
-  </Card>
-  <Card
-    title="Reusable snippets"
-    icon="recycle"
-    href="/essentials/reusable-snippets"
-  >
-    Write once and reuse across your docs.
-  </Card>
-</Columns>
+## For developers
 
-## Need inspiration?
+aiConnected is built on a **Next.js / Supabase / n8n** stack with a Turborepo monorepo structure. Module developers build n8n workflow templates and submit them to the Capability Fabric marketplace — no direct access to customer data required.
 
-<Card
-  title="See complete examples"
-  icon="stars"
-  href="https://mintlify.com/customers"
->
-  Browse our showcase of exceptional documentation sites.
-</Card>
+If you're building a module, start with the [API Reference](/api-reference/introduction). If you're an agency partner configuring a white-label deployment, start with the [Documentation](/introduction).
