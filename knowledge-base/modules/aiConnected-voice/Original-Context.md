@@ -1,3 +1,7 @@
+---
+icon: "angle-right"
+---
+
 # Voice by aiConnected — Original Context Document
 
 This document captures the original prompts, ideas, reasoning, and requirements provided by Bob during the planning conversations for Voice by aiConnected. It serves as the authoritative source of intent and vision for the project.
@@ -6,18 +10,18 @@ This document captures the original prompts, ideas, reasoning, and requirements 
 
 ## Table of Contents
 
-1. [Initial Vision & Problem Statement](#1-initial-vision--problem-statement)  
-2. [Hypothetical Use Cases](#2-hypothetical-use-cases)  
-3. [GoToConnect Environment](#3-gotoconnect-environment)  
-4. [Technology Choices & Reasoning](#4-technology-choices--reasoning)  
-5. [Architecture Requirements](#5-architecture-requirements)  
-6. [Cost Analysis & Business Model](#6-cost-analysis--business-model)  
-7. [Scalability Requirements](#7-scalability-requirements)  
+1. [Initial Vision & Problem Statement](#1-initial-vision--problem-statement)
+2. [Hypothetical Use Cases](#2-hypothetical-use-cases)
+3. [GoToConnect Environment](#3-gotoconnect-environment)
+4. [Technology Choices & Reasoning](#4-technology-choices--reasoning)
+5. [Architecture Requirements](#5-architecture-requirements)
+6. [Cost Analysis & Business Model](#6-cost-analysis--business-model)
+7. [Scalability Requirements](#7-scalability-requirements)
 8. [Key Differentiators](#8-key-differentiators)
 
 ---
 
-## 1\. Initial Vision & Problem Statement
+## 1. Initial Vision & Problem Statement
 
 ### The Core Question
 
@@ -41,7 +45,7 @@ With that said, I do not want to pay for Twilio (and deal with Twilio's extra ru
 
 ---
 
-## 2\. Hypothetical Use Cases
+## 2. Hypothetical Use Cases
 
 Bob provided six detailed use cases that define the product scope:
 
@@ -51,8 +55,8 @@ Bob provided six detailed use cases that define the product scope:
 
 **Key Requirements:**
 
-- Seamless handoff from human unavailability to AI  
-- AI should resolve caller needs, not just take messages  
+- Seamless handoff from human unavailability to AI
+- AI should resolve caller needs, not just take messages
 - Integration with existing call routing
 
 ### Use Case 2: After-Hours Service (Emergency Plumbing Example)
@@ -61,9 +65,9 @@ Bob provided six detailed use cases that define the product scope:
 
 **Key Requirements:**
 
-- 24/7 availability  
-- Minimal cost per call  
-- Handle low-volume but critical overnight calls  
+- 24/7 availability
+- Minimal cost per call
+- Handle low-volume but critical overnight calls
 - Near-guaranteed uptime
 
 ### Use Case 3: Instant Lead Callback with Live Streaming
@@ -72,9 +76,9 @@ Bob provided six detailed use cases that define the product scope:
 
 **Key Requirements:**
 
-- Instant outbound calling triggered by form submission  
-- Lead qualification by AI  
-- Live streaming to human sales rep  
+- Instant outbound calling triggered by form submission
+- Lead qualification by AI
+- Live streaming to human sales rep
 - Warm handoff / call connection capability
 
 ### Use Case 4: Speed-to-Lead (Angie's List / Thumbtack)
@@ -83,8 +87,8 @@ Bob provided six detailed use cases that define the product scope:
 
 **Key Requirements:**
 
-- Webhook/trigger-based outbound calling  
-- Sub-minute response time  
+- Webhook/trigger-based outbound calling
+- Sub-minute response time
 - Integration with lead sources
 
 ### Use Case 5: Cold Lead Reactivation Campaign
@@ -93,10 +97,10 @@ Bob provided six detailed use cases that define the product scope:
 
 **Key Requirements:**
 
-- Bulk outbound calling campaigns  
-- 5-10 minute conversation capability  
-- Callback scheduling and execution  
-- Appointment booking integration  
+- Bulk outbound calling campaigns
+- 5-10 minute conversation capability
+- Callback scheduling and execution
+- Appointment booking integration
 - Gatekeeper handling
 
 ### Use Case 6: High-Volume Insurance Agency
@@ -105,10 +109,10 @@ Bob provided six detailed use cases that define the product scope:
 
 **Key Requirements:**
 
-- High volume (100 calls/hour)  
-- Cost-effective at scale  
-- Natural voice quality (no awkward pauses)  
-- Custom background sounds  
+- High volume (100 calls/hour)
+- Cost-effective at scale
+- Natural voice quality (no awkward pauses)
+- Custom background sounds
 - Custom TTS solution
 
 ### Bob's Summary
@@ -117,13 +121,13 @@ Bob provided six detailed use cases that define the product scope:
 
 ---
 
-## 3\. GoToConnect Environment
+## 3. GoToConnect Environment
 
 ### Grandfathered Plan Details
 
 Bob provided specific details about his GoToConnect subscription:
 
-"We are grandfathered into the standard GoToConnect plan at $17/user for unlimited calling and texting, unlimited extensions, unlimited dial plans, unlimited call queues, unlimited conference bridges, ring groups, voicemail, directories, paging, forwarding, follow-me call handling, custom voicemail, custom greetings, scheduling, extension mapping, network access, outbound proxies, registration proxies, and round-robin call distribution."
+"We are grandfathered into the standard GoToConnect plan at \$17/user for unlimited calling and texting, unlimited extensions, unlimited dial plans, unlimited call queues, unlimited conference bridges, ring groups, voicemail, directories, paging, forwarding, follow-me call handling, custom voicemail, custom greetings, scheduling, extension mapping, network access, outbound proxies, registration proxies, and round-robin call distribution."
 
 ### Plan Capabilities
 
@@ -137,20 +141,20 @@ When initial research suggested GoToConnect API limitations, Bob pushed back:
 
 Here is the information I was referencing:
 
-- [https://developer.goto.com/GoToConnect\#tag/Call-Events-Overview/Examples/Recordings](https://developer.goto.com/GoToConnect#tag/Call-Events-Overview/Examples/Recordings)  
-- [https://developer.goto.com/GoToConnect/\#tag/Notification-Channel-Overview](https://developer.goto.com/GoToConnect/#tag/Notification-Channel-Overview)"
+- [https://developer.goto.com/GoToConnect#tag/Call-Events-Overview/Examples/Recordings](https://developer.goto.com/GoToConnect#tag/Call-Events-Overview/Examples/Recordings)
+- [https://developer.goto.com/GoToConnect/#tag/Notification-Channel-Overview](https://developer.goto.com/GoToConnect/#tag/Notification-Channel-Overview)"
 
 This led to a deeper investigation that confirmed GoToConnect's WebRTC API capabilities for:
 
-- Device registration  
-- WebRTC SDP exchange  
-- Inbound/outbound call handling  
-- Call events and webhooks  
+- Device registration
+- WebRTC SDP exchange
+- Inbound/outbound call handling
+- Call events and webhooks
 - Call control operations
 
 ---
 
-## 4\. Technology Choices & Reasoning
+## 4. Technology Choices & Reasoning
 
 ### LiveKit
 
@@ -166,9 +170,9 @@ Bob was emphatic about voice quality requirements:
 
 **Key Quality Benchmarks:**
 
-- Near-perfect human-level voice quality  
-- Difficult to distinguish from human  
-- Background office noises mask latency  
+- Near-perfect human-level voice quality
+- Difficult to distinguish from human
+- Background office noises mask latency
 - Near non-existent latency-silence
 
 ### Latency Requirements
@@ -189,7 +193,7 @@ While n8n is part of Bob's existing infrastructure, it was explicitly rejected f
 
 ---
 
-## 5\. Architecture Requirements
+## 5. Architecture Requirements
 
 ### Call Transfer Mechanics
 
@@ -203,9 +207,9 @@ When asked about human handoff preferences:
 
 **Capacity Requirements:**
 
-- Design for 100 concurrent calls per client  
-- Average expected usage: 10 concurrent calls  
-- Architecture for 10x headroom  
+- Design for 100 concurrent calls per client
+- Average expected usage: 10 concurrent calls
+- Architecture for 10x headroom
 - Premium tier for dedicated infrastructure
 
 ### Tool Calling / Integration Flexibility
@@ -214,7 +218,7 @@ When asked about human handoff preferences:
 
 ---
 
-## 6\. Cost Analysis & Business Model
+## 6. Cost Analysis & Business Model
 
 ### The Competitive Comparison
 
@@ -222,34 +226,34 @@ Bob explicitly compared against Vapi and Retell:
 
 "The per/minutes cost of Vapi and Retell are too high for volume usage."
 
-**Typical Vapi/Retell pricing:** $0.05-0.15/minute
+**Typical Vapi/Retell pricing:** \$0.05-0.15/minute
 
 ### Bob's Stack Cost Estimate
 
 The target cost structure was outlined:
 
 | Component | Cost |
-| :---- | :---- |
-| GoToConnect | $0 (already paying unlimited) |
-| LiveKit Cloud | \~$0.004/min participant |
-| Deepgram STT | \~$0.005/min |
-| Claude Sonnet | \~$0.01-0.03/min |
-| Chatterbox TTS | $0 (self-hosted) |
-| **Total** | **\~$0.02-0.04/minute** |
+| :-- | :-- |
+| GoToConnect | \$0 (already paying unlimited) |
+| LiveKit Cloud | ~\$0.004/min participant |
+| Deepgram STT | ~\$0.005/min |
+| Claude Sonnet | ~\$0.01-0.03/min |
+| Chatterbox TTS | \$0 (self-hosted) |
+| **Total** | **~\$0.02-0.04/minute** |
 
 **Value Proposition:**
 
-- At 1,000 minutes/month: $20-40 vs $50-150  
+- At 1,000 minutes/month: $20-40 vs $50-150
 - At 10,000 minutes/month: $200-400 vs $500-1,500
 
 ---
 
-## 7\. Scalability Requirements
+## 7. Scalability Requirements
 
 ### Per-Client Capacity
 
-- **Design target:** 100 concurrent calls per client  
-- **Typical usage:** 10 concurrent calls  
+- **Design target:** 100 concurrent calls per client
+- **Typical usage:** 10 concurrent calls
 - **Headroom:** 10x over typical usage
 
 ### Multi-Tenant Architecture
@@ -260,31 +264,31 @@ Bob indicated willingness to deploy dedicated infrastructure:
 
 ---
 
-## 8\. Key Differentiators
+## 8. Key Differentiators
 
 Based on Bob's requirements, the key differentiators for Voice by aiConnected are:
 
-### 1\. Cost Advantage
+### 1. Cost Advantage
 
 Using existing GoToConnect unlimited calling eliminates per-minute telephony costs that competitors must pass through.
 
-### 2\. Voice Quality
+### 2. Voice Quality
 
 Chatterbox Turbo TTS provides near-human voice quality that competitors struggle to match:
 
 "The Chatterbox Turbo is so good that it is hard to tell you're talking to AI at all."
 
-### 3\. Natural Conversation Flow
+### 3. Natural Conversation Flow
 
 Custom background sounds and latency optimization eliminate the "awkward pauses":
 
 "With the background office noises, the latency-silence is nearly non-existent."
 
-### 4\. Enterprise Phone System Integration
+### 4. Enterprise Phone System Integration
 
 Leverages professional phone system features (call queues, ring groups, conference bridges) that consumer-grade competitors lack.
 
-### 5\. Flexibility
+### 5. Flexibility
 
 Webhook-based tool calling and integration flexibility for diverse client needs.
 
@@ -292,11 +296,11 @@ Webhook-based tool calling and integration flexibility for diverse client needs.
 
 ## Document Metadata
 
-- **Created:** January 16, 2026  
-- **Source:** Original conversation transcripts  
-- **Purpose:** Preserve original intent and requirements for project continuity  
+- **Created:** January 16, 2026
+- **Source:** Original conversation transcripts
+- **Purpose:** Preserve original intent and requirements for project continuity
 - **Usage:** Reference document for development decisions and scope validation
 
 ---
 
-*This document should be referenced whenever there are questions about original intent, scope, or priorities for the Voice by aiConnected project.*  
+_This document should be referenced whenever there are questions about original intent, scope, or priorities for the Voice by aiConnected project._
