@@ -130,11 +130,13 @@
           },
           {
             "group": "Modules",
+            "icon": "puzzle-piece",
             "pages": [
               {
                 "group": "aiConnected Voice",
+                "icon": "notebook",
                 "pages": [
-                  "knowledge-base/modules/aiConnected-voice/Developer Introduction"
+                  "untitled-page"
                 ]
               }
             ]
