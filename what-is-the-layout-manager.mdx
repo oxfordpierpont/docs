@@ -1,4 +1,8 @@
-# **What is the Layout Manager?**
+---
+title: "What is the Layout Manager?"
+---
+
+## **Overview**
 
 The Layout Manager is an **Elementor-style visual UI composition system** built directly into the platform for **React-based interfaces**, using **pre-registered shadcn/ui-compatible components** as the building blocks.
 
@@ -18,11 +22,11 @@ You do not want to keep explaining UI changes to coding AIs in repeated back-and
 
 What you want instead is:
 
-* enter an edit mode directly on the exact screen  
-* manipulate the screen visually  
-* work in a familiar WordPress/Elementor-like way  
-* let AI handle the code translation afterward  
-* publish once satisfied
+- enter an edit mode directly on the exact screen
+- manipulate the screen visually
+- work in a familiar WordPress/Elementor-like way
+- let AI handle the code translation afterward
+- publish once satisfied
 
 That means the Layout Manager is solving a **workflow bottleneck**, not merely a frontend customization problem.
 
@@ -40,13 +44,13 @@ The Layout Manager is for **structure and composition**.
 
 It controls:
 
-* page sections  
-* containers  
-* layout hierarchy  
-* placement of components  
-* arrangement of screens  
-* visible UI composition  
-* component property values within allowed bounds
+- page sections
+- containers
+- layout hierarchy
+- placement of components
+- arrangement of screens
+- visible UI composition
+- component property values within allowed bounds
 
 It does **not** primarily control aesthetics. You were clear that pretty design concerns should be handled centrally through the **TweakCN-based theming system**.
 
@@ -54,9 +58,9 @@ It also does **not** primarily control business logic. You were clear that the b
 
 That means the PRD should sharply separate:
 
-1. **Layout Manager** \= structure  
-2. **Theme/Theming Menu** \= visual style  
-3. **Module Logic / Backend / Workflows** \= behavior and business operations
+1. **Layout Manager** = structure
+2. **Theme/Theming Menu** = visual style
+3. **Module Logic / Backend / Workflows** = behavior and business operations
 
 That separation is excellent and should remain.
 
@@ -66,9 +70,9 @@ You already gave a meaningful access boundary.
 
 Access should be limited to privileged roles such as:
 
-* Super Users with full access  
-* Developers with limited access  
-* Agency Admins with limited access
+- Super Users with full access
+- Developers with limited access
+- Agency Admins with limited access
 
 Regular tenant users and normal end users should not have unrestricted access to the system-wide builder.
 
@@ -84,13 +88,13 @@ That means the feature is not just a separate admin tool. It is also an **in-con
 
 There is also a second way to access it from the admin sidebar, where the label is likely **Layout Manager**, with sub-options such as:
 
-* Modules  
-* Create New
+- Modules
+- Create New
 
 That means the feature has both:
 
-* **page-level entry** for editing an existing screen  
-* **admin-level entry** for managing layouts/modules more broadly
+- **page-level entry** for editing an existing screen
+- **admin-level entry** for managing layouts/modules more broadly
 
 That is a strong product pattern.
 
@@ -104,7 +108,7 @@ The builder includes:
 
 This contains the draggable component library. These are registered shadcn/ui blocks and possibly other imported compatible components.
 
-You also specified an important control detail:  
+You also specified an important control detail:\
 At the bottom of the left sidebar, there should be a **sticky Save button** and a **Preview button**, placed side by side at 50/50 width.
 
 That is a concrete UI requirement and should absolutely go in the PRD.
@@ -117,11 +121,11 @@ You explicitly referenced a **container system**, which suggests the canvas must
 
 That likely means the builder needs a hierarchy such as:
 
-* page  
-* sections  
-* rows or layout groups  
-* containers  
-* components
+- page
+- sections
+- rows or layout groups
+- containers
+- components
 
 Even if the exact terminology changes, the nesting model is essential.
 
@@ -129,15 +133,15 @@ Even if the exact terminology changes, the nesting model is essential.
 
 This is especially important because you do not want a simple properties panel. You want a **tabbed right sidebar** whose first three tabs are:
 
-1. **Layout hierarchy / tree**  
-2. **Component properties**  
+1. **Layout hierarchy / tree**
+2. **Component properties**
 3. **Editing history**
 
 And the history tab should include:
 
-* running list of every change  
-* undo  
-* redo
+- running list of every change
+- undo
+- redo
 
 That is more sophisticated than a typical builder and gives the system stronger traceability and safer editing.
 
@@ -149,11 +153,11 @@ The user is not writing raw React code inside the builder. Instead, the system e
 
 That means:
 
-* shadcn/ui components are pre-registered  
-* imported library components can also be registered  
-* users drag and drop them into layouts  
-* users configure props visually  
-* users do not directly modify source code in the builder for normal layout work
+- shadcn/ui components are pre-registered
+- imported library components can also be registered
+- users drag and drop them into layouts
+- users configure props visually
+- users do not directly modify source code in the builder for normal layout work
 
 This is a very smart architectural choice because it reduces risk and makes the system more stable.
 
@@ -165,28 +169,28 @@ The snippets imply that layout edits are not merely cosmetic runtime overlays. T
 
 You said:
 
-* when the user saves a layout, the code is updated on the backend automatically  
-* or created automatically for new pages  
-* orchestration AI processes edits, updates the code, and redeploys changes
+- when the user saves a layout, the code is updated on the backend automatically
+- or created automatically for new pages
+- orchestration AI processes edits, updates the code, and redeploys changes
 
 This means the builder needs some intermediate representation. Even if not yet explicitly named, the PRD should likely define a layout schema or layout JSON model that captures:
 
-* screen structure  
-* component instances  
-* nesting relationships  
-* prop values  
-* identifiers  
-* version history  
-* layout metadata
+- screen structure
+- component instances
+- nesting relationships
+- prop values
+- identifiers
+- version history
+- layout metadata
 
 Then the system can use that structured representation to drive:
 
-* preview rendering  
-* save state  
-* history tracking  
-* diffing  
-* code generation  
-* deployment workflows
+- preview rendering
+- save state
+- history tracking
+- diffing
+- code generation
+- deployment workflows
 
 Without an intermediate schema, the whole idea becomes brittle.
 
@@ -196,13 +200,13 @@ The AI is not the builder itself. The AI is the system’s translation and exten
 
 There are two distinct AI roles in your notes.
 
-### **1\. Layout-to-code orchestration**
+### **1. Layout-to-code orchestration**
 
 After you visually modify the interface, the orchestration AI interprets the changes and translates them into the underlying code changes required for the platform.
 
 This is a key part of the concept because it removes the need for you to manually explain every design adjustment to an external coding assistant.
 
-### **2\. Conversational creation and extension**
+### **2. Conversational creation and extension**
 
 The “bonus idea” expands the builder into a broader system-level vibe coding capability where AI can help create entire new modules from within the platform.
 
@@ -210,8 +214,8 @@ This part is more ambitious, but your latest note is important: you believe this
 
 That tells me the product has **two layers**:
 
-* **MVP layer**: visual layout editing for existing screens/modules  
-* **Advanced creation layer**: conversational module creation and platform extension
+- **MVP layer**: visual layout editing for existing screens/modules
+- **Advanced creation layer**: conversational module creation and platform extension
 
 That distinction will matter a lot when we revise the PRD.
 
@@ -221,25 +225,25 @@ This is the most expansive part of the idea.
 
 From your notes, “Create New” is not just “new page.” It is potentially:
 
-* new module  
-* new app-like capability  
-* new screen set  
-* new platform extension  
-* new workflow-enabled interface
+- new module
+- new app-like capability
+- new screen set
+- new platform extension
+- new workflow-enabled interface
 
 And the AI should be able to:
 
-* accept a conversational description of what the user wants  
-* assess what existing endpoints already exist  
-* identify which endpoints must be created  
-* plan the user flow  
-* assess available UI components  
-* generate new compatible components if needed  
-* produce the initial screens/layouts  
-* notify the admin when ready for testing  
-* allow iterative refinement via Layout Manager  
-* publish and set permissions  
-* optionally announce the module to admins or developer community
+- accept a conversational description of what the user wants
+- assess what existing endpoints already exist
+- identify which endpoints must be created
+- plan the user flow
+- assess available UI components
+- generate new compatible components if needed
+- produce the initial screens/layouts
+- notify the admin when ready for testing
+- allow iterative refinement via Layout Manager
+- publish and set permissions
+- optionally announce the module to admins or developer community
 
 This is much larger than the builder itself. It is really a **platform extension factory** embedded inside the same authoring environment.
 
@@ -249,19 +253,19 @@ That is strategically important, but from an MVP perspective it should almost ce
 
 Even without the old PRD, your snippets imply a lot of technical assumptions:
 
-* React-based app architecture  
-* shadcn/ui component system  
-* component registration layer  
-* drag-and-drop editing engine  
-* likely Craft.js as the layout framework foundation  
-* backend persistence for layouts  
-* version history and diff support  
-* preview mode  
-* publish workflow  
-* orchestration AI integration  
-* code update and redeploy pipeline  
-* role-based access control  
-* module metadata management
+- React-based app architecture
+- shadcn/ui component system
+- component registration layer
+- drag-and-drop editing engine
+- likely Craft.js as the layout framework foundation
+- backend persistence for layouts
+- version history and diff support
+- preview mode
+- publish workflow
+- orchestration AI integration
+- code update and redeploy pipeline
+- role-based access control
+- module metadata management
 
 So even these scraps are enough to define the system properly.
 
@@ -275,33 +279,33 @@ The Layout Manager is a platform-native, Elementor-inspired structural builder t
 
 These feel like core requirements, not optional brainstorm notes:
 
-* in-context edit mode from live screens  
-* Elementor-style drag-and-drop builder experience  
-* React/shadcn-based component library  
-* component registration system  
-* container-based structural layout editing  
-* separation of layout, theming, and logic  
-* role-restricted access  
-* canvas \+ left library sidebar \+ right tabbed sidebar  
-* right sidebar tabs for hierarchy, props, and history  
-* undo/redo and visible running change log  
-* sticky Save and Preview buttons at bottom-left  
-* persisted layouts that become real platform assets  
-* orchestration AI for code sync/update and redeploy  
-* admin sidebar access through Layout Manager  
-* Modules and Create New entry points
+- in-context edit mode from live screens
+- Elementor-style drag-and-drop builder experience
+- React/shadcn-based component library
+- component registration system
+- container-based structural layout editing
+- separation of layout, theming, and logic
+- role-restricted access
+- canvas \+ left library sidebar \+ right tabbed sidebar
+- right sidebar tabs for hierarchy, props, and history
+- undo/redo and visible running change log
+- sticky Save and Preview buttons at bottom-left
+- persisted layouts that become real platform assets
+- orchestration AI for code sync/update and redeploy
+- admin sidebar access through Layout Manager
+- Modules and Create New entry points
 
 ## **What feels like advanced scope or phase-two scope**
 
 These ideas are strong, but they are more expansive and should probably be flagged as later-phase unless you decide otherwise:
 
-* fully conversational module/app generation  
-* automatic endpoint gap analysis  
-* open-source research during module creation  
-* automatic module release announcements  
-* developer-community publishing/review workflow  
-* generation of entirely new shadcn-compatible components from scratch  
-* full system-level vibe coding for app creation inside the platform
+- fully conversational module/app generation
+- automatic endpoint gap analysis
+- open-source research during module creation
+- automatic module release announcements
+- developer-community publishing/review workflow
+- generation of entirely new shadcn-compatible components from scratch
+- full system-level vibe coding for app creation inside the platform
 
 These are not weak ideas. They are just broader than the base Layout Manager.
 
@@ -310,8 +314,6 @@ These are not weak ideas. They are just broader than the base Layout Manager.
 The concept is strong. It is not vague anymore.
 
 The main thing the old PRD will help us determine is whether the earlier document captured this correctly, or whether it drifted into something too abstract, too broad, or too implementation-heavy in the wrong places.
-
-## 
 
 ## **UPDATE:**
 
@@ -323,13 +325,13 @@ This system is a **platform-native construction environment** that allows author
 
 At the center of that construction environment is the **Layout Manager**, which is not merely a drag-and-drop editor. It is a unified authoring system that combines:
 
-* live visual UI editing  
-* structural page and screen composition  
-* component configuration  
-* component-to-functionality binding  
-* conversational AI for new functionality creation  
-* orchestration of code generation and platform updates  
-* testing and publish workflows
+- live visual UI editing
+- structural page and screen composition
+- component configuration
+- component-to-functionality binding
+- conversational AI for new functionality creation
+- orchestration of code generation and platform updates
+- testing and publish workflows
 
 So the system is best understood as an **internal app-building layer** disguised as an Elementor-style interface builder.
 
