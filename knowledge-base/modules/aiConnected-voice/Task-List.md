@@ -1,3 +1,7 @@
+---
+icon: "angle-right"
+---
+
 # **Master Project Task List**
 
 ## Document Purpose
@@ -16,18 +20,18 @@ This document serves as the authoritative overview for the Voice by aiConnected 
 
 ### Business Context
 
-- **Target Market**: Small to medium-sized businesses needing 24/7 phone coverage, lead response, appointment scheduling, and customer service automation  
-- **Pricing Model**: Fixed credit buckets plus per-minute overages  
-- **Competitive Advantage**: 50-75% lower cost than competitors (Vapi, Retell, Bland AI) through infrastructure ownership and optimized provider selection  
+- **Target Market**: Small to medium-sized businesses needing 24/7 phone coverage, lead response, appointment scheduling, and customer service automation
+- **Pricing Model**: Fixed credit buckets plus per-minute overages
+- **Competitive Advantage**: 50-75% lower cost than competitors (Vapi, Retell, Bland AI) through infrastructure ownership and optimized provider selection
 - **Parent Company**: Oxford Pierpont Corporation (business development and digital marketing)
 
 ### Core Capabilities
 
-1. **Inbound Call Handling** — AI answers calls, converses naturally, resolves inquiries or transfers to humans  
-2. **Outbound Call Automation** — AI initiates calls for lead follow-up, appointment reminders, reactivation campaigns  
-3. **Human Handoff** — Seamless transfer to live agents via blind transfer, warm transfer, or conference  
-4. **Tool Calling** — AI executes business logic (CRM updates, calendar booking, data lookup) via webhooks/n8n  
-5. **Knowledge Base Integration** — AI responses informed by client-specific business context (already built)  
+1. **Inbound Call Handling** — AI answers calls, converses naturally, resolves inquiries or transfers to humans
+2. **Outbound Call Automation** — AI initiates calls for lead follow-up, appointment reminders, reactivation campaigns
+3. **Human Handoff** — Seamless transfer to live agents via blind transfer, warm transfer, or conference
+4. **Tool Calling** — AI executes business logic (CRM updates, calendar booking, data lookup) via webhooks/n8n
+5. **Knowledge Base Integration** — AI responses informed by client-specific business context (already built)
 6. **Multi-Tenant Architecture** — Single platform serves multiple clients with isolated configurations
 
 ---
@@ -36,7 +40,7 @@ This document serves as the authoritative overview for the Voice by aiConnected 
 
 ### Voice Pipeline
 
-```
+```text
 ┌─────────────────────────────────────────────────────────────────────────────┐
 │                                                                             │
 │   PSTN ←→ GoToConnect PBX ←→ WebRTC Bridge ←→ LiveKit Room                 │
@@ -59,17 +63,17 @@ This document serves as the authoritative overview for the Voice by aiConnected 
 ### Latency Budget (Target: \<1000ms mouth-to-ear)
 
 | Stage | Target | Notes |
-| :---- | :---- | :---- |
-| Audio capture → STT | \~100ms | Streaming VAD |
-| STT processing | \~300ms | Deepgram interim results |
-| LLM time-to-first-token | \~350ms | Claude streaming |
-| TTS time-to-first-byte | \~150ms | Chatterbox streaming |
-| Return audio path | \~70ms | LiveKit → GoTo → PSTN |
-| **Total** | **\~970ms** | Achievable with optimization |
+| :-- | :-- | :-- |
+| Audio capture → STT | ~100ms | Streaming VAD |
+| STT processing | ~300ms | Deepgram interim results |
+| LLM time-to-first-token | ~350ms | Claude streaming |
+| TTS time-to-first-byte | ~150ms | Chatterbox streaming |
+| Return audio path | ~70ms | LiveKit → GoTo → PSTN |
+| **Total** | **~970ms** | Achievable with optimization |
 
 ### Infrastructure Topology
 
-```
+```text
 ┌─────────────────────────────────────────────────────────────────────────────┐
 │ EXTERNAL SERVICES                                                           │
 ├─────────────────────────────────────────────────────────────────────────────┤
@@ -107,13 +111,13 @@ This document serves as the authoritative overview for the Voice by aiConnected 
 These decisions have been made and should not be revisited during implementation:
 
 | Component | Decision | Rationale |
-| :---- | :---- | :---- |
-| **Telephony** | GoToConnect | Grandfathered $17/user unlimited plan; full call control API |
+| :-- | :-- | :-- |
+| **Telephony** | GoToConnect | Grandfathered \$17/user unlimited plan; full call control API |
 | **Real-time Audio** | LiveKit Cloud | Industry standard; Agents SDK for voice AI |
 | **STT** | Deepgram Nova-2 | Low latency streaming; phone audio optimized |
 | **LLM** | Anthropic Claude (Sonnet) | Best reasoning; streaming support |
 | **TTS** | Chatterbox-Turbo on RunPod | Zero per-minute cost; MIT license; paralinguistics |
-| **GPU** | RunPod RTX A5000 | Best value ($0.27/hr); 24GB VRAM sufficient |
+| **GPU** | RunPod RTX A5000 | Best value (\$0.27/hr); 24GB VRAM sufficient |
 | **Platform Hosting** | DigitalOcean \+ Dokploy | Existing infrastructure; container orchestration |
 | **Database** | PostgreSQL | Relational; proven; existing expertise |
 | **Cache/State** | Redis | Session state; call state machine |
@@ -129,25 +133,25 @@ These decisions have been made and should not be revisited during implementation
 ### Per-Minute Breakdown (at 50k min/month scale)
 
 | Component | Cost |
-| :---- | :---- |
-| LiveKit Agent Session | $0.0100/min |
-| GoToConnect Telephony | $0.0000/min (unlimited) |
-| Deepgram STT | $0.0043/min |
-| Claude Sonnet LLM | $0.0080/min (estimated) |
-| Chatterbox TTS (amortized) | $0.0040/min |
-| **Total** | **\~$0.025/min** |
+| :-- | :-- |
+| LiveKit Agent Session | \$0.0100/min |
+| GoToConnect Telephony | \$0.0000/min (unlimited) |
+| Deepgram STT | \$0.0043/min |
+| Claude Sonnet LLM | \$0.0080/min (estimated) |
+| Chatterbox TTS (amortized) | \$0.0040/min |
+| **Total** | **~\$0.025/min** |
 
 ### Monthly Infrastructure
 
 | Service | Est. Cost |
-| :---- | :---- |
-| GoToConnect | $17/user |
-| LiveKit Cloud | \~$50-100 |
-| RunPod A5000 | \~$197 |
-| Deepgram | \~$50-100 |
-| Anthropic API | \~$100-300 |
-| DigitalOcean | \~$50-100 |
-| **Total** | **\~$500-800/mo starting** |
+| :-- | :-- |
+| GoToConnect | \$17/user |
+| LiveKit Cloud | ~\$50-100 |
+| RunPod A5000 | ~\$197 |
+| Deepgram | ~\$50-100 |
+| Anthropic API | ~\$100-300 |
+| DigitalOcean | ~\$50-100 |
+| **Total** | **~\$500-800/mo starting** |
 
 ---
 
@@ -157,8 +161,8 @@ These decisions have been made and should not be revisited during implementation
 
 **Goal**: Development environment ready, architecture fully documented
 
-| \# | Document | Purpose |
-| :---- | :---- | :---- |
+| # | Document | Purpose |
+| :-- | :-- | :-- |
 | 1 | System Architecture Overview | Complete technical blueprint |
 | 2 | GoToConnect Integration Specification | Telephony API details |
 | 3 | Voice Pipeline Architecture | STT→LLM→TTS streaming design |
@@ -168,10 +172,10 @@ These decisions have been made and should not be revisited during implementation
 
 **Deliverables**:
 
-- [ ] Architecture diagrams finalized  
-- [ ] All API contracts documented  
-- [ ] Local development environment functional  
-- [ ] Repository structure established
+- Architecture diagrams finalized
+- All API contracts documented
+- Local development environment functional
+- Repository structure established
 
 ---
 
@@ -179,8 +183,8 @@ These decisions have been made and should not be revisited during implementation
 
 **Goal**: Database, state management, and service skeleton operational
 
-| \# | Document | Purpose |
-| :---- | :---- | :---- |
+| # | Document | Purpose |
+| :-- | :-- | :-- |
 | 7 | Database Schema Design | PostgreSQL tables, migrations |
 | 8 | State Management Specification | Call state machine, Redis structures |
 | 9 | Message Queue & Event Bus Design | Async communication patterns |
@@ -189,10 +193,10 @@ These decisions have been made and should not be revisited during implementation
 
 **Deliverables**:
 
-- [ ] Database migrations created and tested  
-- [ ] Redis state management implemented  
-- [ ] Event bus operational  
-- [ ] Core services running (API gateway, bridge, agent, worker)
+- Database migrations created and tested
+- Redis state management implemented
+- Event bus operational
+- Core services running (API gateway, bridge, agent, worker)
 
 ---
 
@@ -200,8 +204,8 @@ These decisions have been made and should not be revisited during implementation
 
 **Goal**: All external services connected and functional
 
-| \# | Document | Purpose |
-| :---- | :---- | :---- |
+| # | Document | Purpose |
+| :-- | :-- | :-- |
 | 12 | LiveKit Integration Specification | Agents SDK, room management |
 | 13 | Deepgram STT Integration Guide | Streaming transcription |
 | 14 | Anthropic Claude Integration Guide | LLM streaming, tools |
@@ -210,11 +214,11 @@ These decisions have been made and should not be revisited during implementation
 
 **Deliverables**:
 
-- [ ] LiveKit Agents pipeline functional  
-- [ ] Deepgram streaming STT working  
-- [ ] Claude streaming responses working  
-- [ ] Chatterbox deployed on RunPod  
-- [ ] Tool calling via webhooks operational
+- LiveKit Agents pipeline functional
+- Deepgram streaming STT working
+- Claude streaming responses working
+- Chatterbox deployed on RunPod
+- Tool calling via webhooks operational
 
 ---
 
@@ -222,8 +226,8 @@ These decisions have been made and should not be revisited during implementation
 
 **Goal**: Complete call handling capabilities
 
-| \# | Document | Purpose |
-| :---- | :---- | :---- |
+| # | Document | Purpose |
+| :-- | :-- | :-- |
 | 17 | Inbound Call Flow Specification | Answer, converse, resolve |
 | 18 | Outbound Call Flow Specification | Dial, converse, resolve |
 | 19 | Human Handoff Specification | Transfer patterns |
@@ -231,10 +235,10 @@ These decisions have been made and should not be revisited during implementation
 
 **Deliverables**:
 
-- [ ] Inbound calls answered by AI  
-- [ ] Outbound calls initiated by AI  
-- [ ] Transfers to human agents working  
-- [ ] Knowledge base context in AI responses
+- Inbound calls answered by AI
+- Outbound calls initiated by AI
+- Transfers to human agents working
+- Knowledge base context in AI responses
 
 ---
 
@@ -242,18 +246,18 @@ These decisions have been made and should not be revisited during implementation
 
 **Goal**: Multi-tenant API complete
 
-| \# | Document | Purpose |
-| :---- | :---- | :---- |
+| # | Document | Purpose |
+| :-- | :-- | :-- |
 | 21 | Tenant Configuration API Specification | Agent/voice/number management |
 | 22 | Usage Metering & Billing Integration | Credit tracking, overages |
 | 23 | API Specification (OpenAPI) | Public API documentation |
 
 **Deliverables**:
 
-- [ ] Tenant CRUD operations  
-- [ ] Usage tracking per tenant  
-- [ ] Billing hooks implemented  
-- [ ] API documented and versioned
+- Tenant CRUD operations
+- Usage tracking per tenant
+- Billing hooks implemented
+- API documented and versioned
 
 ---
 
@@ -261,8 +265,8 @@ These decisions have been made and should not be revisited during implementation
 
 **Goal**: Production deployment with observability
 
-| \# | Document | Purpose |
-| :---- | :---- | :---- |
+| # | Document | Purpose |
+| :-- | :-- | :-- |
 | 24 | Infrastructure Architecture | DO/Dokploy/RunPod topology |
 | 25 | Deployment Runbook | Step-by-step production deploy |
 | 26 | CI/CD Pipeline Specification | Automated build/deploy |
@@ -270,10 +274,10 @@ These decisions have been made and should not be revisited during implementation
 
 **Deliverables**:
 
-- [ ] Production environment provisioned  
-- [ ] Deployment automated  
-- [ ] Monitoring dashboards operational  
-- [ ] Alerting configured
+- Production environment provisioned
+- Deployment automated
+- Monitoring dashboards operational
+- Alerting configured
 
 ---
 
@@ -281,17 +285,17 @@ These decisions have been made and should not be revisited during implementation
 
 **Goal**: Secure, tested, resilient system
 
-| \# | Document | Purpose |
-| :---- | :---- | :---- |
+| # | Document | Purpose |
+| :-- | :-- | :-- |
 | 28 | Security Architecture Document | Auth, encryption, trust boundaries |
 | 29 | Testing Strategy Document | Test coverage plan |
 | 30 | Failure Mode Handling Guide | Failovers, fallbacks |
 
 **Deliverables**:
 
-- [ ] Security audit passed  
-- [ ] Test suite comprehensive  
-- [ ] Failure scenarios handled gracefully
+- Security audit passed
+- Test suite comprehensive
+- Failure scenarios handled gracefully
 
 ---
 
@@ -299,7 +303,7 @@ These decisions have been made and should not be revisited during implementation
 
 In addition to the 30 build documents, the following skills provide API reference material:
 
-```
+```text
 /mnt/skills/user/voice-platform/
 ├── SKILL.md                     # Overview, when to use each sub-skill
 ├── gotoconnect/
@@ -325,22 +329,22 @@ In addition to the 30 build documents, the following skills provide API referenc
 
 The minimum viable product is achieved when:
 
-1. **Inbound Call**: A call to a GoToConnect number is answered by the AI, which holds a natural conversation and either resolves the inquiry or transfers to a human  
-2. **Outbound Call**: The platform initiates a call via API trigger, AI converses with the recipient  
-3. **Human Handoff**: AI successfully transfers a call (blind or warm) to a live agent  
-4. **Tool Execution**: AI executes at least one tool call (e.g., CRM update, calendar check) during a conversation  
-5. **Multi-Tenant**: Two separate clients can operate independent AI agents simultaneously  
+1. **Inbound Call**: A call to a GoToConnect number is answered by the AI, which holds a natural conversation and either resolves the inquiry or transfers to a human
+2. **Outbound Call**: The platform initiates a call via API trigger, AI converses with the recipient
+3. **Human Handoff**: AI successfully transfers a call (blind or warm) to a live agent
+4. **Tool Execution**: AI executes at least one tool call (e.g., CRM update, calendar check) during a conversation
+5. **Multi-Tenant**: Two separate clients can operate independent AI agents simultaneously
 6. **Latency**: Mouth-to-ear response time under 1.5 seconds for 90% of interactions
 
 ### Quality Gates
 
 | Metric | Target |
-| :---- | :---- |
+| :-- | :-- |
 | Call completion rate | \>95% |
 | Transfer success rate | \>99% |
 | STT accuracy | \>90% |
 | Average latency | \<1000ms |
-| Concurrent calls (per tenant) | 10+ |
+| Concurrent calls (per tenant) | 10\+ |
 | Uptime | 99.5% |
 
 ---
@@ -349,33 +353,33 @@ The minimum viable product is achieved when:
 
 ### Technical Constraints
 
-- **Python preferred** for WebRTC bridge (aiortc ecosystem)  
-- **LiveKit Agents SDK** is Python-native  
-- **PostgreSQL** for relational data (existing expertise)  
-- **Redis** for ephemeral state (call sessions)  
+- **Python preferred** for WebRTC bridge (aiortc ecosystem)
+- **LiveKit Agents SDK** is Python-native
+- **PostgreSQL** for relational data (existing expertise)
+- **Redis** for ephemeral state (call sessions)
 - **Docker/Dokploy** for container orchestration
 
 ### Business Constraints
 
-- **Timeline**: MVP within 6-10 weeks  
-- **Budget**: Minimize upfront costs; scale with usage  
-- **Team**: Development via Claude Code with human oversight  
+- **Timeline**: MVP within 6-10 weeks
+- **Budget**: Minimize upfront costs; scale with usage
+- **Team**: Development via Claude Code with human oversight
 - **Existing Systems**: Must integrate with existing Knowledge Base and Admin Dashboard
 
 ### Non-Goals (Out of Scope for MVP)
 
-- Custom voice cloning per client (use pre-set voices initially)  
-- Multi-language support (English only for MVP)  
-- SMS/chat channels (voice only)  
-- Compliance certifications (SOC 2, HIPAA) — plan for later  
-- Mobile app  
+- Custom voice cloning per client (use pre-set voices initially)
+- Multi-language support (English only for MVP)
+- SMS/chat channels (voice only)
+- Compliance certifications (SOC 2, HIPAA) — plan for later
+- Mobile app
 - Analytics dashboard beyond basic usage metrics
 
 ---
 
 ## Document Dependency Map
 
-```
+```text
 ┌─────────────────────────────────────────────────────────────────────────────┐
 │ PHASE 1: FOUNDATION                                                         │
 │                                                                             │
@@ -460,17 +464,17 @@ The minimum viable product is achieved when:
 
 ### For Claude Code
 
-1. **Read this document completely** before starting any implementation  
-2. **Follow the phase order** — each phase builds on the previous  
-3. **Consult skills** for API-specific implementation details  
-4. **Reference individual documents** for detailed specifications  
+1. **Read this document completely** before starting any implementation
+2. **Follow the phase order** — each phase builds on the previous
+3. **Consult skills** for API-specific implementation details
+4. **Reference individual documents** for detailed specifications
 5. **Check deliverables** at the end of each phase before proceeding
 
 ### For Human Oversight
 
-1. **Review completed phases** before approving progression  
-2. **Test deliverables** against success criteria  
-3. **Provide credentials** and access as needed per phase  
+1. **Review completed phases** before approving progression
+2. **Test deliverables** against success criteria
+3. **Provide credentials** and access as needed per phase
 4. **Clarify requirements** when documents reference "TBD" items
 
 ---
@@ -478,7 +482,7 @@ The minimum viable product is achieved when:
 ## Open Questions (To Be Resolved)
 
 | Question | Owner | Status |
-| :---- | :---- | :---- |
+| :-- | :-- | :-- |
 | GoToConnect OAuth credentials for dev environment | Human | Pending |
 | LiveKit Cloud project setup | Human | Pending |
 | Deepgram API key | Human | Pending |
@@ -494,31 +498,31 @@ The minimum viable product is achieved when:
 ## Version History
 
 | Version | Date | Author | Changes |
-| :---- | :---- | :---- | :---- |
+| :-- | :-- | :-- | :-- |
 | 1.0 | 2026-01-16 | Claude | Initial document |
 
 ---
 
 ## Next Steps
 
-1. Human reviews and approves this Master Project Task List  
-2. Human provides access credentials for open questions  
-3. Claude Code proceeds to Document \#1: System Architecture Overview  
+1. Human reviews and approves this Master Project Task List
+2. Human provides access credentials for open questions
+3. Claude Code proceeds to Document #1: System Architecture Overview
 4. Build proceeds phase by phase with human checkpoints
 
 ---
 
-*This document is the single source of truth for the Voice by aiConnected project. All implementation decisions should align with the specifications herein.*
+_This document is the single source of truth for the Voice by aiConnected project. All implementation decisions should align with the specifications herein._
 
 # **Pre-Build Checklist**
 
 ### ✅ Infrastructure (Covered)
 
-- GoToConnect (telephony)  
-- LiveKit Cloud (real-time audio)  
-- RunPod A5000 (Chatterbox TTS)  
-- Deepgram (STT)  
-- Anthropic Claude (LLM)  
+- GoToConnect (telephony)
+- LiveKit Cloud (real-time audio)
+- RunPod A5000 (Chatterbox TTS)
+- Deepgram (STT)
+- Anthropic Claude (LLM)
 - DigitalOcean/Dokploy (platform)
 
 ---
@@ -526,7 +530,7 @@ The minimum viable product is achieved when:
 ### ⚠️ Technical (Needs Planning)
 
 | Item | Status | Notes |
-| :---- | :---- | :---- |
+| :-- | :-- | :-- |
 | **WebRTC Bridge** | To build | Python/aiortc service connecting GoTo ↔ LiveKit |
 | **Database** | Needed | PostgreSQL for tenants, configs, logs |
 | **Redis** | Needed | Call state machine, session cache |
@@ -540,7 +544,7 @@ The minimum viable product is achieved when:
 ### ⚠️ Business Logic (Needs Planning)
 
 | Item | Question to Answer |
-| :---- | :---- |
+| :-- | :-- |
 | **Billing/Metering** | How do you charge clients? Per minute? Per seat? Flat rate? |
 | **Usage Tracking** | How do you track minutes per tenant for billing? |
 | **Admin Dashboard** | What can clients configure themselves? |
@@ -555,7 +559,7 @@ The minimum viable product is achieved when:
 ### ⚠️ Compliance/Legal (Critical)
 
 | Item | Why It Matters |
-| :---- | :---- |
+| :-- | :-- |
 | **AI Disclosure** | Some states (CA, WA, etc.) require disclosure that caller is speaking to AI |
 | **TCPA Compliance** | Outbound calling rules, consent requirements |
 | **Call Recording Consent** | Two-party consent states |
@@ -569,7 +573,7 @@ The minimum viable product is achieved when:
 ### ⚠️ Failure Modes (Needs Planning)
 
 | Scenario | Fallback Plan |
-| :---- | :---- |
+| :-- | :-- |
 | LLM times out | Graceful "one moment please" \+ retry? |
 | TTS fails | Pre-recorded fallback audio? |
 | STT fails | Ask caller to repeat? |
