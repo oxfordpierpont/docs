@@ -2,140 +2,139 @@
 title: 'Shell Codex PRD'
 ---
 
-# aiConnected v2 Core Shell PRD (Implementation-Grade)
-Version: `1.0`  
-Date: `March 26, 2026`  
-Status: `Authoritative MVP Build Specification`  
-Owner: `aiConnected Platform`
+# aiConnected v2 Core Shell PRD (Canonical)
+Version: 1.0  
+Date: March 26, 2026  
+Status: Implementation-Ready Draft  
+Audience: Product, Architecture, Engineering, QA
 
-## 0) Document Purpose and Rules of Interpretation
-This document is the highest-priority source of truth for building the aiConnected v2 Core Shell MVP from a blank repository.
+## 0. Document Purpose and Authority
+This is the highest-priority source of truth for building the aiConnected v2 Core Shell from a blank repository.
 
 Interpretation rules:
-1. If this document is explicit, implement exactly as written.
-2. If this document is silent, choose the simplest approach that preserves future extensibility and strict shell/module boundaries.
-3. If functionality could belong to shell or module, default to module unless explicitly marked shell-owned here.
-4. Prioritize architectural correctness over UI polish, speed hacks, or convenience coupling.
-5. Do not replace the required stack or core architecture decisions unless explicitly instructed.
+1. When this document is explicit, implementation must follow it exactly.
+2. When this document is silent, implementation must choose the simplest approach that preserves future extensibility and shell/module boundaries.
+3. When functionality could be shell-owned or module-owned, it must be treated as module-owned unless explicitly marked shell-owned here.
+4. The shell must prioritize architectural correctness over convenience, decorative polish, and short-term coupling.
+5. This document governs `Shell` phase only; module and capability behavior is deferred by design.
 
-Authoritative dependency:
-1. The Layout Manager subsystem is governed by the Layout Manager PRD you finalized.
-2. This shell PRD defines how Layout Manager is integrated, authorized, persisted, routed, and governed as a shell subsystem.
-
----
-
-## 1) Product Identity
+## 1. Product Identity
 aiConnected v2 Core Shell is a white-label, multi-tenant SaaS control plane that owns:
 1. Authentication and session lifecycle.
-2. Tenant/workspace hierarchy.
+2. Workspace and tenancy hierarchy.
 3. Role and permission enforcement.
-4. Shell routing and navigation.
-5. Theme/branding inheritance.
-6. Layout Manager integration.
-7. Billing enforcement and access gating.
-8. Module registry/import/activation.
-9. Event bus and gateway infrastructure.
-10. Shared platform entities and governance.
+4. Routing and navigation infrastructure.
+5. Theme token governance and white-label branding inheritance.
+6. Layout Manager integration for shell surfaces.
+7. Billing entitlement enforcement.
+8. Module contract validation, registration, installation, and activation infrastructure.
+9. Shared event bus and API gateway infrastructure.
+10. Shared platform entities and auditability.
 
 The shell is not:
 1. A chat product.
 2. A voice product.
 3. A knowledge-base product.
-4. A CRM product.
-5. A marketplace product.
+4. A CRM.
+5. A marketplace.
 6. A workflow engine.
-7. A business module.
-8. An AI assistant runtime.
+7. A module itself.
+8. A private assistant/system-chat runtime.
 
----
+## 2. Product Goal
+The shell must provide a durable operating layer so agencies can run a white-label platform and future modules can plug in without core rewrites.
 
-## 2) Product Goal
-Deliver a durable shell foundation that allows agencies to run branded SaaS operations and add modules over time without shell rewrites.
+Practical outcomes required:
+1. Agency can onboard and operate platform as agency-owned software.
+2. Agency can create and manage child business workspaces.
+3. Shell can enforce permissions, billing state, branding, and route access consistently.
+4. Modules can be added through contract-driven registration and activation rather than shell source edits.
+5. Core shell remains stable while module ecosystem evolves.
 
-Success outcomes:
-1. Agency can onboard and operate platform as their own white-label product.
-2. Agency can create and manage Business child workspaces.
-3. Shell enforces permissions, billing, branding, and route access consistently.
-4. Modules are installed/activated via contract-driven workflows, not hardcoded shell edits.
-5. Platform remains stable while modules evolve independently.
+## 3. Non-Negotiable Product Principles
+1. The system must be multi-tenant from day one.
+2. The shell must be white-label from day one.
+3. The shell must use a shadcn-based shared UI foundation.
+4. Theming must be centralized and inheritance-based.
+5. Layout Manager integration must be in MVP.
+6. Module import and registration infrastructure must be in MVP.
+7. Modules must be installable without hardcoded shell route implementations per module.
+8. Inter-module communication must use declared contracts, events, and gateway routing.
+9. Business-domain logic must not be embedded into shell code.
+10. Shell architecture must support unknown future modules.
 
----
+## 4. Phase Ownership and Product Boundaries
+### 4.1 Phase Boundaries
+1. `Shell` phase: control plane only.
+2. `Modules` phase: first-party and imported module runtime/domain behavior.
+3. `Capabilities` phase: capability graph/composition, advanced cross-module automation.
 
-## 3) Non-Negotiable Product Principles
-1. Multi-tenant from day one.
-2. White-label from day one.
-3. Shared shadcn-based UI foundation from day one.
-4. Centralized inheritance-based theming.
-5. Layout Manager in MVP.
-6. Module import/registration in MVP.
-7. Dynamic module installability without hardcoded routes/pages.
-8. Inter-module communication via events/contracts/gateway only.
-9. No module business logic embedded in shell.
-10. Core architecture must support unknown future modules.
+### 4.2 Shell Done Definition
+Shell is done when:
+1. Super, Agency, Business shell workflows are complete.
+2. Module lifecycle infrastructure (import/validate/register/install/enable/disable/uninstall) is complete.
+3. Event bus, gateway, billing enforcement, theme engine, and layout governance are complete.
+4. Shell runs correctly with zero modules installed.
+5. No module business logic exists in shell implementation.
 
----
+### 4.3 Module-Absent Operating Mode (Required)
+1. Empty module registry must not break shell routes or navigation.
+2. Module access attempts must return stable errors (`MODULE_NOT_REGISTERED`, `MODULE_NOT_ENABLED`).
+3. Module admin surfaces must show actionable empty states.
+4. Gateway and event systems must remain operational for shell-owned flows.
 
-## 4) Exact MVP Scope
-Included in MVP:
-1. Auth and session handling.
-2. Workspace hierarchy and memberships.
-3. Role/permission system and enforcement.
-4. Super, Agency, Business operational flows.
-5. Shell UI foundation and theme engine.
-6. Layout Manager subsystem integration.
-7. Module manifest validation and registry.
-8. Module import, install, enable/disable, uninstall workflows.
+## 5. Exact MVP Scope (Shell Phase)
+MVP shell must include:
+1. Auth/session lifecycle.
+2. Workspace hierarchy and membership model.
+3. RBAC and capability-level authorization.
+4. Super/Agency/Business shell experiences.
+5. Shared shell UI system and theme engine.
+6. Layout Manager shell integration.
+7. Module SDK contract validation and module registry.
+8. Module installation and workspace activation controls.
 9. Event bus infrastructure.
-10. API gateway routing and context forwarding.
-11. Billing accounts/subscription enforcement.
-12. Shared platform entities.
+10. Gateway infrastructure.
+11. Billing account and subscription entitlement enforcement.
+12. Shared shell-owned entities and audit logging.
 13. Container-aware module target model.
-14. Shell routing support for standalone module entrypoints.
+14. Shell support for standalone module route entrypoints.
 
-Excluded from MVP:
-1. Business module logic and UIs.
-2. Marketplace and developer community portal.
-3. Advanced conversion pipelines.
-4. Personal assistant/system-chat products.
-5. Module-specific domain workflows.
-6. Advanced monetization reporting features.
+Out of scope for this phase:
+1. Module business logic.
+2. Module-specific customer workflows.
+3. Marketplace and developer community UX.
+4. Capability pipeline features.
+5. System-chat/private assistant behavior.
+6. Conversion pipelines (GitHub/WordPress/n8n) beyond shell registration contract handling.
 
----
-
-## 5) User Types and Tenant Structure
+## 6. User Types and Tenant Structure
 Top-level user layers:
-1. Super.
-2. Agency.
-3. Business.
-4. Developer.
-5. Personal.
+1. Super
+2. Agency
+3. Business
+4. Developer
+5. Personal
 
-MVP operationally supports:
-1. Super full flow.
-2. Agency full flow.
-3. Business full flow.
+MVP fully supports operational flows for:
+1. Super
+2. Agency
+3. Business
 
-MVP structural-only compatibility:
-1. Developer.
-2. Personal.
+Developer and Personal in MVP are structural compatibility targets only.
 
-Core tenancy definitions:
-1. Tenant boundary is represented by workspace ownership/control context.
-2. Workspace is the runtime scope for permissions, routing, modules, and branding.
-3. Agency workspaces are parent customer contexts.
-4. Business workspaces are managed child contexts under agencies.
-5. Membership links users to workspaces with role template + permission grants.
-6. Super users can impersonate lower scopes with explicit audit traces.
+Required tenancy model:
+1. Workspace is the runtime tenant boundary for permissions, branding, modules, and route access.
+2. Agencies are parent workspaces.
+3. Businesses are managed child workspaces.
+4. Users belong to one or more workspaces via membership records.
+5. Effective access is always workspace-scoped unless super with explicit platform scope.
+6. Super impersonation is required and must be auditable.
 
----
+## 7. Permissions and Access Control
+The shell must enforce capability-based authorization.
 
-## 6) Permissions and Access Control
-Model:
-1. Capability-based permissions are authoritative.
-2. Role labels are presets that resolve to permission sets.
-3. Enforcement must happen at route, UI, API, and data-policy layers.
-
-Required MVP permission flags:
+Required permission capabilities (minimum set):
 1. `users.invite`
 2. `users.manage`
 3. `branding.edit`
@@ -146,23 +145,19 @@ Required MVP permission flags:
 8. `modules.disable`
 9. `settings.manage`
 
-Required templates:
-1. `super_admin`
-2. `super_manager`
-3. `super_user`
-4. `agency_admin`
-5. `agency_manager`
-6. `agency_user`
-7. `business_admin`
-8. `business_manager`
-9. `business_user`
+Required role templates (minimum set):
+1. `super_admin`, `super_manager`, `super_user`
+2. `agency_admin`, `agency_manager`, `agency_user`
+3. `business_admin`, `business_manager`, `business_user`
 
-Developer/Personal templates may exist as structural placeholders in MVP but do not require full UX flows.
+Enforcement must exist at:
+1. Route guard level.
+2. UI feature visibility level.
+3. API authorization layer.
+4. Data access policy layer (RLS).
 
----
-
-## 7) Required Technical Stack
-Mandatory defaults:
+## 8. Required Technical Stack
+The shell must use:
 1. Next.js 14 App Router.
 2. TypeScript.
 3. Turborepo monorepo.
@@ -170,312 +165,327 @@ Mandatory defaults:
 5. Tailwind CSS.
 6. TweakCN-compatible token architecture.
 7. Supabase Auth + Postgres.
-8. Stripe for billing.
-9. Containerized module runtime model on DigitalOcean/Dokploy.
-10. Shell-hosted gateway layer.
-11. Event bus backed by shell-owned event data structures and realtime/event processing.
+8. Stripe billing integration.
+9. Containerized module runtime targets (DigitalOcean + Dokploy model).
+10. Shell-hosted gateway + event bus.
 
-No framework substitution without explicit approval.
+Framework substitution is not allowed without explicit instruction.
 
----
+## 9. Monorepo and Project Structure
+Required starting structure:
+1. `apps/platform` (shell app only).
+2. `packages/ui` (shared UI primitives).
+3. `packages/permissions` (role templates, capability maps, guards).
+4. `packages/module-sdk` (manifest schema, validator, registry contracts).
+5. `packages/theme` (theme token schema and inheritance).
+6. `packages/db` (data access and shell entity repositories).
+7. `packages/events` (event contracts and bus helpers).
+8. `packages/billing` (stripe + entitlement logic).
+9. `packages/layout-manager` (shell-side layout contracts/integration hooks).
+10. `packages/gateway` (routing/forwarding contracts and enforcement).
 
-## 8) Monorepo and Project Structure
-Required structure:
-1. `apps/platform` for shell app only.
-2. `packages/ui` shared shell UI primitives and tokens.
-3. `packages/permissions` roles/templates/guards.
-4. `packages/module-sdk` manifest contracts and validators.
-5. `packages/theme` token schemas and inheritance logic.
-6. `packages/db` shell data access layer.
-7. `packages/events` event contracts and bus helpers.
-8. `packages/billing` Stripe integration and access gating.
-9. `packages/layout-manager` layout schemas, editor state contracts, shell integration interfaces.
-10. `packages/gateway` dynamic module routing and context forwarding.
+Boundary rule:
+`apps/platform` must orchestrate package behavior; it must not absorb package-level logic.
 
-Rules:
-1. `apps/platform` is orchestration/UI composition only.
-2. Reusable logic belongs in packages.
-3. No module business-domain code in shell app.
-4. No duplicate permission/theme/billing logic across app routes.
-
----
-
-## 9) Core Architecture
-Shell layers:
+## 10. Core Shell Architecture
+Required shell layers:
 1. Auth/session layer.
-2. Tenant/workspace layer.
-3. Permissions layer.
+2. Tenancy/workspace layer.
+3. Permission policy layer.
 4. Theme/branding layer.
-5. Layout layer.
+5. Layout governance layer.
 6. Module registration layer.
 7. Event layer.
 8. Gateway layer.
-9. Billing enforcement layer.
+9. Billing entitlement layer.
 
-Shell/module boundary:
-1. Module registers through manifest.
-2. Shell validates, stores, and activates module contracts.
-3. Shell exposes routes/navigation dynamically.
-4. Shell checks permission and billing before module access.
-5. Modules communicate through event/gateway contracts.
-6. Modules cannot directly mutate other modules’ private data.
-7. Shell never hosts module business workflows.
+Shell/module boundary must enforce:
+1. Modules register with shell via manifest contracts.
+2. Shell grants routes/nav/permissions from contracts.
+3. Modules can be enabled/disabled per workspace.
+4. Modules communicate through events and gateway.
+5. Modules must not directly mutate other modules’ private data stores.
+6. Shell must not contain module business logic.
 
----
-
-## 10) Shared Platform Data Model (Conceptual)
+## 11. Shared Platform Data Model (Shell-Owned)
 Required shell-owned entities:
-1. `users`: identity records from auth domain.
-2. `workspaces`: tenant runtime contexts.
-3. `workspace_memberships`: user-workspace relation + role template.
-4. `roles`: role template definitions.
-5. `permissions`: permission catalog.
-6. `role_permissions`: role-template grants.
-7. `membership_permissions`: explicit overrides.
-8. `themes`: workspace theme payloads.
-9. `layout_definitions`: logical layout identities.
-10. `layout_versions`: draft/published immutable snapshots.
-11. `module_registry`: known module contract catalog.
-12. `module_installations`: module enablement per workspace.
-13. `billing_accounts`: billing owner/account linkage.
-14. `subscriptions`: subscription state and enforceable status.
-15. `events`: normalized event log.
-16. `contacts`: shared cross-module contact entity.
-17. `audit_logs`: privileged operations trail.
+1. `users`
+2. `workspaces`
+3. `workspace_memberships`
+4. `roles`
+5. `permissions`
+6. `role_permissions`
+7. `membership_permissions`
+8. `themes`
+9. `layout_definitions`
+10. `layout_versions`
+11. `module_registry`
+12. `module_installations`
+13. `billing_accounts`
+14. `subscriptions`
+15. `events`
+16. `audit_logs`
+17. `contacts`
 
 Ownership rules:
-1. Shared entities above are shell-owned.
-2. Modules can read allowed shared entities via contracts.
-3. Modules own private tables for private domain data.
-4. Cross-module coupling must use events/contracts, not direct table writes.
+1. Shell owns all shared entities above.
+2. Modules may read shared entities through authorized contracts.
+3. Module-private tables remain module-owned and isolated.
+4. Cross-module behavior must use shared entities, event contracts, or gateway calls.
 
----
+## 12. Schema + RLS Specification Pack
+### 12.1 Migration Order
+1. `001_identities.sql`
+2. `002_workspaces.sql`
+3. `003_memberships_roles_permissions.sql`
+4. `004_themes.sql`
+5. `005_layouts.sql`
+6. `006_module_registry_installations.sql`
+7. `007_events_audit.sql`
+8. `008_billing.sql`
+9. `009_contacts.sql`
+10. `010_rls_policies.sql`
+11. `011_seed_role_templates.sql`
 
-## 11) Authentication and Session Requirements
+### 12.2 Table-Level Requirements
+| Table | Must include | Required constraints | Required indexes |
+|---|---|---|---|
+| users | id, auth_user_id, email, status | auth_user_id unique | email |
+| workspaces | id, type, parent_workspace_id, name, status | parent FK self-ref | (parent_workspace_id,type) |
+| workspace_memberships | id, workspace_id, user_id, role_template, active | unique (workspace_id,user_id) | workspace_id, user_id |
+| roles | id, code, scope_type | code unique | code |
+| permissions | id, code | code unique | code |
+| role_permissions | role_id, permission_id | unique pair | role_id |
+| membership_permissions | membership_id, permission_id, allow | unique pair | membership_id |
+| themes | id, workspace_id, token_payload, version | unique(workspace_id,version) | (workspace_id,version desc) |
+| layout_definitions | id, workspace_id, surface_key, current_version_id | unique(workspace_id,surface_key) | (workspace_id,surface_key) |
+| layout_versions | id, layout_definition_id, version_num, state, tree_json | unique(layout_definition_id,version_num) | (layout_definition_id,state) |
+| module_registry | id, module_key, version, manifest_json, status | unique(module_key,version) | (module_key,status) |
+| module_installations | id, workspace_id, module_key, state, config_json | unique(workspace_id,module_key) | (workspace_id,state) |
+| billing_accounts | id, workspace_id, stripe_customer_id, status | workspace unique, stripe_customer_id unique | stripe_customer_id |
+| subscriptions | id, billing_account_id, stripe_sub_id, state, period_end | stripe_sub_id unique | (billing_account_id,state) |
+| events | id, workspace_id, event_name, payload_json, delivery_state, correlation_id | append-only policy | (workspace_id,event_name,occurred_at desc), correlation_id |
+| audit_logs | id, workspace_id, actor_user_id, action, target_type, target_id, metadata_json, created_at | append-only policy | (workspace_id,created_at desc), (actor_user_id,created_at desc) |
+| contacts | id, workspace_id, name, email, phone | workspace-scoped | (workspace_id,email) |
+
+### 12.3 Tenancy Invariants
+1. All mutable records must be workspace-scoped unless explicitly global.
+2. Cross-workspace access must be denied by default.
+3. `layout_versions` must be immutable.
+4. `events` and `audit_logs` must be append-only.
+5. Impersonation must never bypass capability checks.
+
+### 12.4 RLS Policy Baseline
+1. `workspaces`: membership-scoped read; super full access.
+2. `workspace_memberships`: workspace admin manage; user self-read.
+3. `themes`: `branding.edit` required for mutation.
+4. `layout_*`: `layouts.edit` required for mutation.
+5. `module_installations`: module permissions required for mutation.
+6. `billing_*`: `billing.manage` required for mutation, super override.
+7. `events`: emit/read restricted by workspace scope and contracts.
+8. `audit_logs`: service-write only, admin/super read.
+
+### 12.5 Retention Rules
+1. Events must retain at least 180 days online.
+2. Audit logs must retain at least 365 days online.
+
+## 13. Authentication and Session Requirements
 Required behaviors:
 1. Sign-in and sign-out.
 2. Session persistence.
 3. Workspace resolution at login.
 4. Workspace switching for multi-membership users.
-5. Role-aware post-login destination.
-6. Protected route handling.
-7. Unauthorized/forbidden states.
-8. Invitation-based onboarding.
-9. Super impersonation entry/exit with explicit audit event.
+5. Route-level authorization and unauthorized handling.
+6. Invitation-based onboarding.
+7. Role-aware post-login destination routing.
+8. Super impersonation start/stop with audit logging.
 
-Session context must always include:
-1. `user_id`
-2. `active_workspace_id`
-3. `effective_role_template`
-4. `effective_permissions`
-5. `impersonation_state` if active
+Session context must include:
+1. user id
+2. active workspace id
+3. effective role template
+4. effective permission set
+5. impersonation state
 
----
+## 14. Multi-Tenant Workspace Requirements
+1. Super must manage agency workspaces.
+2. Agency must create/manage business child workspaces.
+3. Business users must operate only in assigned workspaces.
+4. Agency A must not access Agency B data.
+5. Business X must not access Business Y data.
+6. Theme inheritance must support parent agency defaults and child workspace override compatibility.
+7. Module enablement must be workspace-scoped.
 
-## 12) Multi-Tenant Workspace Requirements
-Required behaviors:
-1. Super can create/manage agency workspaces.
-2. Agency can create/manage business child workspaces.
-3. Users can belong to multiple workspaces with independent roles.
-4. Data visibility is workspace-scoped by default.
-5. Route and feature access resolve by active workspace context.
-6. Theme inheritance cascades from agency to child business by default.
-7. Module installation/enablement is workspace-scoped.
-8. Parent agency can govern child workspace module availability in MVP.
+## 15. UI Foundation and Theme Engine
+1. Shell UI must be shadcn-based and token-driven.
+2. Theme tokens must be central source of branding truth.
+3. Theme inheritance must be deterministic across workspace hierarchy.
+4. Branding edits must propagate consistently across shell routes.
+5. Shell must not use ad hoc page-specific branding logic.
 
-Isolation rule:
-1. No agency can access another agency’s business data.
-2. No business workspace can access sibling business data.
+## 16. Layout Manager Integration (Shell Perspective)
+Layout Manager internals are defined in the dedicated Layout Manager PRD.
 
----
-
-## 13) UI Foundation and Theme Engine
-UI requirements:
-1. shadcn/ui component baseline.
-2. Tailwind utility layer.
-3. Central theme token map consumed by shell surfaces.
-4. White-label controls exposed in shell settings.
-5. Consistent shell UI language across all shell routes.
-
-Theme requirements:
-1. Token categories include color, typography, radius, shadow, border, spacing, surfaces.
-2. Agency-level token set can propagate to child workspaces.
-3. Workspace-level override support is structurally possible in MVP.
-4. Shell screens consume tokens from centralized theme service only.
-5. No ad hoc page-level CSS divergence for branding logic.
-
----
-
-## 14) Layout Manager Integration (Shell Perspective)
-The full Layout Manager behavior is defined in the Layout Manager PRD. Shell must provide:
-
+Shell must provide:
 1. Entry points:
-- In-context edit trigger on supported shell surfaces.
-- Admin navigation to `Layout Manager > Modules` and `Layout Manager > Create New`.
+   - in-context edit trigger on supported shell surfaces
+   - admin routes: `Layout Manager > Modules`, `Layout Manager > Create New`
+2. Authorization and lifecycle enforcement for save/preview/test/publish/rollback.
+3. Persistence integration with `layout_definitions` + `layout_versions`.
+4. Audit logging for privileged layout lifecycle actions.
+5. Boundary enforcement: layout edits must not author backend module business logic.
 
-2. Authorization:
-- `layouts.edit` required for editing.
-- Publish/rollback requires role+permission checks per Layout Manager PRD.
+## 17. Module System Overview (Shell Perspective)
+1. Module must be recognized by manifest contract only.
+2. Module routes and navigation must be dynamic from registry/installations.
+3. Module enablement must be workspace-scoped.
+4. Module access must be gated by permission + billing + installation state.
+5. Module business workflows are out of shell scope.
 
-3. Persistence integration:
-- `layout_definitions` and `layout_versions` stored in shell-owned data.
-- Draft/published state and rollback metadata tracked in shell domain.
-
-4. Rendering integration:
-- Shell route renderers must resolve published layout snapshots for editable shell surfaces.
-
-5. Governance:
-- Save/Preview/Test/Publish/Rollback lifecycle enforced with audit logging.
-
-6. Boundary:
-- Layout Manager edits structure/composition only.
-- Theme engine controls broad aesthetics.
-- Backend/module logic remains outside layout authoring.
-
----
-
-## 15) Module System Overview
-Module shell contract:
-1. Module is an isolated runtime unit registered to shell.
-2. Shell recognizes module through validated manifest.
-3. Shell dynamically exposes module route/nav entries.
-4. Module can be enabled/disabled per workspace.
-5. Module access is governed by permissions and billing state.
-6. Module communication with others happens through event/gateway systems.
-7. Shell never inlines module business behavior.
-
----
-
-## 16) Module Manifest Contract
-Required manifest fields:
-1. `id`
-2. `name`
-3. `version`
-4. `description`
-5. `routes`
-6. `sidebar` metadata
-7. `required_permissions`
-8. `capabilities`
-9. `required_shared_entities`
-10. `events_emitted`
-11. `events_consumed`
-12. `config_schema`
-13. `runtime_target` (container/gateway target)
+## 18. Module Manifest Contract
+Required fields:
+1. module id
+2. name
+3. version
+4. description
+5. routes
+6. sidebar config
+7. required permissions
+8. capabilities declaration
+9. required shared entities
+10. events emitted
+11. events consumed
+12. configuration schema
+13. runtime target definition
 
 Validation rules:
-1. Missing required fields reject import.
-2. Invalid semantic version rejects import.
-3. Duplicate module id with incompatible version policy rejects import.
-4. Route collisions reject import unless explicitly namespaced/allowed.
-5. Permission keys must exist in permission catalog.
-6. Event names must match event naming contract.
-7. Runtime target must be resolvable and marked healthy before activation.
+1. Missing required fields must reject import.
+2. Invalid semantic version must reject import.
+3. Duplicate incompatible module key/version must reject import.
+4. Route collisions must reject import unless namespace-compatible by policy.
+5. Unknown permission keys must reject import.
+6. Unknown/invalid event names must reject import.
+7. Unhealthy runtime target must block enablement.
 
-Compatibility policy:
-1. MVP supports additive minor/patch upgrades by module id.
-2. Breaking major upgrades require explicit admin migration action.
-
----
-
-## 17) Module Import and Registration Process
+## 19. Module Import and Registration Process
 Required flow:
-1. Accept module package/scaffold with manifest.
+1. Accept module package/scaffold.
 2. Parse and validate manifest.
-3. Persist to `module_registry`.
-4. Register installable artifact metadata.
-5. For target workspace, create/update `module_installations` record.
-6. Wire route and sidebar metadata.
-7. Bind declared permissions and access checks.
-8. Register gateway target mapping.
-9. Activate module in workspace.
-10. Support disable and uninstall flows.
+3. Persist module metadata in `module_registry`.
+4. Create/update workspace `module_installations` record.
+5. Assign route/nav metadata dynamically.
+6. Enforce required permission mappings.
+7. Register gateway target mapping.
+8. Support install, enable, disable, uninstall transitions.
 
-Minimum MVP admin UI:
-1. Import module package.
-2. View validation errors.
-3. Install to workspace.
-4. Enable/disable in workspace.
-5. Uninstall from workspace.
-6. View module status and runtime target health.
+Required MVP admin UI behavior:
+1. Import package.
+2. Show validation failures clearly.
+3. Install into target workspace.
+4. Enable/disable.
+5. Uninstall.
+6. Show current state and target health.
 
----
+## 20. Contract Pack (OpenAPI Baseline)
+Required endpoint families:
+1. `/auth/*`
+2. `/workspaces/*`
+3. `/memberships/*`
+4. `/permissions/*`
+5. `/themes/*`
+6. `/layouts/*`
+7. `/modules/*`
+8. `/events/*`
+9. `/gateway/*`
+10. `/billing/*`
 
-## 18) Event Bus and Inter-Module Communication
-Event bus requirements:
-1. Standard event envelope schema.
-2. Event publishing API with auth/workspace scope.
-3. Event subscription registration by module contract.
+### 20.1 Canonical Types
+1. `WorkspaceContext`
+2. `EffectivePermissions`
+3. `ModuleManifest`
+4. `ModuleInstallationState`
+5. `EventEnvelope`
+6. `GatewayForwardHeaders`
+7. `BillingEntitlementState`
+
+### 20.2 Stable Error Codes
+Required stable codes:
+1. `AUTH_REQUIRED`
+2. `SESSION_INVALID`
+3. `WORKSPACE_REQUIRED`
+4. `WORKSPACE_FORBIDDEN`
+5. `PERMISSION_DENIED`
+6. `IMPERSONATION_FORBIDDEN`
+7. `MANIFEST_INVALID`
+8. `MANIFEST_INCOMPATIBLE`
+9. `MODULE_NOT_REGISTERED`
+10. `MODULE_NOT_ENABLED`
+11. `MODULE_TARGET_UNHEALTHY`
+12. `EVENT_SCHEMA_INVALID`
+13. `EVENT_DELIVERY_FAILED`
+14. `BILLING_REQUIRED`
+15. `BILLING_SUSPENDED`
+16. `VALIDATION_BLOCKING`
+17. `CONFLICT`
+18. `RATE_LIMITED`
+19. `INTERNAL_ERROR`
+
+## 21. Event Bus and Inter-Module Communication
+Required event behavior:
+1. Standard envelope schema.
+2. Workspace-scoped publishing and subscription.
+3. Auth and contract validation on emit and consume.
 4. Durable event storage.
-5. Delivery status tracking.
-6. Retry strategy for transient failures.
-7. Dead-letter handling for repeated failures.
-8. Auditability and traceability per event.
+5. Delivery state tracking.
+6. Retry strategy (exponential, bounded attempts).
+7. Dead-letter path and replay controls.
+8. Audit trail for delivery and failures.
 
-Envelope minimum fields:
-1. `event_id`
-2. `workspace_id`
-3. `emitter_module_id` or `shell`
-4. `event_name`
-5. `payload`
-6. `occurred_at`
-7. `correlation_id`
-8. `delivery_state`
+Ordering/idempotency rules:
+1. Ordering guarantee is per `(workspace, stream)` not global.
+2. Publisher idempotency key is required for retry-safe emit.
 
-Authorization:
-1. Module can emit only declared events.
-2. Module can subscribe only declared events.
-3. Cross-workspace event leaks are blocked.
+## 22. API Gateway Requirements
+Gateway must:
+1. Resolve targets dynamically from registry/installations.
+2. Enforce auth, workspace scope, permission, billing, enabled-state before forwarding.
+3. Forward trusted server claims (`user`, `workspace`, `module`, `correlation`, `impersonation`).
+4. Strip untrusted client claims/headers.
+5. Use deterministic error responses.
+6. Implement timeout and circuit-breaker behavior.
+7. Log every forward attempt with decision metadata.
 
----
+## 23. Billing and Activation Rules
+### 23.1 Billing State Machine
+States:
+1. `active`
+2. `past_due`
+3. `grace`
+4. `suspended`
+5. `canceled`
 
-## 19) API Gateway Requirements
-Gateway requirements:
-1. Dynamic route-to-module target mapping from registry/installations.
-2. Pre-forward checks: auth, workspace, permission, billing, module-enabled.
-3. Forward user/workspace context headers.
-4. Enforce module identity boundaries.
-5. Normalize and return errors in shell format.
-6. Request/response audit logging.
-7. Circuit-breaker behavior for unhealthy targets.
+Transitions:
+1. `active -> past_due` on payment failure.
+2. `past_due -> grace` when grace starts.
+3. `grace -> suspended` when grace expires unrecovered.
+4. `past_due|grace|suspended -> active` on successful recovery.
+5. `suspended -> canceled` on cancellation.
 
-Forwarded context minimum:
-1. `x-user-id`
-2. `x-workspace-id`
-3. `x-module-id`
-4. `x-permissions` or signed claim equivalent
-5. `x-correlation-id`
+### 23.2 Entitlement Effects
+1. `active`: normal shell/module access per permissions.
+2. `past_due`: warning state, controlled access.
+3. `grace`: recovery accessible; block new paid module activations.
+4. `suspended`: block module usage; keep recovery/account/billing routes accessible.
+5. `canceled`: no module usage until reactivation.
 
-Impersonation safety:
-1. Gateway must include true actor and effective actor metadata where applicable.
-2. Impersonation must be explicit in forwarded claims.
+### 23.3 Stripe Truth Model
+1. Stripe webhook events are billing event source of truth.
+2. Shell stores normalized entitlement state.
+3. Reconciliation job must be idempotent and auditable.
 
----
-
-## 20) Billing and Activation Rules
-Billing model responsibilities:
-1. Stripe manages payment processing, customer objects, subscription states.
-2. Shell manages entitlement enforcement based on billing state.
-3. Shell maps workspace ownership to billing account and subscription.
-
-Required shell behaviors:
-1. Create/link agency billing account.
-2. Track subscription state.
-3. Gate module activation when billing invalid.
-4. Grace/suspension behavior per policy.
-5. Recovery route access for billing update even when suspended.
-6. Persist billing enforcement state in shell data model.
-
-MVP enforcement states:
-1. `active`: full access according to permissions.
-2. `past_due`: warning + configurable grace behavior.
-3. `suspended`: block module access, allow recovery/billing routes.
-4. `canceled`: restricted access until reactivation.
-
----
-
-## 21) Core Shell Screens and Routes (MVP)
-Required screens:
-1. Sign-in.
+## 24. Core Shell Screens and Routes (MVP)
+Required shell routes/screens:
+1. Sign-in/sign-out.
 2. Workspace selector/switcher.
 3. Super dashboard.
 4. Agency dashboard.
@@ -483,174 +493,163 @@ Required screens:
 6. User management.
 7. Workspace settings.
 8. Branding/theme settings.
-9. Layout Manager entry and shell integration routes.
+9. Layout Manager shell routes.
 10. Module registry/installations management.
-11. Billing status/settings.
-12. Platform/system settings (minimum operational controls).
+11. Billing status/settings/recovery.
+12. Platform/system settings.
 
-Each screen must:
-1. Enforce permission checks.
-2. Resolve active workspace context.
-3. Consume centralized theme tokens.
-4. Avoid embedding module business features.
+Each route must:
+1. Resolve active workspace.
+2. Enforce required permissions.
+3. Use centralized theme token system.
+4. Avoid embedding module business behavior.
 
----
+## 25. Measurable NFRs + Security Controls
+### 25.1 SLO Targets (MVP)
+1. Auth route guard p95 < 200ms.
+2. Workspace switch p95 < 500ms.
+3. Module route resolution p95 < 300ms.
+4. Gateway shell overhead p95 < 150ms (excluding module runtime).
+5. Layout publish/rollback ack p95 < 2s.
+6. Event enqueue p95 < 250ms.
 
-## 22) MVP Build Phases and Gates
-Phase 1: Bootstrap + Auth + Base Shell  
-Definition of done:
-1. Monorepo scaffolding complete.
-2. Auth/session working.
-3. Protected shell routes and workspace context baseline.
+### 25.2 Reliability Controls
+1. Publish/rollback operations must be idempotent.
+2. Layout draft autosave recovery must restore last valid draft.
+3. Audit logging coverage for privileged shell actions must be 100%.
+4. Event dead-letter replay must remain workspace-scoped.
 
-Phase 2: Tenancy + Membership + Permissions  
-Definition of done:
-1. Workspace hierarchy and memberships working.
-2. Role templates and capability enforcement active.
-3. Super impersonation baseline with audit.
+### 25.3 Security Controls
+1. Deny-by-default authorization.
+2. Server-side enforcement independent of UI state.
+3. Impersonation start/stop and effective context must be fully auditable.
+4. Gateway trust boundary must reject client-forged identity claims.
+5. Cross-workspace access must be denied by default.
 
-Phase 3: UI Foundation + Theme Engine  
-Definition of done:
-1. shadcn-based shell UI baseline complete.
-2. Tokenized theming and inheritance operational.
-3. Branding settings applied shell-wide.
+## 26. MVP Build Phases
+1. Phase 1: monorepo bootstrap, auth/session, base shell routing.
+2. Phase 2: workspaces, memberships, roles/permissions, impersonation.
+3. Phase 3: UI foundation, theme engine, white-label controls.
+4. Phase 4: module manifest SDK, registry, import/install lifecycle.
+5. Phase 5: event bus and gateway.
+6. Phase 6: layout manager shell integration.
+7. Phase 7: billing entitlement enforcement.
+8. Phase 8: final integration and acceptance validation.
 
-Phase 4: Module Contracts + Registry + Import Flow  
-Definition of done:
-1. Manifest validator and registry storage complete.
-2. Import/install/enable/disable/uninstall admin flow complete.
-3. Dynamic nav and route metadata wiring functional.
+Constraint:
+No phase may introduce module business logic into shell.
 
-Phase 5: Event Bus + API Gateway  
-Definition of done:
-1. Event publish/subscribe storage and delivery baseline functional.
-2. Gateway routing with auth/permission/workspace/billing checks operational.
-3. Module target isolation enforced.
+## 27. Cutover and Validation Runbook
+### 27.1 Blank-Repo Build Sequence
+1. Set up monorepo boundaries.
+2. Implement auth/session and workspace context.
+3. Implement schema + RLS + policy tests.
+4. Implement theme engine and inheritance.
+5. Implement module contract and registry lifecycle.
+6. Implement event bus.
+7. Implement gateway.
+8. Integrate layout lifecycle shell touchpoints.
+9. Implement billing enforcement.
+10. Execute acceptance matrix and dry-run audits.
 
-Phase 6: Layout Manager Shell Integration  
-Definition of done:
-1. Entry points integrated.
-2. Auth/persistence/governance integrated with shell.
-3. Published layout rendering hooked into shell surfaces.
+### 27.2 Environment Contracts
+1. Local: dev-safe auth, seed data, test billing mode.
+2. Staging: production-like RLS, webhook integration, full acceptance tests.
+3. Production: strict secrets, retention policies, audit and alerting enabled.
 
-Phase 7: Billing Enforcement  
-Definition of done:
-1. Stripe-linked billing account/subscription state integration.
-2. Module access gating tied to billing states.
-3. Recovery path and suspension behavior complete.
+### 27.3 v1 Backfill Policy (Shell Phase)
+1. Migrate shell-owned entities only.
+2. Do not migrate module business-domain records in shell phase.
+3. Reconstruct module installation state from valid manifests.
 
-Phase 8: Final Integration + Acceptance Validation  
-Definition of done:
-1. End-to-end acceptance tests pass.
-2. Security/access regressions resolved.
-3. Documentation and runbooks complete.
+### 27.4 Go-Live Checklist
+1. Acceptance matrix fully green.
+2. Billing transition tests passing.
+3. Impersonation audit verified.
+4. Module-absent mode verified.
+5. Rollback drill completed.
 
----
+## 28. Master Acceptance Matrix
+| Requirement | Schema artifact | API contract | UI route | Enforcement rule | Automated test |
+|---|---|---|---|---|---|
+| Super can create Agency workspace | workspaces, memberships | POST /workspaces | super dashboard | role/capability check | integration |
+| Agency can create Business child workspace | workspaces parent model | POST /workspaces/{id}/children | agency dashboard | tenancy scope | integration |
+| RBAC is capability-based | roles, permissions, role_permissions | GET /permissions/effective | all protected shell routes | middleware + RLS | unit + integration |
+| Workspace switching works | memberships + session context | POST /workspaces/switch | workspace switcher | membership required | e2e |
+| Impersonation is controlled and auditable | audit_logs | POST /auth/impersonation/* | super tools | super scope + audit write | integration |
+| Theme inheritance applies consistently | themes | GET/PUT /themes/current | branding settings | branding.edit + scope | integration |
+| Layout lifecycle is governed | layout_definitions, layout_versions | POST /layouts/* | layout manager routes | layouts.edit + validators | e2e |
+| Manifest-compliant module import works | module_registry | POST /modules/import | modules admin | manifest validator | contract test |
+| Module installation state is dynamic | module_installations | POST /modules/{key}/* | modules admin | module capability checks | integration |
+| Dynamic nav honors enabled state | module_installations state | GET /modules/available | shell nav | enabled + scope checks | e2e |
+| Event emit/query works with contracts | events | POST/GET /events | events monitor | schema + scope + auth | integration |
+| Gateway enforcement is complete | registry + installations | ALL /gateway/{module}/{path} | module shell entry route | auth+scope+permission+billing | integration |
+| Billing state gates module access | billing_accounts, subscriptions | GET /billing/status | billing settings | entitlement policy | integration |
+| Shell works with zero modules | module tables empty | module + gateway endpoints | modules admin + nav | module-absent mode handlers | e2e |
+| Audit coverage is complete for privileged ops | audit_logs | all privileged endpoints | audit UI | service-write immutable logs | integration |
+| No module business logic inside shell | package boundaries | n/a | all shell routes | architecture review and static checks | static + review gate |
 
-## 23) Acceptance Criteria (Pass/Fail)
-1. Super can create an Agency workspace.
-2. Agency can create a Business child workspace.
-3. Membership and role assignment controls route/feature/action access correctly.
-4. Workspace switching works for multi-workspace users.
-5. Super impersonation works and is auditable.
-6. Branding/token updates apply consistently across shell screens.
-7. Layout drafts can be saved, previewed, tested, published, and rolled back.
-8. Manifest-compliant module can be imported and registered without shell source edits.
-9. Module routes and sidebar entries appear dynamically when installed/enabled.
-10. Module disable/uninstall removes access/routes correctly.
-11. Event emission and subscription function through shared event system.
-12. Gateway forwards context and blocks unauthorized/disabled access.
-13. Billing state can suspend module access while preserving recovery routes.
-14. Cross-workspace data isolation holds under API and UI checks.
-15. No module domain logic exists in shell codebase.
+## 29. Out of Scope (Strict)
+Not part of Shell phase:
+1. Building any business module domain workflows.
+2. Customer-facing module interfaces.
+3. Marketplace/developer portal/community trust pipeline UX.
+4. Capabilities graph and advanced orchestration systems.
+5. Future conversion pipeline internals beyond shell import contract handling.
+6. Private assistant/system-chat runtime behavior.
 
----
+## 30. Implementation Guardrails
+1. Shell and module business logic must not be collapsed.
+2. Multi-tenancy must not be postponed.
+3. Module routes must not be hardcoded as permanent shell pages.
+4. Shared UI/theme systems must not be bypassed with ad hoc styling.
+5. Layout editing must remain reusable system behavior, not one-off page hacks.
+6. Billing state must be part of access/activation checks.
+7. When uncertain, preserve shell/module boundary over convenience.
+8. No unresolved `TBD` is allowed in shell-critical sections.
 
-## 24) Out of Scope (Strict)
-Not required in this shell MVP:
-1. Building business modules.
-2. Module-specific customer workflows.
-3. Customer-facing module UI products.
-4. Marketplace/developer community UX.
-5. Repo conversion pipelines.
-6. Advanced monetization dashboards.
-7. System-chat/personal assistant runtime.
-8. Any future orchestration feature that can be added as module.
+## 31. v1 Parity Replication Matrix (Shell-Relevant)
+| v1 behavior | Disposition | Reason | v2 owner | Validation |
+|---|---|---|---|---|
+| permissions role primitives | Replicate now | shell-core | packages/permissions | unit tests |
+| app-local route ACL hardcoding | Retire | coupling risk | packages/permissions + middleware | static checks |
+| manifest normalize/validate/assess | Replicate now | module infra backbone | packages/module-sdk | contract tests |
+| hardcoded fallback app manifests | Retire | must be registry-driven | module_registry seed policy | empty-registry tests |
+| import assessment reports | Replicate now | admin operations value | module-sdk + platform admin | integration tests |
+| deep internal package imports | Retire | boundary fragility | all packages | lint rule |
+| db browser/server/admin wrappers | Replicate now | proven reusable shell pattern | packages/db | integration tests |
+| integration inheritance resolver pattern | Replicate now (genericized) | strong tenancy behavior | packages/db + theme | inheritance tests |
+| fragmented theming catalogs | Retire | single source of truth required | packages/theme | token consistency tests |
+| tenancy context + impersonation rules | Replicate now | operator-critical | permissions + db | scope/impersonation tests |
+| chat runtime behavior | Defer to modules phase | module business logic | n/a | shell code review |
+| kb runtime/worker behavior | Defer to modules phase | module business logic | n/a | shell code review |
+| plasmic host/render | Retire | out of shell principles | n/a | dependency scan |
+| duplicate route variants/.old files | Retire | maintainability risk | repo hygiene policy | CI file checks |
 
----
+## 32. Documentation Quality and Readiness Validation
+### 32.1 Completeness Checks
+1. Shell scope areas are fully specified: auth, tenancy, permissions, theme, layout integration, modules infra, events, gateway, billing, shared data.
+2. Known gaps are explicitly closed: scope mismatch, parity, schema/RLS, contracts, event/gateway semantics, billing semantics, NFRs, cutover, traceability.
 
-## 25) Implementation Guardrails for Codex
-1. Do not merge shell and module business logic.
-2. Do not fake multi-tenancy for later retrofit.
-3. Do not hardcode module routes/pages as permanent shell features.
-4. Do not bypass shared UI/theme systems with ad hoc styling.
-5. Do not make layout editing one-off per page if reusable subsystem is required.
-6. Do not skip billing checks in access/activation paths.
-7. Do not build speculative future module behaviors into shell.
-8. Prefer simple, explicit contracts over clever abstractions.
-9. Preserve shell/module boundary whenever uncertain.
-10. Treat this PRD and Layout Manager PRD as build governance, not suggestion.
+### 32.2 Consistency Checks
+1. No section contradicts phase boundaries.
+2. No shell requirement depends on module implementation to validate shell correctness.
+3. All deferred items are explicitly marked and assigned to later phases.
 
----
+### 32.3 Traceability Checks
+1. Every acceptance criterion maps to schema + API + enforcement + test.
+2. Every parity item has disposition and validation method.
+3. Every contract error path maps to stable error code.
 
-## 26) API Contract Baseline (Shell-Owned Endpoints)
-Minimum endpoint families:
-1. `/auth/*` for session lifecycle.
-2. `/workspaces/*` for workspace CRUD/switch.
-3. `/memberships/*` for workspace membership and roles.
-4. `/permissions/*` for effective permission inspection/admin.
-5. `/themes/*` for branding token management.
-6. `/layouts/*` for layout lifecycle integration.
-7. `/modules/*` for registry/import/install/enable/disable/uninstall.
-8. `/events/*` for emit/query/subscription management.
-9. `/gateway/*` for module proxy forwarding.
-10. `/billing/*` for billing account/subscription state and recovery actions.
+### 32.4 Independent Review Checks
+1. Independent reviewer can classify all capabilities as shell-owned or deferred with no ambiguity.
+2. Implementation Ready Gate is objective and binary.
 
-All protected endpoints must enforce:
-1. Authenticated user.
-2. Active workspace.
-3. Required permission.
-4. Billing entitlement where applicable.
-
----
-
-## 27) Data Governance and Audit Requirements (MVP)
-Audit log events required:
-1. Login/logout.
-2. Workspace switch.
-3. Membership/role changes.
-4. Theme/branding changes.
-5. Layout publish/rollback.
-6. Module import/install/enable/disable/uninstall.
-7. Billing state transitions.
-8. Impersonation start/end.
-9. Gateway denial events (permission/billing/module-disabled).
-
-Audit event minimum:
-1. `actor_user_id`
-2. `effective_workspace_id`
-3. `action`
-4. `target_type`
-5. `target_id`
-6. `timestamp`
-7. `correlation_id`
-
----
-
-## 28) Delivery Artifacts Required
-1. Running monorepo with required package boundaries.
-2. Shell database schema migrations for shared entities.
-3. Manifest JSON schema and validator implementation.
-4. Permission catalog and guard middleware.
-5. Theme token schema and inheritance service.
-6. Gateway middleware and runtime target registry.
-7. Event bus baseline implementation.
-8. Stripe billing integration with entitlement gating.
-9. Layout Manager shell integration points per PRD.
-10. E2E acceptance test suite for criteria in Section 23.
-11. Architecture docs and operator runbook.
-
----
-
-## 29) Final Product Statement
-aiConnected v2 Core Shell is the permanent, white-label, multi-tenant operating layer of the platform. It owns identity, tenancy, permissions, branding, layout governance, billing enforcement, module registration, event infrastructure, and gateway routing so modules can be added and evolve independently without destabilizing core platform architecture.
+## 33. Implementation Ready Gate
+The shell PRD is implementation-ready only when:
+1. All completeness checks pass.
+2. All consistency checks pass.
+3. All traceability checks pass.
+4. Independent review checks pass.
+5. No unresolved `TBD` exists in shell-critical sections.
+6. This document and the Layout Manager PRD are both marked ready.
