@@ -136,7 +136,12 @@
                 "group": "aiConnected Voice",
                 "icon": "notebook",
                 "pages": [
-                  "untitled-page"
+                  "knowledge-base/modules/aiConnected-voice/Developer-Introduction",
+                  "knowledge-base/modules/aiConnected-voice/GoToConnect-API-Endpoints-Capabilities",
+                  "knowledge-base/modules/aiConnected-voice/Original-Context",
+                  "knowledge-base/modules/aiConnected-voice/Feasibility-Analysis",
+                  "knowledge-base/modules/aiConnected-voice/Index-and-Build-Phases",
+                  "knowledge-base/modules/aiConnected-voice/Task-List"
                 ]
               }
             ]

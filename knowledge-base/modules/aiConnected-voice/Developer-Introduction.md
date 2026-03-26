@@ -1,5 +1,6 @@
 ---
 icon: "angle-right"
+title: "Developer Introduction"
 ---
 
 # Voice by aiConnected — A Developer's Introduction
