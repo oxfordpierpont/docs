@@ -171,6 +171,12 @@
                       "layout-manager-codex-prd",
                       "additional-considerations"
                     ]
+                  },
+                  {
+                    "group": "Platform Shell",
+                    "pages": [
+                      "shell-codex-prd"
+                    ]
                   }
                 ]
               }
