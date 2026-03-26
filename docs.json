@@ -3,16 +3,19 @@
   "theme": "maple",
   "name": "aiConnected",
   "colors": {
-    "primary": "#000000",
-    "light": "#FAFAFA",
-    "dark": "#0a0a0a"
+    "primary": "#1e2328",
+    "light": "#fafcff",
+    "dark": "#021220"
   },
   "logo": {
     "light": "/logo/light.svg",
     "dark": "/logo/dark.svg",
-    "href": "https://aiconnected.io"
+    "href": "https://aiconnected.ai"
   },
-  "favicon": "/favicon.svg",
+  "favicon": {
+    "light": "/favicon.svg",
+    "dark": "/favicon.svg"
+  },
   "appearance": {
     "default": "system"
   },
@@ -29,7 +32,10 @@
         "groups": [
           {
             "group": "Getting Started",
-            "pages": ["index", "quickstart/overview"]
+            "pages": [
+              "index",
+              "quickstart/overview"
+            ]
           },
           {
             "group": "Sending",
@@ -43,35 +49,51 @@
           },
           {
             "group": "Receiving",
-            "pages": ["learn/receiving/introduction"]
+            "pages": [
+              "learn/receiving/introduction"
+            ]
           },
           {
             "group": "Audience",
-            "pages": ["learn/audience/introduction"]
+            "pages": [
+              "learn/audience/introduction"
+            ]
           },
           {
             "group": "Domains",
-            "pages": ["learn/domains/introduction"]
+            "pages": [
+              "learn/domains/introduction"
+            ]
           },
           {
             "group": "Logs",
-            "pages": ["learn/logs/introduction"]
+            "pages": [
+              "learn/logs/introduction"
+            ]
           },
           {
             "group": "API Keys",
-            "pages": ["learn/api-keys/introduction"]
+            "pages": [
+              "learn/api-keys/introduction"
+            ]
           },
           {
             "group": "Broadcasts",
-            "pages": ["learn/broadcasts/introduction"]
+            "pages": [
+              "learn/broadcasts/introduction"
+            ]
           },
           {
             "group": "Templates",
-            "pages": ["learn/templates/introduction"]
+            "pages": [
+              "learn/templates/introduction"
+            ]
           },
           {
             "group": "Settings",
-            "pages": ["learn/settings/introduction"]
+            "pages": [
+              "learn/settings/introduction"
+            ]
           }
         ]
       },
@@ -80,7 +102,9 @@
         "groups": [
           {
             "group": "Introduction",
-            "pages": ["api-reference/introduction"]
+            "pages": [
+              "api-reference/introduction"
+            ]
           }
         ]
       },
@@ -89,7 +113,9 @@
         "groups": [
           {
             "group": "Introduction",
-            "pages": ["webhooks/introduction"]
+            "pages": [
+              "webhooks/introduction"
+            ]
           }
         ]
       },
@@ -98,7 +124,20 @@
         "groups": [
           {
             "group": "Introduction",
-            "pages": ["knowledge-base/introduction"]
+            "pages": [
+              "knowledge-base/introduction"
+            ]
+          },
+          {
+            "group": "Modules",
+            "pages": [
+              {
+                "group": "aiConnected Voice",
+                "pages": [
+                  "knowledge-base/modules/aiConnected-voice/Developer Introduction"
+                ]
+              }
+            ]
           }
         ]
       }
@@ -108,6 +147,23 @@
     "socials": {
       "x": "https://x.com/aiconnected",
       "github": "https://github.com/aiconnected"
+    }
+  },
+  "background": {
+    "color": {
+      "light": "#fafcff",
+      "dark": "#1e2328"
+    }
+  },
+  "fonts": {
+    "family": "Poppins",
+    "heading": {
+      "family": "Poppins",
+      "weight": 600
+    },
+    "body": {
+      "family": "Nunito",
+      "weight": 400
     }
   }
 }
