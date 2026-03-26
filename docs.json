@@ -145,6 +145,38 @@
                 ]
               }
             ]
+          },
+          {
+            "group": "aiConnected Platform OS",
+            "pages": [
+              {
+                "group": "Business Platform",
+                "pages": []
+              },
+              {
+                "group": "Developer Platform",
+                "pages": []
+              },
+              {
+                "group": "Personal Plaform",
+                "pages": []
+              },
+              {
+                "group": "Platform Architecture",
+                "pages": [
+                  {
+                    "group": "Layout Manager",
+                    "pages": [
+                      "what-is-the-layout-manager"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Raw Brainstorming Transcripts",
+            "pages": []
           }
         ]
       }
