@@ -1,0 +1,113 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "maple",
+  "name": "aiConnected",
+  "colors": {
+    "primary": "#000000",
+    "light": "#FAFAFA",
+    "dark": "#0a0a0a"
+  },
+  "logo": {
+    "light": "/logo/light.svg",
+    "dark": "/logo/dark.svg",
+    "href": "https://aiconnected.io"
+  },
+  "favicon": "/favicon.svg",
+  "appearance": {
+    "default": "system"
+  },
+  "navbar": {
+    "links": [
+      { "type": "link", "label": "Sign In", "href": "https://aiconnected.io/login" },
+      { "type": "button", "label": "Get Started", "href": "https://aiconnected.io/signup" }
+    ]
+  },
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": "Getting Started",
+            "pages": ["index", "quickstart/overview"]
+          },
+          {
+            "group": "Sending",
+            "pages": [
+              "learn/sending/introduction",
+              "learn/sending/batch-sending",
+              "learn/sending/attachments",
+              "learn/sending/schedule-message",
+              "learn/sending/custom-headers"
+            ]
+          },
+          {
+            "group": "Receiving",
+            "pages": ["learn/receiving/introduction"]
+          },
+          {
+            "group": "Audience",
+            "pages": ["learn/audience/introduction"]
+          },
+          {
+            "group": "Domains",
+            "pages": ["learn/domains/introduction"]
+          },
+          {
+            "group": "Logs",
+            "pages": ["learn/logs/introduction"]
+          },
+          {
+            "group": "API Keys",
+            "pages": ["learn/api-keys/introduction"]
+          },
+          {
+            "group": "Broadcasts",
+            "pages": ["learn/broadcasts/introduction"]
+          },
+          {
+            "group": "Templates",
+            "pages": ["learn/templates/introduction"]
+          },
+          {
+            "group": "Settings",
+            "pages": ["learn/settings/introduction"]
+          }
+        ]
+      },
+      {
+        "tab": "API Reference",
+        "groups": [
+          {
+            "group": "Introduction",
+            "pages": ["api-reference/introduction"]
+          }
+        ]
+      },
+      {
+        "tab": "Webhook Events",
+        "groups": [
+          {
+            "group": "Introduction",
+            "pages": ["webhooks/introduction"]
+          }
+        ]
+      },
+      {
+        "tab": "Knowledge Base",
+        "groups": [
+          {
+            "group": "Introduction",
+            "pages": ["knowledge-base/introduction"]
+          }
+        ]
+      }
+    ]
+  },
+  "footer": {
+    "socials": {
+      "x": "https://x.com/aiconnected",
+      "github": "https://github.com/aiconnected"
+    }
+  }
+}
