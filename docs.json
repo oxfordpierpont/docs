@@ -21,8 +21,16 @@
   },
   "navbar": {
     "links": [
-      { "type": "link", "label": "Sign In", "href": "https://aiconnected.io/login" },
-      { "type": "button", "label": "Get Started", "href": "https://aiconnected.io/signup" }
+      {
+        "type": "link",
+        "label": "Sign In",
+        "href": "https://aiconnected.io/login"
+      },
+      {
+        "type": "button",
+        "label": "Get Started",
+        "href": "https://aiconnected.io/signup"
+      }
     ]
   },
   "navigation": {
@@ -185,7 +193,8 @@
                   {
                     "group": "Platform AI",
                     "pages": [
-                      "sample-user-md-configuration"
+                      "sample-user-md-configuration",
+                      "user-onboarding-flow"
                     ]
                   }
                 ]
