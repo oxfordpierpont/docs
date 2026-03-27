@@ -129,7 +129,7 @@
       },
       {
         "tab": "Knowledge Base",
-        "groups": [
+        "pages": [
           {
             "group": "Introduction",
             "pages": [
@@ -205,7 +205,9 @@
           {
             "group": "Raw Brainstorming Transcripts",
             "pages": []
-          }
+          },
+          "production-readiness-checklist",
+          "ai-critical-thinking-protocol"
         ]
       }
     ]
