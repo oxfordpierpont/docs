@@ -171,20 +171,26 @@
                     "pages": [
                       "what-is-the-layout-manager",
                       "layout-manager-codex-prd",
-                      "additional-considerations"
+                      "additional-considerations",
+                      "what-is-the-platform-shell"
                     ]
                   },
                   {
                     "group": "Platform Shell",
                     "pages": [
                       "shell-codex-prd",
-                      "platform-v1-context",
-                      "what-is-the-platform-shell"
+                      "platform-v1-context"
                     ]
                   },
-                  "legacy-platform-v1-inventory"
+                  {
+                    "group": "Platform AI",
+                    "pages": [
+                      "sample-user-md-configuration"
+                    ]
+                  }
                 ]
-              }
+              },
+              "legacy-platform-v1-inventory"
             ]
           },
           {
