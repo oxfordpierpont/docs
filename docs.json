@@ -200,7 +200,9 @@
                   "self-hosting",
                   {
                     "group": "Open Sourcing",
-                    "pages": []
+                    "pages": [
+                      "ai-connected-license-agreement"
+                    ]
                   }
                 ]
               },
