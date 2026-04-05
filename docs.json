@@ -207,7 +207,19 @@
             "pages": []
           },
           "production-readiness-checklist",
-          "ai-critical-thinking-protocol"
+          "ai-critical-thinking-protocol",
+          {
+            "group": "aiConnectedOS Personal ",
+            "icon": "infinity",
+            "pages": [
+              {
+                "group": "Features & Configurations",
+                "pages": [
+                  "chat-nav-topic-log"
+                ]
+              }
+            ]
+          }
         ]
       }
     ]
