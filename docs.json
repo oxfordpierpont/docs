@@ -203,7 +203,8 @@
                     "pages": [
                       "ai-connected-license-agreement"
                     ]
-                  }
+                  },
+                  "start-here"
                 ]
               },
               "legacy-platform-v1-inventory"
