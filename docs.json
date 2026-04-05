@@ -196,6 +196,11 @@
                       "sample-user-md-configuration",
                       "user-onboarding-flow"
                     ]
+                  },
+                  "self-hosting",
+                  {
+                    "group": "Open Sourcing",
+                    "pages": []
                   }
                 ]
               },
