@@ -170,7 +170,8 @@
               {
                 "group": "Personal Plaform",
                 "pages": [
-                  "dynamic-persona-waking-voice"
+                  "dynamic-persona-waking-voice",
+                  "dynamic-screen-routing"
                 ]
               },
               {
