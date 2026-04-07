@@ -169,7 +169,9 @@
               },
               {
                 "group": "Personal Plaform",
-                "pages": []
+                "pages": [
+                  "dynamic-persona-waking-voice"
+                ]
               },
               {
                 "group": "Platform Architecture",
