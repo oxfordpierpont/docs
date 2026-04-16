@@ -245,12 +245,22 @@
                 "group": "Raw Dump Repo 2 - aiConnected Unfiltered",
                 "pages": [
                   "doc-dump-2-64-of-258-docs",
-                  "ai-connected-os-master-planning-document"
+                  "ai-connected-os-master-planning-document",
+                  "ai-connected-os-branding-config"
                 ]
               },
               {
                 "group": "Raw Dump Repo 3 - GDrive Unfiltered",
-                "pages": []
+                "pages": [
+                  {
+                    "group": "Unedited ChatGPT Convos",
+                    "pages": [
+                      "1-ai-connected-os-spaces-dashboard-design-md",
+                      "2-ai-connected-os-task-feature-spec-md",
+                      "3-ai-connected-os-live-document-feature-md"
+                    ]
+                  }
+                ]
               }
             ]
           }
