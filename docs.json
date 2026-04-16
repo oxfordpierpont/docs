@@ -231,6 +231,28 @@
                 ]
               }
             ]
+          },
+          {
+            "group": "Document Dump",
+            "pages": [
+              {
+                "group": "Raw Dump Repo 1",
+                "pages": [
+                  "document-inventory-194-docs"
+                ]
+              },
+              {
+                "group": "Raw Dump Repo 2 - aiConnected Unfiltered",
+                "pages": [
+                  "doc-dump-2-64-of-258-docs",
+                  "ai-connected-os-master-planning-document"
+                ]
+              },
+              {
+                "group": "Raw Dump Repo 3 - GDrive Unfiltered",
+                "pages": []
+              }
+            ]
           }
         ]
       }
