@@ -1,3 +1,9 @@
+---
+title: "aiConnected OS — Product Requirements Document"
+description: "v5"
+---
+
+
 # aiConnected OS — Product Requirements Document (Outline) {#aiconnected-os-—-product-requirements-document-(outline)}
 
 **Version:** 1.0 Draft **Last Updated:** February 13, 2026 **Author:** Bob (Oxford Pierpont) **Build Target:** Claude Code \+ Supabase **UI Reference:** `aiconnected-os-v5-final.jsx` (3,038-line interactive prototype)
