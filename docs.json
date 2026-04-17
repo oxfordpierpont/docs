@@ -144,7 +144,6 @@
               "knowledge-base/aiconnected-os/ai-connected-os-master-planning-document",
               "knowledge-base/aiconnected-os/ai-connected-os-branding-config",
               "knowledge-base/aiconnected-os/aiconnected-os-branding-config-design-build-spec",
-              "knowledge-base/aiconnected-os/ai-connected-os-prototype-jsx",
               "knowledge-base/aiconnected-os/ai-critical-thinking-protocol",
               "knowledge-base/aiconnected-os/dynamic-persona-waking-voice",
               "knowledge-base/aiconnected-os/dynamic-screen-routing",
@@ -167,13 +166,13 @@
                   "knowledge-base/aiconnected-os/aiconnected-os-13-adaptive-ui-tutorials",
                   "knowledge-base/aiconnected-os/aiconnected-os-14-build-plan-review",
                   "knowledge-base/aiconnected-os/aiconnected-os-15-document-and-organize-ideas",
-                  "knowledge-base/aiconnected-os/aiconnected-os-16-enterprise-potential",
                   "knowledge-base/aiconnected-os/aiconnected-os-17-in-chat-navigation",
                   "knowledge-base/aiconnected-os/aiconnected-os-18-context-windows-in-ai",
-                  "knowledge-base/aiconnected-os/aiconnected-os-19-fluid-ui-architecture",
-                  "knowledge-base/aiconnected-os/aiconnected-os-20-extensible-ai-capability-system"
+                  "knowledge-base/aiconnected-os/aiconnected-os-19-fluid-ui-architecture"
                 ]
-              }
+              },
+              "knowledge-base/aiconnected-os/quick-system-overview",
+              "knowledge-base/aiconnected-os/system-standards-and-philosophy"
             ]
           },
           {

@@ -1,112 +1,42 @@
 ---
-title: "Doc Dump 2 (64 of 258 Docs) - aiConnectedOS Unfiltered"
+title: "Quick System Overview"
 ---
 
 ---
 
-## aiConnectedOS Documentation Inventory
-
-### Core PRD Series (24 Parts)
-
-These were built across multiple sessions and form the backbone of the product spec. The full series covers:
-
-**Parts 1-13** originated in the large early brainstorming session (stored as `aiConnected OS Document and organize ideas (1).md`) and cover the foundational architecture including: product overview and philosophy, Cipher orchestration, Instance types and dashboard, Personas system (identities, skill slots, lifecycle), CogniGraph/Neurigraph memory architecture, the multi-model routing engine, the sleep/dream cycle for personas, the three-tier experience stream (unique/common/guideline experiences), Agentic Teams (short-term, long-term, recurring, executive), the Mods/Marketplace system, business model and pricing tiers, and the live browser/computer use layer.
-
-**Part 14** covers the Chat Cleanup System (`aiConnected OS Chat Cleanup System.md`): bulk chat management, multi-select move across instances/personas/folders, Recently Deleted with 30-day retention, and bulk memory operations.
-
-**Part 15** is the large Search and routing architecture (`aiConnected OS Document and organize ideas (1).md`): global search, instance-scoped search, chat-level search injection, persona-level search (future), and the universal "NEW action" panel.
-
-**Part 16** covers the Task feature (`aiConnected OS Task feature spec.md`): per-instance to-do system, message-to-task creation, task-to-chat linking, email-from-task, Slack notify-from-task, and the Task Agent.
-
-**Part 17** covers ChatNav (in-chat navigation sidebar with semantic checkpoints, topic-scoped jump links, hover summaries, and AI context rehydration). This is referenced throughout but the base spec lives within the broader session file.
-
-**Part 18** covers Fluid Context / Context Window Architecture (`aiConnected OS Context Windows in AI.md`): the permanent context classes (topic, instructions, decisions, tone), the always-hot rolling window, and dynamic retrieval for older content.
-
-**Part 19** covers Fluid UI Architecture (`aiConnected OS Fluid UI Architecture.md`): the invisible OS paradigm, activity-based UI states, the ledger/event runtime, how Cipher stays hidden, and the ambient computing surface model.
-
-**Part 20** covers the Dashboard Canvas/Whiteboard integration (`aiConnected OS Dashboard whiteboard integration.md`): artifact bundles, spatial node arrangement, Canvas Chat, connection types, and the link between pinning and canvas workflows.
-
-**Part 21** covers Computer Use for AI Personas (`aiConnected OS Computer Use for aiPersonas.md`): the autonomous browser/agent architecture, comparison of extension vs. embedded vs. forked browser approaches, reliability challenges, and the path toward truly autonomous development.
-
-**Parts 22-23** were generated in the same large session and cover the Cognigraph Lite / Mini-Cognigraph enterprise extension (Phase 4 roadmap item) and its positioning as a licensing product.
-
-**Part 24** is the 18-week, 6-phase Build Roadmap (`aiConnected OS Build plan review.md`): full task breakdowns, time estimates, dependencies, and acceptance criteria for each phase from Foundation through Polish & Analytics.
+## What is aiConnectedOS?
 
 ---
 
-### Standalone Feature PRD Sections (produced in individual sessions)
+**Core Concept**
 
-These were written as formal spec documents during focused feature sessions:
+At its heart, aiConnectedOS is a virtual operating system for AI personas — not a generic agent platform. The fundamental differentiator is that it creates _personalities with emotions, evolving consciousness-like qualities, and persistent identity_ that users "raise" rather than simply use. No two personas should ever be alike.
 
-**Meeting Mode PRD** (`meeting-mode-prd.md`) covers the one-tap persona behavioral state toggle, passive recording and transcription, wake-word-only activation, contextual memory integration, privacy considerations, and implementation phases.
+**Key Architectural Components**
 
-**ChatNav Topic-Scoped Export Addendum** (`ChatNav_TopicScopedExport_Addendum.md`) is the formal addendum to Part 17, specifying the `⋯` action menu on sidebar entries, the full option set (copy, download, move, share), the comparison table distinguishing Topic-Scoped Export from Filter Bar Export, acceptance criteria, and implementation notes. One open decision remains: whether `⋯` appears on all entries or only those above a message count threshold.
+The platform is built around several distinct layers. **Instances** serve as project workspaces containing chats, files, and assigned personas. **Personas** are the digital beings themselves — they learn, retain memories, develop mastery, and have fixed identities that evolve naturally over time. **Cipher** is the hidden orchestration layer that handles routing decisions, deciding which persona responds and when. **CogniGraph** is the knowledge graph powering persistent memory across sessions.
 
-**Conversation Split & Route** spec covers drift detection, the pre-selected inflection point with manual override, the non-destructive overlay notification, the Move vs. Copy decision, and memory attribution routing. One open decision remains: whether a Move leaves a subtle inline marker or results in clean removal.
+**Standout Features**
 
-**Import & Migration PRD** (`prd-import-migration.md`) covers inbound import from ChatGPT, Claude.ai, and aiConnectedOS native format; opt-in, non-destructive handling; Import Archive instances (read-only); user-gated memory ingestion into Neurigraph; and Phase 6 placement on the build roadmap.
+Multi-model routing is a defining capability — a single prompt can use different models for different jobs (one for research, one for writing, one for formatting). The platform also supports collaborative multi-persona chats, agentic teams (short-term, long-term, and recurring), and eventually a live browser window for research and agentic workflows. There's also a **Meeting Mode** concept — recognizing that AI's core problem is "not knowing when to shut up" in social contexts, so personas can act as passive ambient listeners in real-world situations.
 
-**Dynamic Persona Waking explainer** covers the wake-word activation model, the Last Active Device routing signal, device hierarchy fallbacks, multi-persona simultaneous waking, graceful persona transitions, and Meeting Mode integration. (Produced as a markdown explainer for non-technical audiences.)
+**Business Model**
 
-**Dynamic Screen Routing explainer** covers context-aware visual routing driven by the Last Active Device signal, suppression logic for car and Meeting Mode contexts, verbal description as fallback, and deferred routing with reminders. (Produced as a paired explainer with Dynamic Persona Waking.)
+Pricing runs from free up to \$99.99/month Pro tier, with higher tiers unlocking more instances, multi-model capability, persona creation, agentic teams, and the live browser. Bring-your-own-key is supported. There's also a planned open source version as part of the 90-day launch plan.
 
-**CogniGraph/Neurigraph Apprenticeship Model & Robotics Extension PRD** covers apprenticeships as standalone, open-ended, relational constructs (distinct from skill slots), the somatic memory layer, consolidated motor schemas, environmental context signatures, the physical safety envelope, and dual-track depth tracking (procedural fluency vs. situational judgment). Includes the patentability assessment for the integrated episodic/somatic/semantic/compounding architecture.
+**Design Philosophy**
 
-**"Forget This" / Deprioritization feature spec** (documented in session, not written as a formal PRD section yet) covers graceful memory decay vs. hard deletion, trust impact, and suggested naming alternatives.
+The visual identity follows an OS-style aesthetic — dark backgrounds (`#1e2328`), Montserrat typography, thin icon rail with slide-over panels, and a mixed-mode light/dark interface. The benchmark is top-tier SaaS companies like Linear, Stripe, and Vercel. The design-to-code workflow embeds Adobe Illustrator SVGs directly in HTML with transparent interactive overlays on top.
 
----
+**Build Roadmap**
 
-### Explainer Documents (written for zero-context audiences)
+An 18-week, 6-phase plan: Foundation → Chat Core → Instances & Files → Personas & Memory → Browser & Teams → Polish & Analytics. A LinkedIn announcement and launch campaign are also in preparation.
 
-**Neurigraph Memory Architecture: What It Is. What It Does. Why It Matters.** covers the AI memory continuity problem, how Neurigraph works as a knowledge graph, licensing opportunities across gaming, medical, enterprise, and research sectors, and ethical use constraints.
-
-**aiConnectedOS Platform Overview** (produced in the "Fully Integrated AI Coworker" session) is a full plain-language overview covering the market gap, what personas/virtual employees are, real-world use cases with ROI framing, the philosophy and consciousness question, how the technology works, the brand identity, and the five-year vision. This is the document written for investors, advisors, and partners with no prior context.
+It's a genuinely ambitious platform — the combination of persistent identity, multi-model orchestration, and evolving personality is unlike anything currently in the market.
 
 ---
 
-### Robotics Architecture Documentation
-
-The **Robotics Layer Strategy** session produced documented concepts (not yet written as a formal PRD section): the three-layer stack (aiConnectedOS as Layer 1, manufacturer SDK as Layer 2, developer extensions as Layer 3), the platform-defined certification tiers (Level 0-3 \+ Level X), the robot class taxonomy (humanoid, industrial, aerial, mobile platform, companion/stationary), and the open questions around certification governance, liability, revenue model, and international regulatory fragmentation. This session ended mid-scenario and needs a formal writeup.
-
----
-
-### Marketing & Outreach Materials
-
-**LinkedIn Launch Campaign** (multiple draft iterations): positioning around "personalities, not agents," the 90-day phased launch plan, and the open-source version announcement. Bob wrote the final version in his own voice.
-
-**AI Influencer Cold Outreach Campaign** (three batch files, 50 influencers total): profiles for each influencer including platform, follower count, contact method, and a fully customized cold outreach message using Gary Vaynerchuk's formula. Organized across three markdown files covering tech reviewers, researchers, educators, investors, futurists, ethics critics, and business practitioners.
-
----
-
-### Design & Prototype Files
-
-**aiConnectedOS Style Guide** (`aiConnectedStyleGuide.pdf`) defines the color palette, typography hierarchy (Alright Sans / Poppins \+ Montserrat \+ DM Sans), logo mark, and the full brand color system.
-
-**Welcome Screen Mockup** (`MOCKUPaiConnectedOS_Welcome_Screen.pdf` \+ `aiConnectedOS_Welcome_Screen.png`) is the Adobe Illustrator-sourced reference design for the primary interface.
-
-**aiConnectedOS React Prototype** (`aiConnectedOS-prototype.jsx`) is the working prototype implementing the OS-style dashboard including the menu bar, navigation rail, welcome stats panel, recent conversations, persona dock, and multiple functional screens.
-
----
-
-### Documents That Still Need to Be Written
-
-Based on everything above, the following exist as documented concepts in chat history but have not yet been produced as formal PRD sections or standalone documents:
-
-- Robotics Layer Strategy (formal PRD section, including governance, liability, and certification revenue model)
-- "Forget This" / Memory Deprioritization (formal PRD section)
-- Persona Sleep Cycle (the full lifecycle spec exists in the brainstorm session but was never formatted as a standalone PRD section)
-- Brand Identity & Trademark Strategy (the full logo concept with layered binary encoding, the hidden Masonic message, the trademark position relative to the pending AICONNECTED mark, and USPTO filing guidance)
-- Virtual Employee Concept Overview (the micro-experience accumulation model, working hours, realistic response latency, and voice/email presence layer)
-
-That last group represents material that is fully ideated and conversationally documented but would need to be formally written up before engineering handoff.
-
-Now I have a complete picture of everything across the project knowledge base and all chat sessions. Here is the full repository structure, organized as you'd set it up in Mintlify or Fumadocs.
-
----
-
-## aiConnectedOS — Documentation Repository Structure
-
----
+# User Experience Overview
 
 ### Getting Started
 
@@ -119,12 +49,13 @@ This is the first tab a new developer sees. It orients them before they touch an
 
 ---
 
+# Documentation Overview
+
 ### Architecture
 
 The structural layer. A developer reads this before touching any feature spec.
 
 - **System Architecture Overview** — How all layers relate: Cipher at the top, Neurigraph beneath, Personas as bounded expressions, Instances as workspaces, the System entity for OS-level commands.
-- **Cipher** — What it is, why it must stay hidden, how it orchestrates routing, the governance tiers (basic operations, cached approvals, real-time safety checks), and the organizational separation via Oxford Pierpont.
 - **Neurigraph Memory Architecture** — The knowledge graph overview, the three memory layers (episodic, semantic, somatic), how nodes and embeddings work, and how memory flows through the system.
 - **Multi-Model Routing Engine** — How a single prompt can invoke different models for different subtasks, the Host Model concept, per-step model assignment, the Model Registry and Roles settings, and the orchestrator execution flow.
 - **Fluid UI Architecture** — The invisible OS paradigm, activity-based UI states, the event/ledger runtime, how Cipher stays hidden at the interface layer, and the ambient computing surface model across cars, glasses, mirrors, and robotics.
@@ -164,7 +95,7 @@ Standalone features that extend the core platform. Each is a self-contained spec
 - **Dynamic Persona Waking** — Wake-word activation per persona, the Last Active Device routing model, device hierarchy fallbacks, multi-persona simultaneous waking, graceful transitions, Meeting Mode integration, and the social etiquette layer for closing persona conversations.
 - **Dynamic Screen Routing** — Context-aware visual routing driven by Last Active Device signal, suppression logic for car and Meeting Mode contexts, verbal description as fallback, and deferred routing with reminders.
 - **Conversation Split & Route** — Drift detection, pre-selected inflection point with manual override, the non-destructive overlay notification (never part of the conversation record), Move vs. Copy decision, and memory attribution routing. Open decision: Move marker vs. clean removal.
-- **Import & Migration** — Inbound import from ChatGPT, [Claude.ai](http://Claude.ai), and aiConnectedOS native format; opt-in, non-destructive handling; read-only Import Archive instances; user-gated memory ingestion into Neurigraph; and Phase 6 placement.
+- **Import & Migration** — Inbound import from ChatGPT, Claude.ai, and aiConnectedOS native format; opt-in, non-destructive handling; read-only Import Archive instances; user-gated memory ingestion into Neurigraph; and Phase 6 placement.
 - **Forget This / Memory Deprioritization** — Graceful memory decay vs. hard deletion, the trust impact argument, the "This Was Just Thinking Out Loud" naming variant, and integration with Neurigraph's deprioritization layer.
 - **Automatic Conversation Cleanup** — Live classification mid-conversation, the move prompt (yes/no), auto-rename suggestion flow, and the principle of general chat as an inbox.
 
@@ -240,3 +171,7 @@ A living page. Updated before each engineering handoff.
 
 - **Decisions Pending** — ChatNav action menu threshold logic (`⋯` on all entries vs. entries above N messages). Conversation Split & Route: Move marker vs. clean removal.
 - **Specs Needing Formal Writeup** — Robotics governance and liability framework. Persona sleep cycle as standalone PRD section. "Forget This" as standalone PRD section. Brand identity and trademark strategy document. Virtual Employee presence layer (voice, email, working hours).
+
+---
+
+That is the complete structure. Every document you have goes into one of those slots, and every open item has a named home waiting for it.
