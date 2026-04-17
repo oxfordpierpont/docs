@@ -31,8 +31,14 @@ A potential client finds the attorney through search—thanks to the SEO content
 In all three cases, the AI is doing what a good paralegal would do: listening to the prospect's situation, asking relevant follow-up questions, figuring out if this is a case the attorney can help with, and getting them scheduled if so.
 
 4. **Neurigraph Integration**
-Neurigraph is a networked persistent personality and memory intelligence layer across all Oxford Pierpont products:
+Most AI systems get "smarter" through retraining on aggregated data. Neurigraph is an AI that develops genuine experiential memory—it remembers the Rodriguez call from three weeks ago, recalls how that conversation went, and applies that lived experience to similar situations going forward. Neurigraph gives attorneys a networked persistent personality and memory intelligence layer for long term training and growth.
 
+For LogicLegal, that means:
+
+- The AI gets better at handling objections because it remembers which approaches worked
+- It recognizes patterns in how prospects in specific practice areas talk about their situations
+- It learns the nuances of that particular attorney's practice over time
+- It becomes increasingly tailored without manual configuration
 - Each AI instance develops its own experiential memory
 - Each has a unique personality
 - Instances doing similar work (30 criminal defense AIs) can share relevant learnings during sleep cycles
@@ -41,7 +47,7 @@ Neurigraph is a networked persistent personality and memory intelligence layer a
 
 With Neurigraph, AI interactions can feel more like interactions with a remote paralegal or human assistant. The AI persistently learns and remembers the nuances of micro interactions.
 
-The only tier consideration is covering your overhead costs—not gatekeeping the capability itself.
+The only tier consideration is covering the overhead costs—not gatekeeping the capability itself.
 
 For LogicLegal specifically, this means an attorney on the Complete tier isn't paying extra for acquired intelligence. They're paying for the case preparation features, the document access, the deeper capabilities. The fact that their AI gets smarter over time and benefits from learnings across the network is just part of being an Oxford Pierpont client.
 
