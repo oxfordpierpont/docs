@@ -1,0 +1,390 @@
+{
+  "content": [
+    {
+      "id": "nav001",
+      "elType": "section",
+      "settings": {
+        "layout": "full_width",
+        "content_width": {"unit": "px", "size": 1400},
+        "height": "min-height",
+        "custom_height": {"unit": "px", "size": 70},
+        "background_background": "classic",
+        "background_color": "#0a0a0acc",
+        "border_border": "solid",
+        "border_width": {"unit": "px", "top": "0", "right": "0", "bottom": "1", "left": "0"},
+        "border_color": "#262626",
+        "position": "fixed",
+        "z_index": 100,
+        "padding": {"unit": "px", "top": "15", "right": "30", "bottom": "15", "left": "30"}
+      },
+      "elements": [
+        {
+          "id": "nav002",
+          "elType": "column",
+          "settings": {"_column_size": 50, "align": "flex-start"},
+          "elements": [
+            {
+              "id": "nav003",
+              "elType": "widget",
+              "widgetType": "image",
+              "settings": {
+                "image": {"url": "", "id": ""},
+                "image_size": "medium",
+                "width": {"unit": "px", "size": 150}
+              }
+            }
+          ]
+        },
+        {
+          "id": "nav004",
+          "elType": "column",
+          "settings": {"_column_size": 50, "align": "flex-end"},
+          "elements": [
+            {
+              "id": "nav005",
+              "elType": "widget",
+              "widgetType": "button",
+              "settings": {
+                "text": "Try for $1",
+                "link": {"url": "#pricing"},
+                "align": "right",
+                "typography_typography": "custom",
+                "typography_font_family": "Space Grotesk",
+                "typography_font_size": {"unit": "px", "size": 14},
+                "typography_font_weight": "500",
+                "button_text_color": "#0a0a0a",
+                "background_color": "#fafafa",
+                "border_radius": {"unit": "px", "size": 0},
+                "button_hover_color": "#ffffff",
+                "button_background_hover_color": "#2e95f3",
+                "padding": {"unit": "px", "top": "12", "right": "24", "bottom": "12", "left": "24"}
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hero001",
+      "elType": "section",
+      "settings": {
+        "layout": "full_width",
+        "content_width": {"unit": "px", "size": 1400},
+        "min_height": {"unit": "vh", "size": 100},
+        "background_background": "classic",
+        "background_color": "#0a0a0a",
+        "padding": {"unit": "px", "top": "120", "right": "60", "bottom": "60", "left": "60"},
+        "padding_mobile": {"unit": "px", "top": "100", "right": "20", "bottom": "40", "left": "20"}
+      },
+      "elements": [
+        {
+          "id": "hero002",
+          "elType": "column",
+          "settings": {"_column_size": 50, "content_position": "center"},
+          "elements": [
+            {
+              "id": "hero003",
+              "elType": "widget",
+              "widgetType": "html",
+              "settings": {
+                "html": "<link href=\"https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap\" rel=\"stylesheet\"><span style=\"display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: #2e95f3; border: 1px solid #1c5a94; padding: 0.4rem 0.8rem; margin-bottom: 1.5rem; letter-spacing: 0.5px;\">// FOR AI AGENCIES</span>"
+              }
+            },
+            {
+              "id": "hero004",
+              "elType": "widget",
+              "widgetType": "heading",
+              "settings": {
+                "title": "Stop building knowledge bases by hand.",
+                "size": "h1",
+                "title_color": "#fafafa",
+                "typography_typography": "custom",
+                "typography_font_family": "Space Grotesk",
+                "typography_font_size": {"unit": "px", "size": 48},
+                "typography_font_size_mobile": {"unit": "px", "size": 32},
+                "typography_font_weight": "700",
+                "typography_line_height": {"unit": "em", "size": 1.1}
+              }
+            },
+            {
+              "id": "hero005",
+              "elType": "widget",
+              "widgetType": "text-editor",
+              "settings": {
+                "editor": "<p>Paste a URL. Get a complete, deployment-ready knowledge base. Works with any voice AI, chatbot, or LLM platform.</p>",
+                "text_color": "#a1a1a1",
+                "typography_typography": "custom",
+                "typography_font_family": "Space Grotesk",
+                "typography_font_size": {"unit": "px", "size": 18},
+                "typography_line_height": {"unit": "em", "size": 1.6}
+              }
+            },
+            {
+              "id": "hero006",
+              "elType": "widget",
+              "widgetType": "html",
+              "settings": {
+                "html": "<div style=\"display: flex; gap: 2rem; margin: 1.5rem 0; font-family: 'JetBrains Mono', monospace;\"><div><div style=\"font-size: 0.75rem; color: #666; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.25rem;\">Manual process</div><div style=\"font-size: 1.5rem; font-weight: 700; color: #ed5a5a; text-decoration: line-through; opacity: 0.7;\">4-6 hours</div></div><div><div style=\"font-size: 0.75rem; color: #666; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.25rem;\">With this</div><div style=\"font-size: 1.5rem; font-weight: 700; color: #22b573;\">~3 minutes</div></div></div>"
+              }
+            },
+            {
+              "id": "hero007",
+              "elType": "widget",
+              "widgetType": "html",
+              "settings": {
+                "html": "<div style=\"display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem;\"><a href=\"#pricing\" style=\"display: inline-block; padding: 1rem 2rem; background: #2e95f3; color: white; text-decoration: none; font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 1rem;\">Try for $1 →</a><a href=\"#how-it-works\" style=\"display: inline-block; padding: 1rem 2rem; background: transparent; color: #fafafa; text-decoration: none; font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 1rem; border: 1px solid #333;\">See how it works</a></div><p style=\"font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: #666; margin-bottom: 2rem;\"><span style=\"color: #22b573;\">$1 for your first KB.</span> Full output. No limits. See if it fits your workflow.</p>"
+              }
+            },
+            {
+              "id": "hero008",
+              "elType": "widget",
+              "widgetType": "html",
+              "settings": {
+                "html": "<div style=\"border-top: 1px solid #262626; padding-top: 2rem;\"><div style=\"font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: #666; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 1rem;\">Works with any platform</div><div style=\"display: flex; gap: 0.75rem; flex-wrap: wrap;\"><span style=\"font-family: 'Space Grotesk', sans-serif; font-size: 0.9rem; font-weight: 500; color: #666; padding: 0.5rem 0.75rem; border: 1px solid #262626;\">Vapi</span><span style=\"font-family: 'Space Grotesk', sans-serif; font-size: 0.9rem; font-weight: 500; color: #666; padding: 0.5rem 0.75rem; border: 1px solid #262626;\">Bland</span><span style=\"font-family: 'Space Grotesk', sans-serif; font-size: 0.9rem; font-weight: 500; color: #666; padding: 0.5rem 0.75rem; border: 1px solid #262626;\">Retell</span><span style=\"font-family: 'Space Grotesk', sans-serif; font-size: 0.9rem; font-weight: 500; color: #666; padding: 0.5rem 0.75rem; border: 1px solid #262626;\">Botpress</span><span style=\"font-family: 'Space Grotesk', sans-serif; font-size: 0.9rem; font-weight: 500; color: #666; padding: 0.5rem 0.75rem; border: 1px solid #262626;\">Voiceflow</span><span style=\"font-family: 'Space Grotesk', sans-serif; font-size: 0.9rem; font-weight: 500; color: #666; padding: 0.5rem 0.75rem; border: 1px solid #262626;\">OpenAI</span><span style=\"font-family: 'Space Grotesk', sans-serif; font-size: 0.9rem; font-weight: 500; color: #666; padding: 0.5rem 0.75rem; border: 1px solid #262626;\">Anthropic</span></div></div>"
+              }
+            }
+          ]
+        },
+        {
+          "id": "hero009",
+          "elType": "column",
+          "settings": {"_column_size": 50, "content_position": "center"},
+          "elements": [
+            {
+              "id": "hero010",
+              "elType": "widget",
+              "widgetType": "html",
+              "settings": {
+                "html": "<style>@keyframes blink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }</style><div style=\"background: #111111; border: 1px solid #262626; border-radius: 8px; overflow: hidden; box-shadow: 0 0 80px rgba(46, 149, 243, 0.1);\"><div style=\"background: #161616; padding: 0.75rem 1rem; display: flex; align-items: center; gap: 0.5rem; border-bottom: 1px solid #262626;\"><div style=\"width: 12px; height: 12px; border-radius: 50%; background: #ff5f57;\"></div><div style=\"width: 12px; height: 12px; border-radius: 50%; background: #ffbd2e;\"></div><div style=\"width: 12px; height: 12px; border-radius: 50%; background: #28ca41;\"></div><span style=\"margin-left: 0.75rem; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #666;\">kb-generator</span><span style=\"margin-left: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: #ffd56b; background: rgba(255, 213, 107, 0.1); padding: 0.2rem 0.5rem; text-transform: uppercase; letter-spacing: 0.5px;\">Sample Output</span></div><div style=\"padding: 1.5rem; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; line-height: 1.8;\"><div style=\"margin-bottom: 0.5rem;\"><span style=\"color: #22b573;\">$</span> <span style=\"color: #fafafa;\">generate --url </span><span style=\"color: #2e95f3;\">https://acmeplumbing.com</span></div><div style=\"color: #666; margin-bottom: 0.5rem;\">→ Crawling 47 pages...</div><div style=\"color: #666; margin-bottom: 0.5rem;\">→ Extracting services, pricing, FAQs...</div><div style=\"color: #666; margin-bottom: 0.5rem;\">→ Generating system prompt...</div><div style=\"color: #666; margin-bottom: 0.5rem;\">→ Cross-referencing for consistency...</div><div style=\"color: #22b573; margin-bottom: 0.5rem;\">✓ Knowledge base ready (2m 34s)</div><div style=\"color: #666; margin-bottom: 0.5rem;\">  └─ 12 services identified</div><div style=\"color: #666; margin-bottom: 0.5rem;\">  └─ 8 pricing tiers extracted</div><div style=\"color: #666; margin-bottom: 0.5rem;\">  └─ 23 FAQs generated</div><div style=\"color: #666; margin-bottom: 0.5rem;\">  └─ System prompt: 847 tokens</div><div><span style=\"color: #22b573;\">$</span> <span style=\"display: inline-block; animation: blink 1s infinite;\">█</span></div></div></div>"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "problem001",
+      "elType": "section",
+      "settings": {
+        "layout": "full_width",
+        "content_width": {"unit": "px", "size": 1400},
+        "background_background": "classic",
+        "background_color": "#0a0a0a",
+        "border_border": "solid",
+        "border_width": {"unit": "px", "top": "1", "right": "0", "bottom": "0", "left": "0"},
+        "border_color": "#262626",
+        "padding": {"unit": "px", "top": "80", "right": "60", "bottom": "80", "left": "60"}
+      },
+      "elements": [
+        {
+          "id": "problem002",
+          "elType": "column",
+          "settings": {"_column_size": 45},
+          "elements": [
+            {
+              "id": "problem003",
+              "elType": "widget",
+              "widgetType": "html",
+              "settings": {"html": "<span style=\"font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #2e95f3; text-transform: uppercase; letter-spacing: 2px;\">The problem</span>"}
+            },
+            {
+              "id": "problem004",
+              "elType": "widget",
+              "widgetType": "heading",
+              "settings": {
+                "title": "Manual KB creation kills your margins.",
+                "size": "h2",
+                "title_color": "#fafafa",
+                "typography_typography": "custom",
+                "typography_font_family": "Space Grotesk",
+                "typography_font_size": {"unit": "px", "size": 36},
+                "typography_font_weight": "700",
+                "typography_line_height": {"unit": "em", "size": 1.2}
+              }
+            },
+            {
+              "id": "problem005",
+              "elType": "widget",
+              "widgetType": "text-editor",
+              "settings": {
+                "editor": "<p>You've got the voice AI. You've got the chatbot. You've got the client. Now you need to teach it everything about their business.</p>",
+                "text_color": "#a1a1a1",
+                "typography_typography": "custom",
+                "typography_font_family": "Space Grotesk",
+                "typography_font_size": {"unit": "px", "size": 17}
+              }
+            },
+            {
+              "id": "problem006",
+              "elType": "widget",
+              "widgetType": "html",
+              "settings": {
+                "html": "<div style=\"font-family: 'Space Grotesk', sans-serif;\"><div style=\"padding: 1.5rem 0; border-top: 1px solid #262626; border-bottom: 1px solid #262626; display: grid; grid-template-columns: 3rem 1fr; gap: 1rem;\"><span style=\"font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: #ed5a5a;\">01</span><div><h4 style=\"font-size: 1.1rem; font-weight: 500; color: #fafafa; margin: 0 0 0.5rem 0;\">Hours of extraction</h4><p style=\"font-size: 0.95rem; color: #a1a1a1; margin: 0;\">Copy-pasting from websites. Formatting. Restructuring. Discovery calls that go nowhere.</p></div></div><div style=\"padding: 1.5rem 0; border-bottom: 1px solid #262626; display: grid; grid-template-columns: 3rem 1fr; gap: 1rem;\"><span style=\"font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: #ed5a5a;\">02</span><div><h4 style=\"font-size: 1.1rem; font-weight: 500; color: #fafafa; margin: 0 0 0.5rem 0;\">Endless back-and-forth</h4><p style=\"font-size: 0.95rem; color: #a1a1a1; margin: 0;\">Waiting on clients for information. Chasing incomplete answers. Clarifying details.</p></div></div><div style=\"padding: 1.5rem 0; border-bottom: 1px solid #262626; display: grid; grid-template-columns: 3rem 1fr; gap: 1rem;\"><span style=\"font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: #ed5a5a;\">03</span><div><h4 style=\"font-size: 1.1rem; font-weight: 500; color: #fafafa; margin: 0 0 0.5rem 0;\">Hallucination cleanup</h4><p style=\"font-size: 0.95rem; color: #a1a1a1; margin: 0;\">Generic AI invents services, guesses prices, fabricates policies. You spend hours fixing.</p></div></div></div>"
+              }
+            }
+          ]
+        },
+        {
+          "id": "problem007",
+          "elType": "column",
+          "settings": {"_column_size": 55},
+          "elements": [
+            {
+              "id": "problem008",
+              "elType": "widget",
+              "widgetType": "html",
+              "settings": {
+                "html": "<div style=\"background: #161616; border: 1px solid #262626; padding: 2rem; position: relative; margin-top: 2rem;\"><span style=\"position: absolute; top: -0.75rem; left: 1.5rem; background: #0a0a0a; padding: 0 0.5rem; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: #ed5a5a; letter-spacing: 1px;\">BEFORE — YOUR CURRENT PROCESS</span><div style=\"font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; line-height: 2; color: #666;\"><span style=\"color: #a1a1a1;\">// typical_kb_process.txt</span><br><br><span style=\"color: #ffd56b;\">TODO: get pricing from client</span><br><span style=\"color: #a1a1a1;\">Services offered:</span><br>- Plumbing (residential? commercial? <span style=\"color: #ffd56b;\">ask</span>)<br>- <span style=\"color: #ed5a5a; text-decoration: line-through; opacity: 0.6;\">HVAC - removed, they dont do this</span><br>- Drain cleaning<br>- <span style=\"color: #ffd56b;\">Water heater repair? install? both?</span><br><br><span style=\"color: #a1a1a1;\">Hours:</span><br>- Mon-Fri 8-5 <span style=\"color: #ffd56b;\">(verify)</span><br>- <span style=\"color: #ed5a5a; text-decoration: line-through; opacity: 0.6;\">24/7 emergency - client says no</span><br>- Sat: <span style=\"color: #ffd56b;\">???</span><br><br><span style=\"color: #a1a1a1;\">Pricing:</span><br>- <span style=\"color: #ffd56b;\">Waiting on client (3 days)</span><br>- <span style=\"color: #ed5a5a; text-decoration: line-through; opacity: 0.6;\">$99 service call - WRONG</span><br><br><span style=\"color: #666;\">// 4 hours in, still incomplete</span></div></div>"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "how001",
+      "elType": "section",
+      "settings": {
+        "layout": "full_width",
+        "content_width": {"unit": "px", "size": 1400},
+        "background_background": "classic",
+        "background_color": "#0a0a0a",
+        "border_border": "solid",
+        "border_width": {"unit": "px", "top": "1", "right": "0", "bottom": "0", "left": "0"},
+        "border_color": "#262626",
+        "padding": {"unit": "px", "top": "80", "right": "60", "bottom": "40", "left": "60"},
+        "_element_id": "how-it-works"
+      },
+      "elements": [
+        {
+          "id": "how002",
+          "elType": "column",
+          "settings": {"_column_size": 100},
+          "elements": [
+            {"id": "how003", "elType": "widget", "widgetType": "html", "settings": {"html": "<span style=\"font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #2e95f3; text-transform: uppercase; letter-spacing: 2px;\">How it works</span>"}},
+            {"id": "how004", "elType": "widget", "widgetType": "heading", "settings": {"title": "URL in. Knowledge base out.", "size": "h2", "title_color": "#fafafa", "typography_typography": "custom", "typography_font_family": "Space Grotesk", "typography_font_size": {"unit": "px", "size": 36}, "typography_font_weight": "700"}},
+            {"id": "how005", "elType": "widget", "widgetType": "text-editor", "settings": {"editor": "<p>Three steps. Minutes, not hours.</p>", "text_color": "#a1a1a1", "typography_typography": "custom", "typography_font_family": "Space Grotesk", "typography_font_size": {"unit": "px", "size": 17}}}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "how006",
+      "elType": "section",
+      "settings": {
+        "layout": "full_width",
+        "content_width": {"unit": "px", "size": 1400},
+        "background_background": "classic",
+        "background_color": "#0a0a0a",
+        "padding": {"unit": "px", "top": "0", "right": "60", "bottom": "80", "left": "60"},
+        "structure": "30"
+      },
+      "elements": [
+        {"id": "how007", "elType": "column", "settings": {"_column_size": 33}, "elements": [{"id": "how008", "elType": "widget", "widgetType": "html", "settings": {"html": "<div style=\"padding: 2rem; background: #161616; border: 1px solid #262626;\"><span style=\"font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #2e95f3; display: block; margin-bottom: 1.5rem;\">STEP 01</span><h4 style=\"font-family: 'Space Grotesk', sans-serif; font-size: 1.25rem; font-weight: 600; color: #fafafa; margin: 0 0 1rem 0;\">Paste the URL</h4><p style=\"font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; color: #a1a1a1; margin: 0 0 1.5rem 0;\">Enter your client's website. Our crawler handles the rest.</p><div style=\"font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; background: #0a0a0a; padding: 1rem; border: 1px solid #262626; color: #666;\"><span style=\"color: #2e95f3;\">url:</span> https://clientsite.com<br><span style=\"color: #2e95f3;\">pages_found:</span> 47<br><span style=\"color: #2e95f3;\">status:</span> <span style=\"color: #22b573;\">crawling...</span></div></div>"}}]},
+        {"id": "how009", "elType": "column", "settings": {"_column_size": 33}, "elements": [{"id": "how010", "elType": "widget", "widgetType": "html", "settings": {"html": "<div style=\"padding: 2rem; background: #161616; border: 1px solid #262626;\"><span style=\"font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #2e95f3; display: block; margin-bottom: 1.5rem;\">STEP 02</span><h4 style=\"font-family: 'Space Grotesk', sans-serif; font-size: 1.25rem; font-weight: 600; color: #fafafa; margin: 0 0 1rem 0;\">Review & customize</h4><p style=\"font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; color: #a1a1a1; margin: 0 0 1.5rem 0;\">Preview everything extracted. Organized and editable.</p><div style=\"font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; background: #0a0a0a; padding: 1rem; border: 1px solid #262626; color: #666;\"><span style=\"color: #2e95f3;\">services:</span> 12 identified<br><span style=\"color: #2e95f3;\">faqs:</span> 23 generated<br><span style=\"color: #2e95f3;\">gaps:</span> <span style=\"color: #22b573;\">0 flagged</span></div></div>"}}]},
+        {"id": "how011", "elType": "column", "settings": {"_column_size": 33}, "elements": [{"id": "how012", "elType": "widget", "widgetType": "html", "settings": {"html": "<div style=\"padding: 2rem; background: #161616; border: 1px solid #262626;\"><span style=\"font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #2e95f3; display: block; margin-bottom: 1.5rem;\">STEP 03</span><h4 style=\"font-family: 'Space Grotesk', sans-serif; font-size: 1.25rem; font-weight: 600; color: #fafafa; margin: 0 0 1rem 0;\">Export & deploy</h4><p style=\"font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; color: #a1a1a1; margin: 0 0 1.5rem 0;\">Download in your format. Go live immediately.</p><div style=\"font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; background: #0a0a0a; padding: 1rem; border: 1px solid #262626; color: #666;\"><span style=\"color: #2e95f3;\">format:</span> JSON | TXT | CUSTOM<br><span style=\"color: #2e95f3;\">includes:</span> system_prompt<br><span style=\"color: #2e95f3;\">ready:</span> <span style=\"color: #22b573;\">true</span></div></div>"}}]}
+      ]
+    },
+    {
+      "id": "features001",
+      "elType": "section",
+      "settings": {
+        "layout": "full_width",
+        "content_width": {"unit": "px", "size": 1400},
+        "background_background": "classic",
+        "background_color": "#0a0a0a",
+        "border_border": "solid",
+        "border_width": {"unit": "px", "top": "1", "right": "0", "bottom": "0", "left": "0"},
+        "border_color": "#262626",
+        "padding": {"unit": "px", "top": "80", "right": "60", "bottom": "80", "left": "60"}
+      },
+      "elements": [
+        {
+          "id": "features002",
+          "elType": "column",
+          "settings": {"_column_size": 100},
+          "elements": [
+            {"id": "features003", "elType": "widget", "widgetType": "html", "settings": {"html": "<span style=\"font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #2e95f3; text-transform: uppercase; letter-spacing: 2px;\">Features</span>"}},
+            {"id": "features004", "elType": "widget", "widgetType": "heading", "settings": {"title": "Built for AI professionals.", "size": "h2", "title_color": "#fafafa", "typography_typography": "custom", "typography_font_family": "Space Grotesk", "typography_font_size": {"unit": "px", "size": 36}, "typography_font_weight": "700"}},
+            {"id": "features005", "elType": "widget", "widgetType": "html", "settings": {"html": "<div style=\"display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: #262626; border: 1px solid #262626; margin-top: 2rem;\"><div style=\"background: #0a0a0a; padding: 2rem;\"><h4 style=\"font-family: 'Space Grotesk', sans-serif; font-size: 1.15rem; font-weight: 600; color: #fafafa; margin: 0 0 0.75rem 0;\"><span style=\"width: 8px; height: 8px; background: #2e95f3; display: inline-block; margin-right: 0.75rem;\"></span>Full site crawl</h4><p style=\"font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; color: #a1a1a1; margin: 0;\">Every page, not just the homepage.</p></div><div style=\"background: #0a0a0a; padding: 2rem;\"><h4 style=\"font-family: 'Space Grotesk', sans-serif; font-size: 1.15rem; font-weight: 600; color: #fafafa; margin: 0 0 0.75rem 0;\"><span style=\"width: 8px; height: 8px; background: #2e95f3; display: inline-block; margin-right: 0.75rem;\"></span>Near-zero hallucination</h4><p style=\"font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; color: #a1a1a1; margin: 0;\">Closed-system design. No invented facts.</p></div><div style=\"background: #0a0a0a; padding: 2rem;\"><h4 style=\"font-family: 'Space Grotesk', sans-serif; font-size: 1.15rem; font-weight: 600; color: #fafafa; margin: 0 0 0.75rem 0;\"><span style=\"width: 8px; height: 8px; background: #2e95f3; display: inline-block; margin-right: 0.75rem;\"></span>Platform agnostic</h4><p style=\"font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; color: #a1a1a1; margin: 0;\">Vapi, Bland, Retell, Botpress, any platform.</p></div><div style=\"background: #0a0a0a; padding: 2rem;\"><h4 style=\"font-family: 'Space Grotesk', sans-serif; font-size: 1.15rem; font-weight: 600; color: #fafafa; margin: 0 0 0.75rem 0;\"><span style=\"width: 8px; height: 8px; background: #2e95f3; display: inline-block; margin-right: 0.75rem;\"></span>Bring your own keys</h4><p style=\"font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; color: #a1a1a1; margin: 0;\">Deploy with your existing API setup.</p></div><div style=\"background: #0a0a0a; padding: 2rem;\"><h4 style=\"font-family: 'Space Grotesk', sans-serif; font-size: 1.15rem; font-weight: 600; color: #fafafa; margin: 0 0 0.75rem 0;\"><span style=\"width: 8px; height: 8px; background: #2e95f3; display: inline-block; margin-right: 0.75rem;\"></span>Editable output</h4><p style=\"font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; color: #a1a1a1; margin: 0;\">Human-readable and fully customizable.</p></div><div style=\"background: #0a0a0a; padding: 2rem;\"><h4 style=\"font-family: 'Space Grotesk', sans-serif; font-size: 1.15rem; font-weight: 600; color: #fafafa; margin: 0 0 0.75rem 0;\"><span style=\"width: 8px; height: 8px; background: #2e95f3; display: inline-block; margin-right: 0.75rem;\"></span>Gap detection</h4><p style=\"font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; color: #a1a1a1; margin: 0;\">Flags missing information automatically.</p></div></div>"}}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pricing001",
+      "elType": "section",
+      "settings": {
+        "layout": "full_width",
+        "content_width": {"unit": "px", "size": 1400},
+        "background_background": "classic",
+        "background_color": "#0a0a0a",
+        "border_border": "solid",
+        "border_width": {"unit": "px", "top": "1", "right": "0", "bottom": "0", "left": "0"},
+        "border_color": "#262626",
+        "padding": {"unit": "px", "top": "80", "right": "60", "bottom": "80", "left": "60"},
+        "_element_id": "pricing"
+      },
+      "elements": [
+        {
+          "id": "pricing002",
+          "elType": "column",
+          "settings": {"_column_size": 100},
+          "elements": [
+            {"id": "pricing003", "elType": "widget", "widgetType": "html", "settings": {"html": "<span style=\"font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #2e95f3; text-transform: uppercase; letter-spacing: 2px;\">Pricing</span>"}},
+            {"id": "pricing004", "elType": "widget", "widgetType": "heading", "settings": {"title": "Scale without surprises.", "size": "h2", "title_color": "#fafafa", "typography_typography": "custom", "typography_font_family": "Space Grotesk", "typography_font_size": {"unit": "px", "size": 36}, "typography_font_weight": "700"}},
+            {"id": "pricing005", "elType": "widget", "widgetType": "html", "settings": {"html": "<table style=\"width: 100%; border-collapse: collapse; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; margin-top: 2rem;\"><thead><tr><th style=\"text-align: left; padding: 1rem 1.5rem; border-bottom: 1px solid #262626; color: #666; font-weight: 500; font-size: 0.75rem; text-transform: uppercase;\">Plan</th><th style=\"text-align: left; padding: 1rem 1.5rem; border-bottom: 1px solid #262626; color: #666; font-weight: 500; font-size: 0.75rem; text-transform: uppercase;\">Price</th><th style=\"text-align: left; padding: 1rem 1.5rem; border-bottom: 1px solid #262626; color: #666; font-weight: 500; font-size: 0.75rem; text-transform: uppercase;\">KBs</th><th style=\"text-align: left; padding: 1rem 1.5rem; border-bottom: 1px solid #262626; color: #666; font-weight: 500; font-size: 0.75rem; text-transform: uppercase;\">Effective</th><th style=\"padding: 1rem 1.5rem; border-bottom: 1px solid #262626;\"></th></tr></thead><tbody><tr><td style=\"padding: 1.25rem 1.5rem; border-bottom: 1px solid #262626; color: #fafafa; font-weight: 500;\">Try it</td><td style=\"padding: 1.25rem 1.5rem; border-bottom: 1px solid #262626; color: #fafafa; font-size: 1.1rem;\">$1</td><td style=\"padding: 1.25rem 1.5rem; border-bottom: 1px solid #262626; color: #a1a1a1;\">1</td><td style=\"padding: 1.25rem 1.5rem; border-bottom: 1px solid #262626; color: #a1a1a1;\">$1/KB</td><td style=\"padding: 1.25rem 1.5rem; border-bottom: 1px solid #262626;\"><a href=\"#\" style=\"color: #2e95f3; text-decoration: none;\">Start →</a></td></tr><tr><td style=\"padding: 1.25rem 1.5rem; border-bottom: 1px solid #262626; color: #fafafa; font-weight: 500;\">Starter</td><td style=\"padding: 1.25rem 1.5rem; border-bottom: 1px solid #262626; color: #fafafa; font-size: 1.1rem;\">$149<span style=\"font-size: 0.8rem; color: #666;\">/mo</span></td><td style=\"padding: 1.25rem 1.5rem; border-bottom: 1px solid #262626; color: #a1a1a1;\">10</td><td style=\"padding: 1.25rem 1.5rem; border-bottom: 1px solid #262626; color: #a1a1a1;\">$14.90/KB</td><td style=\"padding: 1.25rem 1.5rem; border-bottom: 1px solid #262626;\"><a href=\"#\" style=\"color: #2e95f3; text-decoration: none;\">Start →</a></td></tr><tr><td style=\"padding: 1.25rem 1.5rem; border-bottom: 1px solid #262626; color: #fafafa; font-weight: 500;\">Growth</td><td style=\"padding: 1.25rem 1.5rem; border-bottom: 1px solid #262626; color: #fafafa; font-size: 1.1rem;\">$299<span style=\"font-size: 0.8rem; color: #666;\">/mo</span></td><td style=\"padding: 1.25rem 1.5rem; border-bottom: 1px solid #262626; color: #a1a1a1;\">25</td><td style=\"padding: 1.25rem 1.5rem; border-bottom: 1px solid #262626; color: #a1a1a1;\">$11.96/KB</td><td style=\"padding: 1.25rem 1.5rem; border-bottom: 1px solid #262626;\"><a href=\"#\" style=\"color: #2e95f3; text-decoration: none;\">Start →</a></td></tr><tr style=\"background: #161616;\"><td style=\"padding: 1.25rem 1.5rem; border-bottom: 1px solid #333; color: #2e95f3; font-weight: 500;\">Pro ★</td><td style=\"padding: 1.25rem 1.5rem; border-bottom: 1px solid #333; color: #fafafa; font-size: 1.1rem;\">$499<span style=\"font-size: 0.8rem; color: #666;\">/mo</span></td><td style=\"padding: 1.25rem 1.5rem; border-bottom: 1px solid #333; color: #a1a1a1;\">50</td><td style=\"padding: 1.25rem 1.5rem; border-bottom: 1px solid #333; color: #a1a1a1;\">$9.98/KB</td><td style=\"padding: 1.25rem 1.5rem; border-bottom: 1px solid #333;\"><a href=\"#\" style=\"color: #2e95f3; text-decoration: none;\">Start →</a></td></tr><tr><td style=\"padding: 1.25rem 1.5rem; border-bottom: 1px solid #262626; color: #fafafa; font-weight: 500;\">Agency</td><td style=\"padding: 1.25rem 1.5rem; border-bottom: 1px solid #262626; color: #fafafa; font-size: 1.1rem;\">$999<span style=\"font-size: 0.8rem; color: #666;\">/mo</span></td><td style=\"padding: 1.25rem 1.5rem; border-bottom: 1px solid #262626; color: #a1a1a1;\">250</td><td style=\"padding: 1.25rem 1.5rem; border-bottom: 1px solid #262626; color: #a1a1a1;\">$4.00/KB</td><td style=\"padding: 1.25rem 1.5rem; border-bottom: 1px solid #262626;\"><a href=\"#\" style=\"color: #2e95f3; text-decoration: none;\">Start →</a></td></tr></tbody></table>"}},
+            {"id": "pricing006", "elType": "widget", "widgetType": "html", "settings": {"html": "<div style=\"margin-top: 2rem; padding: 1.5rem; border: 1px solid #22b573; background: rgba(34, 181, 115, 0.05); display: flex; align-items: center; gap: 1rem;\"><span style=\"font-size: 1.5rem;\">✓</span><p style=\"font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; color: #a1a1a1; margin: 0;\"><strong style=\"color: #22b573;\">Output not usable? Full refund.</strong> No questions asked.</p></div>"}}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cta001",
+      "elType": "section",
+      "settings": {
+        "layout": "full_width",
+        "content_width": {"unit": "px", "size": 1400},
+        "background_background": "classic",
+        "background_color": "#0a0a0a",
+        "border_border": "solid",
+        "border_width": {"unit": "px", "top": "1", "right": "0", "bottom": "0", "left": "0"},
+        "border_color": "#262626",
+        "padding": {"unit": "px", "top": "120", "right": "60", "bottom": "120", "left": "60"}
+      },
+      "elements": [
+        {
+          "id": "cta002",
+          "elType": "column",
+          "settings": {"_column_size": 100, "align": "center"},
+          "elements": [
+            {"id": "cta003", "elType": "widget", "widgetType": "heading", "settings": {"title": "Your expertise is building AI solutions, not copying from websites.", "size": "h2", "align": "center", "title_color": "#fafafa", "typography_typography": "custom", "typography_font_family": "Space Grotesk", "typography_font_size": {"unit": "px", "size": 36}, "typography_font_weight": "700"}},
+            {"id": "cta004", "elType": "widget", "widgetType": "html", "settings": {"html": "<div style=\"text-align: center; margin-top: 1rem;\"><p style=\"font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; color: #a1a1a1;\">Let us handle the knowledge base. You handle the deployment.</p><div style=\"font-family: 'JetBrains Mono', monospace; font-size: 2.5rem; font-weight: 700; color: #2e95f3; margin: 1rem 0 0.5rem 0;\">$1</div><p style=\"font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: #666; margin: 0 0 2rem 0;\">First knowledge base. Full output. No limits.</p><a href=\"#pricing\" style=\"display: inline-block; padding: 1rem 2rem; background: #2e95f3; color: white; text-decoration: none; font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 1rem;\">Try it now →</a></div>"}}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "footer001",
+      "elType": "section",
+      "settings": {
+        "layout": "full_width",
+        "content_width": {"unit": "px", "size": 1400},
+        "background_background": "classic",
+        "background_color": "#0a0a0a",
+        "border_border": "solid",
+        "border_width": {"unit": "px", "top": "1", "right": "0", "bottom": "0", "left": "0"},
+        "border_color": "#262626",
+        "padding": {"unit": "px", "top": "30", "right": "60", "bottom": "30", "left": "60"}
+      },
+      "elements": [
+        {"id": "footer002", "elType": "column", "settings": {"_column_size": 50}, "elements": [{"id": "footer003", "elType": "widget", "widgetType": "image", "settings": {"image": {"url": "", "id": ""}, "image_size": "medium", "width": {"unit": "px", "size": 120}, "opacity": {"unit": "px", "size": 0.7}}}]},
+        {"id": "footer004", "elType": "column", "settings": {"_column_size": 50, "align": "flex-end"}, "elements": [{"id": "footer005", "elType": "widget", "widgetType": "text-editor", "settings": {"editor": "<p>AI Knowledge Base Generator is a product of Oxford Pierpont. © 2025</p>", "align": "right", "text_color": "#666", "typography_typography": "custom", "typography_font_family": "Space Grotesk", "typography_font_size": {"unit": "px", "size": 14}}}]}
+      ]
+    }
+  ],
+  "page_settings": {"background_background": "classic", "background_color": "#0a0a0a", "padding": {"unit": "px", "top": "0", "right": "0", "bottom": "0", "left": "0"}},
+  "version": "0.4",
+  "title": "AI Knowledge Base Generator",
+  "type": "page"
+}
