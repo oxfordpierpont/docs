@@ -177,6 +177,63 @@
             ]
           },
           {
+            "group": "Apps & Modules",
+            "icon": "puzzle-piece",
+            "pages": [
+              "knowledge-base/aiconnected-apps-and-modules/ai-connected-site-guide-co-browser",
+              "knowledge-base/aiconnected-apps-and-modules/remote-work-engine-requirements",
+              "knowledge-base/aiconnected-apps-and-modules/mac-engine-prd",
+              "knowledge-base/aiconnected-apps-and-modules/original-aiConnected-engines",
+              "knowledge-base/aiconnected-apps-and-modules/5-year-ai-business-landscape",
+              {
+                "group": "aiConnected Voice",
+                "pages": [
+                  "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-voice/Developer-Introduction",
+                  "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-voice/GoToConnect-API-Endpoints-Capabilities",
+                  "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-voice/Original-Context",
+                  "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-voice/Feasibility-Analysis",
+                  "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-voice/Index-and-Build-Phases",
+                  "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-voice/Task-List",
+                  "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-voice/GoToConnect-integration-spec",
+                  "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-voice/aiConnected-voice-credentials-checklist",
+                  "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-voice/aiConnected-voice-deep-dive",
+                  "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-voice/aiConnected-voice-investor-explaination",
+                  "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-voice/aiConnected-voice-junior-dev-prd",
+                  "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-voice/complete-infra-stack",
+                  "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-voice/dev-env-setup-guide",
+                  "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-voice/system-architecture",
+                  "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-voice/voice-pipeline-architecture",
+                  "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-voice/webrtc-bridge-technical-design"
+                ]
+              },
+              {
+                "group": "KB Generator",
+                "pages": [
+                  "knowledge-base/aiconnected-apps-and-modules/modules/kb-generator/kb-generator-design-build-instructions",
+                  "knowledge-base/aiconnected-apps-and-modules/modules/kb-generator/kb-generator-field-reference",
+                  "knowledge-base/aiconnected-apps-and-modules/modules/kb-generator/kb-generator-onboarding-screen-plan",
+                  "knowledge-base/aiconnected-apps-and-modules/modules/kb-generator/ai-knowledge-training-system",
+                  "knowledge-base/aiconnected-apps-and-modules/modules/kb-generator/kb-generator-prompts",
+                  "knowledge-base/aiconnected-apps-and-modules/modules/kb-generator/kb-generator-readme",
+                  "knowledge-base/aiconnected-apps-and-modules/modules/kb-generator/kb-generator-template-sample"
+                ]
+              },
+              {
+                "group": "funnelChat",
+                "pages": [
+                  "knowledge-base/aiconnected-apps-and-modules/modules/funnelChat/legacy-funnelChat-overview",
+                  "knowledge-base/aiconnected-apps-and-modules/modules/funnelChat/legacy-funnelChat-chatInsights-alt",
+                  "knowledge-base/aiconnected-apps-and-modules/modules/funnelChat/legacy-funnelChat-conversation-flow-sample",
+                  "knowledge-base/aiconnected-apps-and-modules/modules/funnelChat/legacy-funnelChat-training-prompts",
+                  "knowledge-base/aiconnected-apps-and-modules/modules/funnelChat/legacy-funnelChat-raw-brainstorm"
+                ]
+              },
+              "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-contact",
+              "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-webinar",
+              "knowledge-base/aiconnected-apps-and-modules/modules/legacy-siteGuide-prd"
+            ]
+          },
+          {
             "group": "Business Platform",
             "icon": "building",
             "pages": [
@@ -190,6 +247,11 @@
               "knowledge-base/aiconnected-business-platform/production-readiness-checklist",
               "knowledge-base/aiconnected-business-platform/legacy-platform-v1-inventory",
               "knowledge-base/aiconnected-business-platform/platform-v1-context",
+              "knowledge-base/aiconnected-business-platform/ai-services-business-directory",
+              "knowledge-base/aiconnected-business-platform/legacy-aiConnected-marketplace",
+              "knowledge-base/aiconnected-business-platform/legacy-business-platform-specification",
+              "knowledge-base/aiconnected-business-platform/legacy-platform-redesign-spec",
+              "knowledge-base/aiconnected-business-platform/legacy-platform-sidebar-spec",
               {
                 "group": "Layout Manager",
                 "pages": [
@@ -202,28 +264,34 @@
             ]
           },
           {
-            "group": "Apps & Modules",
-            "icon": "puzzle-piece",
+            "group": "Neurigraph Memory Architecture",
+            "icon": "diagram-project",
             "pages": [
-              "knowledge-base/aiconnected-apps-and-modules/ai-connected-site-guide-co-browser",
-              "knowledge-base/aiconnected-apps-and-modules/remote-work-engine-requirements",
+              "knowledge-base/neurigraph-memory-architecture/neurigraph-build-plan",
               {
-                "group": "aiConnected Voice",
+                "group": "Hyperthyme Memory Framework",
                 "pages": [
-                  "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-voice/Developer-Introduction",
-                  "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-voice/GoToConnect-API-Endpoints-Capabilities",
-                  "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-voice/Original-Context",
-                  "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-voice/Feasibility-Analysis",
-                  "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-voice/Index-and-Build-Phases",
-                  "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-voice/Task-List"
+                  "knowledge-base/neurigraph-memory-architecture/hyperthyme-memory-framework/hyperthyme-technical-overview",
+                  "knowledge-base/neurigraph-memory-architecture/hyperthyme-memory-framework/hyperthyme-technical-architecture",
+                  "knowledge-base/neurigraph-memory-architecture/hyperthyme-memory-framework/hyperthyme-junior-dev-guide",
+                  "knowledge-base/neurigraph-memory-architecture/hyperthyme-memory-framework/hyperthyme-master-project-checklist",
+                  "knowledge-base/neurigraph-memory-architecture/hyperthyme-memory-framework/hyperthyme-investor-overview"
                 ]
               },
               {
-                "group": "KB Generator",
+                "group": "Tool References",
                 "pages": [
-                  "knowledge-base/aiconnected-apps-and-modules/modules/kb-generator/kb-generator-design-build-instructions",
-                  "knowledge-base/aiconnected-apps-and-modules/modules/kb-generator/kb-generator-field-reference",
-                  "knowledge-base/aiconnected-apps-and-modules/modules/kb-generator/kb-generator-onboarding-screen-plan"
+                  "knowledge-base/neurigraph-memory-architecture/neurigraph-tool-references/01-MCP-Knowledge-Graph-Memory-Server",
+                  "knowledge-base/neurigraph-memory-architecture/neurigraph-tool-references/02-Multi-Database-Conversation-Memory-System",
+                  "knowledge-base/neurigraph-memory-architecture/neurigraph-tool-references/03-Temporal-Knowledge-Graph-Adaptive-Decay",
+                  "knowledge-base/neurigraph-memory-architecture/neurigraph-tool-references/04-Markdown-Based-Local-Knowledge-Graph",
+                  "knowledge-base/neurigraph-memory-architecture/neurigraph-tool-references/05-SQL-Native-Entity-Memory-Layer",
+                  "knowledge-base/neurigraph-memory-architecture/neurigraph-tool-references/06-Hierarchical-Agentic-Memory-Auto-Taxonomy",
+                  "knowledge-base/neurigraph-memory-architecture/neurigraph-tool-references/07-AI-Chat-UI-Component-Library",
+                  "knowledge-base/neurigraph-memory-architecture/neurigraph-tool-references/08-Conversational-AI-App-Shell-Framework",
+                  "knowledge-base/neurigraph-memory-architecture/neurigraph-tool-references/09-Artifact-Panel-Starter-Template",
+                  "knowledge-base/neurigraph-memory-architecture/neurigraph-tool-references/10-Lightweight-Fact-Based-AI-Memory-API",
+                  "knowledge-base/neurigraph-memory-architecture/neurigraph-tool-references/11-Full-Stack-AI-Memory-Platform-Hybrid-Search"
                 ]
               }
             ]
@@ -236,7 +304,8 @@
               "knowledge-base/aiconnected-supporting-docs/self-hosting",
               "knowledge-base/aiconnected-supporting-docs/engaging-the-dev-community",
               "knowledge-base/aiconnected-supporting-docs/ai-connected-license-agreement",
-              "knowledge-base/aiconnected-supporting-docs/additional-considerations"
+              "knowledge-base/aiconnected-supporting-docs/additional-considerations",
+              "knowledge-base/aiconnected-supporting-docs/persona-ide-system-prompt"
             ]
           },
           {
