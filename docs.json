@@ -141,7 +141,6 @@
             "group": "aiConnected OS",
             "icon": "infinity",
             "pages": [
-              "knowledge-base/aiconnected-os/aiConnectedOS-Product-Requirements-Document",
               "knowledge-base/aiconnected-os/ai-connected-os-master-planning-document",
               "knowledge-base/aiconnected-os/ai-connected-os-branding-config",
               "knowledge-base/aiconnected-os/aiconnected-os-branding-config-design-build-spec",
@@ -273,6 +272,7 @@
     }
   },
   "fonts": {
+    "family": "Poppins",
     "heading": {
       "family": "Poppins",
       "weight": 600
