@@ -171,7 +171,8 @@
                 "group": "Personal Plaform",
                 "pages": [
                   "dynamic-persona-waking-voice",
-                  "dynamic-screen-routing"
+                  "dynamic-screen-routing",
+                  "aiConnectedOS-Product-Requirements-Document"
                 ]
               },
               {
@@ -260,7 +261,8 @@
                       "2-ai-connected-os-task-feature-spec-md",
                       "3-ai-connected-os-live-document-feature-md"
                     ]
-                  }
+                  },
+                  "ai-connected-os-prototype-jsx"
                 ]
               }
             ]
