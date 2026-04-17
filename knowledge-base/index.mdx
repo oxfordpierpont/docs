@@ -1,0 +1,52 @@
+---
+title: "Welcome to aiConnected Docs"
+description: "The official home for aiConnected platform documentation, PRDs, API references, and developer resources."
+---
+
+## What is aiConnected?
+
+aiConnected is a **B2B2B AI operating system** built for agencies and the businesses they serve. It replaces fragmented chatbots and siloed tools with a persistent cognitive workspace — a platform where specialized AI Personas collaborate, remember, and execute real work across every business function.
+
+At its core, aiConnected gives AI a **digital body**: persistent memory, bounded skill sets, and a multi-agent architecture that mirrors how a real team operates. Agencies deploy it under their own brand. Their clients experience it as an intelligent business partner, not a chatbot.
+
+## What's in these docs?
+
+This documentation site is the single source of truth for everyone building on or with aiConnected — internal developers, agency partners, and third-party module developers.
+
+<CardGroup cols={2}>
+  <Card title="Documentation" icon="book-open" href="/introduction">
+    Platform concepts, architecture, Persona configuration, and the Cognigraph memory system.
+  </Card>
+  <Card title="API Reference" icon="code" href="/api-reference/introduction">
+    Full REST API reference for integrating aiConnected into your stack.
+  </Card>
+  <Card title="Webhook Events" icon="bolt" href="/webhooks/introduction">
+    Real-time event hooks for Persona activity, workflow completion, and platform triggers.
+  </Card>
+  <Card title="Knowledge Base" icon="circle-question" href="/knowledge-base/introduction">
+    Answers to common implementation questions, troubleshooting guides, and best practices.
+  </Card>
+</CardGroup>
+
+## Platform highlights
+
+<AccordionGroup>
+  <Accordion title="Cognigraph Memory">
+    A dual-layer cognitive architecture with an Open Thinking Layer (fluid, working memory) and a Closed Thinking Layer (immutable rules and original intent). All learning passes CTL validation before it's retained.
+  </Accordion>
+  <Accordion title="Domain Capability Fabric">
+    A developer-extensible marketplace where Domain Capability Modules compete at runtime to execute user intents via n8n workflows. Third-party developers earn 80% of every module run.
+  </Accordion>
+  <Accordion title="Embodied Personas">
+    Specialized AI agents with finite skill slots, persistent memory, and sandboxed desktop environments for real-world task execution.
+  </Accordion>
+  <Accordion title="Fluid Context">
+    A turn-by-turn context system using four classes — Fixed, Topic, Hot Working, and Archived — to maintain coherent, lossless conversations far beyond standard context window limits.
+  </Accordion>
+</AccordionGroup>
+
+## For developers
+
+aiConnected is built on a **Next.js / Supabase / n8n** stack with a Turborepo monorepo structure. Module developers build n8n workflow templates and submit them to the Capability Fabric marketplace — no direct access to customer data required.
+
+If you're building a module, start with the [API Reference](/api-reference/introduction). If you're an agency partner configuring a white-label deployment, start with the [Documentation](/introduction).

@@ -42,7 +42,8 @@
             "group": "Getting Started",
             "pages": [
               "index",
-              "quickstart/overview"
+              "quickstart/overview",
+              "start-here"
             ]
           },
           {
@@ -129,7 +130,7 @@
       },
       {
         "tab": "Knowledge Base",
-        "pages": [
+        "groups": [
           {
             "group": "Introduction",
             "pages": [
@@ -137,134 +138,122 @@
             ]
           },
           {
-            "group": "Modules",
-            "icon": "puzzle-piece",
-            "pages": [
-              {
-                "group": "aiConnected Voice",
-                "icon": "notebook",
-                "pages": [
-                  "knowledge-base/modules/aiConnected-voice/Developer-Introduction",
-                  "knowledge-base/modules/aiConnected-voice/GoToConnect-API-Endpoints-Capabilities",
-                  "knowledge-base/modules/aiConnected-voice/Original-Context",
-                  "knowledge-base/modules/aiConnected-voice/Feasibility-Analysis",
-                  "knowledge-base/modules/aiConnected-voice/Index-and-Build-Phases",
-                  "knowledge-base/modules/aiConnected-voice/Task-List"
-                ]
-              }
-            ]
-          },
-          {
-            "group": "aiConnected Platform OS",
-            "pages": [
-              {
-                "group": "Business Platform",
-                "pages": []
-              },
-              {
-                "group": "Developer Platform",
-                "pages": [
-                  "how-will-developers-use-the-ai-connected-platform"
-                ]
-              },
-              {
-                "group": "Personal Plaform",
-                "pages": [
-                  "dynamic-persona-waking-voice",
-                  "dynamic-screen-routing",
-                  "aiConnectedOS-Product-Requirements-Document"
-                ]
-              },
-              {
-                "group": "Platform Architecture",
-                "pages": [
-                  {
-                    "group": "Layout Manager",
-                    "pages": [
-                      "what-is-the-layout-manager",
-                      "layout-manager-codex-prd",
-                      "additional-considerations",
-                      "what-is-the-platform-shell"
-                    ]
-                  },
-                  {
-                    "group": "Platform Shell",
-                    "pages": [
-                      "shell-codex-prd",
-                      "platform-v1-context"
-                    ]
-                  },
-                  {
-                    "group": "Platform AI",
-                    "pages": [
-                      "sample-user-md-configuration",
-                      "user-onboarding-flow"
-                    ]
-                  },
-                  "self-hosting",
-                  {
-                    "group": "Open Sourcing",
-                    "pages": [
-                      "ai-connected-license-agreement",
-                      "engaging-the-dev-community"
-                    ]
-                  },
-                  "start-here"
-                ]
-              },
-              "legacy-platform-v1-inventory"
-            ]
-          },
-          {
-            "group": "Raw Brainstorming Transcripts",
-            "pages": []
-          },
-          "production-readiness-checklist",
-          "ai-critical-thinking-protocol",
-          {
-            "group": "aiConnectedOS Personal ",
+            "group": "aiConnected OS",
             "icon": "infinity",
             "pages": [
+              "knowledge-base/aiconnected-os/aiConnectedOS-Product-Requirements-Document",
+              "knowledge-base/aiconnected-os/ai-connected-os-master-planning-document",
+              "knowledge-base/aiconnected-os/ai-connected-os-branding-config",
+              "knowledge-base/aiconnected-os/aiconnected-os-branding-config-design-build-spec",
+              "knowledge-base/aiconnected-os/ai-connected-os-prototype-jsx",
+              "knowledge-base/aiconnected-os/ai-critical-thinking-protocol",
+              "knowledge-base/aiconnected-os/dynamic-persona-waking-voice",
+              "knowledge-base/aiconnected-os/dynamic-screen-routing",
+              "knowledge-base/aiconnected-os/chat-nav-topic-log",
               {
-                "group": "Features & Configurations",
+                "group": "Feature Specs",
                 "pages": [
-                  "chat-nav-topic-log"
+                  "knowledge-base/aiconnected-os/aiconnected-os-1-spaces-dashboard-design",
+                  "knowledge-base/aiconnected-os/aiconnected-os-2-task-feature-spec",
+                  "knowledge-base/aiconnected-os/aiconnected-os-3-live-document-feature",
+                  "knowledge-base/aiconnected-os/aiconnected-os-4-dashboard-whiteboard-integration",
+                  "knowledge-base/aiconnected-os/aiconnected-os-4-folder-system-design",
+                  "knowledge-base/aiconnected-os/aiconnected-os-6-conversation-reference-feature",
+                  "knowledge-base/aiconnected-os/aiconnected-os-7-pin-message-feature",
+                  "knowledge-base/aiconnected-os/aiconnected-os-8-cognition-console-ui-design",
+                  "knowledge-base/aiconnected-os/aiconnected-os-9-collaborative-personas-planning",
+                  "knowledge-base/aiconnected-os/aiconnected-os-10-computer-use-for-personas",
+                  "knowledge-base/aiconnected-os/aiconnected-os-11-chat-cleanup-system",
+                  "knowledge-base/aiconnected-os/aiconnected-os-12-persona-skill-slots",
+                  "knowledge-base/aiconnected-os/aiconnected-os-13-adaptive-ui-tutorials",
+                  "knowledge-base/aiconnected-os/aiconnected-os-14-build-plan-review",
+                  "knowledge-base/aiconnected-os/aiconnected-os-15-document-and-organize-ideas",
+                  "knowledge-base/aiconnected-os/aiconnected-os-16-enterprise-potential",
+                  "knowledge-base/aiconnected-os/aiconnected-os-17-in-chat-navigation",
+                  "knowledge-base/aiconnected-os/aiconnected-os-18-context-windows-in-ai",
+                  "knowledge-base/aiconnected-os/aiconnected-os-19-fluid-ui-architecture",
+                  "knowledge-base/aiconnected-os/aiconnected-os-20-extensible-ai-capability-system"
                 ]
               }
             ]
           },
           {
-            "group": "Document Dump",
+            "group": "Business Platform",
+            "icon": "building",
             "pages": [
+              "knowledge-base/aiconnected-business-platform/aiconnected-platform-overview",
+              "knowledge-base/aiconnected-business-platform/aiconnected-platform-overview-non-technical",
+              "knowledge-base/aiconnected-business-platform/aiconnected-platform-mvp-specification",
+              "knowledge-base/aiconnected-business-platform/aiconnected-platform-foundation-prd",
+              "knowledge-base/aiconnected-business-platform/aiconnected-platform-v2-build-plan",
+              "knowledge-base/aiconnected-business-platform/aiconnected-platform-v1-audit",
+              "knowledge-base/aiconnected-business-platform/aiconnected-platform-v2-port-map",
+              "knowledge-base/aiconnected-business-platform/production-readiness-checklist",
+              "knowledge-base/aiconnected-business-platform/legacy-platform-v1-inventory",
+              "knowledge-base/aiconnected-business-platform/platform-v1-context",
               {
-                "group": "Raw Dump Repo 1",
+                "group": "Layout Manager",
                 "pages": [
-                  "document-inventory-194-docs"
-                ]
-              },
-              {
-                "group": "Raw Dump Repo 2 - aiConnected Unfiltered",
-                "pages": [
-                  "doc-dump-2-64-of-258-docs",
-                  "ai-connected-os-master-planning-document",
-                  "ai-connected-os-branding-config",
-                  "ai-connected-site-guide-co-browser"
-                ]
-              },
-              {
-                "group": "Raw Dump Repo 3 - GDrive Unfiltered",
-                "pages": [
-                  {
-                    "group": "Unedited ChatGPT Convos",
-                    "pages": [
-                      "1-ai-connected-os-spaces-dashboard-design-md",
-                      "2-ai-connected-os-task-feature-spec-md",
-                      "3-ai-connected-os-live-document-feature-md"
-                    ]
-                  },
-                  "ai-connected-os-prototype-jsx"
+                  "knowledge-base/aiconnected-business-platform/layout-manager/what-is-the-layout-manager",
+                  "knowledge-base/aiconnected-business-platform/layout-manager/layout-manager-codex-prd",
+                  "knowledge-base/aiconnected-business-platform/what-is-the-platform-shell",
+                  "knowledge-base/aiconnected-business-platform/shell-codex-prd"
                 ]
               }
+            ]
+          },
+          {
+            "group": "Apps & Modules",
+            "icon": "puzzle-piece",
+            "pages": [
+              "knowledge-base/aiconnected-apps-and-modules/ai-connected-site-guide-co-browser",
+              "knowledge-base/aiconnected-apps-and-modules/remote-work-engine-requirements",
+              {
+                "group": "aiConnected Voice",
+                "pages": [
+                  "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-voice/Developer-Introduction",
+                  "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-voice/GoToConnect-API-Endpoints-Capabilities",
+                  "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-voice/Original-Context",
+                  "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-voice/Feasibility-Analysis",
+                  "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-voice/Index-and-Build-Phases",
+                  "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-voice/Task-List"
+                ]
+              },
+              {
+                "group": "KB Generator",
+                "pages": [
+                  "knowledge-base/aiconnected-apps-and-modules/modules/kb-generator/kb-generator-design-build-instructions",
+                  "knowledge-base/aiconnected-apps-and-modules/modules/kb-generator/kb-generator-field-reference",
+                  "knowledge-base/aiconnected-apps-and-modules/modules/kb-generator/kb-generator-onboarding-screen-plan"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Supporting Documentation",
+            "icon": "book",
+            "pages": [
+              "knowledge-base/aiconnected-supporting-docs/how-will-developers-use-the-ai-connected-platform",
+              "knowledge-base/aiconnected-supporting-docs/self-hosting",
+              "knowledge-base/aiconnected-supporting-docs/engaging-the-dev-community",
+              "knowledge-base/aiconnected-supporting-docs/ai-connected-license-agreement",
+              "knowledge-base/aiconnected-supporting-docs/additional-considerations"
+            ]
+          },
+          {
+            "group": "Document Archive",
+            "icon": "archive",
+            "pages": [
+              "knowledge-base/aiconnected-supporting-docs/document-inventory-194-docs",
+              "knowledge-base/aiconnected-supporting-docs/doc-dump-2-64-of-258-docs"
+            ]
+          },
+          {
+            "group": "Platform AI",
+            "icon": "brain",
+            "pages": [
+              "knowledge-base/sample-user-md-configuration",
+              "user-onboarding-flow"
             ]
           }
         ]
@@ -284,7 +273,6 @@
     }
   },
   "fonts": {
-    "family": "Poppins",
     "heading": {
       "family": "Poppins",
       "weight": 600
