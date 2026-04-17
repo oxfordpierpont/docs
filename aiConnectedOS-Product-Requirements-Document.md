@@ -4,11 +4,11 @@ description: "v5"
 ---
 
 
-# aiConnected OS — Product Requirements Document (Outline) {#aiconnected-os-—-product-requirements-document-(outline)}
+# aiConnected OS — Product Requirements Document (Outline) 
 
 **Version:** 1.0 Draft **Last Updated:** February 13, 2026 **Author:** Bob (Oxford Pierpont) **Build Target:** Claude Code \+ Supabase **UI Reference:** `aiconnected-os-v5-final.jsx` (3,038-line interactive prototype)
 
-# Table Of Contents  {#table-of-contents}
+# Table Of Contents  
 
 [aiConnected OS — Product Requirements Document (Outline)	1](#aiconnected-os-—-product-requirements-document-\(outline\))
 
@@ -2976,22 +2976,22 @@ description: "v5"
 
 ---
 
-## Document Purpose {#document-purpose}
+## Document Purpose 
 
 This PRD will serve as the single source of truth for Claude Code to build a fully functional aiConnected OS platform. Every section must contain enough implementation detail — including database schemas, API contracts, component specifications, state management, and edge cases — for an AI coding agent to produce working code without ambiguity.
 
 ---
 
-## PART 1: PRODUCT FOUNDATION {#part-1:-product-foundation}
+## PART 1: PRODUCT FOUNDATION 
 
-### 1.1 Product Vision & Definition {#1.1-product-vision-&-definition}
+### 1.1 Product Vision & Definition 
 
 - One-sentence definition from the docs: "aiConnected is a fluid interaction platform where persistent AI personas act as believable collaborators — operating within explicit skill boundaries — while a continuous chat-based cognitive backbone preserves memory, context, and coordination across any activity the user chooses."  
 - The three problems being solved: lack of real memory, the omniscience illusion, treating AI as disposable tools  
 - What makes this different from ChatGPT/Claude/Perplexity (persistent cognition, modular intelligence, workflow-native, persona governance)  
 - Target users: individual professionals, creators, agencies, power users, eventually enterprise
 
-### 1.2 Architecture Overview (Four Layers) {#1.2-architecture-overview-(four-layers)}
+### 1.2 Architecture Overview (Four Layers) 
 
 - **Layer 1: Cipher** — Invisible orchestration engine. Never user-facing. Handles routing, memory arbitration, skill validation, safety, coordination. The "unrestricted cognition layer" that governs everything but is never addressable.  
 - **Layer 2: CogniGraph** — Structured knowledge graph memory system. Categories → Concepts → Topics. Open Thinking Layer (transient) vs Closed Thinking Layer (committed). Checkpoint-based context assembly.  
@@ -2999,7 +2999,7 @@ This PRD will serve as the single source of truth for Claude Code to build a ful
 - **Layer 4: Fluid UI** — Adaptive interface that reshapes around user activity. Chat as spine, progressive disclosure, no hard modes.  
 - Diagram: How layers communicate (Cipher → Personas → User; CogniGraph serves all layers)
 
-### 1.3 Technology Stack {#1.3-technology-stack}
+### 1.3 Technology Stack 
 
 - **Frontend:** Next.js 14+ (App Router), React 18+, TypeScript, Tailwind CSS, shadcn/ui  
 - **Backend:** Supabase (PostgreSQL, Auth, Realtime, Edge Functions, Storage)  
@@ -3010,7 +3010,7 @@ This PRD will serve as the single source of truth for Claude Code to build a ful
 - **Deployment:** Vercel (frontend), Supabase Cloud (backend)  
 - **Browser Engine:** Embedded iframe/webview with DOM extraction layer (v1), Chrome extension companion mode (future)
 
-### 1.4 Design System & Theming {#1.4-design-system-&-theming}
+### 1.4 Design System & Theming 
 
 - Brand palette: Navy (\#021220, \#031c33), Blue accent (\#2e95f3), DM Sans typography  
 - Light/dark mode with complete token set (reference prototype theme objects)  
@@ -3023,9 +3023,9 @@ This PRD will serve as the single source of truth for Claude Code to build a ful
 
 ---
 
-## PART 2: AUTHENTICATION & USER MANAGEMENT {#part-2:-authentication-&-user-management}
+## PART 2: AUTHENTICATION & USER MANAGEMENT 
 
-### 2.1 Authentication {#2.1-authentication}
+### 2.1 Authentication 
 
 - Supabase Auth with email/password (v1)  
 - OAuth providers: Google, GitHub (v1); Apple, Microsoft (v2)  
@@ -3033,13 +3033,13 @@ This PRD will serve as the single source of truth for Claude Code to build a ful
 - Password reset flow  
 - Email verification
 
-### 2.2 User Profile {#2.2-user-profile}
+### 2.2 User Profile 
 
 - Database schema: users table extending Supabase auth.users  
 - Fields: display\_name, avatar\_url, preferences (JSON), tier, created\_at, onboarding\_completed  
 - User preferences: theme (light/dark/system), default\_model, interface\_mode (standard/power), notification settings
 
-### 2.3 Pricing Tiers & Feature Gating {#2.3-pricing-tiers-&-feature-gating}
+### 2.3 Pricing Tiers & Feature Gating 
 
 - Four tiers: Free ($0), Plus ($19.99/mo), Premium ($49.99/mo), Pro ($99.99/mo)  
 - Tier limits table: instances, personas, storage, chat length, model access, features  
@@ -3049,7 +3049,7 @@ This PRD will serve as the single source of truth for Claude Code to build a ful
 - Stripe integration for billing (subscription \+ credits)  
 - Database schema: subscriptions, credit\_transactions, api\_keys tables
 
-### 2.4 Onboarding Flow {#2.4-onboarding-flow}
+### 2.4 Onboarding Flow 
 
 - 4-step welcome tour (reference prototype OnboardingOverlay)  
 - Step 1: Welcome \+ product explanation  
@@ -3062,9 +3062,9 @@ This PRD will serve as the single source of truth for Claude Code to build a ful
 
 ---
 
-## PART 3: APPLICATION SHELL & NAVIGATION {#part-3:-application-shell-&-navigation}
+## PART 3: APPLICATION SHELL & NAVIGATION 
 
-### 3.1 Sidebar Navigation {#3.1-sidebar-navigation}
+### 3.1 Sidebar Navigation 
 
 - Collapsible sidebar: expanded (200px with labels) ↔ collapsed (56px, icons only)  
 - Hover-expand behavior when collapsed (sHover state)  
@@ -3076,14 +3076,14 @@ This PRD will serve as the single source of truth for Claude Code to build a ful
 - Mobile: hamburger overlay, full-screen sidebar on open  
 - Keyboard shortcut: ⌘. to toggle
 
-### 3.2 Top Bar {#3.2-top-bar}
+### 3.2 Top Bar 
 
 - Breadcrumb navigation with dynamic depth (screen → sub-context → detail)  
 - Sidebar collapse toggle adjacent to first breadcrumb  
 - Right-side actions: \+New button, Chat drawer toggle (chat screen only), Notification bell with unread dot, Theme toggle (sun/moon), Right panel toggle (chat screen only)  
 - Mobile: hamburger menu replaces sidebar toggle
 
-### 3.3 Command Palette {#3.3-command-palette}
+### 3.3 Command Palette 
 
 - Triggered by \+New button or ⌘N  
 - Search input with real-time filtering  
@@ -3091,7 +3091,7 @@ This PRD will serve as the single source of truth for Claude Code to build a ful
 - Each action shows keyboard shortcut  
 - ESC to close
 
-### 3.4 Notification System {#3.4-notification-system}
+### 3.4 Notification System 
 
 - Database schema: notifications table (id, user\_id, type, title, text, read, metadata JSON, created\_at)  
 - Types: persona (activity updates), system (usage alerts, weekly summaries), chat (mentions, completions)  
@@ -3100,7 +3100,7 @@ This PRD will serve as the single source of truth for Claude Code to build a ful
 - Unread indicator (red dot on bell)  
 - Real-time delivery via Supabase Realtime
 
-### 3.5 Keyboard Shortcuts {#3.5-keyboard-shortcuts}
+### 3.5 Keyboard Shortcuts 
 
 - Full shortcut map (reference prototype): ⌘N, ⌘K, ⌘/, ⌘⇧I, ⌘⇧P, ⌘U, ⌘D, ⌘., Esc, ⌘E  
 - Shortcuts modal (⌘/ or ? button)  
@@ -3108,28 +3108,28 @@ This PRD will serve as the single source of truth for Claude Code to build a ful
 
 ---
 
-## PART 4: HOME / DASHBOARD SCREEN {#part-4:-home-/-dashboard-screen}
+## PART 4: HOME / DASHBOARD SCREEN 
 
-### 4.1 Layout {#4.1-layout}
+### 4.1 Layout 
 
 - Centered content (max-width 900px)  
 - Greeting: "Welcome back, {name}"  
 - Subtitle: "Here's your workspace at a glance."
 
-### 4.2 Quick Stats {#4.2-quick-stats}
+### 4.2 Quick Stats 
 
 - 4-column grid (2 on mobile): Instances count, Personas count, Chats count, Tasks count  
 - Each card: icon, large number (36px, weight 200), label  
 - Pulls from aggregate queries
 
-### 4.3 Recent Activity Feed {#4.3-recent-activity-feed}
+### 4.3 Recent Activity Feed 
 
 - Chronological list of platform-wide activity  
 - Each item: action text, source instance/context, timestamp  
 - Database: activity\_log table (id, user\_id, actor\_type, actor\_id, action, entity\_type, entity\_id, metadata, created\_at)  
 - Limit to 20 most recent, with pagination
 
-### 4.4 Empty State (First-Time User) {#4.4-empty-state-(first-time-user)}
+### 4.4 Empty State (First-Time User) 
 
 - No stats, replaced with getting-started cards  
 - "Create your first Instance", "Meet your first Persona", "Start a conversation"  
@@ -3137,9 +3137,9 @@ This PRD will serve as the single source of truth for Claude Code to build a ful
 
 ---
 
-## PART 5: CHAT SYSTEM (Core) {#part-5:-chat-system-(core)}
+## PART 5: CHAT SYSTEM (Core) 
 
-### 5.1 Data Model {#5.1-data-model}
+### 5.1 Data Model 
 
 - **chats** table: id, user\_id, instance\_id (nullable), title, auto\_title, participants (persona\_id\[\]), tags, pinned, archived, deleted\_at, created\_at, updated\_at  
 - **messages** table: id, chat\_id, sender\_type (user/persona/system/cipher), sender\_id, content (text), content\_blocks (JSON — for structured content, inline components, tool outputs), model\_used, persona\_id, metadata (JSON), pinned, created\_at  
@@ -3147,7 +3147,7 @@ This PRD will serve as the single source of truth for Claude Code to build a ful
 - Soft delete with 30-day retention (Recently Deleted)  
 - Auto-title generation after 3+ exchanges
 
-### 5.2 Chat List Drawer (Left Panel) {#5.2-chat-list-drawer-(left-panel)}
+### 5.2 Chat List Drawer (Left Panel) 
 
 - Toggle via top bar button, defaults closed  
 - Width: 280px (desktop), full screen (mobile)  
@@ -3159,7 +3159,7 @@ This PRD will serve as the single source of truth for Claude Code to build a ful
 - Recently Deleted section: collapsible, shows expiry countdown, restore/permanent delete actions  
 - Unread indicators (future)
 
-### 5.3 Message List {#5.3-message-list}
+### 5.3 Message List 
 
 - Full-height scrollable area  
 - Message layout: Avatar (26px) → sender name \+ role \+ timestamp \+ pin icon  
@@ -3172,7 +3172,7 @@ This PRD will serve as the single source of truth for Claude Code to build a ful
 - Pin toggle with visual indicator (background color change, left border, pin icon)  
 - Empty state: "No messages match this filter."
 
-### 5.4 Message Composer {#5.4-message-composer}
+### 5.4 Message Composer 
 
 - Bottom-pinned input bar with border and background  
 - Left side: PersonaSelector (@mention dropdown), ModelSelector (model picker with provider info)  
@@ -3181,14 +3181,14 @@ This PRD will serve as the single source of truth for Claude Code to build a ful
 - Draft persistence: auto-save indicator appears when typing ("Draft saved" with green dot)  
 - Model selector: dropdown showing available models with provider, tag (fast/balanced/powerful)
 
-### 5.5 Auto-Rename & Suggested Move Banners {#5.5-auto-rename-&-suggested-move-banners}
+### 5.5 Auto-Rename & Suggested Move Banners 
 
 - Auto-rename: appears after sufficient context, shows suggested title, Apply/Dismiss actions  
 - Suggested move: appears when chat content matches an existing Instance, shows Instance name, Move/Choose/Dismiss actions  
 - Both are dismissible banners above the message list  
 - Triggered by Cipher analysis (background job after N messages)
 
-### 5.6 Right Panel (Sidebar) {#5.6-right-panel-(sidebar)}
+### 5.6 Right Panel (Sidebar) 
 
 - Toggle via top bar button, defaults closed  
 - Width: 250px, 4 tabs: Nav, Filters, Pinned, People  
@@ -3197,14 +3197,14 @@ This PRD will serve as the single source of truth for Claude Code to build a ful
 - **Pinned tab:** List of pinned messages with sender, time, preview. Empty state prompt.  
 - **People tab:** Participant management (chip-style with remove X, \+ Add button), persona detail cards with status dots, click-through to persona profile.
 
-### 5.7 Export System {#5.7-export-system}
+### 5.7 Export System 
 
 - Modal with format options: Markdown, PDF, JSON, HTML  
 - Scope selector: Full conversation / Filtered only  
 - Encrypted export (Pro tier)  
 - Database: export\_history table for audit
 
-### 5.8 AI Response Pipeline {#5.8-ai-response-pipeline}
+### 5.8 AI Response Pipeline 
 
 - User sends message → Cipher determines routing  
 - Routing logic: explicit @mention overrides → skill matching → conversation context → default persona  
@@ -3216,16 +3216,16 @@ This PRD will serve as the single source of truth for Claude Code to build a ful
 
 ---
 
-## PART 6: SEARCH SCREEN {#part-6:-search-screen}
+## PART 6: SEARCH SCREEN 
 
-### 6.1 Layout {#6.1-layout}
+### 6.1 Layout 
 
 - Centered (max-width 700px)  
 - Large search input (16px font) with search icon  
 - Filter chips below: All, Web, Chats, Files, Memory, Internal  
 - Results list below filters
 
-### 6.2 Search Implementation {#6.2-search-implementation}
+### 6.2 Search Implementation 
 
 - **Chats search:** PostgreSQL full-text search on messages.content \+ chats.title  
 - **Files search:** Full-text on file names \+ metadata  
@@ -3234,14 +3234,14 @@ This PRD will serve as the single source of truth for Claude Code to build a ful
 - **Internal search:** Across instances, personas, settings  
 - Combined ranking with source indicators
 
-### 6.3 Search Results {#6.3-search-results}
+### 6.3 Search Results 
 
 - Each result: icon (by type), title, preview snippet, source badge, timestamp  
 - Action buttons per result: Chat with, Send to Instance, Save  
 - "Chat with" opens a new chat with the result as context  
 - "Send to Instance" moves/copies the result to a chosen instance
 
-### 6.4 Search History & Saved Searches {#6.4-search-history-&-saved-searches}
+### 6.4 Search History & Saved Searches 
 
 - Recent searches list (persisted per user)  
 - Saved searches with custom labels  
@@ -3249,15 +3249,15 @@ This PRD will serve as the single source of truth for Claude Code to build a ful
 
 ---
 
-## PART 7: SPACES / INSTANCES SCREEN {#part-7:-spaces-/-instances-screen}
+## PART 7: SPACES / INSTANCES SCREEN 
 
-### 7.1 Data Model {#7.1-data-model}
+### 7.1 Data Model 
 
 - **instances** table: id, user\_id, name, type (project/client/personal/research/custom), description, icon, color, settings (JSON), persona\_ids\[\], created\_at, updated\_at, archived\_at  
 - **instance\_settings**: inherits from type → global → default. JSON structure for model\_preferences, voice\_tone, file\_handling, cleanup\_rules, visibility  
 - Settings cascade: Instance Settings → Type Template → Global Instance Settings → Platform Defaults
 
-### 7.2 Instance List {#7.2-instance-list}
+### 7.2 Instance List 
 
 - Grid of instance cards  
 - Each card: icon, name, type badge, chat count, file count, persona avatars, last activity time  
@@ -3265,19 +3265,19 @@ This PRD will serve as the single source of truth for Claude Code to build a ful
 - "+ New Instance" card  
 - Sort/filter options (by type, activity, name)
 
-### 7.3 Instance Detail View {#7.3-instance-detail-view}
+### 7.3 Instance Detail View 
 
 - Header: Instance name, type, stats, overflow menu (Rename, Change Type, Export, Archive, Delete)  
 - 6 tabs: Overview, Tasks, Workspace, Chats, Files, Settings
 
-#### 7.3.1 Overview Tab {#7.3.1-overview-tab}
+#### 7.3.1 Overview Tab 
 
 - **Open Forum Chat:** Persistent shared conversation for the instance. Shows recent messages in a compact view with "Expand" button to open full chat. All assigned personas participate.  
 - **Persona Roster:** Visual list of personas assigned to this instance with status dots, role labels. Add/remove personas.  
 - **Tasks Summary:** Count of open/completed tasks with progress indicators.  
 - **Activity Log:** Recent actions within this instance.
 
-#### 7.3.2 Tasks Tab {#7.3.2-tasks-tab}
+#### 7.3.2 Tasks Tab 
 
 - Task board (Kanban-style): columns for To Do, In Progress, Review, Done  
 - Each task card: title, assignee (persona), priority, due date  
@@ -3285,7 +3285,7 @@ This PRD will serve as the single source of truth for Claude Code to build a ful
 - Drag-and-drop reordering  
 - Quick-add task inline
 
-#### 7.3.3 Workspace Tab {#7.3.3-workspace-tab}
+#### 7.3.3 Workspace Tab 
 
 - Canvas/whiteboard-style view for pinned content  
 - Sections with headers, drag-reorder  
@@ -3293,20 +3293,20 @@ This PRD will serve as the single source of truth for Claude Code to build a ful
 - List view and board view toggle  
 - Database: workspace\_items table (id, instance\_id, section, title, content, type, source\_chat\_id, source\_message\_id, position, created\_at)
 
-#### 7.3.4 Chats Tab {#7.3.4-chats-tab}
+#### 7.3.4 Chats Tab 
 
 - List of all chats within this instance  
 - Search, filter by persona, sort by date  
 - Quick-start new chat within instance
 
-#### 7.3.5 Files Tab {#7.3.5-files-tab}
+#### 7.3.5 Files Tab 
 
 - File browser scoped to instance  
 - Upload, organize into folders  
 - File metadata: name, type, size, origin (uploaded/AI-generated), visibility, created\_at  
 - Preview for images and documents
 
-#### 7.3.6 Settings Tab {#7.3.6-settings-tab}
+#### 7.3.6 Settings Tab 
 
 - **Settings Cascade:** Visual hierarchy showing inherited vs overridden values (Instance → Type → Global)  
 - **Model Roles:** Override model assignments for this instance  
@@ -3316,14 +3316,14 @@ This PRD will serve as the single source of truth for Claude Code to build a ful
 
 ---
 
-## PART 8: GLOBAL FILES SCREEN {#part-8:-global-files-screen}
+## PART 8: GLOBAL FILES SCREEN 
 
-### 8.1 Data Model {#8.1-data-model}
+### 8.1 Data Model 
 
 - **files** table: id, user\_id, instance\_id (nullable), chat\_id (nullable), name, type (pdf/image/doc/code/other), mime\_type, size\_bytes, storage\_path, origin (uploaded/ai\_generated), visibility (visible/instance/hidden), tags, metadata (JSON), created\_at  
 - Supabase Storage bucket: `user-files/{user_id}/`
 
-### 8.2 File Grid View {#8.2-file-grid-view}
+### 8.2 File Grid View 
 
 - Search bar at top  
 - Filter chips: All, Uploads, AI Generated  
@@ -3332,7 +3332,7 @@ This PRD will serve as the single source of truth for Claude Code to build a ful
 - Batch actions bar: Download, Move to Instance, Delete  
 - Click to preview/download
 
-### 8.3 File Upload {#8.3-file-upload}
+### 8.3 File Upload 
 
 - Drag-and-drop zone  
 - Click to browse  
@@ -3342,9 +3342,9 @@ This PRD will serve as the single source of truth for Claude Code to build a ful
 
 ---
 
-## PART 9: PEOPLE / PERSONAS SCREEN {#part-9:-people-/-personas-screen}
+## PART 9: PEOPLE / PERSONAS SCREEN 
 
-### 9.1 Data Model {#9.1-data-model}
+### 9.1 Data Model 
 
 - **personas** table: id, user\_id, name, role, personality (text), avatar\_config (JSON), status (active/idle/sleeping), mood (text), skill\_ids\[\], skill\_ceiling (int, default 10), visibility (visible/private), settings (JSON), created\_at, updated\_at  
 - **persona\_skills** table: id, persona\_id, name, category, level (1-5), learnable (bool), temporary (bool), expires\_at, created\_at  
@@ -3352,31 +3352,31 @@ This PRD will serve as the single source of truth for Claude Code to build a ful
 - **persona\_deployments** table: id, persona\_id, instance\_id, role\_in\_instance, deployed\_at, removed\_at  
 - **persona\_memories** table: id, persona\_id, type (decision/fact/preference/skill), content, source\_chat\_id, source\_message\_id, confidence, tags, active (bool), created\_at, updated\_at
 
-### 9.2 Persona List View {#9.2-persona-list-view}
+### 9.2 Persona List View 
 
 - Grid of persona cards  
 - Each card: avatar (initial-based, colored ring by status), name, role, status dot, mood indicator, skill count badge  
 - Click to enter persona detail  
 - Overflow menu: Edit, Duplicate, Export, Delete
 
-### 9.3 Persona Detail View {#9.3-persona-detail-view}
+### 9.3 Persona Detail View 
 
 - Header: large avatar, name, role, status, mood  
 - 6 tabs: Overview, Identity, Boundaries, Memory, Skills, Health
 
-#### 9.3.1 Overview Tab {#9.3.1-overview-tab}
+#### 9.3.1 Overview Tab 
 
 - Deployments list: which instances this persona is assigned to, with role and "View Instance" link  
 - Conversation history: recent chats involving this persona  
 - Quick stats: total memories, total decisions, active skills
 
-#### 9.3.2 Identity Tab {#9.3.2-identity-tab}
+#### 9.3.2 Identity Tab 
 
 - Editable fields: Name, Role, Personality (long text)  
 - Visibility toggle (visible to all instances / private)  
 - Identity is fixed once created (personality evolves through experience, not manual editing — except by explicit user override)
 
-#### 9.3.3 Boundaries Tab {#9.3.3-boundaries-tab}
+#### 9.3.3 Boundaries Tab 
 
 - Will Do list: explicitly allowed capabilities  
 - Won't Do list: explicitly forbidden actions  
@@ -3384,7 +3384,7 @@ This PRD will serve as the single source of truth for Claude Code to build a ful
 - Skill Ceiling: maximum number of skills (default 10\)  
 - Add/edit/remove boundary rules
 
-#### 9.3.4 Memory Tab {#9.3.4-memory-tab}
+#### 9.3.4 Memory Tab 
 
 - List of all memories with type icons (decision/fact/preference/skill)  
 - Filter chips: All, Decisions, Facts, Preferences, Skills  
@@ -3392,7 +3392,7 @@ This PRD will serve as the single source of truth for Claude Code to build a ful
 - Each memory: content, source link, confidence, date, active toggle  
 - Memory search
 
-#### 9.3.5 Skills Tab {#9.3.5-skills-tab}
+#### 9.3.5 Skills Tab 
 
 - List of current skills with level indicators (1-5)  
 - Learnable toggle per skill  
@@ -3401,14 +3401,14 @@ This PRD will serve as the single source of truth for Claude Code to build a ful
 - Skill capacity: "{current}/{ceiling} skills"  
 - Learning consent flow: persona proposes learning → user approves → skill added
 
-#### 9.3.6 Health Tab {#9.3.6-health-tab}
+#### 9.3.6 Health Tab 
 
 - Mood indicator with history  
 - Status dot (active/idle/sleeping) with explanation  
 - Health metrics: response quality trend, memory growth rate, skill utilization  
 - Recommendations: "Consider adding X skill" or "This persona has conflicting memories"
 
-### 9.4 Create Persona Modal {#9.4-create-persona-modal}
+### 9.4 Create Persona Modal 
 
 - 3-step wizard  
 - Step 1: Name, Role, Personality description  
@@ -3419,21 +3419,21 @@ This PRD will serve as the single source of truth for Claude Code to build a ful
 
 ---
 
-## PART 10: TEAMS SCREEN (Agentic Teams) {#part-10:-teams-screen-(agentic-teams)}
+## PART 10: TEAMS SCREEN (Agentic Teams) 
 
-### 10.1 Data Model {#10.1-data-model}
+### 10.1 Data Model 
 
 - **teams** table: id, user\_id, name, description, type (short\_term/long\_term/recurring), status (active/paused/completed), persona\_ids\[\], plan (JSON), progress (0-100), last\_run\_at, created\_at  
 - **team\_runs** table: id, team\_id, status, started\_at, completed\_at, result (JSON), logs (JSON)
 
-### 10.2 Teams List {#10.2-teams-list}
+### 10.2 Teams List 
 
 - Header with filter chips: All, Short-Term, Long-Term, Recurring  
 - Team cards: name, type badge, progress bar, status, member count (persona avatars), last run time  
 - "Executive Teams" teaser: enterprise tier gate with upgrade prompt  
 - "+ New Team" button
 
-### 10.3 Team Detail (Future — v2) {#10.3-team-detail-(future-—-v2)}
+### 10.3 Team Detail (Future — v2) 
 
 - Plan editor  
 - Persona assignment with roles (Orchestrator, Manager, Worker)  
@@ -3443,13 +3443,13 @@ This PRD will serve as the single source of truth for Claude Code to build a ful
 
 ---
 
-## PART 11: BROWSER / CO-BROWSING WORKSPACE {#part-11:-browser-/-co-browsing-workspace}
+## PART 11: BROWSER / CO-BROWSING WORKSPACE 
 
-### 11.1 Architecture Overview {#11.1-architecture-overview}
+### 11.1 Architecture Overview 
 
 This is a fully functional embedded browser experience where personas can observe, analyze, highlight, and extract content from web pages alongside the user. The browser is not a separate application — it is a workspace view within aiConnected that maintains full chat continuity.
 
-### 11.2 Data Model {#11.2-data-model}
+### 11.2 Data Model 
 
 - **browser\_sessions** table: id, user\_id, instance\_id (nullable), persona\_id, status (active/closed), created\_at, closed\_at  
 - **browser\_tabs** table: id, session\_id, url, title, favicon\_url, position, active, opened\_at, closed\_at  
@@ -3457,7 +3457,7 @@ This is a fully functional embedded browser experience where personas can observ
 - **browser\_extracts** table: id, user\_id, session\_id, tab\_id, instance\_id, title, content (text/HTML), source\_url, extract\_type (text/table/image/full\_page), metadata (JSON), created\_at  
 - **browser\_highlights** table: id, tab\_id, persona\_id, selector (CSS selector or XPath), content\_preview, note, created\_at
 
-### 11.3 Session Manager Screen (Non-Browse Mode) {#11.3-session-manager-screen-(non-browse-mode)}
+### 11.3 Session Manager Screen (Non-Browse Mode) 
 
 - Three sub-tabs: Active Sessions, History, Saved Extracts  
 - **Active Sessions:** List of open sessions with URL, action description, persona, timestamp. Click to resume.  
@@ -3465,11 +3465,11 @@ This is a fully functional embedded browser experience where personas can observ
 - **Saved Extracts:** Cards showing extracted content title, source URL, destination instance, timestamp.  
 - "Open Browser" button to enter browse mode (collapses main sidebar)
 
-### 11.4 Browser Engine (Core — MUST BE FULLY FUNCTIONAL) {#11.4-browser-engine-(core-—-must-be-fully-functional)}
+### 11.4 Browser Engine (Core — MUST BE FULLY FUNCTIONAL) 
 
 This section defines the full browser implementation. The browser must actually navigate real websites, not simulate them.
 
-#### 11.4.1 Web Viewport {#11.4.1-web-viewport}
+#### 11.4.1 Web Viewport 
 
 - **Implementation:** `<iframe>` with a server-side proxy, OR `<webview>` tag in Electron/Tauri desktop app, OR a CORS proxy service for the web version  
 - **Proxy Architecture (Web Version):**  
@@ -3484,7 +3484,7 @@ This section defines the full browser implementation. The browser must actually 
   - Extension-like DOM access  
 - **Viewport rendering:** Full-width flexible area, real scrolling, real links, real content
 
-#### 11.4.2 Navigation System {#11.4.2-navigation-system}
+#### 11.4.2 Navigation System 
 
 - **URL Bar:** Editable URL input in the floating nav bar. Supports direct URL entry and search queries.  
 - **Back/Forward:** Full history stack per tab (maintain navigation history array)  
@@ -3499,7 +3499,7 @@ This section defines the full browser implementation. The browser must actually 
   - Tab state: url, title, favicon, scroll\_position, navigation\_history\[\]  
   - Maximum tabs per session (configurable, suggest 10\)
 
-#### 11.4.3 Floating Navigation Bar {#11.4.3-floating-navigation-bar}
+#### 11.4.3 Floating Navigation Bar 
 
 - Position: fixed bottom-center of viewport  
 - Style: dark translucent bar (rgba(20,20,20,0.88)) with backdrop blur  
@@ -3508,7 +3508,7 @@ This section defines the full browser implementation. The browser must actually 
 - Minimize to compass dot: click dot to restore  
 - The nav bar must be fully functional — every button must work
 
-#### 11.4.4 Page Interaction Layer {#11.4.4-page-interaction-layer}
+#### 11.4.4 Page Interaction Layer 
 
 - **DOM Extraction:** When a page loads through the proxy, inject a script that:  
   - Extracts readable text content (using Readability.js or similar)  
@@ -3524,7 +3524,7 @@ This section defines the full browser implementation. The browser must actually 
   - "Summarize Page", "Extract Pricing", "Find Contact Info", "Compare to Instance"  
   - Powered by Cipher analyzing the extracted DOM
 
-#### 11.4.5 Security & Limitations {#11.4.5-security-&-limitations}
+#### 11.4.5 Security & Limitations 
 
 - Proxy must strip dangerous scripts (XSS prevention)  
 - No access to user's actual browser cookies/sessions (isolated environment)  
@@ -3533,11 +3533,11 @@ This section defines the full browser implementation. The browser must actually 
 - Content filtering for harmful content  
 - Clear documentation of what works vs what doesn't in proxy mode
 
-### 11.5 Co-Browse Chat Integration (5 View Modes) {#11.5-co-browse-chat-integration-(5-view-modes)}
+### 11.5 Co-Browse Chat Integration (5 View Modes) 
 
 All modes maintain the same chat state. Switching views does NOT reset conversation.
 
-#### 11.5.1 Float Bar (Default) {#11.5.1-float-bar-(default)}
+#### 11.5.1 Float Bar (Default) 
 
 - Floating chat bubble at bottom-center of viewport  
 - Shows: last persona message preview (avatar, name, text), text input  
@@ -3545,39 +3545,39 @@ All modes maintain the same chat state. Switching views does NOT reset conversat
 - Mic and send buttons  
 - Overlaid on the web viewport with shadow
 
-#### 11.5.2 Icon Only {#11.5.2-icon-only}
+#### 11.5.2 Icon Only 
 
 - Minimized to a 44px persona avatar dot at bottom-right  
 - Green status dot indicator  
 - Click to expand to Float Bar  
 - Least intrusive mode
 
-#### 11.5.3 Sidebar (320px) {#11.5.3-sidebar-(320px)}
+#### 11.5.3 Sidebar (320px) 
 
 - Fixed right panel with tab strip at top, persona header, full chat history, composer  
 - Web viewport takes remaining width  
 - Tab strip moves into sidebar top (not viewport)
 
-#### 11.5.4 50/50 Split {#11.5.4-50/50-split}
+#### 11.5.4 50/50 Split 
 
 - Equal width: viewport left, chat right  
 - Full chat experience in right half  
 - Tab strip in chat panel top
 
-#### 11.5.5 Chat Only {#11.5.5-chat-only}
+#### 11.5.5 Chat Only 
 
 - Full-width chat, no viewport visible  
 - For when the user wants to discuss findings without the page  
 - Tab strip still visible for reference
 
-### 11.6 Page Awareness System {#11.6-page-awareness-system}
+### 11.6 Page Awareness System 
 
 - Badge indicator: "{Persona name} is reading this page" (top-right of viewport)  
 - Dismissible  
 - Triggered when a persona has been given the page's extracted content  
 - Persona can reference specific sections of the page in conversation
 
-### 11.7 View Switcher Menu {#11.7-view-switcher-menu}
+### 11.7 View Switcher Menu 
 
 - Accessible from floating nav bar  
 - Dropdown with 5 layout options (icon \+ label \+ description)  
@@ -3585,38 +3585,38 @@ All modes maintain the same chat state. Switching views does NOT reset conversat
 
 ---
 
-## PART 12: INSIGHTS & ANALYTICS SCREEN {#part-12:-insights-&-analytics-screen}
+## PART 12: INSIGHTS & ANALYTICS SCREEN 
 
-### 12.1 Overview Tab {#12.1-overview-tab}
+### 12.1 Overview Tab 
 
 - 4 metric cards: Total Conversations (30d), Persona Utilization %, Memory Growth (30d), Top Model  
 - Each card: large number, label, trend indicator
 
-### 12.2 Persona Performance Tab {#12.2-persona-performance-tab}
+### 12.2 Persona Performance Tab 
 
 - Table: persona name, avatar, memory count, decisions count, skills count  
 - Sortable columns
 
-### 12.3 Model Usage Tab {#12.3-model-usage-tab}
+### 12.3 Model Usage Tab 
 
 - Horizontal bar chart: model name, usage percentage, call count, estimated cost  
 - Filterable by time range
 
-### 12.4 Memory Health Tab {#12.4-memory-health-tab}
+### 12.4 Memory Health Tab 
 
 - Grid of memory type counts: Total, Decisions, Facts, Preferences, Skills, Flagged  
 - Flagged memories: conflicts, low confidence, stale
 
 ---
 
-## PART 13: SETTINGS SCREEN {#part-13:-settings-screen}
+## PART 13: SETTINGS SCREEN 
 
-### 13.1 Settings Architecture {#13.1-settings-architecture}
+### 13.1 Settings Architecture 
 
 - 6 tabs: General, Models, API Keys, Types, Cascade, Learned Rules  
 - All settings stored in user\_settings table (JSON per category) or dedicated tables
 
-### 13.2 General Tab {#13.2-general-tab}
+### 13.2 General Tab 
 
 - Interface Mode toggle: Standard / Power User  
 - Account info: name, email  
@@ -3629,35 +3629,35 @@ All modes maintain the same chat state. Switching views does NOT reset conversat
 - Onboarding replay button  
 - Chat Cleanup & Organization: Auto-rename toggle, Suggest moves toggle, Scheduled cleanup toggle \+ frequency selector (Hourly/Daily/Weekly)
 
-### 13.3 Models Tab {#13.3-models-tab}
+### 13.3 Models Tab 
 
 - Role Assignment grid: roles (Conversational, Analytical, Creative, Code, Quick) × Primary model \+ Fallback model  
 - Each role shows current model with provider tag  
 - Click to change model from available models list  
 - Model availability depends on tier \+ BYOK status
 
-### 13.4 API Keys Tab {#13.4-api-keys-tab}
+### 13.4 API Keys Tab 
 
 - List of connected API keys: provider, key (masked), status, added date  
 - Add key form: provider selector, key input, test connection button  
 - OpenRouter key as primary  
 - Individual provider keys (future): OpenAI, Anthropic, Google, etc.
 
-### 13.5 Types Tab (Instance Types) {#13.5-types-tab-(instance-types)}
+### 13.5 Types Tab (Instance Types) 
 
 - Manage Instance Type templates  
 - Each type: name, description, default settings, default personas  
 - Create/Edit/Delete types  
 - Premium+ tier gate
 
-### 13.6 Cascade Tab {#13.6-cascade-tab}
+### 13.6 Cascade Tab 
 
 - Visual hierarchy: Platform Defaults → Global Instance Settings → Type Templates → Instance Settings  
 - Shows which level each setting is defined at  
 - Override indicators  
 - Click to edit at any level
 
-### 13.7 Learned Rules Tab {#13.7-learned-rules-tab}
+### 13.7 Learned Rules Tab 
 
 - Auto-generated behavioral rules from user patterns  
 - Instance-specific rules (e.g., "In Client Website Redesign, always use formal tone")  
@@ -3667,9 +3667,9 @@ All modes maintain the same chat state. Switching views does NOT reset conversat
 
 ---
 
-## PART 14: CIPHER ORCHESTRATION ENGINE {#part-14:-cipher-orchestration-engine}
+## PART 14: CIPHER ORCHESTRATION ENGINE 
 
-### 14.1 Core Responsibilities {#14.1-core-responsibilities}
+### 14.1 Core Responsibilities 
 
 - Message routing: determine which persona should respond  
 - Memory arbitration: decide what gets stored, where, and for how long  
@@ -3679,14 +3679,14 @@ All modes maintain the same chat state. Switching views does NOT reset conversat
 - UI decisions: determine if a server-driven UI component should be rendered  
 - Cross-persona coordination: manage multi-persona conversations
 
-### 14.2 Implementation (Supabase Edge Functions) {#14.2-implementation-(supabase-edge-functions)}
+### 14.2 Implementation (Supabase Edge Functions) 
 
 - `cipher-route`: Receives incoming message, analyzes intent, selects persona and model  
 - `cipher-memory`: Post-response processing — extract memories, update CogniGraph  
 - `cipher-cleanup`: Background job — suggest renames, moves, flag stale content  
 - `cipher-health`: Monitor persona health metrics, detect conflicts
 
-### 14.3 Routing Algorithm {#14.3-routing-algorithm}
+### 14.3 Routing Algorithm 
 
 - Priority 1: Explicit @mention → route to named persona  
 - Priority 2: Skill match → analyze message content, match to persona skills  
@@ -3695,7 +3695,7 @@ All modes maintain the same chat state. Switching views does NOT reset conversat
 - Priority 5: Global default → use user's default persona  
 - Routing note generation: brief explanation stored with message metadata
 
-### 14.4 Context Window Assembly {#14.4-context-window-assembly}
+### 14.4 Context Window Assembly 
 
 - Checkpoint system: conversation segmented by topic/time/token-count checkpoints  
 - For each response, Cipher assembles:  
@@ -3708,15 +3708,15 @@ All modes maintain the same chat state. Switching views does NOT reset conversat
 
 ---
 
-## PART 15: COGNIGRAPH MEMORY SYSTEM {#part-15:-cognigraph-memory-system}
+## PART 15: COGNIGRAPH MEMORY SYSTEM 
 
-### 15.1 Data Model {#15.1-data-model}
+### 15.1 Data Model 
 
 - **memory\_nodes** table: id, user\_id, persona\_id (nullable — null \= global), instance\_id (nullable), type (decision/fact/preference/skill/procedure), content, embedding (vector), confidence (0-1), source\_chat\_id, source\_message\_id, tags, layer (open/closed), active, created\_at, updated\_at, expires\_at  
 - **memory\_edges** table: id, from\_node\_id, to\_node\_id, relationship (supports/contradicts/related/derived\_from), strength (0-1), created\_at  
 - **memory\_checkpoints** table: id, chat\_id, summary, key\_topics, token\_count, checkpoint\_type (topic/time/token), created\_at
 
-### 15.2 Memory Lifecycle {#15.2-memory-lifecycle}
+### 15.2 Memory Lifecycle 
 
 - **Extraction:** After each AI response, Cipher analyzes for memorable content → creates candidate memory nodes  
 - **Promotion:** Open (transient) → Closed (permanent) based on reinforcement, user confirmation, or repeated relevance  
@@ -3724,7 +3724,7 @@ All modes maintain the same chat state. Switching views does NOT reset conversat
 - **Conflict Detection:** New memories checked against existing for contradictions → flagged for user review  
 - **Deletion:** User can manually delete; expired temporary memories auto-clean
 
-### 15.3 Memory Types {#15.3-memory-types}
+### 15.3 Memory Types 
 
 - **Decision:** A choice that was made ("We chose the asymmetric layout")  
 - **Fact:** An objective piece of information ("Client's brand color is \#1a1a2e")  
@@ -3732,7 +3732,7 @@ All modes maintain the same chat state. Switching views does NOT reset conversat
 - **Skill:** A learned capability for a persona ("Can analyze competitor pricing")  
 - **Procedure:** How to do something ("When uploading files, always rename to kebab-case")
 
-### 15.4 Retrieval {#15.4-retrieval}
+### 15.4 Retrieval 
 
 - Semantic search via pg\_vector embeddings  
 - Scoping: persona-level → instance-level → global  
@@ -3741,22 +3741,22 @@ All modes maintain the same chat state. Switching views does NOT reset conversat
 
 ---
 
-## PART 16: MULTI-MODEL ROUTING {#part-16:-multi-model-routing}
+## PART 16: MULTI-MODEL ROUTING 
 
-### 16.1 Model Configuration {#16.1-model-configuration}
+### 16.1 Model Configuration 
 
 - **model\_configs** table: id, user\_id, provider, model\_id, display\_name, api\_key\_id (nullable — uses BYOK or platform key), tier\_required, capabilities (JSON), created\_at  
 - Available providers: OpenRouter (primary), direct APIs (OpenAI, Anthropic, Google — future)  
 - BYOK: user provides their own OpenRouter API key → unlocks all models on that provider
 
-### 16.2 Role-Based Assignment {#16.2-role-based-assignment}
+### 16.2 Role-Based Assignment 
 
 - 5 roles: Conversational, Analytical, Creative, Code, Quick  
 - Each role maps to: primary\_model\_id \+ fallback\_model\_id  
 - Assignment configurable at: global level, instance level, per-chat override  
 - Cipher uses role assignment to select model per message
 
-### 16.3 Streaming & Error Handling {#16.3-streaming-&-error-handling}
+### 16.3 Streaming & Error Handling 
 
 - Server-Sent Events for streaming responses  
 - Automatic fallback: if primary model fails → try fallback → if both fail → return error with explanation  
@@ -3765,31 +3765,31 @@ All modes maintain the same chat state. Switching views does NOT reset conversat
 
 ---
 
-## PART 17: REAL-TIME & COLLABORATION {#part-17:-real-time-&-collaboration}
+## PART 17: REAL-TIME & COLLABORATION 
 
-### 17.1 Supabase Realtime Channels {#17.1-supabase-realtime-channels}
+### 17.1 Supabase Realtime Channels 
 
 - `chat:{chat_id}`: New messages, typing indicators, participant changes  
 - `instance:{instance_id}`: Task updates, file uploads, forum messages  
 - `user:{user_id}`: Notifications, persona status changes, system alerts  
 - `browser:{session_id}`: Tab changes, highlights, extracts
 
-### 17.2 Typing Indicators {#17.2-typing-indicators}
+### 17.2 Typing Indicators 
 
 - Show when a persona is "typing" (generating response)  
 - Persona avatar \+ animated dots  
 - Disappears when response starts streaming or generation completes
 
-### 17.3 Presence (Future — Multi-User) {#17.3-presence-(future-—-multi-user)}
+### 17.3 Presence (Future — Multi-User) 
 
 - Show which personas are "active" in an instance  
 - Eventually: show which human team members are online (enterprise)
 
 ---
 
-## PART 18: SUPABASE DATABASE SCHEMA (Complete) {#part-18:-supabase-database-schema-(complete)}
+## PART 18: SUPABASE DATABASE SCHEMA (Complete) 
 
-### 18.1 Core Tables Summary {#18.1-core-tables-summary}
+### 18.1 Core Tables Summary 
 
 This section will contain the complete SQL schema for every table referenced in the PRD, including:
 
@@ -3800,13 +3800,13 @@ This section will contain the complete SQL schema for every table referenced in 
 - Triggers (updated\_at auto-update, soft delete cascades)  
 - Enums (user\_tier, persona\_status, message\_sender\_type, memory\_type, etc.)
 
-### 18.2 RLS Policies {#18.2-rls-policies}
+### 18.2 RLS Policies 
 
 - Every table: users can only access their own data (user\_id \= auth.uid())  
 - Shared data: team/org-level access (enterprise, future)  
 - Service role: Edge Functions can access all data for Cipher processing
 
-### 18.3 Storage Buckets {#18.3-storage-buckets}
+### 18.3 Storage Buckets 
 
 - `user-files`: User uploads, organized by user\_id  
 - `persona-avatars`: Custom persona images (future)  
@@ -3815,14 +3815,14 @@ This section will contain the complete SQL schema for every table referenced in 
 
 ---
 
-## PART 19: API ROUTES & EDGE FUNCTIONS {#part-19:-api-routes-&-edge-functions}
+## PART 19: API ROUTES & EDGE FUNCTIONS 
 
-### 19.1 REST API (Supabase Auto-Generated) {#19.1-rest-api-(supabase-auto-generated)}
+### 19.1 REST API (Supabase Auto-Generated) 
 
 - Standard CRUD for all tables via Supabase client  
 - PostgREST endpoints with RLS
 
-### 19.2 Edge Functions {#19.2-edge-functions}
+### 19.2 Edge Functions 
 
 - `POST /functions/v1/chat-send` — Process incoming message through Cipher, route, generate response  
 - `POST /functions/v1/chat-stream` — SSE streaming endpoint for AI responses  
@@ -3834,16 +3834,16 @@ This section will contain the complete SQL schema for every table referenced in 
 - `POST /functions/v1/model-complete` — OpenRouter completion with fallback logic  
 - `POST /functions/v1/export-generate` — Generate export files in requested format
 
-### 19.3 Webhook Endpoints (Future) {#19.3-webhook-endpoints-(future)}
+### 19.3 Webhook Endpoints (Future) 
 
 - Stripe webhook for subscription events  
 - External integration webhooks (Google Drive, etc.)
 
 ---
 
-## PART 20: FRONTEND COMPONENT ARCHITECTURE {#part-20:-frontend-component-architecture}
+## PART 20: FRONTEND COMPONENT ARCHITECTURE 
 
-### 20.1 Page Structure (Next.js App Router) {#20.1-page-structure-(next.js-app-router)}
+### 20.1 Page Structure (Next.js App Router) 
 
 ```
 app/
@@ -3862,7 +3862,7 @@ app/
   settings/page.tsx       — Settings
 ```
 
-### 20.2 Shared Components {#20.2-shared-components}
+### 20.2 Shared Components 
 
 - AppShell (sidebar \+ topbar \+ content area \+ right panel)  
 - Sidebar, TopBar, CommandPalette, NotificationDropdown  
@@ -3870,7 +3870,7 @@ app/
 - ChatDrawer, FilterBar, ParticipantsBar, PersonaSelector, ChatNavPanel  
 - Modals: ExportModal, PricingModal, OnboardingModal, ShortcutsModal, CreatePersonaModal
 
-### 20.3 State Management {#20.3-state-management}
+### 20.3 State Management 
 
 - Server state: Supabase client \+ React Query (TanStack Query) for caching  
 - UI state: Zustand store for navigation, panel visibility, active selections  
@@ -3879,9 +3879,9 @@ app/
 
 ---
 
-## PART 21: EMPTY STATES & ERROR HANDLING {#part-21:-empty-states-&-error-handling}
+## PART 21: EMPTY STATES & ERROR HANDLING 
 
-### 21.1 Empty States (Every Screen) {#21.1-empty-states-(every-screen)}
+### 21.1 Empty States (Every Screen) 
 
 - Home: Getting started cards instead of stats  
 - Chat: "Start your first conversation" with persona suggestions  
@@ -3893,7 +3893,7 @@ app/
 - Browser: "Browse the web with your personas alongside you"  
 - Insights: "Analytics will appear as you use the platform"
 
-### 21.2 Error States {#21.2-error-states}
+### 21.2 Error States 
 
 - Network error: retry banner  
 - AI generation failure: error message with retry button, fallback model attempt  
@@ -3902,7 +3902,7 @@ app/
 - Rate limit hit: clear message with time until reset  
 - Browser proxy failure: "This page couldn't be loaded. Try copying the URL to your browser."
 
-### 21.3 Loading States {#21.3-loading-states}
+### 21.3 Loading States 
 
 - Skeleton screens for list/grid views  
 - Typing indicator for AI responses  
@@ -3911,16 +3911,16 @@ app/
 
 ---
 
-## PART 22: TESTING & QUALITY ASSURANCE {#part-22:-testing-&-quality-assurance}
+## PART 22: TESTING & QUALITY ASSURANCE 
 
-### 22.1 Test Categories {#22.1-test-categories}
+### 22.1 Test Categories 
 
 - Unit tests: utility functions, state logic, routing algorithm  
 - Integration tests: Supabase operations, Edge Function pipelines  
 - Component tests: each screen renders correctly with mock data  
 - E2E tests: critical user flows (sign up → create persona → create instance → chat → search)
 
-### 22.2 Critical Flows to Test {#22.2-critical-flows-to-test}
+### 22.2 Critical Flows to Test 
 
 - Message send → Cipher route → model call → stream response → store  
 - Memory extraction → conflict detection → storage  
@@ -3930,21 +3930,21 @@ app/
 
 ---
 
-## PART 23: DEPLOYMENT & INFRASTRUCTURE {#part-23:-deployment-&-infrastructure}
+## PART 23: DEPLOYMENT & INFRASTRUCTURE 
 
-### 23.1 Environments {#23.1-environments}
+### 23.1 Environments 
 
 - Development: local Supabase \+ local Next.js  
 - Staging: Supabase project (staging) \+ Vercel preview  
 - Production: Supabase project (prod) \+ Vercel production
 
-### 23.2 CI/CD {#23.2-ci/cd}
+### 23.2 CI/CD 
 
 - GitHub Actions: lint, type-check, test on PR  
 - Vercel auto-deploy on merge to main  
 - Supabase migrations via CLI
 
-### 23.3 Monitoring {#23.3-monitoring}
+### 23.3 Monitoring 
 
 - Vercel Analytics for frontend performance  
 - Supabase Dashboard for database metrics  
@@ -3953,9 +3953,9 @@ app/
 
 ---
 
-## PART 24: PHASED BUILD PLAN {#part-24:-phased-build-plan}
+## PART 24: PHASED BUILD PLAN 
 
-### Phase 1: Foundation (Weeks 1–3) {#phase-1:-foundation-(weeks-1–3)}
+### Phase 1: Foundation (Weeks 1–3) 
 
 - Supabase project setup, auth, database schema  
 - Next.js app scaffold with App Router  
@@ -3963,7 +3963,7 @@ app/
 - Application shell: sidebar, top bar, routing  
 - Home screen with empty states
 
-### Phase 2: Chat Core (Weeks 4–6) {#phase-2:-chat-core-(weeks-4–6)}
+### Phase 2: Chat Core (Weeks 4–6) 
 
 - Chat data model and CRUD  
 - Message composer with model selector  
@@ -3972,14 +3972,14 @@ app/
 - Basic Cipher routing (single persona)  
 - Right panel (Nav, Filters, Pinned, People)
 
-### Phase 3: Instances & Files (Weeks 7–9) {#phase-3:-instances-&-files-(weeks-7–9)}
+### Phase 3: Instances & Files (Weeks 7–9) 
 
 - Instance CRUD with all 6 tabs  
 - Instance settings with cascade  
 - Global files screen with upload/management  
 - Search screen (basic: chats \+ files)
 
-### Phase 4: Personas & Memory (Weeks 10–12) {#phase-4:-personas-&-memory-(weeks-10–12)}
+### Phase 4: Personas & Memory (Weeks 10–12) 
 
 - Persona CRUD with all 6 tabs  
 - Persona creation wizard  
@@ -3987,7 +3987,7 @@ app/
 - Multi-persona chat support  
 - Cipher routing improvements (skill matching)
 
-### Phase 5: Browser & Teams (Weeks 13–16) {#phase-5:-browser-&-teams-(weeks-13–16)}
+### Phase 5: Browser & Teams (Weeks 13–16) 
 
 - Browser proxy architecture  
 - Tab management system  
@@ -3996,7 +3996,7 @@ app/
 - Highlight and extract tools  
 - Teams screen (list \+ basic detail)
 
-### Phase 6: Polish & Analytics (Weeks 17–18) {#phase-6:-polish-&-analytics-(weeks-17–18)}
+### Phase 6: Polish & Analytics (Weeks 17–18) 
 
 - Insights screen with all 4 tabs  
 - Settings: all 6 tabs fully functional  
@@ -4008,43 +4008,43 @@ app/
 
 ---
 
-## APPENDICES {#appendices}
+## APPENDICES 
 
-### Appendix A: Prototype Component Map {#appendix-a:-prototype-component-map}
+### Appendix A: Prototype Component Map 
 
 Complete cross-reference between PRD sections and prototype component labels (all 10 screens \+ shell).
 
-### Appendix B: Keyboard Shortcuts Reference {#appendix-b:-keyboard-shortcuts-reference}
+### Appendix B: Keyboard Shortcuts Reference 
 
 Full table of all shortcuts with context (global vs screen-specific).
 
-### Appendix C: Tier Feature Matrix {#appendix-c:-tier-feature-matrix}
+### Appendix C: Tier Feature Matrix 
 
 Complete grid: feature × tier showing limits and availability.
 
-### Appendix D: Database Schema Diagram {#appendix-d:-database-schema-diagram}
+### Appendix D: Database Schema Diagram 
 
 Entity-relationship diagram for all tables.
 
-### Appendix E: Cipher Decision Tree {#appendix-e:-cipher-decision-tree}
+### Appendix E: Cipher Decision Tree 
 
 Flowchart for message routing, memory extraction, and cleanup decisions.
 
-### Appendix F: Browser Proxy Architecture Diagram {#appendix-f:-browser-proxy-architecture-diagram}
+### Appendix F: Browser Proxy Architecture Diagram 
 
 Request flow: User click → proxy endpoint → fetch → rewrite → inject → render.
 
-# PART 1: PRODUCT FOUNDATION {#part-1:-product-foundation-1}
+# PART 1: PRODUCT FOUNDATION 
 
 ---
 
-## 1.1 Product Vision & Definition {#1.1-product-vision-&-definition-1}
+## 1.1 Product Vision & Definition 
 
-### One-Sentence Definition {#one-sentence-definition}
+### One-Sentence Definition 
 
 aiConnected OS is a fluid interaction platform where persistent AI personas act as believable collaborators — operating within explicit skill boundaries — while a continuous chat-based cognitive backbone preserves memory, context, and coordination across any activity the user chooses.
 
-### The Three Problems Being Solved {#the-three-problems-being-solved}
+### The Three Problems Being Solved 
 
 Current AI platforms share three fundamental failures that aiConnected is designed to address:
 
@@ -4054,7 +4054,7 @@ Current AI platforms share three fundamental failures that aiConnected is design
 
 **Problem 3: Disposable Tool Mentality.** AI is treated as a utility — type a prompt, get a response, move on. There is no persistent identity, no relationship development, no accumulated capability. Every interaction is isolated. The AI never gets better at working with a specific user, and the user never builds a team they can rely on over time.
 
-### What Makes aiConnected Different {#what-makes-aiconnected-different}
+### What Makes aiConnected Different 
 
 | Dimension | ChatGPT / Claude / Perplexity | aiConnected OS |
 | :---- | :---- | :---- |
@@ -4066,7 +4066,7 @@ Current AI platforms share three fundamental failures that aiConnected is design
 | Interface | Static chat window | Fluid UI that adapts to activity — chat, browser co-working, split views, floating overlays |
 | Continuity | Each session is independent | Every interaction contributes to a growing, persistent knowledge base that informs future interactions |
 
-### Target Users {#target-users}
+### Target Users 
 
 **Primary (v1):** Individual professionals — developers, designers, writers, consultants, researchers, analysts — who use AI daily and are frustrated by its lack of continuity and structure.
 
@@ -4076,11 +4076,11 @@ Current AI platforms share three fundamental failures that aiConnected is design
 
 ---
 
-## 1.2 Architecture Overview (Four Layers) {#1.2-architecture-overview-(four-layers)-1}
+## 1.2 Architecture Overview (Four Layers) 
 
 aiConnected is built on a four-layer architecture where each layer has a clearly defined responsibility and communication boundary. This is the most important architectural concept in the system and must be understood before any implementation begins.
 
-### Layer 1: Cipher (Invisible Orchestration Engine) {#layer-1:-cipher-(invisible-orchestration-engine)}
+### Layer 1: Cipher (Invisible Orchestration Engine) 
 
 **What it is:** The unrestricted internal cognition layer that governs, coordinates, and constrains all personas. Cipher is infrastructure, not a feature. It is never visible, addressable, or interactive to users.
 
@@ -4098,7 +4098,7 @@ aiConnected is built on a four-layer architecture where each layer has a clearly
 
 **Implementation:** Supabase Edge Functions that run server-side. The user's client never communicates with Cipher directly. All Cipher logic executes between "user sends message" and "persona response begins streaming."
 
-### Layer 2: CogniGraph (Structured Knowledge Graph Memory) {#layer-2:-cognigraph-(structured-knowledge-graph-memory)}
+### Layer 2: CogniGraph (Structured Knowledge Graph Memory) 
 
 **What it is:** A persistent, structured memory system that stores everything the platform learns — organized as a knowledge graph with typed nodes, weighted edges, and layered retrieval.
 
@@ -4115,7 +4115,7 @@ aiConnected is built on a four-layer architecture where each layer has a clearly
 
 **Implementation:** PostgreSQL tables with pg\_vector extensions for embedding storage and semantic search. Memory extraction runs as a post-response Cipher task.
 
-### Layer 3: Personas (Bounded AI Collaborators) {#layer-3:-personas-(bounded-ai-collaborators)}
+### Layer 3: Personas (Bounded AI Collaborators) 
 
 **What they are:** Persistent AI identities with names, roles, personalities, finite skill sets, explicit boundaries, and human-like learning behavior. Each persona is a constrained projection of Cipher's capabilities — they know what they know and openly acknowledge what they don't.
 
@@ -4132,7 +4132,7 @@ aiConnected is built on a four-layer architecture where each layer has a clearly
 
 **Implementation:** Database-backed entities with Supabase tables. Persona behavior is constructed at inference time by Cipher assembling the persona's identity, skills, boundaries, and relevant memories into a system prompt.
 
-### Layer 4: Fluid UI (Adaptive Interface) {#layer-4:-fluid-ui-(adaptive-interface)}
+### Layer 4: Fluid UI (Adaptive Interface) 
 
 **What it is:** An interface that reshapes itself around the user's current activity. Chat is the persistent spine — it is never destroyed, only resized or minimized. Activities (browsing, writing, researching, managing) are rendered as views around the chat.
 
@@ -4145,7 +4145,7 @@ aiConnected is built on a four-layer architecture where each layer has a clearly
 
 **Implementation:** Next.js with dynamic layouts. State managed by Zustand (UI state) and React Query (server state). Layout transitions use CSS transitions (0.15s–0.2s ease).
 
-### Layer Communication Diagram {#layer-communication-diagram}
+### Layer Communication Diagram 
 
 ```
 ┌─────────────────────────────────────────────┐
@@ -4183,11 +4183,11 @@ aiConnected is built on a four-layer architecture where each layer has a clearly
 
 ---
 
-## 1.3 Technology Stack {#1.3-technology-stack-1}
+## 1.3 Technology Stack 
 
 Every technology choice is listed here with the specific version, purpose, and configuration requirements. Claude Code should install and configure exactly these dependencies.
 
-### Frontend {#frontend}
+### Frontend 
 
 | Technology | Version | Purpose |
 | :---- | :---- | :---- |
@@ -4201,7 +4201,7 @@ Every technology choice is listed here with the specific version, purpose, and c
 | TanStack Query | 5.x+ | Server state management. All Supabase data fetching uses React Query for caching, optimistic updates, and refetching. |
 | DM Sans | Google Fonts | Primary typeface. Loaded via `next/font/google`. Weights: 300, 350, 400, 450, 500, 600, 700\. |
 
-### Backend (Supabase) {#backend-(supabase)}
+### Backend (Supabase) 
 
 | Technology | Purpose |
 | :---- | :---- |
@@ -4212,14 +4212,14 @@ Every technology choice is listed here with the specific version, purpose, and c
 | Supabase Storage | File storage. User uploads, generated files, exports, browser screenshots. |
 | Supabase Row Level Security | Data isolation. Every table enforces user-scoped access via RLS policies. |
 
-### AI & Model Access {#ai-&-model-access}
+### AI & Model Access 
 
 | Technology | Purpose |
 | :---- | :---- |
 | OpenRouter API | Primary AI model gateway. Routes to OpenAI, Anthropic, Google, Meta, Mistral, etc. Single API key, multiple models. |
 | BYOK (Bring Your Own Key) | Users can provide their own OpenRouter API key. Stored encrypted in database. All model calls route through their key when present. |
 
-### Deployment {#deployment}
+### Deployment 
 
 | Technology | Purpose |
 | :---- | :---- |
@@ -4227,7 +4227,7 @@ Every technology choice is listed here with the specific version, purpose, and c
 | GitHub | Source control. Main branch \= production. Feature branches with PR workflow. |
 | Supabase CLI | Database migrations. `supabase db push` for schema changes. `supabase functions deploy` for Edge Functions. |
 
-### Development Tools {#development-tools}
+### Development Tools 
 
 | Technology | Purpose |
 | :---- | :---- |
@@ -4236,7 +4236,7 @@ Every technology choice is listed here with the specific version, purpose, and c
 | Vitest | Unit and integration testing. |
 | Playwright | E2E testing for critical flows. |
 
-### Package Installation Commands {#package-installation-commands}
+### Package Installation Commands 
 
 ```shell
 # Create Next.js project
@@ -4260,22 +4260,22 @@ npm install -D vitest @testing-library/react playwright
 
 ---
 
-## 1.4 Design System & Theming {#1.4-design-system-&-theming-1}
+## 1.4 Design System & Theming 
 
 The design system is defined by exact token values extracted from the interactive prototype. Claude Code must implement these tokens exactly — they represent deliberate design decisions, not approximations.
 
-### Brand Identity {#brand-identity}
+### Brand Identity 
 
 - **Product name:** aiConnected (camelCase, lowercase 'ai')  
 - **Logo mark:** Sparkles icon (from Lucide) in white, displayed in sidebar header  
 - **Primary typeface:** DM Sans (Google Fonts)  
 - **Brand palette:** Navy backgrounds with blue accent. The overall aesthetic is minimal, professional, and typographically driven — never "AI-looking" with gradients, glowing orbs, or emoji-heavy decoration.
 
-### Color Tokens {#color-tokens}
+### Color Tokens 
 
 All colors are defined as a flat token object. The application supports two themes: `light` and `dark`. The sidebar uses its own color scale regardless of active theme.
 
-#### Light Theme {#light-theme}
+#### Light Theme 
 
 ```ts
 const lightTheme = {
@@ -4312,7 +4312,7 @@ const lightTheme = {
 };
 ```
 
-#### Dark Theme {#dark-theme}
+#### Dark Theme 
 
 ```ts
 const darkTheme = {
@@ -4343,7 +4343,7 @@ const darkTheme = {
 };
 ```
 
-#### Sidebar Tokens (Always Dark) {#sidebar-tokens-(always-dark)}
+#### Sidebar Tokens (Always Dark) 
 
 The sidebar uses a dark navy/charcoal palette in both light and dark modes. This creates a persistent visual anchor on the left side of the screen.
 
@@ -4371,7 +4371,7 @@ const darkSidebar = {
 };
 ```
 
-### Tailwind Configuration {#tailwind-configuration}
+### Tailwind Configuration 
 
 ```ts
 // tailwind.config.ts
@@ -4443,7 +4443,7 @@ const config: Config = {
 export default config;
 ```
 
-### Typography Scale {#typography-scale}
+### Typography Scale 
 
 The prototype uses a consistent typography system. These are the exact patterns:
 
@@ -4462,7 +4462,7 @@ The prototype uses a consistent typography system. These are the exact patterns:
 | Stat numbers | 36px | 200 | text | \-0.04em |
 | Chip/badge text | 9–10px | 350–400 | varies | — |
 
-### Font Weight Conventions {#font-weight-conventions}
+### Font Weight Conventions 
 
 | Weight | Usage |
 | :---- | :---- |
@@ -4475,7 +4475,7 @@ The prototype uses a consistent typography system. These are the exact patterns:
 | 600 | Brand name in sidebar, bold emphasis |
 | 700 | Favicon letters, checkmarks, strong emphasis (rare) |
 
-### Spacing System {#spacing-system}
+### Spacing System 
 
 The prototype uses a consistent spacing approach based on multiples of 4px:
 
@@ -4492,7 +4492,7 @@ The prototype uses a consistent spacing approach based on multiples of 4px:
 | Input padding | 6px–9px vertical, 10px–12px horizontal |
 | Sidebar item padding | 10px vertical, 12px horizontal (expanded), centered (collapsed) |
 
-### Border Radius Conventions {#border-radius-conventions}
+### Border Radius Conventions 
 
 | Element | Radius |
 | :---- | :---- |
@@ -4506,11 +4506,11 @@ The prototype uses a consistent spacing approach based on multiples of 4px:
 | Tab strips | 20px (pill tabs) |
 | Tooltips | 4px–6px |
 
-### Shared Atomic Components {#shared-atomic-components}
+### Shared Atomic Components 
 
 These three components are used across every screen and must be implemented as reusable primitives:
 
-#### StatusDot {#statusdot}
+#### StatusDot 
 
 A circular indicator showing persona status.
 
@@ -4523,7 +4523,7 @@ interface StatusDotProps {
 
 Renders as a colored circle using the `dot` theme tokens.
 
-#### Avatar {#avatar}
+#### Avatar 
 
 An initial-based circular avatar. No images in v1 — always displays the first character of the name.
 
@@ -4537,7 +4537,7 @@ interface AvatarProps {
 
 Renders as a circle with `surfaceAlt` background, centered initial character at 36% of the circle diameter, `textMuted` color, weight 500\.
 
-#### MemoryTypeIcon {#memorytypeicon}
+#### MemoryTypeIcon 
 
 An icon indicating the type of a memory node.
 
@@ -4549,7 +4549,7 @@ interface MemoryTypeIconProps {
 
 Maps to: decision → `GitBranch`, fact → `Brain`, preference → `Heart`, skill → `Zap`. All rendered at 13px, `textMuted` color, strokeWidth 1.5. Falls back to `Hash` for unknown types.
 
-### Icon Inventory {#icon-inventory}
+### Icon Inventory 
 
 Every icon used in the prototype comes from Lucide React. The complete list:
 
@@ -4568,7 +4568,7 @@ Bookmark, History, FileDown, AlertCircle,
 ArrowLeft, Maximize2, Minimize2, Columns, MousePointer2, Compass, ScanLine, CircleDot
 ```
 
-### Responsive Design {#responsive-design}
+### Responsive Design 
 
 | Breakpoint | Name | Behavior |
 | :---- | :---- | :---- |
@@ -4590,7 +4590,7 @@ useEffect(() => {
 
 In production, use a combination of CSS media queries (Tailwind responsive prefixes) and a React hook for JavaScript-dependent layout decisions.
 
-### Animation Conventions {#animation-conventions}
+### Animation Conventions 
 
 | Transition | Duration | Easing | Usage |
 | :---- | :---- | :---- | :---- |
@@ -4608,7 +4608,7 @@ In production, use a combination of CSS media queries (Tailwind responsive prefi
 
 ---
 
-## 1.5 Project Structure {#1.5-project-structure}
+## 1.5 Project Structure 
 
 The recommended file structure for Claude Code to scaffold:
 
@@ -4740,13 +4740,13 @@ This structure separates concerns cleanly: pages handle routing and layout, comp
 
 *End of Part 1\. Proceed to Part 2: Authentication & User Management.*
 
-# PART 2: AUTHENTICATION & USER MANAGEMENT {#part-2:-authentication-&-user-management-1}
+# PART 2: AUTHENTICATION & USER MANAGEMENT 
 
 ---
 
-## 2.1 Authentication {#2.1-authentication-1}
+## 2.1 Authentication 
 
-### Provider Configuration {#provider-configuration}
+### Provider Configuration 
 
 aiConnected uses Supabase Auth as the sole authentication provider. All authentication flows are server-side validated, and all protected pages require an active session.
 
@@ -4766,7 +4766,7 @@ aiConnected uses Supabase Auth as the sole authentication provider. All authenti
 | Microsoft OAuth | Supabase Auth (Azure AD provider) | For enterprise users. |
 | SAML SSO | Supabase Auth (SAML provider) | Enterprise tier only. Per-organization identity provider. |
 
-### Supabase Auth Configuration {#supabase-auth-configuration}
+### Supabase Auth Configuration 
 
 ```ts
 // src/lib/supabase/client.ts
@@ -4803,9 +4803,9 @@ export const createClient = () => {
 };
 ```
 
-### Authentication Flows {#authentication-flows}
+### Authentication Flows 
 
-#### Sign Up (Email \+ Password) {#sign-up-(email-+-password)}
+#### Sign Up (Email \+ Password) 
 
 1. User navigates to `/auth/signup`  
 2. User enters display name, email, and password  
@@ -4816,7 +4816,7 @@ export const createClient = () => {
 7. `after_sign_up` trigger fires → creates row in `profiles` table with defaults  
 8. User is redirected to `/` (Home) with onboarding modal shown
 
-#### Sign In (Email \+ Password) {#sign-in-(email-+-password)}
+#### Sign In (Email \+ Password) 
 
 1. User navigates to `/auth/login`  
 2. User enters email and password  
@@ -4824,7 +4824,7 @@ export const createClient = () => {
 4. On success → redirect to `/` (Home)  
 5. On failure → display error message inline ("Invalid email or password")
 
-#### Sign In (OAuth) {#sign-in-(oauth)}
+#### Sign In (OAuth) 
 
 1. User clicks "Continue with Google" or "Continue with GitHub"  
 2. Client calls `supabase.auth.signInWithOAuth({ provider, options: { redirectTo: '/auth/callback' } })`  
@@ -4834,7 +4834,7 @@ export const createClient = () => {
 6. If first sign-in → `after_sign_up` trigger creates `profiles` row using OAuth metadata (name, avatar)  
 7. Redirect to `/` (Home)
 
-#### OAuth Callback Handler {#oauth-callback-handler}
+#### OAuth Callback Handler 
 
 ```ts
 // src/app/auth/callback/route.ts
@@ -4858,7 +4858,7 @@ export async function GET(request: Request) {
 }
 ```
 
-#### Password Reset {#password-reset}
+#### Password Reset 
 
 1. User clicks "Forgot password?" on login page  
 2. User enters email address  
@@ -4869,21 +4869,21 @@ export async function GET(request: Request) {
 7. Client calls `supabase.auth.updateUser({ password: newPassword })`  
 8. On success → redirect to `/` with confirmation toast
 
-#### Sign Out {#sign-out}
+#### Sign Out 
 
 1. User clicks sign-out in settings or profile menu  
 2. Client calls `supabase.auth.signOut()`  
 3. All local state is cleared  
 4. Redirect to `/auth/login`
 
-### Session Management {#session-management}
+### Session Management 
 
 - Sessions are managed entirely by Supabase Auth using HTTP-only cookies  
 - Token refresh is automatic via the `@supabase/ssr` middleware  
 - Session validity: 1 hour access token, 7-day refresh token (Supabase defaults)  
 - On session expiration with no valid refresh token → redirect to `/auth/login` with a return URL parameter so the user returns to where they were
 
-### Auth Middleware {#auth-middleware}
+### Auth Middleware 
 
 ```ts
 // src/middleware.ts
@@ -4933,9 +4933,9 @@ export const config = {
 };
 ```
 
-### Auth UI Pages {#auth-ui-pages}
+### Auth UI Pages 
 
-#### Login Page (`/auth/login`) {#login-page-(/auth/login)}
+#### Login Page (`/auth/login`) 
 
 - Centered card (420px max-width) on minimal background  
 - aiConnected logo (Sparkles icon) \+ "Sign in to aiConnected" heading  
@@ -4949,7 +4949,7 @@ export const config = {
 - Footer: "Don't have an account? Sign up" linking to `/auth/signup`  
 - Error messages appear inline below the relevant field or as a banner above the form
 
-#### Sign Up Page (`/auth/signup`) {#sign-up-page-(/auth/signup)}
+#### Sign Up Page (`/auth/signup`) 
 
 - Same centered card layout  
 - Display Name input  
@@ -4960,7 +4960,7 @@ export const config = {
 - Footer: "Already have an account? Sign in"  
 - After submission: confirmation message "Check your email to verify your account"
 
-#### Password Reset Page (`/auth/reset-password`) {#password-reset-page-(/auth/reset-password)}
+#### Password Reset Page (`/auth/reset-password`) 
 
 - Centered card  
 - "Set new password" heading  
@@ -4971,9 +4971,9 @@ export const config = {
 
 ---
 
-## 2.2 User Profile {#2.2-user-profile-1}
+## 2.2 User Profile 
 
-### Database Schema {#database-schema}
+### Database Schema 
 
 The `profiles` table extends Supabase's `auth.users` with application-specific data. It is automatically created via a database trigger when a new user signs up.
 
@@ -5047,7 +5047,7 @@ CREATE POLICY "Users can update own profile"
 CREATE INDEX idx_profiles_tier ON public.profiles(tier);
 ```
 
-### Shared Utility Function {#shared-utility-function}
+### Shared Utility Function 
 
 ```sql
 -- Reusable updated_at trigger function (used by all tables)
@@ -5060,7 +5060,7 @@ END;
 $$ LANGUAGE plpgsql;
 ```
 
-### Preferences JSON Schema {#preferences-json-schema}
+### Preferences JSON Schema 
 
 The `preferences` JSONB column holds all user-configurable settings. This is the complete shape:
 
@@ -5085,7 +5085,7 @@ interface UserPreferences {
 }
 ```
 
-### Profile Display in UI {#profile-display-in-ui}
+### Profile Display in UI 
 
 The user's profile appears in two places:
 
@@ -5095,9 +5095,9 @@ The user's profile appears in two places:
 
 ---
 
-## 2.3 Pricing Tiers & Feature Gating {#2.3-pricing-tiers-&-feature-gating-1}
+## 2.3 Pricing Tiers & Feature Gating 
 
-### Tier Definitions {#tier-definitions}
+### Tier Definitions 
 
 aiConnected uses four pricing tiers. Every feature in the platform is either universally available or gated to a specific tier. The BYOK system allows users on any tier to unlock unlimited AI chat by providing their own OpenRouter API key.
 
@@ -5123,7 +5123,7 @@ aiConnected uses four pricing tiers. Every feature in the platform is either uni
 | **Settings cascade** | Global only | Global \+ Instance | Full 4-layer | Full 4-layer |
 | **Credits system** | ✓ (pay-as-you-go) | ✗ (included) | ✗ (included) | ✗ (included) |
 
-### BYOK (Bring Your Own Key) {#byok-(bring-your-own-key)}
+### BYOK (Bring Your Own Key) 
 
 BYOK is available on every tier and is the primary mechanism for free users to access unlimited AI chat without subscribing.
 
@@ -5165,7 +5165,7 @@ CREATE INDEX idx_api_keys_user ON public.api_keys(user_id);
 
 **Encryption:** API keys are encrypted at rest using Supabase Vault or a platform-managed AES-256 encryption key stored as an environment variable. The `encrypted_key` column stores the ciphertext. Decryption only happens server-side in Edge Functions when making model calls. The plaintext key is never sent to the client after initial submission.
 
-### Credits System (Free Tier) {#credits-system-(free-tier)}
+### Credits System (Free Tier) 
 
 Credits provide free-tier users with a pay-as-you-go mechanism to unlock features without committing to a subscription. New accounts receive 100 credits as a welcome bonus.
 
@@ -5203,7 +5203,7 @@ CREATE INDEX idx_credit_transactions_user ON public.credit_transactions(user_id)
 CREATE INDEX idx_credit_transactions_created ON public.credit_transactions(created_at DESC);
 ```
 
-### Subscriptions {#subscriptions}
+### Subscriptions 
 
 ```sql
 CREATE TABLE public.subscriptions (
@@ -5235,7 +5235,7 @@ CREATE INDEX idx_subscriptions_user ON public.subscriptions(user_id);
 CREATE INDEX idx_subscriptions_stripe ON public.subscriptions(stripe_customer_id);
 ```
 
-### Stripe Integration {#stripe-integration}
+### Stripe Integration 
 
 **Webhook endpoint:** Supabase Edge Function at `POST /functions/v1/stripe-webhook`
 
@@ -5259,7 +5259,7 @@ CREATE INDEX idx_subscriptions_stripe ON public.subscriptions(stripe_customer_id
 6. User is redirected back to aiConnected with a success parameter  
 7. UI shows confirmation toast and refreshes tier data
 
-### Feature Gate Utility {#feature-gate-utility}
+### Feature Gate Utility 
 
 A single utility function determines what features are available for a given tier. This is used both client-side (for UI gating — showing upgrade prompts) and server-side (for enforcing limits in Edge Functions).
 
@@ -5392,7 +5392,7 @@ export function getStorageLimitDisplay(tier: Tier): string {
 }
 ```
 
-### Pricing Modal UI {#pricing-modal-ui}
+### Pricing Modal UI 
 
 The Pricing Modal is triggered from Settings → Billing → "Compare Plans" button. It can also be triggered from any tier-gated feature that shows an upgrade prompt.
 
@@ -5413,17 +5413,17 @@ The Pricing Modal is triggered from Settings → Billing → "Compare Plans" but
 
 ---
 
-## 2.4 Onboarding Flow {#2.4-onboarding-flow-1}
+## 2.4 Onboarding Flow 
 
-### Trigger Conditions {#trigger-conditions}
+### Trigger Conditions 
 
 The onboarding modal appears automatically on the user's first sign-in (`profiles.onboarding_completed = false`). After the user completes or skips it, `onboarding_completed` is set to `true`. Users can replay the tour from Settings → General → "Replay Welcome Tour."
 
-### Onboarding Modal Design {#onboarding-modal-design}
+### Onboarding Modal Design 
 
 The modal is a fixed-position overlay covering the entire viewport with a semi-transparent backdrop (`rgba(0,0,0,0.5)`). The content card is centered, 420px wide (90% on mobile), with 40px padding (28px on mobile), border-radius 20px, and an elevated shadow.
 
-### Step Sequence {#step-sequence}
+### Step Sequence 
 
 **Step 0: Welcome Screen**
 
@@ -5459,7 +5459,7 @@ The modal is a fixed-position overlay covering the entire viewport with a semi-t
 - Title: "Search"  
 - Description: "Find anything across chats, files, memories, and the web."
 
-### Progress Indicators {#progress-indicators}
+### Progress Indicators 
 
 Steps 1–4 show a horizontal dot row centered above the navigation buttons:
 
@@ -5468,13 +5468,13 @@ Steps 1–4 show a horizontal dot row centered above the navigation buttons:
 - Inactive steps: 6px circle, `surfaceAlt` color  
 - Width transition: `0.2s ease`
 
-### Navigation {#navigation}
+### Navigation 
 
 - Bottom bar with two buttons: "Skip" (left, 12px, `textFaint`) and "Next" or "Get Started" (right, accent bg, 13px, weight 450, border-radius 8, padding 8px 24px)  
 - Step 4 shows "Get Started" instead of "Next"  
 - Clicking "Get Started" or "Skip" at any step → close modal, mark `onboarding_completed = true`
 
-### Post-Onboarding State {#post-onboarding-state}
+### Post-Onboarding State 
 
 After completing onboarding, the user lands on the Home screen. On first visit:
 
@@ -5486,7 +5486,7 @@ After completing onboarding, the user lands on the Home screen. On first visit:
 - No BYOK key connected  
 - Credits balance: 100 (welcome bonus)
 
-### Progressive Feature Discovery {#progressive-feature-discovery}
+### Progressive Feature Discovery 
 
 As the user grows, the system nudges them toward more advanced features:
 
@@ -5502,7 +5502,7 @@ These nudges appear as non-blocking banner messages in the relevant screen, dism
 
 ---
 
-## 2.5 Auth-Related Environment Variables {#2.5-auth-related-environment-variables}
+## 2.5 Auth-Related Environment Variables 
 
 The following environment variables must be configured in both the Vercel project and the Supabase Edge Functions:
 
@@ -5535,7 +5535,7 @@ API_KEY_ENCRYPTION_SECRET=[32-byte-hex-string]
 
 *End of Part 2\. Proceed to Part 3: Application Shell & Navigation.*
 
-# PART 3: APPLICATION SHELL & NAVIGATION {#part-3:-application-shell-&-navigation-1}
+# PART 3: APPLICATION SHELL & NAVIGATION 
 
 ---
 
@@ -5543,7 +5543,7 @@ The application shell is the persistent frame that wraps every screen. It consis
 
 ---
 
-## 3.1 Shell Layout {#3.1-shell-layout}
+## 3.1 Shell Layout 
 
 The root layout is a full-viewport horizontal flex container:
 
@@ -5574,9 +5574,9 @@ The sidebar is the first flex child (fixed width, no shrink). The main area is t
 
 ---
 
-## 3.2 Sidebar Navigation {#3.2-sidebar-navigation}
+## 3.2 Sidebar Navigation 
 
-### Dimensions & Behavior {#dimensions-&-behavior}
+### Dimensions & Behavior 
 
 | State | Width | Content | Trigger |
 | :---- | :---- | :---- | :---- |
@@ -5602,7 +5602,7 @@ const showLabel = sHover || sExp;
 
 **Transition:** `transition: width 0.2s ease` on the sidebar container.
 
-### Visual Design {#visual-design}
+### Visual Design 
 
 The sidebar uses the dark sidebar tokens regardless of the active theme (light or dark). This creates a persistent dark navigation anchor on the left side.
 
@@ -5620,15 +5620,15 @@ The sidebar uses the dark sidebar tokens regardless of the active theme (light o
 }
 ```
 
-### Sidebar Sections (Top to Bottom) {#sidebar-sections-(top-to-bottom)}
+### Sidebar Sections (Top to Bottom) 
 
-#### Header (60px) {#header-(60px)}
+#### Header (60px) 
 
 - Sparkles icon (18px, white) \+ "aiConnected" text (14px, weight 600, white, letter-spacing \-0.02em)  
 - Centered when collapsed (icon only, no text)  
 - Padding: 20px 16px (expanded), 20px 0 (collapsed)
 
-#### Primary Navigation {#primary-navigation}
+#### Primary Navigation 
 
 6 items, always visible:
 
@@ -5663,11 +5663,11 @@ Each nav item:
 - Icon: 18px, `flexShrink: 0`  
 - Label: 13px, weight 500 (active) or 350 (inactive). Hidden when `showLabel` is false.
 
-#### Divider {#divider}
+#### Divider 
 
 A `1px solid sidebar.border` horizontal line with `margin: 12px 12px`.
 
-#### Advanced Section {#advanced-section}
+#### Advanced Section 
 
 "Advanced" section header (visible only when expanded): 10px, weight 500, `sidebar.textFaint`, uppercase, letter-spacing 0.08em, padding 4px 20px 8px.
 
@@ -5695,13 +5695,13 @@ Same item styling as primary nav, with an additional tier badge on the right sid
 }
 ```
 
-#### Settings (Bottom Section) {#settings-(bottom-section)}
+#### Settings (Bottom Section) 
 
 Separated by a `1px solid sidebar.border` top border with `padding: 8px 0`.
 
 Single item: Settings icon (18px) \+ "Settings" label (13px, weight 350). Same active/inactive styling as other nav items.
 
-#### User Profile Chip (Very Bottom) {#user-profile-chip-(very-bottom)}
+#### User Profile Chip (Very Bottom) 
 
 Separated by a `1px solid sidebar.border` top border.
 
@@ -5720,7 +5720,7 @@ Separated by a `1px solid sidebar.border` top border.
 - Tier label: 10px, weight 300, `sidebar.textFaint` (e.g., "Pro Plan")  
 - When collapsed: avatar only, centered
 
-### Mobile Sidebar Overlay {#mobile-sidebar-overlay}
+### Mobile Sidebar Overlay 
 
 On mobile, the sidebar is replaced by a full-screen overlay triggered by the hamburger menu (Menu icon, 18px) in the top bar.
 
@@ -5737,7 +5737,7 @@ On mobile, the sidebar is replaced by a full-screen overlay triggered by the ham
 - Simplified: no advanced section header, no tier badges, no user profile chip  
 - Clicking any item navigates and closes the overlay (`setMobileNav(false)`)
 
-### Auto-Collapse on Browser Mode {#auto-collapse-on-browser-mode}
+### Auto-Collapse on Browser Mode 
 
 When the user enters browser browse mode, the sidebar automatically collapses to give maximum viewport width to the browser. This is triggered in three places:
 
@@ -5749,19 +5749,19 @@ Implementation: `setSExp(false)` is called at each entry point.
 
 ---
 
-## 3.3 Top Bar {#3.3-top-bar}
+## 3.3 Top Bar 
 
-### Dimensions {#dimensions}
+### Dimensions 
 
 Height: 48px. Full width of the main area (to the right of the sidebar). `flexShrink: 0`. Background: `theme.surface`. Bottom border: `1px solid theme.borderSubtle`.
 
-### Layout {#layout}
+### Layout 
 
 Horizontal flex with `justifyContent: "space-between"` and `padding: 0 16px`.
 
 **Left side:** Breadcrumbs \+ sidebar toggle **Right side:** Action buttons
 
-### Breadcrumbs {#breadcrumbs}
+### Breadcrumbs 
 
 Breadcrumbs are generated dynamically based on the current screen and sub-context. Each crumb is a text span; all but the last crumb are clickable and navigate to that level.
 
@@ -5796,7 +5796,7 @@ Breadcrumbs are generated dynamically based on the current screen and sub-contex
 <ChevronRight size={11} color={theme.textFaint} />
 ```
 
-### Sidebar Toggle Button {#sidebar-toggle-button}
+### Sidebar Toggle Button 
 
 Positioned immediately after the first breadcrumb, desktop only. Not shown on mobile.
 
@@ -5816,7 +5816,7 @@ Positioned immediately after the first breadcrumb, desktop only. Not shown on mo
 - When sidebar expanded: PanelRightClose icon (14px) → clicking collapses  
 - When sidebar collapsed: PanelRightOpen icon (14px) → clicking expands
 
-### Right-Side Action Buttons {#right-side-action-buttons}
+### Right-Side Action Buttons 
 
 All buttons share this base style:
 
@@ -5833,7 +5833,7 @@ All buttons share this base style:
 
 Buttons appear in this order, left to right:
 
-#### \+New Button (Always Visible) {#+new-button-(always-visible)}
+#### \+New Button (Always Visible) 
 
 Opens the Command Palette.
 
@@ -5855,11 +5855,11 @@ Opens the Command Palette.
 
 Content: Plus icon (12px) \+ "New" text. Title tooltip: "New... (⌘N)".
 
-#### Chat Drawer Toggle (Chat Screen Only, Desktop Only) {#chat-drawer-toggle-(chat-screen-only,-desktop-only)}
+#### Chat Drawer Toggle (Chat Screen Only, Desktop Only) 
 
 MessageSquare icon (14px). Color: `theme.text` when drawer is open, `theme.textFaint` when closed. Clicking toggles `chatDrawer` state.
 
-#### Notification Bell (Always Visible) {#notification-bell-(always-visible)}
+#### Notification Bell (Always Visible) 
 
 Bell icon (15px). Positioned in a `relative` container for the dropdown.
 
@@ -5867,15 +5867,15 @@ Bell icon (15px). Positioned in a `relative` container for the dropdown.
 
 Clicking toggles the Notification Dropdown (see Section 3.5).
 
-#### Theme Toggle (Always Visible) {#theme-toggle-(always-visible)}
+#### Theme Toggle (Always Visible) 
 
 Moon icon (15px) in light mode, Sun icon (15px) in dark mode. Clicking toggles theme.
 
-#### Right Panel Toggle (Chat Screen Only, Desktop Only) {#right-panel-toggle-(chat-screen-only,-desktop-only)}
+#### Right Panel Toggle (Chat Screen Only, Desktop Only) 
 
 PanelRightClose icon (15px) when panel is open, PanelRightOpen (15px) when closed. Color: `theme.text` when open, `theme.textFaint` when closed. Clicking toggles `rOpen` state.
 
-### Mobile Top Bar Differences {#mobile-top-bar-differences}
+### Mobile Top Bar Differences 
 
 - Hamburger button (Menu icon, 18px) replaces the sidebar toggle, positioned first on the left  
 - Chat drawer button (Inbox icon, 15px) appears next to hamburger when on chat screen  
@@ -5884,20 +5884,20 @@ PanelRightClose icon (15px) when panel is open, PanelRightOpen (15px) when close
 
 ---
 
-## 3.4 Command Palette {#3.4-command-palette}
+## 3.4 Command Palette 
 
-### Trigger {#trigger}
+### Trigger 
 
 - Clicking the "+New" button in the top bar  
 - Pressing ⌘N (or Ctrl+N on Windows/Linux)
 
-### Layout {#layout-1}
+### Layout 
 
 Fixed overlay covering viewport with `rgba(0,0,0,0.4)` backdrop, z-index 60\. Clicking backdrop closes palette.
 
 Content card: centered horizontally, positioned at 15% from viewport top (`paddingTop: "15vh"`), 440px wide (90% on mobile), `theme.surface` background, border-radius 16px, elevated shadow.
 
-### Structure {#structure}
+### Structure 
 
 **Search input row:** Top section with bottom border.
 
@@ -5932,11 +5932,11 @@ Each action item:
 - Description: 11px, weight 300, `textMuted`  
 - Shortcut: 10px, `textFaint`, monospace font, right-aligned
 
-### Filtering Behavior {#filtering-behavior}
+### Filtering Behavior 
 
 As the user types in the search input, the action list filters to show only matching items (match against label and description). If no items match, show "No results" placeholder.
 
-### Dismiss {#dismiss}
+### Dismiss 
 
 - Click backdrop  
 - Press Escape  
@@ -5944,9 +5944,9 @@ As the user types in the search input, the action list filters to show only matc
 
 ---
 
-## 3.5 Notification System {#3.5-notification-system}
+## 3.5 Notification System 
 
-### Database Schema {#database-schema-1}
+### Database Schema 
 
 ```sql
 CREATE TABLE public.notifications (
@@ -5973,7 +5973,7 @@ CREATE INDEX idx_notifications_user_unread ON public.notifications(user_id, read
 CREATE INDEX idx_notifications_user_created ON public.notifications(user_id, created_at DESC);
 ```
 
-### Notification Types {#notification-types}
+### Notification Types 
 
 | Type | Icon | Examples |
 | :---- | :---- | :---- |
@@ -5981,7 +5981,7 @@ CREATE INDEX idx_notifications_user_created ON public.notifications(user_id, cre
 | `system` | Bell (12px) | "Auto-rename suggested for 2 chats", "Weekly summary: 23 conversations, 42 new memories", "File storage usage at 85%" |
 | `chat` | MessageSquare (12px) | "You were mentioned in Client Website Redesign", "Response ready in Hero Section Layout" |
 
-### Notification Dropdown {#notification-dropdown}
+### Notification Dropdown 
 
 Triggered by clicking the Bell icon in the top bar. Positioned absolutely, anchored to the top-right of the bell button.
 
@@ -6026,7 +6026,7 @@ Each notification item:
 
 **Dismiss:** Clicking outside the dropdown closes it.
 
-### Notification History Modal {#notification-history-modal}
+### Notification History Modal 
 
 Full-screen overlay with centered card (520px, 92% on mobile), max-height 75vh, scrollable content.
 
@@ -6040,7 +6040,7 @@ Full-screen overlay with centered card (520px, 92% on mobile), max-height 75vh, 
 2. If the dropdown is open, the new notification appears at the top  
 3. Optionally: a brief toast appears at the bottom of the screen (future enhancement)
 
-### "Mark All Read" Action {#"mark-all-read"-action}
+### "Mark All Read" Action 
 
 Clicking "Mark all read" in the dropdown header calls:
 
@@ -6052,9 +6052,9 @@ The UI optimistically updates all notification items to read state and removes t
 
 ---
 
-## 3.6 Keyboard Shortcuts {#3.6-keyboard-shortcuts}
+## 3.6 Keyboard Shortcuts 
 
-### Global Shortcut Map {#global-shortcut-map}
+### Global Shortcut Map 
 
 | Shortcut | Description | Action |
 | :---- | :---- | :---- |
@@ -6069,7 +6069,7 @@ The UI optimistically updates all notification items to read state and removes t
 | Esc | Close modal | Close the topmost open modal or overlay |
 | ⌘E | Export chat | Open export modal (chat screen only) |
 
-### Implementation {#implementation}
+### Implementation 
 
 A global `useEffect` hook on the root layout component listens for `keydown` events and dispatches the appropriate action. Shortcuts use `metaKey` (Mac) or `ctrlKey` (Windows/Linux).
 
@@ -6107,7 +6107,7 @@ export function useKeyboardShortcuts(shortcuts: ShortcutMap) {
 
 **Escape key handling:** Escape does not require meta/ctrl. It is handled separately and closes modals in LIFO order: command palette \> export modal \> pricing modal \> notification history \> shortcuts modal \> onboarding.
 
-### Shortcuts Modal {#shortcuts-modal}
+### Shortcuts Modal 
 
 Triggered by pressing ⌘/ or clicking the "?" help button (if present).
 
@@ -6134,7 +6134,7 @@ Each shortcut row:
 
 ---
 
-## 3.7 Export Modal {#3.7-export-modal}
+## 3.7 Export Modal 
 
 The Export Modal is accessible from the Filters tab of the right panel (chat screen) and via ⌘E.
 
@@ -6185,7 +6185,7 @@ Clicking a format card initiates the export with the selected scope, closes the 
 
 *End of Part 3\. Proceed to Part 4: Home / Dashboard Screen.*
 
-# PART 4: HOME / DASHBOARD SCREEN {#part-4:-home-/-dashboard-screen-1}
+# PART 4: HOME / DASHBOARD SCREEN 
 
 ---
 
@@ -6193,9 +6193,9 @@ The Home screen is the user's landing page after sign-in. It provides a high-lev
 
 ---
 
-## 4.1 Layout {#4.1-layout-1}
+## 4.1 Layout 
 
-### Container {#container}
+### Container 
 
 ```ts
 {
@@ -6213,7 +6213,7 @@ The Home screen is the user's landing page after sign-in. It provides a high-lev
 
 The screen scrolls vertically if content exceeds the viewport. There is no right panel on this screen. The main sidebar remains visible (it is global to all screens).
 
-### Content Flow {#content-flow}
+### Content Flow 
 
 The dashboard content is a single vertical column with 4 sections:
 
@@ -6224,9 +6224,9 @@ The dashboard content is a single vertical column with 4 sections:
 
 ---
 
-## 4.2 Greeting Section {#4.2-greeting-section}
+## 4.2 Greeting Section 
 
-### Container {#container-1}
+### Container 
 
 ```ts
 {
@@ -6234,7 +6234,7 @@ The dashboard content is a single vertical column with 4 sections:
 }
 ```
 
-### Greeting Text {#greeting-text}
+### Greeting Text 
 
 ```ts
 {
@@ -6274,7 +6274,7 @@ On the user's very first visit (before onboarding is completed), the greeting in
 // No name appended — the user hasn't set one yet
 ```
 
-### Subtitle {#subtitle}
+### Subtitle 
 
 ```ts
 {
@@ -6295,11 +6295,11 @@ For the first visit, the subtitle changes to:
 
 ---
 
-## 4.3 Quick Stats Grid {#4.3-quick-stats-grid}
+## 4.3 Quick Stats Grid 
 
 A 4-column grid (2 columns on mobile) showing aggregate counts from across the platform.
 
-### Grid Container {#grid-container}
+### Grid Container 
 
 ```ts
 {
@@ -6310,7 +6310,7 @@ A 4-column grid (2 columns on mobile) showing aggregate counts from across the p
 }
 ```
 
-### Stat Cards {#stat-cards}
+### Stat Cards 
 
 4 stat cards, each representing a core entity:
 
@@ -6368,7 +6368,7 @@ Each stat card:
 
 No borders, no backgrounds, no card containers. The stat cards rely purely on typography, spacing, and the icon to convey structure. This is deliberate — the dashboard should feel like a typographic briefing, not a widget grid.
 
-### Data Source Queries {#data-source-queries}
+### Data Source Queries 
 
 Each stat counts against the user's own data:
 
@@ -6379,7 +6379,7 @@ Each stat counts against the user's own data:
 | Chats | `SELECT COUNT(*) FROM chats WHERE user_id = auth.uid() AND deleted_at IS NULL` |
 | Tasks | `SELECT COUNT(*) FROM tasks WHERE instance_id IN (SELECT id FROM instances WHERE user_id = auth.uid()) AND status != 'done'` |
 
-### Data Loading Hook {#data-loading-hook}
+### Data Loading Hook 
 
 All 4 stats are fetched in a single React Query hook with parallel count queries:
 
@@ -6421,7 +6421,7 @@ export function useDashboardStats() {
 }
 ```
 
-### Loading State {#loading-state}
+### Loading State 
 
 While stats are loading, display "—" in place of each number. The layout is stable because the typography dimensions don't change between "—" and a number.
 
@@ -6439,7 +6439,7 @@ While stats are loading, display "—" in place of each number. The layout is st
 
 No skeleton animation. The "—" is sufficient visual feedback for 4 small stat cells.
 
-### Error State {#error-state}
+### Error State 
 
 If the stats query fails, show "\!" in the number slot with a tooltip on hover: "Couldn't load stats. Click to retry."
 
@@ -6457,11 +6457,11 @@ If the stats query fails, show "\!" in the number slot with a tooltip on hover: 
 
 ---
 
-## 4.4 Activity Log Data Model {#4.4-activity-log-data-model}
+## 4.4 Activity Log Data Model 
 
 The activity feed is powered by a shared `activity_log` table used across the entire platform. Any significant event — user action, persona action, or system event — inserts a row.
 
-### Schema {#schema}
+### Schema 
 
 ```sql
 CREATE TABLE public.activity_log (
@@ -6496,7 +6496,7 @@ CREATE POLICY "Service role insert"
 CREATE INDEX idx_activity_log_user_created ON public.activity_log(user_id, created_at DESC);
 ```
 
-### Activity Log Population {#activity-log-population}
+### Activity Log Population 
 
 Activity log entries are created by triggers and Edge Functions throughout the platform. Every part of the PRD that modifies data should insert an activity log entry for significant actions.
 
@@ -6522,7 +6522,7 @@ Activity log entries are created by triggers and Edge Functions throughout the p
 
 **Implementation approach:** For user-initiated actions (create, upload, delete), the activity log insert is performed in the same client-side function that performs the action (e.g., `createInstance()` also inserts an activity log entry). For persona and system actions, the Edge Function that processes the AI response or background job inserts the entry using the service role.
 
-### metadata JSONB Examples {#metadata-jsonb-examples}
+### metadata JSONB Examples 
 
 The `metadata` field stores additional context that the dashboard can use for richer rendering without additional queries:
 
@@ -6558,9 +6558,9 @@ The `metadata` field stores additional context that the dashboard can use for ri
 
 ---
 
-## 4.5 Recent Activity Feed {#4.5-recent-activity-feed}
+## 4.5 Recent Activity Feed 
 
-### Section Header {#section-header}
+### Section Header 
 
 ```ts
 {
@@ -6574,7 +6574,7 @@ The `metadata` field stores additional context that the dashboard can use for ri
 // Text: "RECENT"
 ```
 
-### Activity List Container {#activity-list-container}
+### Activity List Container 
 
 ```ts
 {
@@ -6585,7 +6585,7 @@ The `metadata` field stores additional context that the dashboard can use for ri
 
 The activity list shows the 20 most recent events. Each item is a row with a bottom border separator.
 
-### Activity Item {#activity-item}
+### Activity Item 
 
 ```ts
 {
@@ -6673,7 +6673,7 @@ function relativeTime(dateString: string): string {
 }
 ```
 
-### Click Navigation {#click-navigation}
+### Click Navigation 
 
 Clicking an activity item navigates to the relevant entity based on `entity_type` and `entity_id`:
 
@@ -6717,7 +6717,7 @@ function handleActivityClick(item: ActivityLogEntry) {
 
 Items without a valid `entity_type` or `entity_id` (e.g., system cleanup events) are not clickable — they show `cursor: default` instead of `cursor: pointer`.
 
-### Data Query {#data-query}
+### Data Query 
 
 ```ts
 const { data: activities, isLoading: activitiesLoading } = useQuery({
@@ -6737,7 +6737,7 @@ const { data: activities, isLoading: activitiesLoading } = useQuery({
 });
 ```
 
-### Loading State {#loading-state-1}
+### Loading State 
 
 While the activity feed is loading, show 4 skeleton rows:
 
@@ -6761,7 +6761,7 @@ Right side:
 
 - Timestamp: 60px × 10px bar
 
-### Empty Activity State {#empty-activity-state}
+### Empty Activity State 
 
 When the activity list is empty (no events yet — different from the first-time empty state which replaces the whole screen):
 
@@ -6775,7 +6775,7 @@ When the activity list is empty (no events yet — different from the first-time
 - "No recent activity" (13px, weight 300, `textFaint`)  
 - "Activity from your conversations, personas, and instances will appear here." (12px, weight 300, `textFaint`, marginTop 4px, maxWidth 360px, margin auto)
 
-### Real-Time Updates {#real-time-updates}
+### Real-Time Updates 
 
 The activity feed subscribes to Supabase Realtime for live updates. When a new activity log entry is created, it appears at the top of the list without requiring a manual refresh.
 
@@ -6816,11 +6816,11 @@ This means the dashboard is live — if a persona responds in a chat while the u
 
 ---
 
-## 4.6 Empty State (First-Time User) {#4.6-empty-state-(first-time-user)}
+## 4.6 Empty State (First-Time User) 
 
 When a new user has zero instances, zero personas, and zero chats, the Home screen replaces the stats grid and activity feed with a getting-started experience.
 
-### Detection {#detection}
+### Detection 
 
 ```ts
 const isEmpty = stats.instances === 0 && stats.personas === 0 && stats.chats === 0;
@@ -6828,7 +6828,7 @@ const isEmpty = stats.instances === 0 && stats.personas === 0 && stats.chats ===
 
 This check runs after the stats query resolves. While loading, the normal layout (with "—" placeholders) is shown.
 
-### Layout {#layout-2}
+### Layout 
 
 The greeting section remains. Below it, instead of stats \+ activity, show 3 action cards:
 
@@ -6841,7 +6841,7 @@ The greeting section remains. Below it, instead of stats \+ activity, show 3 act
 }
 ```
 
-### Card Container {#card-container}
+### Card Container 
 
 Each card:
 
@@ -6857,7 +6857,7 @@ Each card:
 }
 ```
 
-### Card 1: "Create your first Instance" {#card-1:-"create-your-first-instance"}
+### Card 1: "Create your first Instance" 
 
 - Icon: LayoutGrid (24px, `textFaint`)  
 - Title: "Create your first Instance" (15px, weight 450, `text`)  
@@ -6880,7 +6880,7 @@ Each card:
 
 Click action: navigate to Spaces screen with the create Instance modal pre-opened (`/spaces?create=true`).
 
-### Card 2: "Meet your first Persona" {#card-2:-"meet-your-first-persona"}
+### Card 2: "Meet your first Persona" 
 
 - Icon: Users (24px, `textFaint`)  
 - Title: "Meet your first Persona"  
@@ -6889,7 +6889,7 @@ Click action: navigate to Spaces screen with the create Instance modal pre-opene
 
 Click action: opens the Create Persona modal (Part 9).
 
-### Card 3: "Start a conversation" {#card-3:-"start-a-conversation"}
+### Card 3: "Start a conversation" 
 
 - Icon: MessageSquare (24px, `textFaint`)  
 - Title: "Start a conversation"  
@@ -6898,7 +6898,7 @@ Click action: opens the Create Persona modal (Part 9).
 
 Click action: navigate to Chat screen with a new conversation created (`/chat?new=true`).
 
-### Onboarding Replay Link {#onboarding-replay-link}
+### Onboarding Replay Link 
 
 Below the 3 cards, a text link:
 
@@ -6914,15 +6914,15 @@ Below the 3 cards, a text link:
 
 ---
 
-## 4.7 Partial Empty States {#4.7-partial-empty-states}
+## 4.7 Partial Empty States 
 
 Not every user arrives with zero data. Some may have personas but no instances, or chats but no tasks. The dashboard handles these partial states gracefully.
 
-### Stat Card with Zero Count {#stat-card-with-zero-count}
+### Stat Card with Zero Count 
 
 When a specific stat is 0, the number displays as "0" (not "—", which is reserved for loading). The card remains clickable — clicking navigates to the screen where the user can create their first entity.
 
-### Supplemental Hint {#supplemental-hint}
+### Supplemental Hint 
 
 When exactly one stat is 0 and the rest are non-zero, a small hint appears below the stats grid:
 
@@ -6947,9 +6947,9 @@ If more than one stat is 0, no hint is shown (the full empty state or the normal
 
 ---
 
-## 4.8 Dashboard Data Freshness {#4.8-dashboard-data-freshness}
+## 4.8 Dashboard Data Freshness 
 
-### Polling Strategy {#polling-strategy}
+### Polling Strategy 
 
 The dashboard does not use aggressive polling. Instead it relies on:
 
@@ -6958,7 +6958,7 @@ The dashboard does not use aggressive polling. Instead it relies on:
 3. **Realtime subscription:** New activity log entries appear live (Section 4.5).  
 4. **Navigation refetch:** React Query automatically refetches stale queries when the user navigates to the dashboard from another screen.
 
-### Cache Invalidation {#cache-invalidation}
+### Cache Invalidation 
 
 When the user performs an action on another screen that would change dashboard stats (creating an instance, persona, chat, or completing a task), the action handler should invalidate the dashboard stats cache:
 
@@ -6975,7 +6975,7 @@ This ensures the stats are fresh when the user next visits the dashboard.
 
 # 
 
-# PART 5: CHAT SYSTEM (Core) {#part-5:-chat-system-(core)-1}
+# PART 5: CHAT SYSTEM (Core) 
 
 ---
 
@@ -6983,9 +6983,9 @@ The chat system is the backbone of aiConnected. Every interaction — whether th
 
 ---
 
-## 5.1 Data Model {#5.1-data-model-1}
+## 5.1 Data Model 
 
-### Chats Table {#chats-table}
+### Chats Table 
 
 ```sql
 CREATE TABLE public.chats (
@@ -7018,7 +7018,7 @@ CREATE TRIGGER set_chats_updated_at
   BEFORE UPDATE ON public.chats FOR EACH ROW EXECUTE FUNCTION public.handle_updated_at();
 ```
 
-### Chat Participants Table {#chat-participants-table}
+### Chat Participants Table 
 
 Tracks which personas are participating in each chat. This is a join table, not an array column, to support efficient querying and real-time subscriptions.
 
@@ -7048,7 +7048,7 @@ CREATE INDEX idx_chat_participants_chat ON public.chat_participants(chat_id) WHE
 CREATE INDEX idx_chat_participants_persona ON public.chat_participants(persona_id) WHERE removed_at IS NULL;
 ```
 
-### Messages Table {#messages-table}
+### Messages Table 
 
 ```sql
 CREATE TABLE public.messages (
@@ -7097,7 +7097,7 @@ CREATE INDEX idx_messages_pinned ON public.messages(chat_id) WHERE pinned = true
 CREATE INDEX idx_messages_fulltext ON public.messages USING gin(to_tsvector('english', content));
 ```
 
-### Content Blocks Schema {#content-blocks-schema}
+### Content Blocks Schema 
 
 The `content_blocks` JSONB column supports structured content rendered inline within messages. This is how Cipher delivers server-driven UI components.
 
@@ -7115,7 +7115,7 @@ type ContentBlock =
 
 When `content_blocks` is non-empty, the message renderer iterates over the blocks and renders each according to its type. The `content` field (plain text) serves as the fallback/accessible version.
 
-### Soft Delete & Recently Deleted {#soft-delete-&-recently-deleted}
+### Soft Delete & Recently Deleted 
 
 When a user deletes a chat, `deleted_at` is set to `now()`. The chat remains in the database for 30 days, during which:
 
@@ -7132,7 +7132,7 @@ WHERE deleted_at IS NOT NULL
 AND deleted_at < now() - interval '30 days';
 ```
 
-### TypeScript Types {#typescript-types}
+### TypeScript Types 
 
 ```ts
 // src/types/chat.ts
@@ -7184,11 +7184,11 @@ interface Message {
 
 ---
 
-## 5.2 Chat List Drawer (Left Panel) {#5.2-chat-list-drawer-(left-panel)-1}
+## 5.2 Chat List Drawer (Left Panel) 
 
 The Chat Drawer is a collapsible left panel that lists all of the user's conversations, grouped by Instance.
 
-### Dimensions & Behavior {#dimensions-&-behavior-1}
+### Dimensions & Behavior 
 
 | Context | Width | Behavior |
 | :---- | :---- | :---- |
@@ -7199,7 +7199,7 @@ The Chat Drawer is a collapsible left panel that lists all of the user's convers
 
 **Default state:** Closed. Toggled via the MessageSquare icon in the top bar (desktop) or the Inbox icon (mobile).
 
-### Header {#header}
+### Header 
 
 ```ts
 {
@@ -7217,7 +7217,7 @@ The Chat Drawer is a collapsible left panel that lists all of the user's convers
   - New chat: Plus icon (15px, `textMuted`)  
   - Close (mobile only): X icon (15px, `textMuted`)
 
-### Multi-Select Mode {#multi-select-mode}
+### Multi-Select Mode 
 
 When multi-select is active, each chat item shows a checkbox on the left. Selected chats show a filled accent-color checkbox with a white checkmark (9px, weight 700).
 
@@ -7239,7 +7239,7 @@ When multi-select is active, each chat item shows a checkbox on the left. Select
 
 All batch buttons share: `border: 1px solid theme.border, borderRadius: 5, padding: 2px 7px`.
 
-### Search Bar {#search-bar}
+### Search Bar 
 
 Below the header, always visible:
 
@@ -7257,7 +7257,7 @@ Below the header, always visible:
 - Input: "Search chats..." placeholder (11px, weight 350\)  
 - Filtering is real-time on chat titles
 
-### Chat List (Grouped by Instance) {#chat-list-(grouped-by-instance)}
+### Chat List (Grouped by Instance) 
 
 Chats are grouped by their parent Instance. The group key is the Instance name, or "General" for chats with no instance (`instance_id IS NULL`).
 
@@ -7321,7 +7321,7 @@ const { data: chats } = useQuery({
 });
 ```
 
-### Recently Deleted Section {#recently-deleted-section}
+### Recently Deleted Section 
 
 At the bottom of the chat list, below a thin divider:
 
@@ -7381,11 +7381,11 @@ const { data: deletedChats } = useQuery({
 
 ---
 
-## 5.3 Message List {#5.3-message-list-1}
+## 5.3 Message List 
 
 The message list occupies the center of the chat screen — it is the primary content area.
 
-### Container {#container-2}
+### Container 
 
 ```ts
 {
@@ -7395,11 +7395,11 @@ The message list occupies the center of the chat screen — it is the primary co
 }
 ```
 
-### Banner Area (Above Messages) {#banner-area-(above-messages)}
+### Banner Area (Above Messages) 
 
 Two optional banners appear at the top, above the message list:
 
-#### Auto-Rename Banner {#auto-rename-banner}
+#### Auto-Rename Banner 
 
 Appears when Cipher has generated a suggested title (stored in `chats.auto_title`).
 
@@ -7422,7 +7422,7 @@ Appears when Cipher has generated a suggested title (stored in `chats.auto_title
 
 **Trigger:** Cipher runs a title analysis after the 3rd message exchange (6+ messages total). The Edge Function updates `chats.auto_title`, which triggers a Realtime event that the UI picks up.
 
-#### Suggested Move Banner {#suggested-move-banner}
+#### Suggested Move Banner 
 
 Appears when Cipher detects the chat's content matches an existing Instance.
 
@@ -7447,7 +7447,7 @@ Appears when Cipher detects the chat's content matches an existing Instance.
 
 **Trigger:** Cipher runs an instance-match analysis after the 5th user message. Stored in `chats.metadata.suggested_instance_id`.
 
-### Message Rendering {#message-rendering}
+### Message Rendering 
 
 Each message is a block with `marginBottom: 22px`:
 
@@ -7468,7 +7468,7 @@ if (message.pinned) {
 }
 ```
 
-#### Cipher Routing Note (Optional) {#cipher-routing-note-(optional)}
+#### Cipher Routing Note (Optional) 
 
 Displayed above persona messages when the user has "Show routing notes" enabled in Settings.
 
@@ -7487,7 +7487,7 @@ Displayed above persona messages when the user has "Show routing notes" enabled 
 
 Only shown for `sender_type === 'persona'` messages when `routing_reason` is not null.
 
-#### Message Header Row {#message-header-row}
+#### Message Header Row 
 
 ```ts
 {
@@ -7504,7 +7504,7 @@ Only shown for `sender_type === 'persona'` messages when `routing_reason` is not
 - Timestamp: 10px, weight 300, `textFaint`  
 - Pin icon: Pin (9px, `textMuted`) — shown only if message is pinned
 
-#### Hover Action Bar {#hover-action-bar}
+#### Hover Action Bar 
 
 Appears on the right side of the header row on message hover. `marginLeft: auto`.
 
@@ -7530,7 +7530,7 @@ Appears on the right side of the header row on message hover. `marginLeft: auto`
 | GitFork (11px) | "Fork" | Create a new chat branching from this message |
 | MoreHorizontal (11px) | "More" | Open context menu with: Edit, Delete, Forward to Instance |
 
-#### Message Content {#message-content}
+#### Message Content 
 
 ```ts
 {
@@ -7544,7 +7544,7 @@ Appears on the right side of the header row on message hover. `marginLeft: auto`
 
 Content is rendered as plain text in v1. Future: Markdown rendering with code blocks, lists, emphasis.
 
-#### Memory Extraction Indicator (Optional) {#memory-extraction-indicator-(optional)}
+#### Memory Extraction Indicator (Optional) 
 
 Displayed below qualifying messages when "Show memory extraction" is enabled.
 
@@ -7563,7 +7563,7 @@ Displayed below qualifying messages when "Show memory extraction" is enabled.
 
 Shown when `message.metadata.memories_saved > 0`.
 
-#### Inline Interactive Components (Content Blocks) {#inline-interactive-components-(content-blocks)}
+#### Inline Interactive Components (Content Blocks) 
 
 When a message has `content_blocks`, they render below the text content at `paddingLeft: 34` with `marginTop: 10`.
 
@@ -7592,7 +7592,7 @@ When a message has `content_blocks`, they render below the text content at `padd
 - Status: 10px, weight 400, colored by status (green for "Ready", amber for "Pending")  
 - Footer label: "Interactive component" (9px, weight 300, `textFaint`, italic)
 
-#### Regenerate Button {#regenerate-button}
+#### Regenerate Button 
 
 Displayed below the last AI message only:
 
@@ -7609,7 +7609,7 @@ Button: RefreshCw icon (10px) \+ "Regenerate" text (10px). `border: 1px solid th
 
 Clicking triggers a re-generation of the last persona response using the same context but potentially a different model run.
 
-### Empty State {#empty-state}
+### Empty State 
 
 When all messages are filtered out:
 
@@ -7624,7 +7624,7 @@ When all messages are filtered out:
 // Text: "No messages match this filter."
 ```
 
-### Message Loading {#message-loading}
+### Message Loading 
 
 On initial chat load, fetch the most recent 50 messages. As the user scrolls up, load older messages in batches of 50 (infinite scroll up). Use cursor-based pagination on `messages.created_at`.
 
@@ -7654,11 +7654,11 @@ Messages are reversed for display (oldest at top, newest at bottom).
 
 ---
 
-## 5.4 Message Composer {#5.4-message-composer-1}
+## 5.4 Message Composer 
 
 The composer is pinned to the bottom of the chat screen, below the message list.
 
-### Container {#container-3}
+### Container 
 
 ```ts
 // Outer wrapper
@@ -7678,7 +7678,7 @@ The composer is pinned to the bottom of the chat screen, below the message list.
 }
 ```
 
-### Left Side: Persona Selector (@mention) {#left-side:-persona-selector-(@mention)}
+### Left Side: Persona Selector (@mention) 
 
 The PersonaSelector allows the user to direct a message to a specific persona or to "Everyone" (all participants).
 
@@ -7712,7 +7712,7 @@ Items:
 
 When a persona is selected, the input placeholder changes from "Message everyone..." to `Message {persona_name}...`.
 
-### Left Side: Model Selector {#left-side:-model-selector}
+### Left Side: Model Selector 
 
 Positioned next to the PersonaSelector with `marginLeft: 4px`.
 
@@ -7772,7 +7772,7 @@ Each model item:
 
 The selected model is used for the next message only. It can be overridden by Cipher's routing logic if multi-model routing is enabled (Premium+).
 
-### Center: Text Input {#center:-text-input}
+### Center: Text Input 
 
 ```ts
 {
@@ -7792,7 +7792,7 @@ The selected model is used for the next message only. It can be overridden by Ci
   - Persona selected: `Message {persona_name}...`  
 - Submit on Enter (without Shift). Shift+Enter inserts newline.
 
-### Right Side: Action Buttons {#right-side:-action-buttons}
+### Right Side: Action Buttons 
 
 Three icon buttons with `gap: 10, marginLeft: 10, flexShrink: 0`:
 
@@ -7804,7 +7804,7 @@ Three icon buttons with `gap: 10, marginLeft: 10, flexShrink: 0`:
 
 The Send button should use `textMuted` when input is empty (disabled visual) and `accent` when text is present.
 
-### Draft Indicator {#draft-indicator}
+### Draft Indicator 
 
 Appears below the input bar when the user is typing:
 
@@ -7840,7 +7840,7 @@ useEffect(() => {
 }, [chatId]);
 ```
 
-### Send Message Flow {#send-message-flow}
+### Send Message Flow 
 
 1. User types message and presses Enter (or clicks Send)  
 2. Client validates: non-empty text, at least one participant  
@@ -7864,9 +7864,9 @@ useEffect(() => {
 
 ---
 
-## 5.5 Auto-Rename & Suggested Move {#5.5-auto-rename-&-suggested-move}
+## 5.5 Auto-Rename & Suggested Move 
 
-### Auto-Rename {#auto-rename}
+### Auto-Rename 
 
 **Trigger:** After the 3rd exchange (6+ messages: 3 user \+ 3 persona). A Cipher Edge Function analyzes the conversation content and generates a concise, descriptive title.
 
@@ -7895,7 +7895,7 @@ await supabase
 
 The UI detects the `auto_title` change via Realtime subscription and shows the rename banner.
 
-### Suggested Move {#suggested-move}
+### Suggested Move 
 
 **Trigger:** After the 5th user message in a chat with no instance (`instance_id IS NULL`). Cipher compares conversation content against existing instance names and descriptions.
 
@@ -7905,13 +7905,13 @@ The suggestion is stored in `chats.metadata.suggested_instance_id` and the UI re
 
 ---
 
-## 5.6 Right Panel {#5.6-right-panel}
+## 5.6 Right Panel 
 
 The right panel is a 250px-wide sidebar on the right side of the chat screen. Desktop only. Toggled via the PanelRightOpen/Close icon in the top bar.
 
 **Default state:** Closed.
 
-### Tab Navigation {#tab-navigation}
+### Tab Navigation 
 
 4 tabs in a horizontal row at the top:
 
@@ -7942,7 +7942,7 @@ Tabs: Nav, Filters (with active filter dot indicator), Pinned, People.
 
 The Filters tab shows a 5px accent-colored dot indicator next to the label when any non-"All" filter is active.
 
-### Nav Tab: Chat Navigator {#nav-tab:-chat-navigator}
+### Nav Tab: Chat Navigator 
 
 A chronological conversation map organized by date.
 
@@ -7991,7 +7991,7 @@ A chronological conversation map organized by date.
 
 **Data source:** Nav sections are generated by Cipher's checkpoint system (see Part 15: CogniGraph). Each checkpoint produces a label and summary that populate the nav panel. In v1, these can be generated by a post-response Edge Function that summarizes the conversation in segments.
 
-### Filters Tab {#filters-tab}
+### Filters Tab 
 
 Contains all message filtering controls, moved from the main chat area to declutter the message view.
 
@@ -8050,7 +8050,7 @@ Header: "ACTIONS".
 
 "Export Conversation" button: FileDown icon (12px) \+ text (11px). `border: 1px solid theme.border, borderRadius: 8, padding: 8px 12px`. Opens the Export Modal.
 
-### Pinned Tab {#pinned-tab}
+### Pinned Tab 
 
 Lists all pinned messages from the current chat.
 
@@ -8070,7 +8070,7 @@ Lists all pinned messages from the current chat.
 
 Clicking a pinned message scrolls the main message list to that message.
 
-### People Tab {#people-tab}
+### People Tab 
 
 Manages chat participants and shows persona details.
 
@@ -8149,13 +8149,13 @@ Clicking navigates to the persona's detail page (`go("people", { persona: p.id }
 
 ---
 
-## 5.7 Export System {#5.7-export-system-1}
+## 5.7 Export System 
 
 Chat export is accessed from the Filters tab's "Export Conversation" button or via ⌘E.
 
 The Export Modal UI is defined in Part 3, Section 3.7. Here we specify the backend implementation.
 
-### Export Edge Function {#export-edge-function}
+### Export Edge Function 
 
 ```ts
 // supabase/functions/chat-export/index.ts
@@ -8185,7 +8185,7 @@ interface ExportRequest {
 | HTML | Self-contained HTML with inline styles matching the app theme | `.html` file download |
 | Encrypted ZIP | All formats bundled \+ AES-256 encrypted with user-provided passphrase | `.zip` file download |
 
-### Export History {#export-history}
+### Export History 
 
 ```sql
 CREATE TABLE public.export_history (
@@ -8207,11 +8207,11 @@ CREATE POLICY "Users view own exports"
 
 ---
 
-## 5.8 AI Response Pipeline {#5.8-ai-response-pipeline-1}
+## 5.8 AI Response Pipeline 
 
 This is the server-side flow from "user sends message" to "persona response appears." This is the core of the Cipher orchestration engine applied specifically to chat.
 
-### Flow Diagram {#flow-diagram}
+### Flow Diagram 
 
 ```
 User sends message
@@ -8263,7 +8263,7 @@ User sends message
 └───────────────────┘
 ```
 
-### Step 2: Cipher Routing {#step-2:-cipher-routing}
+### Step 2: Cipher Routing 
 
 The routing algorithm determines which persona responds to the user's message. Priority order:
 
@@ -8279,7 +8279,7 @@ The routing algorithm determines which persona responds to the user's message. P
 
 **Routing metadata:** The selected persona and reason are recorded in `messages.routing_reason` on the persona's response message.
 
-### Step 3: Context Assembly {#step-3:-context-assembly}
+### Step 3: Context Assembly 
 
 Cipher assembles the full prompt from multiple sources:
 
@@ -8310,7 +8310,7 @@ The assembly function works backward from the model's context limit:
 3. Fill conversation history newest-first, using checkpoint summaries for older segments  
 4. Add instance context if space remains
 
-### Step 4: Model Call {#step-4:-model-call}
+### Step 4: Model Call 
 
 The Edge Function calls the OpenRouter API using either the platform key or the user's BYOK key:
 
@@ -8340,7 +8340,7 @@ const stream = await client.chat.completions.create({
 
 Option 1 (SSE) is recommended for v1 as it's simpler and more reliable.
 
-### Step 5: Save Response {#step-5:-save-response}
+### Step 5: Save Response 
 
 Once streaming completes, the full response is inserted into the `messages` table:
 
@@ -8362,7 +8362,7 @@ await supabase.from("messages").insert({
 });
 ```
 
-### Step 6: Post-Response Tasks {#step-6:-post-response-tasks}
+### Step 6: Post-Response Tasks 
 
 These run asynchronously after the response is saved — they do not block the user experience.
 
@@ -8376,7 +8376,7 @@ These run asynchronously after the response is saved — they do not block the u
      
 5. **Update chat timestamp:** `UPDATE chats SET updated_at = now() WHERE id = chat_id`.
 
-### Error Handling & Retry {#error-handling-&-retry}
+### Error Handling & Retry 
 
 | Error | Action |
 | :---- | :---- |
@@ -8406,7 +8406,7 @@ These run asynchronously after the response is saved — they do not block the u
 
 *End of Part 5\. Proceed to Part 6: Search Screen.*
 
-# PART 6: SEARCH SCREEN {#part-6:-search-screen-1}
+# PART 6: SEARCH SCREEN 
 
 ---
 
@@ -8416,9 +8416,9 @@ The Search screen is also accessible as a quick-launch overlay via ⌘K from any
 
 ---
 
-## 6.1 Layout {#6.1-layout-1}
+## 6.1 Layout 
 
-### Container {#container-4}
+### Container 
 
 Centered single-column layout, same container pattern as Home:
 
@@ -8436,7 +8436,7 @@ Centered single-column layout, same container pattern as Home:
 }
 ```
 
-### Content Flow {#content-flow-1}
+### Content Flow 
 
 The screen has three vertical zones that swap based on state:
 
@@ -8446,9 +8446,9 @@ The screen has three vertical zones that swap based on state:
 
 ---
 
-## 6.2 Search Input {#6.2-search-input}
+## 6.2 Search Input 
 
-### Input Container {#input-container}
+### Input Container 
 
 ```ts
 {
@@ -8468,7 +8468,7 @@ The screen has three vertical zones that swap based on state:
 }
 ```
 
-### Input Elements {#input-elements}
+### Input Elements 
 
 **Search icon** (left):
 
@@ -8530,7 +8530,7 @@ The screen has three vertical zones that swap based on state:
 
 The keyboard hint is hidden when the input has focus (it's a reminder for unfocused state).
 
-### Input Behavior {#input-behavior}
+### Input Behavior 
 
 ```ts
 const [searchQuery, setSearchQuery] = useState("");
@@ -8558,7 +8558,7 @@ useEffect(() => {
 
 **⌘K shortcut integration:** The global ⌘K listener (Part 3, Section 3.5) navigates to the Search screen and focuses the input. If the user is already on the Search screen, ⌘K focuses the input and selects all text for easy replacement.
 
-### Instance Scope Indicator {#instance-scope-indicator}
+### Instance Scope Indicator 
 
 If the user navigated to Search from within an Instance context, or scoped the search manually, a scope chip appears between the input and filter chips:
 
@@ -8595,11 +8595,11 @@ const [searchScope, setSearchScope] = useState<{
 
 ---
 
-## 6.3 Filter Chips {#6.3-filter-chips}
+## 6.3 Filter Chips 
 
 Horizontal row of filter chips below the scope indicator (or below the input if no scope):
 
-### Container {#container-5}
+### Container 
 
 ```ts
 {
@@ -8610,7 +8610,7 @@ Horizontal row of filter chips below the scope indicator (or below the input if 
 }
 ```
 
-### Filter Definitions {#filter-definitions}
+### Filter Definitions 
 
 | ID | Label | Icon | Data Source |
 | :---- | :---- | :---- | :---- |
@@ -8621,7 +8621,7 @@ Horizontal row of filter chips below the scope indicator (or below the input if 
 | `chat` | Chats | MessageSquare (10px) | Chat titles \+ message content via full-text search |
 | `file` | Files | Folder (10px) | File names \+ tags via full-text search |
 
-### Chip Styling {#chip-styling}
+### Chip Styling 
 
 ```ts
 {
@@ -8646,7 +8646,7 @@ Only one filter is active at a time (single-select). "All" is the default. Click
 2. Re-filters the displayed results client-side (if results are already loaded)  
 3. If no results have been fetched yet for this filter and query, triggers a new search
 
-### Result Count Badges {#result-count-badges}
+### Result Count Badges 
 
 When results are loaded, each filter chip shows a count badge indicating how many results match that source:
 
@@ -8665,9 +8665,9 @@ For "All", the badge shows the total count. For individual filters, it shows the
 
 ---
 
-## 6.4 Search Execution {#6.4-search-execution}
+## 6.4 Search Execution 
 
-### State Management {#state-management}
+### State Management 
 
 ```ts
 interface SearchState {
@@ -8682,7 +8682,7 @@ interface SearchState {
 }
 ```
 
-### Search Request/Response Types {#search-request/response-types}
+### Search Request/Response Types 
 
 ```ts
 interface SearchRequest {
@@ -8723,7 +8723,7 @@ interface SearchResponse {
 }
 ```
 
-### React Query Hook {#react-query-hook}
+### React Query Hook 
 
 ```ts
 // src/hooks/use-search.ts
@@ -8754,9 +8754,9 @@ The `enabled: query.length >= 2` guard prevents searches on single characters. T
 
 ---
 
-## 6.5 Edge Function: Unified Search {#6.5-edge-function:-unified-search}
+## 6.5 Edge Function: Unified Search 
 
-### Function Entry Point {#function-entry-point}
+### Function Entry Point 
 
 ```ts
 // supabase/functions/search/index.ts
@@ -8841,7 +8841,7 @@ serve(async (req) => {
 });
 ```
 
-### Backend 1: Chat Search {#backend-1:-chat-search}
+### Backend 1: Chat Search 
 
 PostgreSQL full-text search across `chats.title` and `messages.content`. Returns matching chat titles and individual message excerpts.
 
@@ -9015,7 +9015,7 @@ RETURNS TABLE (
 $$;
 ```
 
-### Backend 2: File Search {#backend-2:-file-search}
+### Backend 2: File Search 
 
 Full-text search on file names and tags:
 
@@ -9102,7 +9102,7 @@ RETURNS TABLE (
 $$;
 ```
 
-### Backend 3: Memory Search (Semantic) {#backend-3:-memory-search-(semantic)}
+### Backend 3: Memory Search (Semantic) 
 
 Uses pg\_vector to perform semantic similarity search across CogniGraph memory embeddings. The user's query is first converted to an embedding vector, then compared against stored memory embeddings.
 
@@ -9210,7 +9210,7 @@ RETURNS TABLE (
 $$;
 ```
 
-### Backend 4: Web Search {#backend-4:-web-search}
+### Backend 4: Web Search 
 
 Integration with an external search API. Tavily is recommended for v1 (purpose-built for AI applications). Brave Search API is the fallback option.
 
@@ -9259,7 +9259,7 @@ async function searchWeb(
 
 Web search is always global — it ignores instance scope since web content doesn't belong to any instance.
 
-### Backend 5: Internal Search {#backend-5:-internal-search}
+### Backend 5: Internal Search 
 
 Cross-entity search across instances, personas, and teams. Uses simple `ILIKE` matching on names and descriptions since these are short text fields where full-text search overhead isn't justified.
 
@@ -9355,7 +9355,7 @@ async function searchInternal(
 }
 ```
 
-### Result Merging & Ranking {#result-merging-&-ranking}
+### Result Merging & Ranking 
 
 When filter is "all", results from all backends are merged. Each backend returns scores on its own scale (full-text rank, cosine similarity, position-based). Merging normalizes these into a comparable 0–1 range.
 
@@ -9411,7 +9411,7 @@ function mergeAndRank(results: SearchResult[]): SearchResult[] {
 }
 ```
 
-### Snippet Highlighting Utility {#snippet-highlighting-utility}
+### Snippet Highlighting Utility 
 
 For chat and file results, query terms are highlighted in the snippet:
 
@@ -9467,9 +9467,9 @@ function HighlightedSnippet({ text, query }: { text: string; query: string }) {
 
 ---
 
-## 6.6 Search Results Display {#6.6-search-results-display}
+## 6.6 Search Results Display 
 
-### Results Container {#results-container}
+### Results Container 
 
 ```ts
 {
@@ -9478,7 +9478,7 @@ function HighlightedSnippet({ text, query }: { text: string; query: string }) {
 }
 ```
 
-### Result Card {#result-card}
+### Result Card 
 
 Each result is a card with generous vertical spacing:
 
@@ -9584,7 +9584,7 @@ The snippet is clamped to 3 lines. Uses the `HighlightedSnippet` component to hi
 
 The "Save" button toggles a bookmark on the result. Bookmarked results are stored in a `saved_results` table (see Section 6.10) and can be accessed later.
 
-### Result Card Navigation {#result-card-navigation}
+### Result Card Navigation 
 
 Clicking a result card (outside of action buttons) navigates to the entity:
 
@@ -9623,9 +9623,9 @@ For web results, clicking navigates to the Browser screen and loads the URL in a
 
 ---
 
-## 6.7 Loading, Empty, and Error States {#6.7-loading,-empty,-and-error-states}
+## 6.7 Loading, Empty, and Error States 
 
-### Loading State {#loading-state-2}
+### Loading State 
 
 While search is executing, show skeleton result cards:
 
@@ -9645,7 +9645,7 @@ Each skeleton card:
 
 The `keepPreviousData` flag in React Query means old results remain visible with the skeleton overlay when refining a query. The skeleton only shows for the initial load (when no previous results exist).
 
-### No Results State {#no-results-state}
+### No Results State 
 
 When the search completes but returns zero results for the active filter:
 
@@ -9666,7 +9666,7 @@ When the search completes but returns zero results for the active filter:
   - Filter "memory": "No matching memories. Memories are created from your conversations over time."  
   - Filter "internal": "No matching workspaces, personas, or teams."
 
-### Error State {#error-state-1}
+### Error State 
 
 If the search Edge Function returns an error:
 
@@ -9682,7 +9682,7 @@ If the search Edge Function returns an error:
 - "Something went wrong. Please try again." (12px, weight 300, `textMuted`, marginTop 4px)  
 - "Retry" button (bordered, 11px, padding 5px 14px, borderRadius 6). Calls `refetch()`.
 
-### Partial Backend Failure {#partial-backend-failure}
+### Partial Backend Failure 
 
 If some backends succeed but others fail (common with external APIs), the results display normally but a small warning banner appears above the results:
 
@@ -9708,9 +9708,9 @@ This banner appears when any backend in `Promise.allSettled` returns `status: "r
 
 ---
 
-## 6.8 Result Action Flows {#6.8-result-action-flows}
+## 6.8 Result Action Flows 
 
-### "Chat with this" {#"chat-with-this"}
+### "Chat with this" 
 
 Creates a new chat pre-loaded with the search result as context:
 
@@ -9748,7 +9748,7 @@ async function chatWithResult(result: SearchResult) {
 
 The system message provides the persona with the search context. The persona can then discuss, analyze, or act on the content.
 
-### "Send to Instance" {#"send-to-instance"}
+### "Send to Instance" 
 
 Opens a popover to select a destination Instance:
 
@@ -9818,7 +9818,7 @@ async function sendToInstance(result: SearchResult, instanceId: string) {
 }
 ```
 
-### "Save" (Bookmark) {#"save"-(bookmark)}
+### "Save" (Bookmark) 
 
 Toggles a bookmark on the search result:
 
@@ -9853,11 +9853,11 @@ async function toggleSaveResult(result: SearchResult) {
 
 ---
 
-## 6.9 Search History & Saved Searches {#6.9-search-history-&-saved-searches}
+## 6.9 Search History & Saved Searches 
 
 When the search input is empty, the results area shows two sections: Recent Searches and Saved Searches.
 
-### Recent Searches Section {#recent-searches-section}
+### Recent Searches Section 
 
 **Header:**
 
@@ -9894,7 +9894,7 @@ When the search input is empty, the results area shows two sections: Recent Sear
 
 Clicking a history item: populates the search input with the query, sets the filter to the history entry's filter, and triggers a search.
 
-### Saved Searches Section {#saved-searches-section}
+### Saved Searches Section 
 
 **Header:**
 
@@ -9925,7 +9925,7 @@ Clicking a history item: populates the search input with the query, sets the fil
 
 Clicking populates the search input and triggers a search, same as recent searches.
 
-### Empty History State {#empty-history-state}
+### Empty History State 
 
 If the user has no search history at all:
 
@@ -9942,9 +9942,9 @@ If the user has no search history at all:
 
 ---
 
-## 6.10 Database Schema {#6.10-database-schema}
+## 6.10 Database Schema 
 
-### search\_history Table {#search_history-table}
+### search\_history Table 
 
 ```sql
 CREATE TABLE public.search_history (
@@ -9986,7 +9986,7 @@ $$;
 
 Non-saved entries are capped at 50\. Saved entries are never auto-deleted.
 
-### saved\_results Table {#saved_results-table}
+### saved\_results Table 
 
 ```sql
 CREATE TABLE public.saved_results (
@@ -10015,7 +10015,7 @@ The unique index on `(user_id, source_id)` prevents duplicate bookmarks.
 
 ---
 
-## 6.11 Tier Gating {#6.11-tier-gating}
+## 6.11 Tier Gating 
 
 | Feature | Free | Plus | Premium | Pro |
 | :---- | :---- | :---- | :---- | :---- |
@@ -10046,13 +10046,13 @@ When a gated filter is clicked by a user below the required tier, the filter chi
 
 ---
 
-## 6.12 Performance Considerations {#6.12-performance-considerations}
+## 6.12 Performance Considerations 
 
-### Debouncing {#debouncing}
+### Debouncing 
 
 The 300ms debounce on the search input prevents excessive API calls. Combined with React Query's `keepPreviousData`, the user sees a smooth transition between results as they type.
 
-### Backend Timeout {#backend-timeout}
+### Backend Timeout 
 
 Each search backend has a 5-second timeout. If a backend doesn't respond within 5 seconds, its `Promise.allSettled` entry resolves as rejected and the partial backend failure banner appears. This ensures the search screen remains responsive even if one backend is slow.
 
@@ -10075,15 +10075,15 @@ const backendResults = await Promise.allSettled(
 );
 ```
 
-### Caching {#caching}
+### Caching 
 
 React Query caches search results for 60 seconds (`staleTime: 60_000`). If the user switches between filter chips, cached results for the same query are displayed instantly without re-querying. The `queryKey` includes the query, filter, and scope, so different filter selections produce separate cache entries.
 
-### Full-Text Search Index Maintenance {#full-text-search-index-maintenance}
+### Full-Text Search Index Maintenance 
 
 The generated `tsvector` columns on `chats`, `messages`, and `files` are automatically maintained by PostgreSQL (they use `GENERATED ALWAYS AS ... STORED`). No manual index rebuilds are required. The GIN indexes on these columns provide fast lookup.
 
-### Embedding Generation Cost {#embedding-generation-cost}
+### Embedding Generation Cost 
 
 Memory search requires generating a query embedding for every search. The `text-embedding-3-small` model from OpenAI is efficient (\~$0.02 per 1M tokens). For typical search queries (5–20 tokens), the cost is negligible. However, this is gated to Premium+ tiers to manage cost at scale.
 
@@ -10091,7 +10091,7 @@ Memory search requires generating a query embedding for every search. The `text-
 
 *End of Part 6\. Proceed to Part 7: Spaces / Instances Screen.*
 
-# PART 7: SPACES / INSTANCES SCREEN {#part-7:-spaces-/-instances-screen-1}
+# PART 7: SPACES / INSTANCES SCREEN 
 
 ---
 
@@ -10099,9 +10099,9 @@ Instances are the organizational backbone of aiConnected. Each Instance is a com
 
 ---
 
-## 7.1 Data Model {#7.1-data-model-1}
+## 7.1 Data Model 
 
-### Instances Table {#instances-table}
+### Instances Table 
 
 ```sql
 CREATE TABLE public.instances (
@@ -10130,7 +10130,7 @@ CREATE TRIGGER set_instances_updated_at
   BEFORE UPDATE ON public.instances FOR EACH ROW EXECUTE FUNCTION public.handle_updated_at();
 ```
 
-### Instance Personas (Join Table) {#instance-personas-(join-table)}
+### Instance Personas (Join Table) 
 
 ```sql
 CREATE TABLE public.instance_personas (
@@ -10156,7 +10156,7 @@ CREATE POLICY "Users manage personas in own instances"
   );
 ```
 
-### Tasks Table {#tasks-table}
+### Tasks Table 
 
 ```sql
 CREATE TABLE public.tasks (
@@ -10188,7 +10188,7 @@ CREATE POLICY "Users manage tasks in own instances"
 CREATE INDEX idx_tasks_instance_status ON public.tasks(instance_id, status);
 ```
 
-### Workspace Items Table {#workspace-items-table}
+### Workspace Items Table 
 
 ```sql
 CREATE TABLE public.workspace_items (
@@ -10217,7 +10217,7 @@ CREATE POLICY "Users manage workspace in own instances"
   );
 ```
 
-### Instance Settings JSON Structure {#instance-settings-json-structure}
+### Instance Settings JSON Structure 
 
 ```ts
 interface InstanceSettings {
@@ -10247,7 +10247,7 @@ interface InstanceSettings {
 }
 ```
 
-### Settings Cascade {#settings-cascade}
+### Settings Cascade 
 
 Instance settings inherit from a four-level cascade:
 
@@ -10275,11 +10275,11 @@ function resolveInstanceSettings(
 
 ---
 
-## 7.2 Instance List View {#7.2-instance-list-view}
+## 7.2 Instance List View 
 
 The list view shows all of the user's Instances in a scrollable page.
 
-### Header {#header-1}
+### Header 
 
 ```ts
 {
@@ -10293,7 +10293,7 @@ The list view shows all of the user's Instances in a scrollable page.
 - Title: "Spaces" (28px, weight 300, letter-spacing \-0.03em)  
 - "+New" button: Plus icon (14px) \+ "New" text. `border: 1px solid theme.border, borderRadius: 8, padding: 7px 16px, fontSize: 13, color: textSec, fontWeight: 400`.
 
-### Instance Items {#instance-items}
+### Instance Items 
 
 Each Instance is a clickable row:
 
@@ -10321,7 +10321,7 @@ Each Instance is a clickable row:
 
 Clicking navigates to the Instance Detail view: `go("spaces", { inst: instance.id, tab: "Overview" })`.
 
-### Data Query {#data-query-1}
+### Data Query 
 
 ```ts
 const { data: instances } = useQuery({
@@ -10345,7 +10345,7 @@ const { data: instances } = useQuery({
 });
 ```
 
-### Empty State {#empty-state-1}
+### Empty State 
 
 When user has no Instances:
 
@@ -10357,9 +10357,9 @@ No spaces yet. Create your first space to organize your conversations and files.
 
 ---
 
-## 7.3 Instance Detail View {#7.3-instance-detail-view-1}
+## 7.3 Instance Detail View 
 
-### Container {#container-6}
+### Container 
 
 ```ts
 {
@@ -10372,7 +10372,7 @@ No spaces yet. Create your first space to organize your conversations and files.
 }
 ```
 
-### Header {#header-2}
+### Header 
 
 ```ts
 { padding: `${py}px ${px}px 0`, flexShrink: 0 }
@@ -10397,7 +10397,7 @@ No spaces yet. Create your first space to organize your conversations and files.
 
 Each menu item: 12px, weight 400, padding 7px 10px, borderRadius 6\.
 
-### Tab Navigation {#tab-navigation-1}
+### Tab Navigation 
 
 6 tabs in a horizontal row below the header:
 
@@ -10430,7 +10430,7 @@ Each tab:
 
 Tabs: **Overview**, **Tasks**, **Workspace**, **Chats**, **Files**, **Settings**
 
-### Tab Content Container {#tab-content-container}
+### Tab Content Container 
 
 ```ts
 {
@@ -10442,11 +10442,11 @@ Tabs: **Overview**, **Tasks**, **Workspace**, **Chats**, **Files**, **Settings**
 
 ---
 
-## 7.4 Overview Tab {#7.4-overview-tab}
+## 7.4 Overview Tab 
 
 The Overview tab is the Instance's landing page. It shows 3 major sections: Open Forum, Persona Roster, and Activity.
 
-### Open Forum {#open-forum}
+### Open Forum 
 
 A persistent, shared chat that lives within the Instance. All assigned personas participate. This is like a group channel — users can post messages and all personas respond.
 
@@ -10500,7 +10500,7 @@ Each forum message:
 
 The forum chat is stored as a regular chat with a special flag: `chats.metadata.is_forum = true`. It is auto-created when the Instance is created and cannot be deleted independently.
 
-### Persona Roster {#persona-roster}
+### Persona Roster 
 
 Shown when the Instance has assigned personas.
 
@@ -10525,7 +10525,7 @@ Personas displayed as clickable chips in a wrapping flex row (gap 10px):
 
 "+ Add" button: dashed border, UserPlus icon (11px), opens a persona picker.
 
-### Activity {#activity}
+### Activity 
 
 Header: "ACTIVITY" (same section header style).
 
@@ -10545,9 +10545,9 @@ Activity items (specific to this Instance, from `activity_log` where `entity_typ
 
 ---
 
-## 7.5 Tasks Tab {#7.5-tasks-tab}
+## 7.5 Tasks Tab 
 
-### Header Row {#header-row}
+### Header Row 
 
 ```ts
 {
@@ -10561,7 +10561,7 @@ Activity items (specific to this Instance, from `activity_log` where `entity_typ
 - Task count: `{n} tasks` (14px, weight 400\)  
 - "+New Task" button: Plus icon (12px) \+ "New Task" text, bordered
 
-### Task List (v1) {#task-list-(v1)}
+### Task List (v1) 
 
 In v1, tasks are displayed as a flat list sorted by status. Each task:
 
@@ -10579,7 +10579,7 @@ In v1, tasks are displayed as a flat list sorted by status. Each task:
 - Metadata: `{assignee_persona_name} · {due_date}` (12px, weight 300, `textMuted`)  
 - Status dot: active (green) for in\_progress/todo, idle (amber) for review, sleeping (gray) for done
 
-### Task Board (v2 — Kanban) {#task-board-(v2-—-kanban)}
+### Task Board (v2 — Kanban) 
 
 Four columns: To Do, In Progress, Review, Done. Each column header shows the count.
 
@@ -10602,7 +10602,7 @@ Task cards within columns are draggable (using @dnd-kit/core):
 - Priority indicator: colored dot (urgent=red, high=amber, medium=transparent, low=transparent)  
 - Due date: 10px, weight 300, `textFaint`
 
-### Quick Add {#quick-add}
+### Quick Add 
 
 Below the task list, an inline "Add task" input:
 
@@ -10622,11 +10622,11 @@ Below the task list, an inline "Add task" input:
 
 ---
 
-## 7.6 Workspace Tab {#7.6-workspace-tab}
+## 7.6 Workspace Tab 
 
 The Workspace is a curated collection of important content promoted from chats. It serves as the Instance's knowledge base.
 
-### Filter Row {#filter-row}
+### Filter Row 
 
 ```ts
 {
@@ -10643,7 +10643,7 @@ The Workspace is a curated collection of important content promoted from chats. 
 
 **Import button:** FilePlus icon (12px) \+ "Import from Chat" text, bordered. Opens a picker where the user can select messages from chats within this Instance to promote to the workspace.
 
-### Workspace Grid {#workspace-grid}
+### Workspace Grid 
 
 ```ts
 {
@@ -10668,7 +10668,7 @@ Each workspace item card:
 - Content: 12px, weight 350, `textSec`, line-height 1.5, marginBottom 10  
 - Footer: section badge (10px, `bg` background, borderRadius 10, `textMuted`, padding 2px 8px) \+ type label (10px, `textFaint`) \+ source label (10px, `textFaint`, "from {chat\_title}")
 
-### Drag-and-Drop Canvas (v2) {#drag-and-drop-canvas-(v2)}
+### Drag-and-Drop Canvas (v2) 
 
 Below the grid, a placeholder for the future canvas view:
 
@@ -10687,16 +10687,16 @@ Below the grid, a placeholder for the future canvas view:
 
 ---
 
-## 7.7 Chats Tab {#7.7-chats-tab}
+## 7.7 Chats Tab 
 
 Lists all chats belonging to this Instance.
 
-### Header Row {#header-row-1}
+### Header Row 
 
 - Chat count: `{n} conversations` (14px, weight 400\)  
 - "+New Chat" button: Plus icon (12px) \+ "New Chat", bordered. Creates a new chat pre-assigned to this Instance.
 
-### Chat List {#chat-list}
+### Chat List 
 
 Each chat item:
 
@@ -10721,16 +10721,16 @@ Clicking navigates to the chat: `go("chat", { chat: c.id })`.
 
 ---
 
-## 7.8 Files Tab {#7.8-files-tab}
+## 7.8 Files Tab 
 
 Scoped file browser for this Instance. Reuses the same file list pattern as the Global Files screen but filtered to `instance_id`.
 
-### Filter Row {#filter-row-1}
+### Filter Row 
 
 - Filter chips: All, Uploads, AI Generated (same styling as global files)  
 - Upload button: Upload icon (12px) \+ "Upload" text, bordered
 
-### File List {#file-list}
+### File List 
 
 Same file item layout as Global Files (Section 8.2) but without the Instance name column (since we're already scoped).
 
@@ -10741,7 +10741,7 @@ Each file row:
 - Metadata: size \+ date \+ origin badge ("AI" or "Upload") \+ source chat name (if linked)  
 - Actions: visibility toggle, download, delete (icon buttons)
 
-### Empty State {#empty-state-2}
+### Empty State 
 
 ```
 No files yet. Upload files or they'll appear here when AI generates them.
@@ -10751,16 +10751,16 @@ No files yet. Upload files or they'll appear here when AI generates them.
 
 ---
 
-## 7.9 Settings Tab {#7.9-settings-tab}
+## 7.9 Settings Tab 
 
 The Settings tab shows the resolved configuration for this Instance, with clear indicators of which settings are inherited vs overridden.
 
-### Header {#header-3}
+### Header 
 
 - "Instance Settings" (14px, weight 450\)  
 - Description: "Settings cascade: Global → Type → Instance. Custom overrides shown below." (12px, weight 300, `textMuted`)
 
-### Settings List {#settings-list}
+### Settings List 
 
 Each setting row:
 
@@ -10787,7 +10787,7 @@ Each setting row:
 - "Edit" button: bordered, 11px  
 - "Reset" button (visible only when custom): bordered, 11px, `textFaint`. Removes the instance override, reverting to inherited value.
 
-### Settings Available for Override {#settings-available-for-override}
+### Settings Available for Override 
 
 | Setting Key | Type | Description |
 | :---- | :---- | :---- |
@@ -10798,7 +10798,7 @@ Each setting row:
 | `storage` | enum | Storage strategy |
 | `cleanup` | object | Auto-rename, cleanup frequency, suggested moves |
 
-### Edit Flow {#edit-flow}
+### Edit Flow 
 
 Clicking "Edit" on a setting opens an inline editor or modal depending on the setting type:
 
@@ -10811,15 +10811,15 @@ On save, the override is written to `instances.settings` JSONB, and the source i
 
 ---
 
-## 7.10 Create Instance Flow {#7.10-create-instance-flow}
+## 7.10 Create Instance Flow 
 
 Triggered by the "+New" button on the Instance List or via the Command Palette.
 
-### Modal Layout {#modal-layout}
+### Modal Layout 
 
 Centered modal, 440px wide (90% on mobile), borderRadius 16px, padding 28px.
 
-### Step 1: Name & Type {#step-1:-name-&-type}
+### Step 1: Name & Type 
 
 - "Create a new space" heading (16px, weight 450\)  
 - Name input: "Space name" placeholder (14px)  
@@ -10828,13 +10828,13 @@ Centered modal, 440px wide (90% on mobile), borderRadius 16px, padding 28px.
   - Each with icon \+ name \+ brief description  
   - Selected option highlighted with `surfaceAlt` background and accent border
 
-### Step 2: Optional Config {#step-2:-optional-config}
+### Step 2: Optional Config 
 
 - Description textarea: "What is this space for?" (optional)  
 - Assign personas: Multi-select persona picker from existing personas  
 - Apply type template: Checkbox to apply the type template's default settings
 
-### Action Buttons {#action-buttons}
+### Action Buttons 
 
 - "Create" (accent bg, accentText, borderRadius 6, full-width at bottom)  
 - "Cancel" link (textMuted, centered below)
@@ -10845,7 +10845,7 @@ On creation: INSERT into `instances` table, optionally insert `instance_personas
 
 *End of Part 7\. Proceed to Part 8: Global Files Screen.*
 
-# PART 8: GLOBAL FILES SCREEN {#part-8:-global-files-screen-1}
+# PART 8: GLOBAL FILES SCREEN 
 
 ---
 
@@ -10855,9 +10855,9 @@ This screen shows files at the global level. Each Instance also has its own File
 
 ---
 
-## 8.1 Data Model {#8.1-data-model-1}
+## 8.1 Data Model 
 
-### Files Table {#files-table}
+### Files Table 
 
 ```sql
 CREATE TABLE public.files (
@@ -10897,7 +10897,7 @@ ALTER TABLE public.files ADD COLUMN IF NOT EXISTS search_tsv tsvector
 CREATE INDEX idx_files_tsv ON public.files USING GIN (search_tsv);
 ```
 
-### metadata JSONB Structure {#metadata-jsonb-structure}
+### metadata JSONB Structure 
 
 The `metadata` field stores type-specific information about the file:
 
@@ -10931,7 +10931,7 @@ interface FileMetadata {
 }
 ```
 
-### Storage Configuration {#storage-configuration}
+### Storage Configuration 
 
 **Supabase Storage bucket:** `user-files`
 
@@ -10952,7 +10952,7 @@ CREATE POLICY "Users manage own files in storage"
 
 The `file_id` intermediate folder prevents name collisions across uploads and provides clean per-file organization. Each file gets its own UUID folder.
 
-### Visibility Levels {#visibility-levels}
+### Visibility Levels 
 
 | Level | Description | Global Files Screen | Instance Files Tab | Chat Reference | Search |
 | :---- | :---- | :---- | :---- | :---- | :---- |
@@ -10962,7 +10962,7 @@ The `file_id` intermediate folder prevents name collisions across uploads and pr
 
 The Global Files screen shows files where `visibility = 'visible'`. Instance Files tabs show files where `instance_id = {instance}` AND `visibility IN ('visible', 'instance')`.
 
-### TypeScript Interface {#typescript-interface}
+### TypeScript Interface 
 
 ```ts
 interface FileRecord {
@@ -10990,9 +10990,9 @@ interface FileRecord {
 
 ---
 
-## 8.2 Screen Layout {#8.2-screen-layout}
+## 8.2 Screen Layout 
 
-### Container {#container-7}
+### Container 
 
 ```ts
 {
@@ -11008,7 +11008,7 @@ interface FileRecord {
 }
 ```
 
-### Content Flow (Top to Bottom) {#content-flow-(top-to-bottom)}
+### Content Flow (Top to Bottom) 
 
 1. Header row (title \+ action buttons)  
 2. Search bar  
@@ -11018,7 +11018,7 @@ interface FileRecord {
 
 ---
 
-## 8.3 Header {#8.3-header}
+## 8.3 Header 
 
 ```ts
 {
@@ -11087,7 +11087,7 @@ interface FileRecord {
 
 ---
 
-## 8.4 Search Bar {#8.4-search-bar}
+## 8.4 Search Bar 
 
 ```ts
 {
@@ -11135,7 +11135,7 @@ Search matches against file name, parent instance name, and tags.
 
 ---
 
-## 8.5 Batch Actions Bar {#8.5-batch-actions-bar}
+## 8.5 Batch Actions Bar 
 
 Visible when `fileSelectMode === true && fileSelected.length > 0`:
 
@@ -11188,7 +11188,7 @@ Visible when `fileSelectMode === true && fileSelected.length > 0`:
 | Visibility | Eye (10px) | "Visibility" | (none) | Opens a small dropdown with 3 options (Visible, Instance, Hidden). Sets `visibility` on all selected files. |
 | Delete | Trash2 (10px) | "Delete" | `color: "#ef4444"` | Opens confirmation dialog: "Delete {n} files? This action cannot be undone." On confirm: soft-deletes files (sets `deleted_at`) and removes from Storage. |
 
-### Move Popover {#move-popover}
+### Move Popover 
 
 Triggered by the "Move" batch action button:
 
@@ -11239,7 +11239,7 @@ async function batchMoveFiles(fileIds: string[], instanceId: string | null) {
 }
 ```
 
-### Visibility Dropdown {#visibility-dropdown}
+### Visibility Dropdown 
 
 Triggered by the "Visibility" batch action button:
 
@@ -11269,7 +11269,7 @@ Triggered by the "Visibility" batch action button:
 
 Each option row: padding 7px 10px, borderRadius 6, display flex, gap 8px, cursor pointer.
 
-### Delete Confirmation Dialog {#delete-confirmation-dialog}
+### Delete Confirmation Dialog 
 
 A modal overlay:
 
@@ -11336,7 +11336,7 @@ async function batchDeleteFiles(fileIds: string[]) {
 
 ---
 
-## 8.6 Filter Chips {#8.6-filter-chips}
+## 8.6 Filter Chips 
 
 ```ts
 {
@@ -11388,9 +11388,9 @@ The count reflects the filtered result (after both origin filter and search quer
 
 ---
 
-## 8.7 File List {#8.7-file-list}
+## 8.7 File List 
 
-### Data Query {#data-query-2}
+### Data Query 
 
 ```ts
 const { data: allFiles, isLoading } = useQuery({
@@ -11417,7 +11417,7 @@ const { data: allFiles, isLoading } = useQuery({
 });
 ```
 
-### File Row {#file-row}
+### File Row 
 
 Each file in the list:
 
@@ -11434,7 +11434,7 @@ Each file in the list:
 
 In select mode, clicking the entire row toggles the file's selection. Outside select mode, clicking the row opens the file preview.
 
-### Checkbox (Select Mode Only) {#checkbox-(select-mode-only)}
+### Checkbox (Select Mode Only) 
 
 Visible when `fileSelectMode === true`:
 
@@ -11466,7 +11466,7 @@ function toggleFileSelect(fileId: string) {
 }
 ```
 
-### File Type Icon {#file-type-icon}
+### File Type Icon 
 
 14px Lucide icon, `textFaint` color, flexShrink 0:
 
@@ -11498,7 +11498,7 @@ function fileTypeIcon(type: FileRecord["type"]): JSX.Element {
 }
 ```
 
-### File Info (flex: 1, minWidth 0\) {#file-info-(flex:-1,-minwidth-0)}
+### File Info (flex: 1, minWidth 0\) 
 
 **Name:**
 
@@ -11596,7 +11596,7 @@ function shortDate(dateString: string): string {
 // EyeOff icon (9px) + "Hidden"
 ```
 
-### Action Buttons (Right Side, Non-Select Mode) {#action-buttons-(right-side,-non-select-mode)}
+### Action Buttons (Right Side, Non-Select Mode) 
 
 ```ts
 {
@@ -11627,7 +11627,7 @@ Two buttons:
 | Download (13px) | "Download" | Generates a signed URL and triggers browser download |
 | MoreHorizontal (13px) | "More" | Opens the file context menu |
 
-### File Context Menu {#file-context-menu}
+### File Context Menu 
 
 Triggered by the MoreHorizontal button on each file row:
 
@@ -11676,7 +11676,7 @@ Each menu item:
 // Hover: background theme.surfaceAlt
 ```
 
-### Inline Rename {#inline-rename}
+### Inline Rename 
 
 When "Rename" is selected from the context menu, the file name in the row transforms into an input:
 
@@ -11712,7 +11712,7 @@ async function renameFile(fileId: string, newName: string) {
 }
 ```
 
-### Tag Editor Popover {#tag-editor-popover}
+### Tag Editor Popover 
 
 Appears below the file row when "Edit Tags" is selected:
 
@@ -11762,9 +11762,9 @@ async function updateFileTags(fileId: string, tags: string[]) {
 
 ---
 
-## 8.8 File Upload {#8.8-file-upload}
+## 8.8 File Upload 
 
-### Upload Trigger Points {#upload-trigger-points}
+### Upload Trigger Points 
 
 Files can be uploaded from multiple locations throughout the platform:
 
@@ -11775,7 +11775,7 @@ Files can be uploaded from multiple locations throughout the platform:
 
 All paths use the same `uploadFile()` function.
 
-### Upload Function {#upload-function}
+### Upload Function 
 
 ```ts
 // src/lib/upload.ts
@@ -11872,7 +11872,7 @@ export async function uploadFile(
 }
 ```
 
-### File Type Inference {#file-type-inference}
+### File Type Inference 
 
 ```ts
 function inferFileType(mimeType: string, fileName: string): FileRecord["type"] {
@@ -11904,7 +11904,7 @@ function inferFileType(mimeType: string, fileName: string): FileRecord["type"] {
 }
 ```
 
-### Storage Usage RPC {#storage-usage-rpc}
+### Storage Usage RPC 
 
 ```sql
 CREATE OR REPLACE FUNCTION get_storage_usage(p_user_id UUID)
@@ -11916,7 +11916,7 @@ RETURNS BIGINT LANGUAGE sql STABLE AS $$
 $$;
 ```
 
-### Size Limits by Tier {#size-limits-by-tier}
+### Size Limits by Tier 
 
 | Tier | Max File Size | Total Storage |
 | :---- | :---- | :---- |
@@ -11934,7 +11934,7 @@ const TIER_FILE_LIMITS: Record<string, { maxFileSize: number; maxStorage: number
 };
 ```
 
-### Upload Error Handling {#upload-error-handling}
+### Upload Error Handling 
 
 ```ts
 class UploadError extends Error {
@@ -11956,7 +11956,7 @@ Error messages shown as toast notifications:
 
 The "Upgrade" text in the toast is a clickable link that opens the pricing modal.
 
-### Drag-and-Drop Zone {#drag-and-drop-zone}
+### Drag-and-Drop Zone 
 
 When the user drags a file over the screen, a full-screen drop zone overlay appears:
 
@@ -12040,7 +12040,7 @@ useEffect(() => {
 
 The `dragCounter` ref pattern prevents the overlay from flickering when dragging over child elements.
 
-### Upload Progress {#upload-progress}
+### Upload Progress 
 
 During upload, the file appears immediately in the list with a progress bar replacing the metadata row:
 
@@ -12084,11 +12084,11 @@ If upload fails, the progress bar turns red (`#ef4444` background) and the metad
 
 ---
 
-## 8.9 File Preview {#8.9-file-preview}
+## 8.9 File Preview 
 
 Clicking a file row (when not in select mode) opens a preview modal. The preview behavior depends on file type.
 
-### Preview Modal Container {#preview-modal-container}
+### Preview Modal Container 
 
 ```ts
 {
@@ -12103,7 +12103,7 @@ Clicking a file row (when not in select mode) opens a preview modal. The preview
 // Click backdrop (outside content) to close
 ```
 
-### Top Bar {#top-bar}
+### Top Bar 
 
 ```ts
 {
@@ -12126,7 +12126,7 @@ Clicking a file row (when not in select mode) opens a preview modal. The preview
   - Download button: Download icon (16px, white, cursor pointer, background none, border none)  
   - Close button: X icon (18px, white, cursor pointer, background none, border none)
 
-### Type-Specific Preview {#type-specific-preview}
+### Type-Specific Preview 
 
 | Type | Preview Implementation |
 | :---- | :---- |
@@ -12139,7 +12139,7 @@ Clicking a file row (when not in select mode) opens a preview modal. The preview
 | **video** | HTML5 `<video>` player with controls. `maxWidth: 80vw, maxHeight: 80vh, borderRadius: 8`. |
 | **other** | Download prompt (same as doc). |
 
-### Image Preview Detail {#image-preview-detail}
+### Image Preview Detail 
 
 ```ts
 function ImagePreview({ file }: { file: FileRecord }) {
@@ -12163,7 +12163,7 @@ function ImagePreview({ file }: { file: FileRecord }) {
 }
 ```
 
-### Signed URL Generation {#signed-url-generation}
+### Signed URL Generation 
 
 File previews and downloads use signed URLs (time-limited access):
 
@@ -12187,11 +12187,11 @@ function useSignedUrl(storagePath: string, expiresIn: number = 3600) {
 
 ---
 
-## 8.10 AI-Generated Files {#8.10-ai-generated-files}
+## 8.10 AI-Generated Files 
 
 When a persona generates a file during a chat conversation (e.g., Sally creates a mockup, Dev generates a code file), the file is automatically created and linked.
 
-### Generation Flow {#generation-flow}
+### Generation Flow 
 
 1. Persona's AI response includes a file generation intent (detected by Cipher)  
 2. The Edge Function generates the file content (image, code, document)  
@@ -12201,7 +12201,7 @@ When a persona generates a file during a chat conversation (e.g., Sally creates 
 6. A `file_reference` content block is created in the message (Part 5\)  
 7. Activity log entry created
 
-### Implementation {#implementation-1}
+### Implementation 
 
 ```ts
 // Called from the AI response pipeline (Part 5, Section 5.8)
@@ -12277,9 +12277,9 @@ AI-generated files inherit the Instance's default visibility setting. The user c
 
 ---
 
-## 8.11 Download {#8.11-download}
+## 8.11 Download 
 
-### Single File Download {#single-file-download}
+### Single File Download 
 
 ```ts
 async function downloadFile(file: FileRecord) {
@@ -12304,7 +12304,7 @@ async function downloadFile(file: FileRecord) {
 }
 ```
 
-### Batch Download {#batch-download}
+### Batch Download 
 
 When \>1 files are selected and "Download" is clicked:
 
@@ -12335,9 +12335,9 @@ async function batchDownload(fileIds: string[]) {
 
 ---
 
-## 8.12 Empty States {#8.12-empty-states}
+## 8.12 Empty States 
 
-### No Files At All (New User) {#no-files-at-all-(new-user)}
+### No Files At All (New User) 
 
 ```ts
 {
@@ -12351,7 +12351,7 @@ async function batchDownload(fileIds: string[]) {
 - "Upload files or let your Personas generate them during conversations." (13px, weight 300, `textMuted`, marginTop 8px, lineHeight 1.5, maxWidth 380px, margin auto)  
 - "Upload" button (accent bg, accentText, borderRadius 8, padding 8px 20px, fontSize 12, fontWeight 450, marginTop 20px). Opens the native file picker.
 
-### No Files Match Filter {#no-files-match-filter}
+### No Files Match Filter 
 
 When files exist but the current filter \+ search combination yields zero results:
 
@@ -12366,7 +12366,7 @@ When files exist but the current filter \+ search combination yields zero result
 // Text: "No files match this filter."
 ```
 
-### Loading State {#loading-state-3}
+### Loading State 
 
 3 skeleton file rows:
 
@@ -12387,7 +12387,7 @@ When files exist but the current filter \+ search combination yields zero result
 
 ---
 
-## 8.13 Storage Usage Indicator {#8.13-storage-usage-indicator}
+## 8.13 Storage Usage Indicator 
 
 A subtle storage usage bar appears at the bottom of the file list when the user has consumed \>50% of their tier's storage allowance:
 
@@ -12430,7 +12430,7 @@ If \>90%, an additional warning: "Storage almost full. Upgrade for more space." 
 
 # 
 
-# PART 9: PEOPLE / PERSONAS SCREEN {#part-9:-people-/-personas-screen-1}
+# PART 9: PEOPLE / PERSONAS SCREEN 
 
 ---
 
@@ -12438,9 +12438,9 @@ Personas are the heart of aiConnected. They are persistent AI collaborators with
 
 ---
 
-## 9.1 Data Model {#9.1-data-model-1}
+## 9.1 Data Model 
 
-### Personas Table {#personas-table}
+### Personas Table 
 
 ```sql
 CREATE TABLE public.personas (
@@ -12476,7 +12476,7 @@ CREATE TRIGGER set_personas_updated_at
   BEFORE UPDATE ON public.personas FOR EACH ROW EXECUTE FUNCTION public.handle_updated_at();
 ```
 
-### Persona Skills Table {#persona-skills-table}
+### Persona Skills Table 
 
 Skills are discrete capabilities that a persona can use. They have levels (1–5), can be permanent or temporary, and may be learnable (can improve with use).
 
@@ -12509,7 +12509,7 @@ CREATE POLICY "Users manage skills on own personas"
 CREATE INDEX idx_skills_persona ON public.persona_skills(persona_id);
 ```
 
-### Persona Boundaries Table {#persona-boundaries-table}
+### Persona Boundaries Table 
 
 Boundaries define explicit behavioral rules — what a persona should do, shouldn't do, and when to escalate.
 
@@ -12537,7 +12537,7 @@ CREATE POLICY "Users manage boundaries on own personas"
 CREATE INDEX idx_boundaries_persona ON public.persona_boundaries(persona_id);
 ```
 
-### Persona Memories Table {#persona-memories-table}
+### Persona Memories Table 
 
 Memories are knowledge nodes extracted from conversations. They form the persona-specific layer of CogniGraph (the full CogniGraph architecture is detailed in Part 15).
 
@@ -12575,7 +12575,7 @@ CREATE INDEX idx_memories_active ON public.persona_memories(persona_id) WHERE ac
 CREATE INDEX idx_memories_embedding ON public.persona_memories USING ivfflat (embedding vector_cosine_ops);
 ```
 
-### Persona Health Metrics Table {#persona-health-metrics-table}
+### Persona Health Metrics Table 
 
 Tracks historical health data for the Health tab visualizations.
 
@@ -12593,7 +12593,7 @@ CREATE TABLE public.persona_health_snapshots (
 CREATE INDEX idx_health_persona ON public.persona_health_snapshots(persona_id, snapshot_at DESC);
 ```
 
-### TypeScript Types {#typescript-types-1}
+### TypeScript Types 
 
 ```ts
 // src/types/persona.ts
@@ -12662,9 +12662,9 @@ interface PersonaMemory {
 
 ---
 
-## 9.2 Persona List View {#9.2-persona-list-view-1}
+## 9.2 Persona List View 
 
-### Container {#container-8}
+### Container 
 
 ```ts
 {
@@ -12677,7 +12677,7 @@ interface PersonaMemory {
 }
 ```
 
-### Header {#header-4}
+### Header 
 
 ```ts
 {
@@ -12691,7 +12691,7 @@ interface PersonaMemory {
 - Title: "People" (28px, weight 300, letter-spacing \-0.03em)  
 - "+New" button: Plus icon (14px) \+ "New" text. Opens the Create Persona modal.
 
-### Persona Items {#persona-items}
+### Persona Items 
 
 Each persona is a clickable row:
 
@@ -12714,7 +12714,7 @@ Each persona is a clickable row:
 
 Clicking navigates to persona detail: `go("people", { persona: p.id })`.
 
-### Data Query {#data-query-3}
+### Data Query 
 
 ```ts
 const { data: personas } = useQuery({
@@ -12736,7 +12736,7 @@ const { data: personas } = useQuery({
 });
 ```
 
-### Tier Limits {#tier-limits}
+### Tier Limits 
 
 | Tier | Max Personas |
 | :---- | :---- |
@@ -12747,7 +12747,7 @@ const { data: personas } = useQuery({
 
 When the user is at their tier limit, the "+New" button shows a lock icon and clicking opens the pricing modal.
 
-### Persona Templates Section {#persona-templates-section}
+### Persona Templates Section 
 
 Below the persona list, a section for pre-built and saved templates:
 
@@ -12787,7 +12787,7 @@ Below the persona list, a section for pre-built and saved templates:
 
 Clicking a template opens the Create Persona modal pre-filled with the template's values.
 
-### Templates Schema {#templates-schema}
+### Templates Schema 
 
 ```sql
 CREATE TABLE public.persona_templates (
@@ -12831,9 +12831,9 @@ interface PersonaTemplateConfig {
 
 ---
 
-## 9.3 Persona Detail View {#9.3-persona-detail-view-1}
+## 9.3 Persona Detail View 
 
-### Container {#container-9}
+### Container 
 
 ```ts
 {
@@ -12846,7 +12846,7 @@ interface PersonaTemplateConfig {
 }
 ```
 
-### Header {#header-5}
+### Header 
 
 ```ts
 {
@@ -12875,7 +12875,7 @@ interface PersonaTemplateConfig {
 | Archive (12px) | Archive | Sets `archived_at` to now() |
 | Trash2 (12px) | Delete | Destructive action, colored \#ef4444. Requires confirmation. |
 
-### Tab Navigation {#tab-navigation-2}
+### Tab Navigation 
 
 6 tabs below the header:
 
@@ -12892,7 +12892,7 @@ Each tab: same styling as Instance tabs (Part 7, Section 7.3).
 
 Tabs: **Overview**, **Identity**, **Boundaries**, **Memory**, **Skills**, **Health**
 
-### Tab Content Container {#tab-content-container-1}
+### Tab Content Container 
 
 ```ts
 {
@@ -12904,11 +12904,11 @@ Tabs: **Overview**, **Identity**, **Boundaries**, **Memory**, **Skills**, **Heal
 
 ---
 
-## 9.4 Overview Tab {#9.4-overview-tab}
+## 9.4 Overview Tab 
 
 The landing tab for a persona. Shows key stats, deployments, skills summary, and recent conversations.
 
-### Quick Stats {#quick-stats}
+### Quick Stats 
 
 Three stat blocks in a horizontal row (gap 48px desktop, 24px mobile):
 
@@ -12937,7 +12937,7 @@ Three stat blocks in a horizontal row (gap 48px desktop, 24px mobile):
 | Decisions | `COUNT(*) FROM persona_memories WHERE persona_id = ? AND type = 'decision'` |
 | Skills | `{current_count}/{skill_ceiling}` |
 
-### Deployments Section {#deployments-section}
+### Deployments Section 
 
 Header: "DEPLOYMENTS" (11px, weight 500, `textMuted`, uppercase, letter-spacing 0.1em, marginBottom 12px).
 
@@ -12970,7 +12970,7 @@ Clicking a deployment chip navigates to the Instance detail view.
 
 Deployments row has `flexWrap: wrap, gap: 8, marginBottom: 32`.
 
-### Skills Summary {#skills-summary}
+### Skills Summary 
 
 Header: "SKILLS" (same section header style, marginBottom 16px).
 
@@ -12989,7 +12989,7 @@ Skills displayed as pill chips in a wrapping row (gap 8px, marginBottom 40px):
 
 Shows up to `skill_ceiling` skills. Clicking a skill chip navigates to the Skills tab.
 
-### Recent Conversations {#recent-conversations}
+### Recent Conversations 
 
 Header: "RECENT CONVERSATIONS" (same section header style, marginBottom 16px).
 
@@ -13027,11 +13027,11 @@ Clicking navigates to the chat.
 
 ---
 
-## 9.5 Identity Tab {#9.5-identity-tab}
+## 9.5 Identity Tab 
 
 The Identity tab shows the persona's core definition fields and visibility settings.
 
-### Section Header {#section-header-1}
+### Section Header 
 
 ```ts
 {
@@ -13042,7 +13042,7 @@ The Identity tab shows the persona's core definition fields and visibility setti
 - Title: "Core Identity" (14px, weight 450\)  
 - Description: "Define who this Persona is. Changes here affect how they communicate and present themselves." (12px, weight 300, `textMuted`)
 
-### Identity Fields {#identity-fields}
+### Identity Fields 
 
 Each field is a row:
 
@@ -13114,7 +13114,7 @@ Right side:
 
 Save button: accent bg, 11px, weight 450\. Cancel button: bordered, 11px.
 
-### Lock Identity Toggle {#lock-identity-toggle}
+### Lock Identity Toggle 
 
 Below the identity fields:
 
@@ -13133,7 +13133,7 @@ Below the identity fields:
 
 Stored in `personas.identity_locked`.
 
-### Visibility Selector {#visibility-selector}
+### Visibility Selector 
 
 ```ts
 {
@@ -13156,17 +13156,17 @@ Stored in `personas.visibility`.
 
 ---
 
-## 9.6 Boundaries Tab {#9.6-boundaries-tab}
+## 9.6 Boundaries Tab 
 
 The Boundaries tab defines explicit behavioral rules for the persona. This is a critical safety feature of aiConnected — personas operate within clear limits.
 
-### Section Header {#section-header-2}
+### Section Header 
 
 - Title: "Boundaries & Safety" (14px, weight 450\)  
 - Description: "Define what this Persona should and shouldn't do." (12px, weight 300, `textMuted`)  
 - marginBottom: 28px
 
-### Will Do Section {#will-do-section}
+### Will Do Section 
 
 ```ts
 {
@@ -13197,14 +13197,14 @@ Each boundary rule:
 
 Clicking opens an inline text input below the list. Press Enter to save.
 
-### Won't Do Section {#won't-do-section}
+### Won't Do Section 
 
 Same structure as Will Do, but with:
 
 - Header color: \#ef4444 (red)  
 - Dot color: \#ef4444
 
-### Escalation Rule {#escalation-rule}
+### Escalation Rule 
 
 A highlighted card below the Won't Do list:
 
@@ -13224,7 +13224,7 @@ This defines when the persona should defer to the user or suggest another person
 
 Stored in `persona_boundaries` with `type = 'escalation'`. Only one escalation rule per persona.
 
-### Skill Ceiling Control {#skill-ceiling-control}
+### Skill Ceiling Control 
 
 Below the escalation rule, side by side with the Can Learn toggle (gap 32px desktop, 16px mobile):
 
@@ -13247,7 +13247,7 @@ When enabled, the persona can propose new skills through a learning consent flow
 
 Stored in `personas.can_learn`.
 
-### Boundary CRUD Operations {#boundary-crud-operations}
+### Boundary CRUD Operations 
 
 ```ts
 // Add boundary
@@ -13279,11 +13279,11 @@ async function deleteBoundary(id: string) {
 
 ---
 
-## 9.7 Memory Tab {#9.7-memory-tab}
+## 9.7 Memory Tab 
 
 The Memory tab is the persona's knowledge ledger. It shows every piece of information the persona has learned from conversations.
 
-### Header Row {#header-row-2}
+### Header Row 
 
 ```ts
 {
@@ -13328,7 +13328,7 @@ Each chip:
 }
 ```
 
-### Batch Actions Bar {#batch-actions-bar}
+### Batch Actions Bar 
 
 Visible when select mode is active and at least one memory is selected:
 
@@ -13349,7 +13349,7 @@ Visible when select mode is active and at least one memory is selected:
 - Delete button: Trash2 icon (10px) \+ "Delete" (10px, \#ef4444), bordered  
 - Flag button: Shield icon (10px) \+ "Flag" (10px), bordered. Marks memories as potentially harmful or inaccurate.
 
-### Memory Items {#memory-items}
+### Memory Items 
 
 Each memory card:
 
@@ -13415,7 +13415,7 @@ Each memory card:
 
 All icon buttons: `background: none, border: none, color: textFaint, cursor: pointer, display: flex, padding: 3px`.
 
-### Data Query {#data-query-4}
+### Data Query 
 
 ```ts
 const { data: memories } = useQuery({
@@ -13441,7 +13441,7 @@ const { data: memories } = useQuery({
 });
 ```
 
-### Memory Edit Flow {#memory-edit-flow}
+### Memory Edit Flow 
 
 ```ts
 async function updateMemory(id: string, content: string) {
@@ -13454,11 +13454,11 @@ async function updateMemory(id: string, content: string) {
 
 ---
 
-## 9.8 Skills Tab {#9.8-skills-tab}
+## 9.8 Skills Tab 
 
 The Skills tab shows the persona's current capabilities and capacity.
 
-### Skill Capacity Bar {#skill-capacity-bar}
+### Skill Capacity Bar 
 
 At the top of the tab:
 
@@ -13473,7 +13473,7 @@ At the top of the tab:
   - Track: `surfaceAlt`  
   - Fill: `accent` color, width \= `(current / ceiling) * 100%`
 
-### Skills List {#skills-list}
+### Skills List 
 
 Each skill row:
 
@@ -13497,11 +13497,11 @@ Each skill row:
 
 - Duration label: "Permanent" or "Temporary (expires {date})" — 11px, weight 300, `textFaint`
 
-### Level Indicator (v2) {#level-indicator-(v2)}
+### Level Indicator (v2) 
 
 In v2, each skill will show a level indicator (1–5 dots or a mini progress bar). In v1, level is stored but not visually displayed in the list.
 
-### Add Skill {#add-skill}
+### Add Skill 
 
 Below the skills list, an "Add Skill" button:
 
@@ -13527,7 +13527,7 @@ Plus icon (10px) \+ "Add Skill". Clicking opens an inline form:
 - Category dropdown: general, design, writing, code, research  
 - "Add" button (accent) \+ "Cancel" (text link)
 
-### Skill Ceiling Enforcement {#skill-ceiling-enforcement}
+### Skill Ceiling Enforcement 
 
 When the user tries to add a skill beyond the ceiling, show:
 
@@ -13537,7 +13537,7 @@ This persona has reached its skill ceiling ({ceiling} skills). Increase the ceil
 
 (12px, weight 350, `textMuted`, padding 16px, `surfaceAlt` background, borderRadius 8\)
 
-### Learning Consent Flow {#learning-consent-flow}
+### Learning Consent Flow 
 
 When `can_learn` is true and the persona detects a new skill opportunity during a conversation, the following flow occurs:
 
@@ -13567,11 +13567,11 @@ When `can_learn` is true and the persona detects a new skill opportunity during 
 
 ---
 
-## 9.9 Health Tab {#9.9-health-tab}
+## 9.9 Health Tab 
 
 The Health tab provides insight into the persona's operational state. This is how users monitor whether a persona is functioning well or needs intervention.
 
-### Health Metrics Grid {#health-metrics-grid}
+### Health Metrics Grid 
 
 2-column grid (1-column on mobile), gap 24px, marginBottom 40px:
 
@@ -13604,7 +13604,7 @@ The Health tab provides insight into the persona's operational state. This is ho
 
 **Drift calculation:** Cipher periodically compares the persona's recent response patterns against its identity definition. If responses are diverging from the persona's voice/purpose, drift is marked as "medium" or "high".
 
-### Status Explanations {#status-explanations}
+### Status Explanations 
 
 Below the grid, a brief explanation of the current status:
 
@@ -13614,7 +13614,7 @@ Below the grid, a brief explanation of the current status:
 | idle | "This persona hasn't been addressed in the last 2 hours." |
 | sleeping | "This persona has been manually disabled or is in recovery." |
 
-### Recovery Actions {#recovery-actions}
+### Recovery Actions 
 
 Header: "RECOVERY" (11px, weight 500, `textMuted`, uppercase, letter-spacing 0.1em, marginBottom 16px).
 
@@ -13641,17 +13641,17 @@ A confirmation dialog should appear before executing recovery actions:
 Are you sure you want to {action}? This will {specific effect}. This cannot be undone.
 ```
 
-### Health History (v2) {#health-history-(v2)}
+### Health History (v2) 
 
 In v2, the Health tab will include a timeline visualization showing mood changes, drift events, and health snapshots over time. The `persona_health_snapshots` table captures this data for future visualization.
 
 ---
 
-## 9.10 Create Persona Modal {#9.10-create-persona-modal}
+## 9.10 Create Persona Modal 
 
 The creation flow is a 4-step wizard accessible from the "+New" button on the People list or via the Command Palette (⌘⇧P).
 
-### Modal Container {#modal-container}
+### Modal Container 
 
 ```ts
 // Backdrop
@@ -13677,7 +13677,7 @@ The creation flow is a 4-step wizard accessible from the "+New" button on the Pe
 }
 ```
 
-### Header {#header-6}
+### Header 
 
 ```ts
 {
@@ -13691,7 +13691,7 @@ The creation flow is a 4-step wizard accessible from the "+New" button on the Pe
 - Title: "Create Persona" (18px, weight 400\)  
 - Close button: X icon (18px, `textMuted`)
 
-### Step Indicator {#step-indicator}
+### Step Indicator 
 
 4 steps with a progress bar for each:
 
@@ -13719,7 +13719,7 @@ Each step (flex: 1):
 
 Steps: "Name & Role", "Purpose", "Boundaries", "Review"
 
-### Step 0: Name & Role {#step-0:-name-&-role}
+### Step 0: Name & Role 
 
 Two input fields:
 
@@ -13734,14 +13734,14 @@ Two input fields:
 - Label: "Role" (same style)  
 - Input: placeholder "e.g. Marketing Strategist" (same style)
 
-### Step 1: Purpose {#step-1:-purpose}
+### Step 1: Purpose 
 
 Single textarea:
 
 - Label: "Purpose" (12px, weight 400, `textMuted`, block, marginBottom 6px)  
 - Textarea: placeholder "Describe what this Persona will do..." (14px, 4 rows, same styling as inputs, resize vertical)
 
-### Step 2: Boundaries {#step-2:-boundaries}
+### Step 2: Boundaries 
 
 Two textareas:
 
@@ -13756,7 +13756,7 @@ Two textareas:
 - Label: "What should this Persona avoid?" (same style)  
 - Textarea: placeholder "e.g. Making financial commitments, contacting clients..." (13px, 3 rows)
 
-### Step 3: Review {#step-3:-review}
+### Step 3: Review 
 
 Summary card:
 
@@ -13773,7 +13773,7 @@ Summary card:
 
 In v2, this step will show a summary of all entered values and allow final editing before creation.
 
-### Navigation Buttons {#navigation-buttons}
+### Navigation Buttons 
 
 ```ts
 {
@@ -13795,7 +13795,7 @@ In v2, this step will show a summary of all entered values and allow final editi
 - Step 3: "Create" — submits the persona  
 - `background: accent, color: accentText, border: none, borderRadius: 8, padding: 8px 24px, fontSize: 13, fontWeight: 450`
 
-### Validation {#validation}
+### Validation 
 
 | Step | Validation |
 | :---- | :---- |
@@ -13806,7 +13806,7 @@ In v2, this step will show a summary of all entered values and allow final editi
 
 If validation fails, the required input gets a red border and a helper text appears: "Name is required" (11px, \#ef4444, marginTop 4px).
 
-### Create Submission {#create-submission}
+### Create Submission 
 
 On "Create" click:
 
@@ -13873,13 +13873,13 @@ async function createPersona(data: CreatePersonaData) {
 
 After creation, the modal closes and the user is navigated to the new persona's detail view.
 
-### Template Pre-fill {#template-pre-fill}
+### Template Pre-fill 
 
 When creating from a template, the wizard opens with all fields pre-filled from `persona_templates.config`. The user can modify any values before submitting. The step indicator shows all steps as visited so the user can jump between them.
 
 ---
 
-## 9.11 Persona Status Lifecycle {#9.11-persona-status-lifecycle}
+## 9.11 Persona Status Lifecycle 
 
 Persona status transitions follow a defined state machine:
 
@@ -13912,7 +13912,7 @@ Persona status transitions follow a defined state machine:
 
 Status changes are written to `personas.status` and logged to `persona_health_snapshots` for the Health tab history.
 
-### System Prompt Injection {#system-prompt-injection}
+### System Prompt Injection 
 
 The persona's status, boundaries, and identity are injected into the system prompt when assembling context for an AI response (see Part 5, Section 5.8):
 
@@ -13937,7 +13937,7 @@ This ensures the AI model respects the persona's defined limits in every respons
 
 *End of Part 9\. Proceed to Part 10: Teams Screen.*
 
-# PART 10: TEAMS SCREEN (Agentic Teams) {#part-10:-teams-screen-(agentic-teams)-1}
+# PART 10: TEAMS SCREEN (Agentic Teams) 
 
 ---
 
@@ -13947,9 +13947,9 @@ Teams are a Pro-tier feature. The Teams screen is accessible from the sidebar un
 
 ---
 
-## 10.1 Conceptual Architecture {#10.1-conceptual-architecture}
+## 10.1 Conceptual Architecture 
 
-### Team Types {#team-types}
+### Team Types 
 
 | Type | Icon | Description | Lifecycle |
 | :---- | :---- | :---- | :---- |
@@ -13957,7 +13957,7 @@ Teams are a Pro-tier feature. The Teams screen is accessible from the sidebar un
 | Long-Term | Clock (10px) | An ongoing initiative with no fixed end date. Runs continuously with periodic check-ins. The user manually pauses or completes it. | draft → active → paused → active → ... → completed |
 | Recurring | RefreshCw (10px) | A repeating workflow that runs on a schedule (daily, weekly, monthly). Each execution creates a new run. | draft → active (runs on schedule) → paused → active → ... |
 
-### Three-Tier Hierarchy {#three-tier-hierarchy}
+### Three-Tier Hierarchy 
 
 Every team operates through a three-tier persona hierarchy. This is not merely organizational — it defines how information flows and who can communicate with whom during agentic execution.
 
@@ -13992,9 +13992,9 @@ Every team operates through a three-tier persona hierarchy. This is not merely o
 
 ---
 
-## 10.2 Data Model {#10.2-data-model}
+## 10.2 Data Model 
 
-### Teams Table {#teams-table}
+### Teams Table 
 
 ```sql
 CREATE TABLE public.teams (
@@ -14027,7 +14027,7 @@ CREATE TRIGGER set_teams_updated_at
   BEFORE UPDATE ON public.teams FOR EACH ROW EXECUTE FUNCTION public.handle_updated_at();
 ```
 
-### Team Members Table {#team-members-table}
+### Team Members Table 
 
 Each row represents one persona assigned to one team with a specific role and reporting line.
 
@@ -14061,7 +14061,7 @@ CREATE INDEX idx_team_members_team ON public.team_members(team_id)
   WHERE removed_at IS NULL;
 ```
 
-### Team Tasks Table {#team-tasks-table}
+### Team Tasks Table 
 
 Tasks within a team execution plan. These are distinct from Instance tasks (Part 7\) — team tasks represent discrete units of work within an agentic pipeline, executed by a persona during a run.
 
@@ -14100,7 +14100,7 @@ CREATE INDEX idx_team_tasks_run ON public.team_tasks(run_id) WHERE run_id IS NOT
 CREATE INDEX idx_team_tasks_status ON public.team_tasks(team_id, status);
 ```
 
-### Team Runs Table {#team-runs-table}
+### Team Runs Table 
 
 A "run" is a single execution of a team's plan. Short-term teams typically have one run. Recurring teams have many. Long-term teams accumulate runs as the user triggers check-ins.
 
@@ -14135,7 +14135,7 @@ CREATE POLICY "Users view runs in own teams"
 CREATE INDEX idx_team_runs_team ON public.team_runs(team_id, started_at DESC);
 ```
 
-### Plan JSON Structure {#plan-json-structure}
+### Plan JSON Structure 
 
 The `teams.plan` JSONB column defines the execution blueprint:
 
@@ -14159,7 +14159,7 @@ interface TeamPlanStep {
 }
 ```
 
-### Schedule JSON Structure {#schedule-json-structure}
+### Schedule JSON Structure 
 
 For recurring teams only (`teams.schedule`):
 
@@ -14175,7 +14175,7 @@ interface TeamSchedule {
 }
 ```
 
-### TypeScript Interfaces {#typescript-interfaces}
+### TypeScript Interfaces 
 
 ```ts
 interface Team {
@@ -14267,9 +14267,9 @@ interface TeamLogEntry {
 
 ---
 
-## 10.3 Teams List View {#10.3-teams-list-view}
+## 10.3 Teams List View 
 
-### Container {#container-10}
+### Container 
 
 ```ts
 {
@@ -14285,7 +14285,7 @@ interface TeamLogEntry {
 }
 ```
 
-### Header {#header-7}
+### Header 
 
 ```ts
 {
@@ -14325,7 +14325,7 @@ Plus icon (13px) \+ "New Team" text. Opens the Create Team modal.
 
 **Tier limit enforcement:** Pro tier supports up to 10 teams. Enterprise supports unlimited. When at the limit, the "+New Team" button shows a Lock icon (13px) instead of Plus and clicking opens the pricing modal instead of the create flow.
 
-### Filter Chips {#filter-chips}
+### Filter Chips 
 
 ```ts
 {
@@ -14364,7 +14364,7 @@ Each chip:
 
 Single-select filter. "All" is the default and shows every team regardless of type. Clicking a chip re-filters instantly (client-side, no re-fetch).
 
-### Team Cards {#team-cards}
+### Team Cards 
 
 Teams are displayed as stacked cards in a vertical list:
 
@@ -14504,7 +14504,7 @@ For completed teams, the fill takes the full width. For failed teams, the fill c
 
 **Persona avatar stack** (v2 enhancement): Below the stats row, a row of overlapping 20px persona avatars showing who's on the team. Maximum 5 shown, with a "+{n}" overflow count if more exist. This is a v2 visual — v1 uses the "4 Personas" text stat.
 
-### Data Query {#data-query-5}
+### Data Query 
 
 ```ts
 const { data: teams, isLoading } = useQuery({
@@ -14545,7 +14545,7 @@ const filteredTeams = teamsFilter === "all"
   : teams?.filter(t => t.type === teamsFilter) ?? [];
 ```
 
-### Empty State {#empty-state-3}
+### Empty State 
 
 When no teams exist:
 
@@ -14561,7 +14561,7 @@ When no teams exist:
 - "Teams coordinate multiple Personas to work together on complex goals autonomously." (13px, weight 300, `textMuted`, marginTop 8px, maxWidth 420px, margin: "0 auto")  
 - "+New Team" button (accent bg, borderRadius 8, padding: "8px 20px", fontSize 12, fontWeight 450, marginTop 20px)
 
-### Loading State {#loading-state-4}
+### Loading State 
 
 While teams are loading, show 3 skeleton cards stacked vertically:
 
@@ -14585,7 +14585,7 @@ Each contains:
 
 ---
 
-## 10.4 Executive Teams Teaser {#10.4-executive-teams-teaser}
+## 10.4 Executive Teams Teaser 
 
 Below the team cards list, a teaser card for the Enterprise-tier "Executive Teams" feature:
 
@@ -14626,11 +14626,11 @@ The teaser is always visible (not hidden after dismissal). It serves as a persis
 
 ---
 
-## 10.5 Team Detail View {#10.5-team-detail-view}
+## 10.5 Team Detail View 
 
 Navigating into a team (by clicking a card or the "Manage" button) opens the detail view. This follows the same structural pattern as Instance Detail (Part 7\) and Persona Detail (Part 9): header → tab navigation → scrollable tab content.
 
-### Container {#container-11}
+### Container 
 
 ```ts
 {
@@ -14643,7 +14643,7 @@ Navigating into a team (by clicking a card or the "Manage" button) opens the det
 }
 ```
 
-### Header {#header-8}
+### Header 
 
 ```ts
 {
@@ -14719,7 +14719,7 @@ MessageSquare icon (12px) \+ "Chat". Opens the team's dedicated chat thread. If 
 | Archive (12px) | Archive | Sets `archived_at` to now(), removes from list |
 | Trash2 (12px) | Delete | Destructive action, colored \#ef4444. Requires confirmation dialog: "Are you sure? This will permanently delete this team, all its run history, and task results. This cannot be undone." |
 
-### Tab Navigation {#tab-navigation-3}
+### Tab Navigation 
 
 4 tabs below the header:
 
@@ -14751,7 +14751,7 @@ Each tab:
 
 Tabs: **Overview**, **Plan**, **Members**, **History**
 
-### Tab Content Container {#tab-content-container-2}
+### Tab Content Container 
 
 ```ts
 {
@@ -14763,11 +14763,11 @@ Tabs: **Overview**, **Plan**, **Members**, **History**
 
 ---
 
-## 10.6 Overview Tab {#10.6-overview-tab}
+## 10.6 Overview Tab 
 
 The landing tab. Shows key metrics, current run status, recent activity, and quick stats.
 
-### Quick Stats {#quick-stats-1}
+### Quick Stats 
 
 4 stat blocks in a horizontal row (gap 48px desktop, 24px mobile):
 
@@ -14797,7 +14797,7 @@ The landing tab. Shows key metrics, current run status, recent activity, and qui
 | Runs | `{count}` | Total team\_runs count |
 | Uptime | `{duration}` | Time since team status changed to "active". E.g. "12 days". Shows "—" for draft teams. |
 
-### Current Run Status Card {#current-run-status-card}
+### Current Run Status Card 
 
 If a run is currently in progress (`latest_run.status === "running"`), display a prominent status card:
 
@@ -14860,7 +14860,7 @@ If no run is in progress and the team has run before, show a compact summary ins
 
 If the team has never run, this section is omitted entirely.
 
-### Goal & Success Criteria {#goal-&-success-criteria}
+### Goal & Success Criteria 
 
 Displayed below the run status (or at the top if no run exists):
 
@@ -14890,7 +14890,7 @@ Displays `plan.goal`. If empty, shows "No goal defined yet. Add one in the Plan 
 - Label: "Success criteria:" (12px, weight 400, `textMuted`)  
 - Text: `plan.success_criteria` (12px, weight 300, `textSec`, lineHeight 1.5, marginTop 2px)
 
-### Recent Activity {#recent-activity}
+### Recent Activity 
 
 **Section header:** "RECENT ACTIVITY" (11px, weight 500, `textMuted`, uppercase, letter-spacing 0.1em, marginBottom 16px, marginTop 32px)
 
@@ -14920,11 +14920,11 @@ If no runs have ever occurred, show:
 
 ---
 
-## 10.7 Plan Tab {#10.7-plan-tab}
+## 10.7 Plan Tab 
 
 The Plan tab defines what the team will do when it runs. It shows the goal, steps, and their dependency structure.
 
-### Goal Section {#goal-section}
+### Goal Section 
 
 ```ts
 {
@@ -14940,7 +14940,7 @@ In edit mode: textarea (14px, `surfaceAlt` bg, `border: 1px solid theme.border`,
 
 "Edit" button: bordered, 4px 10px padding, 11px, `textMuted`, flexShrink 0\. Positioned top-right of the section. Toggles between read/edit modes.
 
-### Steps List {#steps-list}
+### Steps List 
 
 **Section header** (flex, justifyContent space-between, alignItems center, marginBottom 16px):
 
@@ -14981,7 +14981,7 @@ Right (gap 4px):
 
 **Dependency indicators:** Steps with dependencies show a small ArrowDown icon (8px, `textFaint`) above the card to visually indicate the flow direction.
 
-### Add Step Inline Form {#add-step-inline-form}
+### Add Step Inline Form 
 
 When "Add Step" is clicked, an inline form appears at the bottom of the steps list:
 
@@ -15006,7 +15006,7 @@ Fields (flex column, gap 12px):
 
 Buttons: "Add" (accent bg, 11px, weight 450\) \+ "Cancel" (bordered, 11px), gap 6, marginTop 4px.
 
-### Auto-Generate Plan {#auto-generate-plan}
+### Auto-Generate Plan 
 
 Below the steps list:
 
@@ -15027,7 +15027,7 @@ Below the steps list:
 
 Clicking invokes Cipher with the team's goal, description, and member list. Cipher returns a structured plan with steps, dependencies, and role assignments. The generated plan replaces any existing steps (with a confirmation dialog if steps already exist: "This will replace your current {n} steps with an AI-generated plan. Continue?").
 
-### Empty Plan State {#empty-plan-state}
+### Empty Plan State 
 
 When no steps have been defined:
 
@@ -15047,11 +15047,11 @@ When no steps have been defined:
 
 ---
 
-## 10.8 Members Tab {#10.8-members-tab}
+## 10.8 Members Tab 
 
 Displays the team's persona roster organized by their hierarchical roles.
 
-### Hierarchy Visualization {#hierarchy-visualization}
+### Hierarchy Visualization 
 
 The member list is organized in three visual tiers:
 
@@ -15092,7 +15092,7 @@ The member list is organized in three visual tiers:
 
 Clicking a member card navigates to the Persona Detail view (Part 9).
 
-### Reporting Lines Visual {#reporting-lines-visual}
+### Reporting Lines Visual 
 
 Between the Orchestrator tier and the Managers tier, and between the Managers tier and the Workers tier, draw a visual connector:
 
@@ -15109,7 +15109,7 @@ A vertical line segment: 1px width, 20px height, `borderSubtle` color. Flanked b
 
 If no Managers exist, Workers connect directly to the Orchestrator. The Managers section header shows "(none)" and an "Add Manager" prompt.
 
-### Add Member {#add-member}
+### Add Member 
 
 Below the Workers section:
 
@@ -15173,7 +15173,7 @@ After selecting a persona, a secondary prompt appears asking for the role assign
 
 If an Orchestrator already exists and the user selects "Orchestrator", show a warning: "This team already has an Orchestrator ({name}). Only one Orchestrator is allowed per team." (10px, \#ef4444, marginTop 4px).
 
-### Member Limits {#member-limits}
+### Member Limits 
 
 | Tier | Max Personas per Team |
 | :---- | :---- |
@@ -15184,11 +15184,11 @@ When at the limit, the "Add Persona" button shows a lock icon and displays: "Max
 
 ---
 
-## 10.9 History Tab {#10.9-history-tab}
+## 10.9 History Tab 
 
 Shows the complete run history for the team.
 
-### Run List {#run-list}
+### Run List 
 
 Runs listed in reverse chronological order (most recent first):
 
@@ -15242,7 +15242,7 @@ Right:
 
 Clicking a run card expands it inline to show the full execution log.
 
-### Expanded Run Log {#expanded-run-log}
+### Expanded Run Log 
 
 When a run card is clicked, the card expands to show the full log:
 
@@ -15281,7 +15281,7 @@ Each log entry:
 - "View Full Output" button: ExternalLink icon (10px) \+ "Full Output" (10px, bordered). Opens a modal with the complete `result` JSON rendered as formatted text.  
 - "Collapse" text link: ChevronUp icon (10px, `textFaint`) \+ "Collapse" (10px, `textFaint`).
 
-### Empty History {#empty-history}
+### Empty History 
 
 When no runs exist:
 
@@ -15289,11 +15289,11 @@ When no runs exist:
 
 ---
 
-## 10.10 Create Team Modal {#10.10-create-team-modal}
+## 10.10 Create Team Modal 
 
 Triggered by the "+New Team" button on the list view.
 
-### Modal Container {#modal-container-1}
+### Modal Container 
 
 Same modal pattern as Persona creation (Part 9):
 
@@ -15321,7 +15321,7 @@ Same modal pattern as Persona creation (Part 9):
 }
 ```
 
-### Header {#header-9}
+### Header 
 
 ```ts
 {
@@ -15335,7 +15335,7 @@ Same modal pattern as Persona creation (Part 9):
 - Title: "Create a Team" (18px, weight 400\)  
 - Close button: X icon (18px, `textMuted`, cursor pointer)
 
-### Step Indicator {#step-indicator-1}
+### Step Indicator 
 
 5 steps (same step indicator pattern as Part 9, Section 9.9):
 
@@ -15354,7 +15354,7 @@ Each step (flex 1, flex column, alignItems center, gap 4):
 
 Steps: "Basics", "Members", "Plan", "Schedule", "Review"
 
-### Step 0: Basics {#step-0:-basics}
+### Step 0: Basics 
 
 **Name input:**
 
@@ -15407,7 +15407,7 @@ Each card:
 
 Default selection: none. User must pick one.
 
-### Step 1: Members {#step-1:-members}
+### Step 1: Members 
 
 **Instructions:** "Assign personas to your team. Every team needs exactly one Orchestrator." (12px, weight 300, `textMuted`, marginBottom 16px)
 
@@ -15451,7 +15451,7 @@ Each assigned persona is shown as a row:
 - ✓ "At least 1 Worker assigned" (green) — or ✗ "At least 1 Worker required" (red)  
 - ℹ "Managers are optional" (`textFaint`)
 
-### Step 2: Plan (Optional) {#step-2:-plan-(optional)}
+### Step 2: Plan (Optional) 
 
 **Goal textarea:** Label "Team Goal" \+ textarea placeholder "Describe what this team should accomplish..." (13px, 3 rows). marginBottom 16px.
 
@@ -15482,7 +15482,7 @@ Step list: If any steps have been added, show them as compact rows (title \+ rol
 
 Requires the goal field to be non-empty. If empty, the "Generate" button is disabled and shows a tooltip: "Add a goal first."
 
-### Step 3: Schedule (Recurring Only) {#step-3:-schedule-(recurring-only)}
+### Step 3: Schedule (Recurring Only) 
 
 Only shown if type \= "recurring". If type ≠ "recurring", this step is automatically skipped in the step indicator.
 
@@ -15511,7 +15511,7 @@ Options: "Daily", "Weekly", "Monthly".
 
 **Timezone dropdown:** Full-width select input. Pre-filled with the user's detected timezone. Label: "Timezone". Common options: America/New\_York, America/Chicago, America/Denver, America/Los\_Angeles, Europe/London, Europe/Paris, Asia/Tokyo, etc.
 
-### Step 4: Review {#step-4:-review}
+### Step 4: Review 
 
 Summary card:
 
@@ -15570,7 +15570,7 @@ Fields:
 
 "Your team will start in draft status. Click 'Run Now' from the team detail view to begin execution, or set the status to active for scheduled runs."
 
-### Navigation Buttons {#navigation-buttons-1}
+### Navigation Buttons 
 
 Same pattern as Persona create (Part 9, Section 9.9):
 
@@ -15585,14 +15585,14 @@ Same pattern as Persona create (Part 9, Section 9.9):
 - Back/Cancel button: Step 0: "Cancel" (closes modal). Steps 1–4: "Back" (previous step). `border: 1px solid theme.border, borderRadius: 8, padding: 8px 20px, fontSize: 13, color: textSec`.  
 - Next/Create button: Steps 0–3: "Next" (validates then advances). Step 4: "Create Team" (submits). `background: accent, color: accentText, borderRadius: 8, padding: 8px 24px, fontSize: 13, fontWeight: 450`.
 
-### Validation {#validation-1}
+### Validation 
 
 - Step 0: Name required (min 1 char). Type required. Failed: red border on input \+ "Name is required" helper text (11px, \#ef4444, marginTop 4px).  
 - Step 1: Exactly 1 Orchestrator required. At least 1 Worker required. At least 2 total members required.  
 - Step 2: All optional.  
 - Step 3: Frequency required (if shown). Time required. Timezone required.
 
-### Create Submission {#create-submission-1}
+### Create Submission 
 
 ```ts
 async function createTeam(data: CreateTeamInput) {
@@ -15715,9 +15715,9 @@ After creation, close the modal and navigate to the newly created team's detail 
 
 ---
 
-## 10.11 Team Status Lifecycle {#10.11-team-status-lifecycle}
+## 10.11 Team Status Lifecycle 
 
-### State Machine {#state-machine}
+### State Machine 
 
 ```
                     ┌──────────┐
@@ -15762,11 +15762,11 @@ For recurring teams, "completed" means the schedule has been disabled — the te
 
 ---
 
-## 10.12 Team Execution Engine {#10.12-team-execution-engine}
+## 10.12 Team Execution Engine 
 
 The execution engine is a Supabase Edge Function (`team-execute`) that orchestrates the actual work of a team. This runs server-side and coordinates persona responses through the AI pipeline.
 
-### Trigger {#trigger-1}
+### Trigger 
 
 The execution engine is invoked in three ways:
 
@@ -15774,7 +15774,7 @@ The execution engine is invoked in three ways:
 2. **Scheduled:** pg\_cron checks every minute for due recurring teams → invokes Edge Function with `trigger_type: "scheduled"`  
 3. **Event:** Future — triggered by external webhooks or activity in linked Instances
 
-### Execution Flow {#execution-flow}
+### Execution Flow 
 
 ```
 User clicks "Run Now" (or schedule triggers)
@@ -15845,7 +15845,7 @@ User clicks "Run Now" (or schedule triggers)
 └───────────────────────┘
 ```
 
-### Context Assembly for Team Tasks {#context-assembly-for-team-tasks}
+### Context Assembly for Team Tasks 
 
 Each task execution builds a specialized context that includes the team structure and prior results:
 
@@ -15918,7 +15918,7 @@ const ROLE_INSTRUCTIONS: Record<string, string> = {
 };
 ```
 
-### Error Handling {#error-handling}
+### Error Handling 
 
 | Error | Recovery |
 | :---- | :---- |
@@ -15928,7 +15928,7 @@ const ROLE_INSTRUCTIONS: Record<string, string> = {
 | Orchestrator synthesis fails | Mark run as "failed". Post error summary to team chat. Send notification: "Team {name} execution failed: Orchestrator could not synthesize results." |
 | Global timeout (run exceeds 30 minutes) | Cancel all remaining "pending" tasks. Mark them as "skipped". Orchestrator synthesizes whatever partial results exist. Mark run as "completed" with a warning flag in result JSON. |
 
-### Progress Tracking {#progress-tracking}
+### Progress Tracking 
 
 During execution, the Edge Function updates `team_runs.tasks_completed` after each task completes. The client polls for run status every 3 seconds while the detail view is open:
 
@@ -15950,7 +15950,7 @@ const { data: runStatus } = useQuery({
 });
 ```
 
-### Recurring Execution Scheduler {#recurring-execution-scheduler}
+### Recurring Execution Scheduler 
 
 For recurring teams, a Supabase scheduled function (via pg\_cron) checks every minute for teams that are due to run:
 
@@ -15989,7 +15989,7 @@ SELECT cron.schedule(
 
 ---
 
-## 10.13 Tier Gating {#10.13-tier-gating}
+## 10.13 Tier Gating 
 
 | Feature | Tier Required |
 | :---- | :---- |
@@ -16002,7 +16002,7 @@ SELECT cron.schedule(
 | Run history retention | Pro: 90 days, Enterprise: Unlimited |
 | Executive Teams | Enterprise (future) |
 
-### Non-Pro Gated Screen {#non-pro-gated-screen}
+### Non-Pro Gated Screen 
 
 When a non-Pro user navigates to the Teams screen (via sidebar), they see a gated view:
 
@@ -16024,7 +16024,7 @@ When a non-Pro user navigates to the Teams screen (via sidebar), they see a gate
 
 *End of Part 10\. Proceed to Part 11: Browser / Co-Browsing Workspace.*
 
-# PART 11: BROWSER / CO-BROWSING WORKSPACE {#part-11:-browser-/-co-browsing-workspace-1}
+# PART 11: BROWSER / CO-BROWSING WORKSPACE 
 
 ---
 
@@ -16036,9 +16036,9 @@ The Browser screen is accessible from the sidebar. Entering browse mode collapse
 
 ---
 
-## 11.1 Architecture Overview {#11.1-architecture-overview-1}
+## 11.1 Architecture Overview 
 
-### Implementation Strategy {#implementation-strategy}
+### Implementation Strategy 
 
 The Browser has two implementation paths depending on the runtime environment:
 
@@ -16059,7 +16059,7 @@ The Browser has two implementation paths depending on the runtime environment:
 
 The PRD specifies both paths. v1 ships with the web proxy version. All UI components (session manager, tab strip, nav bar, chat panel, view switcher) are shared across both implementations — only the viewport rendering differs.
 
-### Proxy Architecture {#proxy-architecture}
+### Proxy Architecture 
 
 ```
 User enters URL in nav bar
@@ -16104,7 +16104,7 @@ User enters URL in nav bar
 └────────────────────────────┘
 ```
 
-### Edge Function: browser-proxy {#edge-function:-browser-proxy}
+### Edge Function: browser-proxy 
 
 ```ts
 // supabase/functions/browser-proxy/index.ts
@@ -16237,7 +16237,7 @@ function rewriteUrls(html: string, base: URL): string {
 }
 ```
 
-### Fallback Error View {#fallback-error-view}
+### Fallback Error View 
 
 When the proxy cannot load a page (blocked, auth-required, non-HTML, network error), show this in place of the iframe content:
 
@@ -16266,9 +16266,9 @@ When the proxy cannot load a page (blocked, auth-required, non-HTML, network err
 
 ---
 
-## 11.2 Data Model {#11.2-data-model-1}
+## 11.2 Data Model 
 
-### Browser Sessions Table {#browser-sessions-table}
+### Browser Sessions Table 
 
 A session represents one continuous browsing context. It has a persona assigned and optionally links to an instance. Sessions contain tabs.
 
@@ -16297,7 +16297,7 @@ CREATE INDEX idx_browser_sessions_active ON public.browser_sessions(user_id)
   WHERE status = 'active';
 ```
 
-### Browser Tabs Table {#browser-tabs-table}
+### Browser Tabs Table 
 
 Each tab within a session. Tabs persist their own navigation history for back/forward and preserve scroll position.
 
@@ -16334,7 +16334,7 @@ CREATE INDEX idx_browser_tabs_session ON public.browser_tabs(session_id)
   WHERE closed_at IS NULL;
 ```
 
-### Browser History Table {#browser-history-table}
+### Browser History Table 
 
 Global browse history across all sessions. Used in the History sub-tab.
 
@@ -16373,7 +16373,7 @@ DO UPDATE SET
   last_visited_at = now();
 ```
 
-### Browser Extracts Table {#browser-extracts-table}
+### Browser Extracts Table 
 
 Content extracted from web pages and optionally saved to an Instance.
 
@@ -16403,7 +16403,7 @@ CREATE INDEX idx_extracts_instance ON public.browser_extracts(instance_id)
   WHERE instance_id IS NOT NULL;
 ```
 
-### Browser Highlights Table {#browser-highlights-table}
+### Browser Highlights Table 
 
 Highlights are visual annotations on page content created by the user or persona.
 
@@ -16423,7 +16423,7 @@ CREATE TABLE public.browser_highlights (
 CREATE INDEX idx_highlights_tab ON public.browser_highlights(tab_id);
 ```
 
-### TypeScript Interfaces {#typescript-interfaces-1}
+### TypeScript Interfaces 
 
 ```ts
 interface BrowserSession {
@@ -16516,11 +16516,11 @@ interface PageExtractionData {
 
 ---
 
-## 11.3 Session Manager Screen (Non-Browse Mode) {#11.3-session-manager-screen-(non-browse-mode)-1}
+## 11.3 Session Manager Screen (Non-Browse Mode) 
 
 When the user navigates to Browser and is not actively browsing, they see the Session Manager. This is the landing view. The main sidebar remains visible in this mode.
 
-### Container {#container-12}
+### Container 
 
 ```ts
 {
@@ -16536,7 +16536,7 @@ When the user navigates to Browser and is not actively browsing, they see the Se
 }
 ```
 
-### Header {#header-10}
+### Header 
 
 ```ts
 {
@@ -16574,7 +16574,7 @@ When the user navigates to Browser and is not actively browsing, they see the Se
 
 Compass icon (13px) \+ "Open Browser". Clicking enters browse mode: collapses the main sidebar, creates a new session (or resumes the most recent active session), shows the web viewport.
 
-### Sub-Tab Navigation {#sub-tab-navigation}
+### Sub-Tab Navigation 
 
 3 tabs as filter chips (gap 8px, marginBottom 20px):
 
@@ -16601,7 +16601,7 @@ Each chip:
 
 Default: "sessions".
 
-### Active Sessions Sub-Tab {#active-sessions-sub-tab}
+### Active Sessions Sub-Tab 
 
 Displays currently open browser sessions.
 
@@ -16650,7 +16650,7 @@ Clicking a session card resumes the session: loads all tabs from `browser_tabs` 
 
 **Close session action:** On hover, a small X icon (12px, `textFaint`) appears at the right edge (absolute positioned). Clicking closes the session (sets status \= "closed", closed\_at \= now()).
 
-### History Sub-Tab {#history-sub-tab}
+### History Sub-Tab 
 
 Chronological list of all browsing history entries.
 
@@ -16695,7 +16695,7 @@ Right side (gap 4px):
 - "Revisit" button: `border: 1px solid theme.border, borderRadius: 5, padding: 3px 8px, fontSize: 10, color: textMuted`. Creates a new session with this URL.  
 - Delete button: Trash2 icon (11px, `textFaint`, background none, border none, padding 3px, cursor pointer). Deletes the history entry.
 
-### Saved Extracts Sub-Tab {#saved-extracts-sub-tab}
+### Saved Extracts Sub-Tab 
 
 Shows content extracted from browsed pages.
 
@@ -16737,7 +16737,7 @@ const { data: extracts } = useQuery({
 
 Clicking an extract opens a preview modal showing the full extracted content, or navigates to the Instance's files tab if an instance is linked.
 
-### Empty States {#empty-states}
+### Empty States 
 
 **Active Sessions — no sessions:**
 
@@ -16766,11 +16766,11 @@ Clicking an extract opens a preview modal showing the full extracted content, or
 
 ---
 
-## 11.4 Co-Browse Layout (Browse Mode) {#11.4-co-browse-layout-(browse-mode)}
+## 11.4 Co-Browse Layout (Browse Mode) 
 
 When the user enters browse mode (via "Open Browser" button, clicking a session card, or clicking "Revisit"), the main sidebar collapses and the full content area is dedicated to the browser workspace.
 
-### State Variables {#state-variables}
+### State Variables 
 
 ```ts
 const [browserView, setBrowserView] = useState<"float" | "icon" | "sidebar" | "split" | "chatonly">("sidebar");
@@ -16788,7 +16788,7 @@ const [highlightMode, setHighlightMode] = useState(false);           // Highligh
 const [extractMode, setExtractMode] = useState(false);               // Extract selector active
 ```
 
-### Container {#container-13}
+### Container 
 
 ```ts
 {
@@ -16799,7 +16799,7 @@ const [extractMode, setExtractMode] = useState(false);               // Extract 
 }
 ```
 
-### View Mode Layout Matrix {#view-mode-layout-matrix}
+### View Mode Layout Matrix 
 
 The layout adapts based on the active view mode:
 
@@ -16820,11 +16820,11 @@ const showChatPanel = browserView === "sidebar" || browserView === "split" || br
 
 ---
 
-## 11.5 Web Viewport {#11.5-web-viewport}
+## 11.5 Web Viewport 
 
 The viewport area that renders the proxied web page content.
 
-### Container {#container-14}
+### Container 
 
 ```ts
 {
@@ -16840,7 +16840,7 @@ The viewport area that renders the proxied web page content.
 
 Hidden entirely when `browserView === "chatonly"`.
 
-### Tab Strip (Float/Icon Modes) {#tab-strip-(float/icon-modes)}
+### Tab Strip (Float/Icon Modes) 
 
 When the chat panel is not docked (float and icon modes), the tab strip renders above the viewport inside the viewport container:
 
@@ -16912,7 +16912,7 @@ Plus icon (11px). Creates a new tab with a blank URL and focuses the URL input i
 
 **Expand button:** Maximize2 icon (12px, `textFaint`, background none, border none, padding 3px). Toggles the tab list popup.
 
-### Tab List Popup {#tab-list-popup}
+### Tab List Popup 
 
 A floating vertical menu showing full tab names. Triggered by the Expand button.
 
@@ -16956,7 +16956,7 @@ Clicking a tab in the popup: switches to that tab and closes the popup.
 
 **Close tab in popup (v2):** On hover, an X icon (9px, `textFaint`) appears at the right edge of each tab row. Clicking removes the tab from the session (sets `closed_at`). Cannot close the last remaining tab.
 
-### Tab State Management {#tab-state-management}
+### Tab State Management 
 
 ```ts
 interface ClientTabState {
@@ -17040,7 +17040,7 @@ function goForward(tabId: string) {
 
 When at the limit, the "+" new tab button is disabled with a tooltip: "Maximum {n} tabs for your plan."
 
-### Iframe Rendering {#iframe-rendering}
+### Iframe Rendering 
 
 ```ts
 <iframe
@@ -17091,7 +17091,7 @@ function handlePageLoad() {
 }
 ```
 
-### Loading State {#loading-state-5}
+### Loading State 
 
 While the iframe is loading, show a loading indicator overlaid on the viewport:
 
@@ -17114,11 +17114,11 @@ While the iframe is loading, show a loading indicator overlaid on the viewport:
 
 ---
 
-## 11.6 Floating Navigation Bar {#11.6-floating-navigation-bar}
+## 11.6 Floating Navigation Bar 
 
 The primary control surface for the browser. Floats at the bottom-center of the web viewport.
 
-### Container {#container-15}
+### Container 
 
 ```ts
 {
@@ -17140,7 +17140,7 @@ The primary control surface for the browser. Floats at the bottom-center of the 
 
 Only shown when `showWebView && !browserNavMinimized && browserNavVisible`.
 
-### Controls (Left to Right) {#controls-(left-to-right)}
+### Controls (Left to Right) 
 
 All nav bar buttons share this base style unless noted:
 
@@ -17225,7 +17225,7 @@ Columns icon (11px) \+ "View" text (hidden on mobile) \+ ChevronDown icon (9px).
 
 **8\. Minimize button:** Minimize2 icon (11px, rgba(255,255,255,0.4)). Sets `browserNavMinimized = true`. Title tooltip: "Minimize navigation".
 
-### Auto-Hide Behavior {#auto-hide-behavior}
+### Auto-Hide Behavior 
 
 The nav bar auto-hides after 30 seconds of mouse inactivity within the viewport:
 
@@ -17254,7 +17254,7 @@ useEffect(() => {
 
 Moving the mouse restores the nav bar and resets the 30-second timer. The transition uses opacity: `transition: opacity 0.3s ease`.
 
-### Minimized Nav Dot {#minimized-nav-dot}
+### Minimized Nav Dot 
 
 When the nav bar is minimized, it collapses to a compass dot:
 
@@ -17282,11 +17282,11 @@ Compass icon (16px, rgba(255,255,255,0.7)). Clicking restores the full nav bar: 
 
 ---
 
-## 11.7 View Switcher Menu {#11.7-view-switcher-menu-1}
+## 11.7 View Switcher Menu 
 
 Shared dropdown used from both the floating nav bar and the chat panel header. The 5 view mode options plus 2 additional actions.
 
-### From Floating Nav Bar {#from-floating-nav-bar}
+### From Floating Nav Bar 
 
 Opens upward (bottom: 100%, marginBottom 6px), right-aligned:
 
@@ -17306,11 +17306,11 @@ Opens upward (bottom: 100%, marginBottom 6px), right-aligned:
 }
 ```
 
-### From Chat Panel Header {#from-chat-panel-header}
+### From Chat Panel Header 
 
 Opens downward (top: 100%, marginTop 4px), right-aligned. Same styling.
 
-### Section Header {#section-header-3}
+### Section Header 
 
 ```ts
 {
@@ -17324,7 +17324,7 @@ Opens downward (top: 100%, marginTop 4px), right-aligned. Same styling.
 // Text: "CHAT LAYOUT"
 ```
 
-### 5 View Options {#5-view-options}
+### 5 View Options 
 
 | ID | Label | Description | Icon |
 | :---- | :---- | :---- | :---- |
@@ -17354,7 +17354,7 @@ Each option row:
 
 Clicking an option: sets `browserView`, closes the menu.
 
-### Divider {#divider-1}
+### Divider 
 
 ```ts
 {
@@ -17363,7 +17363,7 @@ Clicking an option: sets `browserView`, closes the menu.
 }
 ```
 
-### Additional Actions (Below Divider) {#additional-actions-(below-divider)}
+### Additional Actions (Below Divider) 
 
 Each action row: same padding/borderRadius as options, but 12px label text, `textMuted`, weight 400\.
 
@@ -17374,9 +17374,9 @@ Each action row: same padding/borderRadius as options, but 12px label text, `tex
 
 ---
 
-## 11.8 Chat View Modes — Complete Specifications {#11.8-chat-view-modes-—-complete-specifications}
+## 11.8 Chat View Modes — Complete Specifications 
 
-### 11.8.1 Float Bar (Default for first-time users) {#11.8.1-float-bar-(default-for-first-time-users)}
+### 11.8.1 Float Bar (Default for first-time users) 
 
 A floating chat bubble overlaid on the web viewport. This is the least intrusive chat mode.
 
@@ -17433,7 +17433,7 @@ If no messages exist yet, show: "Start a conversation about this page" (11px, we
 - Mic icon (13px, `textFaint`, cursor pointer)  
 - ArrowUp send icon (13px, `textMuted`, cursor pointer). On click or Enter: sends the message to the co-browse chat.
 
-### 11.8.2 Icon Only {#11.8.2-icon-only}
+### 11.8.2 Icon Only 
 
 Minimized to a single persona avatar dot. Maximum page real estate.
 
@@ -17460,7 +17460,7 @@ Minimized to a single persona avatar dot. Maximum page real estate.
 
 Clicking expands to Float Bar mode: `setBrowserView("float")`.
 
-### 11.8.3 Sidebar (320px) {#11.8.3-sidebar-(320px)}
+### 11.8.3 Sidebar (320px) 
 
 A fixed-width chat panel docked to the right of the viewport. This is the default view mode.
 
@@ -17478,7 +17478,7 @@ A fixed-width chat panel docked to the right of the viewport. This is the defaul
 
 Internal layout: Tab Strip → Persona Header → Chat Messages → Composer \+ Quick Actions. See Section 11.9 for full chat panel spec.
 
-### 11.8.4 50/50 Split {#11.8.4-50/50-split}
+### 11.8.4 50/50 Split 
 
 Equal horizontal split between the viewport and the chat panel.
 
@@ -17499,7 +17499,7 @@ Equal horizontal split between the viewport and the chat panel.
 
 Same internal layout as Sidebar mode, but with more horizontal space for comfortable chat. Message text can be wider, avatars larger.
 
-### 11.8.5 Chat Only {#11.8.5-chat-only}
+### 11.8.5 Chat Only 
 
 Full-width chat panel, no viewport visible.
 
@@ -17517,11 +17517,11 @@ The web viewport is hidden (`showWebView = false`). The tab strip remains visibl
 
 ---
 
-## 11.9 Chat Panel (Sidebar / Split / ChatOnly) {#11.9-chat-panel-(sidebar-/-split-/-chatonly)}
+## 11.9 Chat Panel (Sidebar / Split / ChatOnly) 
 
 The persistent chat panel used in sidebar, split, and chatonly view modes. Contains the tab strip, persona header, chat messages, composer, and quick action chips.
 
-### Tab Strip (Inside Chat Panel) {#tab-strip-(inside-chat-panel)}
+### Tab Strip (Inside Chat Panel) 
 
 When the chat panel is docked (sidebar, split, chatonly modes), the tab strip renders at the top of the chat panel, not inside the viewport:
 
@@ -17539,7 +17539,7 @@ When the chat panel is docked (sidebar, split, chatonly modes), the tab strip re
 
 Same tab squares (26×26px), new tab button, expand button, and tab list popup as Section 11.5. The popup alignment is `left: 12` instead of `right: 12` since the panel is on the right side.
 
-### Persona Header {#persona-header}
+### Persona Header 
 
 ```ts
 {
@@ -17583,7 +17583,7 @@ Columns icon (12px). In chatonly mode, additionally shows "View" text (10px, `te
     
 - Sessions button: History icon (13px, `textFaint`, background none, border none, padding 3px). Title tooltip: "Sessions". Returns to session manager.
 
-### Chat Messages {#chat-messages}
+### Chat Messages 
 
 ```ts
 {
@@ -17643,7 +17643,7 @@ Each message bubble:
 
 Messages follow the standard chat message model (Part 5). The persona's response is assembled with the page context injected as a system message (see Section 11.11).
 
-### Composer {#composer}
+### Composer 
 
 ```ts
 {
@@ -17673,7 +17673,7 @@ Messages follow the standard chat message model (Part 5). The persona's response
 
 On send: creates a new message in the linked chat, triggers the AI response pipeline (Part 5\) with the page context injected.
 
-### Quick Action Chips {#quick-action-chips}
+### Quick Action Chips 
 
 Below the composer (marginTop 8px, display flex, gap 6px, flexWrap wrap):
 
@@ -17703,9 +17703,9 @@ These are the default chips. In v2, Cipher will analyze the page type (e-commerc
 
 ---
 
-## 11.10 Page Interaction Layer {#11.10-page-interaction-layer}
+## 11.10 Page Interaction Layer 
 
-### Overlay Script (browser-overlay.js) {#overlay-script-(browser-overlay.js)}
+### Overlay Script (browser-overlay.js) 
 
 The overlay script is injected into every proxied page. It handles content extraction, highlight rendering, and section selection. All communication with the parent frame happens via `postMessage`.
 
@@ -17950,7 +17950,7 @@ The overlay script is injected into every proxied page. It handles content extra
 })();
 ```
 
-### Highlight Tool Flow {#highlight-tool-flow}
+### Highlight Tool Flow 
 
 When the user clicks the Highlight button (ScanLine) in the nav bar:
 
@@ -17962,7 +17962,7 @@ When the user clicks the Highlight button (ScanLine) in the nav bar:
 
 **Persona-initiated highlights:** When a persona identifies something noteworthy on the page (e.g., the pricing section), it can include a `[highlight:CSS_SELECTOR]` tag in its response. Cipher parses this tag and sends the highlight render command to the iframe. The attribution badge shows the persona's name.
 
-### Extract to Instance Flow {#extract-to-instance-flow}
+### Extract to Instance Flow 
 
 When the user clicks the Extract button (Download) in the nav bar:
 
@@ -18068,11 +18068,11 @@ async function saveExtract(data: ExtractData) {
 
 ---
 
-## 11.11 Page Awareness System {#11.11-page-awareness-system}
+## 11.11 Page Awareness System 
 
 When the overlay script extracts page content and sends it to the parent frame, a badge appears in the viewport indicating the persona is "reading" the page.
 
-### Badge {#badge}
+### Badge 
 
 ```ts
 {
@@ -18096,7 +18096,7 @@ When the overlay script extracts page content and sends it to the parent frame, 
 
 The badge is dismissible. It does not reappear until the user navigates to a different URL (tab change or new navigation).
 
-### Context Injection {#context-injection}
+### Context Injection 
 
 When the page awareness indicator appears, the extracted content has been processed and injected into the chat's context assembly (Part 5, Section 5.8). The page context is added as a system message before the persona's next response:
 
@@ -18140,9 +18140,9 @@ This message is included in the context window for every subsequent message in t
 
 ---
 
-## 11.12 Session Lifecycle {#11.12-session-lifecycle}
+## 11.12 Session Lifecycle 
 
-### Creating a Session {#creating-a-session}
+### Creating a Session 
 
 Sessions are created in two scenarios:
 
@@ -18191,7 +18191,7 @@ async function createBrowserSession(personaId: string, initialUrl?: string) {
 
 Calls `createBrowserSession(defaultPersonaId, historyEntry.url)`.
 
-### Resuming a Session {#resuming-a-session}
+### Resuming a Session 
 
 Clicking an active session card in the session manager:
 
@@ -18228,7 +18228,7 @@ async function resumeSession(sessionId: string) {
 }
 ```
 
-### Closing a Session {#closing-a-session}
+### Closing a Session 
 
 Via the X button on a session card, or navigating away:
 
@@ -18252,9 +18252,9 @@ async function closeSession(sessionId: string) {
 
 ---
 
-## 11.13 Security & Limitations {#11.13-security-&-limitations}
+## 11.13 Security & Limitations 
 
-### Proxy Security {#proxy-security}
+### Proxy Security 
 
 | Concern | Mitigation |
 | :---- | :---- |
@@ -18266,7 +18266,7 @@ async function closeSession(sessionId: string) {
 | Harmful content | URL blocklist for known harmful domains. Content-type validation (only serve HTML). |
 | Data exfiltration from overlay | Overlay script only sends structured data (PageExtractionData, highlight selectors, extract content) via postMessage — never raw DOM or cookies. |
 
-### Known Limitations (v1 — Proxy Mode) {#known-limitations-(v1-—-proxy-mode)}
+### Known Limitations (v1 — Proxy Mode) 
 
 | Limitation | User-Facing Fallback |
 | :---- | :---- |
@@ -18278,7 +18278,7 @@ async function closeSession(sessionId: string) {
 | WebSocket / real-time sites | WebSocket connections won't route through the proxy. Pages relying on WebSockets will appear static. |
 | Very large pages (\>10MB) | Content truncated at 10MB. Pages may appear incomplete. |
 
-### Desktop Version Advantages (v2) {#desktop-version-advantages-(v2)}
+### Desktop Version Advantages (v2) 
 
 The Electron/Tauri desktop app removes all proxy limitations:
 
@@ -18293,7 +18293,7 @@ The Electron/Tauri desktop app removes all proxy limitations:
 
 ---
 
-## 11.14 Tier Gating {#11.14-tier-gating}
+## 11.14 Tier Gating 
 
 | Feature | Free | Plus | Premium | Pro |
 | :---- | :---- | :---- | :---- | :---- |
@@ -18304,7 +18304,7 @@ The Electron/Tauri desktop app removes all proxy limitations:
 | Highlights per page | — | 3 | 10 | Unlimited |
 | Desktop browser (future) | — | — | ✓ | ✓ |
 
-### Free-Tier Gated Screen {#free-tier-gated-screen}
+### Free-Tier Gated Screen 
 
 When a Free-tier user navigates to the Browser screen:
 
@@ -18326,7 +18326,7 @@ When a Free-tier user navigates to the Browser screen:
 
 *End of Part 11\. Proceed to Part 12: Insights & Analytics Screen.*
 
-# PART 12: INSIGHTS & ANALYTICS SCREEN {#part-12:-insights-&-analytics-screen-1}
+# PART 12: INSIGHTS & ANALYTICS SCREEN 
 
 ---
 
@@ -18336,9 +18336,9 @@ The screen is available to all tiers. Free and Plus tiers see basic metrics. Pre
 
 ---
 
-## 12.1 Data Architecture {#12.1-data-architecture}
+## 12.1 Data Architecture 
 
-### No Dedicated Analytics Tables (v1) {#no-dedicated-analytics-tables-(v1)}
+### No Dedicated Analytics Tables (v1) 
 
 All insights are computed at query time from existing tables. No dedicated analytics or metrics tables are required for v1. This keeps the data model simple and avoids sync issues between operational and analytical data.
 
@@ -18357,7 +18357,7 @@ The following source tables feed the analytics system:
 | `activity_log` | Activity heatmap, peak usage hours, general engagement |
 | `user_api_keys` | BYOK detection for token attribution |
 
-### TypeScript Response Interfaces {#typescript-response-interfaces}
+### TypeScript Response Interfaces 
 
 ```ts
 // Overview tab response
@@ -18453,7 +18453,7 @@ interface FlaggedCounts {
 }
 ```
 
-### Analytics Edge Function {#analytics-edge-function}
+### Analytics Edge Function 
 
 A single Supabase Edge Function (`analytics`) handles all analytics queries. It accepts a request type, time range, and user ID, then runs the appropriate aggregation queries and returns structured data matching the interfaces above.
 
@@ -18520,7 +18520,7 @@ serve(async (req) => {
 });
 ```
 
-### v2: Materialized Views {#v2:-materialized-views}
+### v2: Materialized Views 
 
 For v2, frequently-accessed aggregations will be pre-computed using PostgreSQL materialized views refreshed on a schedule:
 
@@ -18547,7 +18547,7 @@ This is future work. v1 uses live queries exclusively.
 
 ---
 
-## 12.2 Edge Function: computeOverview {#12.2-edge-function:-computeoverview}
+## 12.2 Edge Function: computeOverview 
 
 This function aggregates all 8 overview metric cards plus the daily activity chart data and storage usage summary in a single handler.
 
@@ -18596,7 +18596,7 @@ async function computeOverview(
 }
 ```
 
-### Card 1: Total Conversations {#card-1:-total-conversations}
+### Card 1: Total Conversations 
 
 ```sql
 CREATE OR REPLACE FUNCTION analytics_conversation_stats(
@@ -18641,7 +18641,7 @@ async function queryConversationStats(supabase, userId, interval): Promise<Metri
 }
 ```
 
-### Card 2: Persona Utilization {#card-2:-persona-utilization}
+### Card 2: Persona Utilization 
 
 ```sql
 CREATE OR REPLACE FUNCTION analytics_persona_utilization(
@@ -18676,7 +18676,7 @@ $$;
 
 If `total_personas = 0`, value displays "—" and trend shows "Create your first Persona" in `textFaint`.
 
-### Card 3: Memories Created {#card-3:-memories-created}
+### Card 3: Memories Created 
 
 ```sql
 CREATE OR REPLACE FUNCTION analytics_memory_created(
@@ -18693,7 +18693,7 @@ LANGUAGE sql STABLE AS $$
 $$;
 ```
 
-### Card 4: Top Model {#card-4:-top-model}
+### Card 4: Top Model 
 
 ```sql
 CREATE OR REPLACE FUNCTION analytics_top_model(
@@ -18733,7 +18733,7 @@ const MODEL_DISPLAY_NAMES: Record<string, string> = {
 };
 ```
 
-### Card 5: Most Active Persona {#card-5:-most-active-persona}
+### Card 5: Most Active Persona 
 
 ```sql
 CREATE OR REPLACE FUNCTION analytics_most_active_persona(
@@ -18754,7 +18754,7 @@ LANGUAGE sql STABLE AS $$
 $$;
 ```
 
-### Card 6: Avg Conversation Length {#card-6:-avg-conversation-length}
+### Card 6: Avg Conversation Length 
 
 ```sql
 CREATE OR REPLACE FUNCTION analytics_avg_conversation_length(
@@ -18785,7 +18785,7 @@ LANGUAGE sql STABLE AS $$
 $$;
 ```
 
-### Card 7: Tokens This Month {#card-7:-tokens-this-month}
+### Card 7: Tokens This Month 
 
 ```sql
 CREATE OR REPLACE FUNCTION analytics_token_stats(p_user_id UUID)
@@ -18817,7 +18817,7 @@ function formatTokenCount(tokens: number): string {
 }
 ```
 
-### Card 8: Searches Performed {#card-8:-searches-performed}
+### Card 8: Searches Performed 
 
 ```sql
 CREATE OR REPLACE FUNCTION analytics_search_stats(
@@ -18833,7 +18833,7 @@ LANGUAGE sql STABLE AS $$
 $$;
 ```
 
-### Daily Activity Chart Data {#daily-activity-chart-data}
+### Daily Activity Chart Data 
 
 ```sql
 CREATE OR REPLACE FUNCTION analytics_daily_activity(
@@ -18862,7 +18862,7 @@ $$;
 
 The `generate_series` ensures every day in the interval has a row, even if activity was zero (important for continuous chart rendering).
 
-### Storage Usage Summary {#storage-usage-summary}
+### Storage Usage Summary 
 
 ```sql
 CREATE OR REPLACE FUNCTION analytics_storage_usage(p_user_id UUID)
@@ -18883,9 +18883,9 @@ $$;
 
 ---
 
-## 12.3 Screen Layout {#12.3-screen-layout}
+## 12.3 Screen Layout 
 
-### Container {#container-16}
+### Container 
 
 ```ts
 {
@@ -18901,7 +18901,7 @@ $$;
 }
 ```
 
-### Header {#header-11}
+### Header 
 
 ```ts
 {
@@ -18912,7 +18912,7 @@ $$;
 - Title: "Insights & Analytics" (22px, weight 300, `text`, letterSpacing \-0.03em)  
 - Subtitle: "Understand how you and your Personas work together." (13px, weight 300, `textMuted`, marginTop 4px)
 
-### Tab Navigation \+ Controls Row {#tab-navigation-+-controls-row}
+### Tab Navigation \+ Controls Row 
 
 The tab pills and time range selector sit on the same horizontal line:
 
@@ -19004,7 +19004,7 @@ Default: `30d`. Changing the time range re-fetches all metrics on the current ta
 
 Download icon (10px) \+ "Export". See Section 12.8 for the full export system.
 
-### Last Updated Indicator {#last-updated-indicator}
+### Last Updated Indicator 
 
 Below the tab row:
 
@@ -19034,11 +19034,11 @@ function formatLastUpdated(dataUpdatedAt: number): string {
 
 ---
 
-## 12.4 Overview Tab {#12.4-overview-tab}
+## 12.4 Overview Tab 
 
 The landing tab. Shows 8 metric cards in a responsive grid, an activity trend chart, and a storage usage summary.
 
-### Grid Layout {#grid-layout}
+### Grid Layout 
 
 ```ts
 {
@@ -19050,7 +19050,7 @@ The landing tab. Shows 8 metric cards in a responsive grid, an activity trend ch
 
 On mobile: 2 columns x 4 rows. On desktop: 4 columns x 2 rows.
 
-### Metric Card Component {#metric-card-component}
+### Metric Card Component 
 
 Each card follows a consistent three-layer structure: label, value, trend.
 
@@ -19107,7 +19107,7 @@ Trend color logic:
 | Negative | `#ef4444` (red) | "-3% vs last week" |
 | Neutral | `theme.textFaint` | "62% of calls", "via BYOK" |
 
-### 8 Overview Metrics Summary {#8-overview-metrics-summary}
+### 8 Overview Metrics Summary 
 
 | \# | Label | Value | Trend |
 | :---- | :---- | :---- | :---- |
@@ -19120,11 +19120,11 @@ Trend color logic:
 | 7 | TOKENS THIS MONTH | "340K" / "1.2M" | "via BYOK" or "platform" |
 | 8 | SEARCHES PERFORMED | Count in period | "+N today" |
 
-### Free-Tier Card Visibility {#free-tier-card-visibility}
+### Free-Tier Card Visibility 
 
 Free-tier users see only the first 4 cards. Grid: `gridTemplateColumns: "1fr 1fr"` on both mobile and desktop. Plus users see all 8 cards.
 
-### Activity Trend Chart (Plus and Above) {#activity-trend-chart-(plus-and-above)}
+### Activity Trend Chart (Plus and Above) 
 
 Below the metric grid, an SVG area chart shows daily conversation and message volume.
 
@@ -19231,7 +19231,7 @@ function ActivityChart({ data, width, height }: {
 
 Free-tier users do not see the activity chart.
 
-### Storage Usage Bar (All Tiers) {#storage-usage-bar-(all-tiers)}
+### Storage Usage Bar (All Tiers) 
 
 Below the activity chart (or below the metric grid for Free):
 
@@ -19252,7 +19252,7 @@ Below the activity chart (or below the metric grid for Free):
 - Progress bar (flex: 1, height 4px, borderRadius 2). Fill color: accent (normal), amber (\#f59e0b) at \>75%, red (\#ef4444) at \>90%.  
 - "{used} / {total}" (11px, weight 350, `textMuted`) \+ "{n} files" (10px, weight 300, `textFaint`)
 
-### Data Fetching {#data-fetching}
+### Data Fetching 
 
 ```ts
 const { data: overview, isLoading, isFetching, dataUpdatedAt } = useQuery({
@@ -19270,7 +19270,7 @@ const { data: overview, isLoading, isFetching, dataUpdatedAt } = useQuery({
 });
 ```
 
-### Loading State {#loading-state-6}
+### Loading State 
 
 Skeleton cards in grid (pulse animation 1.5s):
 
@@ -19282,11 +19282,11 @@ Activity chart: single skeleton rectangle (full width x 140px). Storage bar: ske
 
 ---
 
-## 12.5 Persona Performance Tab {#12.5-persona-performance-tab}
+## 12.5 Persona Performance Tab 
 
 Shows a per-persona breakdown of activity, memories, decisions, and skills.
 
-### Edge Function: computePersonaPerformance {#edge-function:-computepersonaperformance}
+### Edge Function: computePersonaPerformance 
 
 ```ts
 async function computePersonaPerformance(
@@ -19330,7 +19330,7 @@ async function computePersonaPerformance(
 }
 ```
 
-### Supporting RPC Functions {#supporting-rpc-functions}
+### Supporting RPC Functions 
 
 ```sql
 CREATE OR REPLACE FUNCTION persona_memory_stats(persona_ids UUID[])
@@ -19382,7 +19382,7 @@ LANGUAGE sql STABLE AS $$
 $$;
 ```
 
-### Persona Cards {#persona-cards}
+### Persona Cards 
 
 Vertical list (gap 10px). Each card:
 
@@ -19434,7 +19434,7 @@ function relativeTime(date: string | null): string {
 }
 ```
 
-### Sort Controls {#sort-controls}
+### Sort Controls 
 
 Above the list:
 
@@ -19458,15 +19458,15 @@ Above the list:
 | `conversations` | "Conversations" | Descending |
 | `skills` | "Skills" | Descending |
 
-### Click Behavior {#click-behavior}
+### Click Behavior 
 
 Clicking a persona card navigates to the Persona Detail View (Part 9), Overview tab.
 
-### Loading State {#loading-state-7}
+### Loading State 
 
 3 skeleton cards: 36px circle \+ 120x12px name bar \+ 200x10px stats bar \+ 6px circle (right).
 
-### Empty State {#empty-state-4}
+### Empty State 
 
 - Users icon (28px, `textFaint`, marginBottom 12px)  
 - "No personas yet" (14px, weight 400, `text`)  
@@ -19475,11 +19475,11 @@ Clicking a persona card navigates to the Persona Detail View (Part 9), Overview 
 
 ---
 
-## 12.6 Model Usage Tab {#12.6-model-usage-tab}
+## 12.6 Model Usage Tab 
 
 Shows which AI models are used, how often, and at what estimated cost.
 
-### Edge Function: computeModelUsage {#edge-function:-computemodelusage}
+### Edge Function: computeModelUsage 
 
 ```ts
 async function computeModelUsage(
@@ -19538,7 +19538,7 @@ LANGUAGE sql STABLE AS $$
 $$;
 ```
 
-### Provider Inference & Cost Estimation {#provider-inference-&-cost-estimation}
+### Provider Inference & Cost Estimation 
 
 ```ts
 function inferProvider(model: string): string {
@@ -19572,7 +19572,7 @@ function formatCost(cost: number): string {
 }
 ```
 
-### Model Row Layout {#model-row-layout}
+### Model Row Layout 
 
 Each model row (padding 12px 18px, surface bg, borderSubtle border, borderRadius 10, flex, gap 14px):
 
@@ -19588,14 +19588,14 @@ Each model row (padding 12px 18px, surface bg, borderSubtle border, borderRadius
 - "{n} calls" (11px, weight 400, `text`)  
 - "\~{cost}" (10px, weight 350, `textFaint`)
 
-### Total Summary Row {#total-summary-row}
+### Total Summary Row 
 
 Below model list (borderTop, padding 12px 0, flex, justifyContent space-between):
 
 - "Total" (12px, weight 450, `text`)  
 - "{totalTokens} tokens · \~{totalCost}" (12px, weight 350, `textMuted`)
 
-### BYOK Indicator {#byok-indicator}
+### BYOK Indicator 
 
 If `byok_active: true`, badge below tab title:
 
@@ -19615,13 +19615,13 @@ If `byok_active: true`, badge below tab title:
 
 Key icon (10px) \+ "BYOK active — costs billed by your provider"
 
-### Cost Disclaimer {#cost-disclaimer}
+### Cost Disclaimer 
 
 Below the total row (10px, weight 300, `textFaint`, textAlign center, lineHeight 1.5):
 
 "Cost estimates are approximate and based on published model pricing. Actual costs depend on your API provider and plan. BYOK usage is billed directly by your provider."
 
-### Model Color Coding (v2) {#model-color-coding-(v2)}
+### Model Color Coding (v2) 
 
 | Model Family | Color |
 | :---- | :---- |
@@ -19634,7 +19634,7 @@ Below the total row (10px, weight 300, `textFaint`, textAlign center, lineHeight
 
 v1: all bars use `theme.accent`.
 
-### Empty State {#empty-state-5}
+### Empty State 
 
 - BarChart3 icon (28px, `textFaint`, marginBottom 12px)  
 - "No model usage data" (14px, weight 400, `text`)  
@@ -19642,11 +19642,11 @@ v1: all bars use `theme.accent`.
 
 ---
 
-## 12.7 Memory Health Tab {#12.7-memory-health-tab}
+## 12.7 Memory Health Tab 
 
 Shows the health and composition of the user's total memory footprint across all personas.
 
-### Edge Function: computeMemoryHealth {#edge-function:-computememoryhealth}
+### Edge Function: computeMemoryHealth 
 
 ```ts
 async function computeMemoryHealth(
@@ -19706,7 +19706,7 @@ LANGUAGE sql STABLE AS $$
 $$;
 ```
 
-### Memory Stats Grid {#memory-stats-grid}
+### Memory Stats Grid 
 
 2-column grid (1-column on mobile), gap 12px. 6 cards with label/value/subtitle structure (same styling as Overview cards but with 28px value size).
 
@@ -19719,11 +19719,11 @@ $$;
 | 5 | SKILLS LEARNED | `skills` | "Avg {n} per Persona" |
 | 6 | FLAGGED FOR REVIEW | `flagged.total` | "{conflicts} conflicts detected" or "No issues detected" |
 
-### Flagged Card Treatment {#flagged-card-treatment}
+### Flagged Card Treatment 
 
 Red-tinted border when `flaggedCount > 0`: `border: 1px solid rgba(239,68,68,0.3)`. Clickable → opens Flagged Review Modal.
 
-### Flagged Review Modal {#flagged-review-modal}
+### Flagged Review Modal 
 
 Modal: surface bg, borderRadius 16, padding 24, width 480 (90% on mobile), maxHeight 70vh, overflowY auto.
 
@@ -19747,7 +19747,7 @@ Actions: "Review" (bordered, navigates to persona Memory tab) \+ "Dismiss" (bord
 
 **Conflict resolution panel** (expands on "Dismiss" for conflicts): Shows conflicting memory content \+ 3 buttons: "Keep this one", "Keep the other", "Keep both".
 
-### Flagged Memory Logic {#flagged-memory-logic}
+### Flagged Memory Logic 
 
 | Flag | Condition | Badge |
 | :---- | :---- | :---- |
@@ -19755,7 +19755,7 @@ Actions: "Review" (bordered, navigates to persona Memory tab) \+ "Dismiss" (bord
 | Low Confidence | `confidence = 'weak'` | Amber |
 | Stale | `updated_at < 90 days ago` AND `active = true` | Gray |
 
-### Flagged Data Query {#flagged-data-query}
+### Flagged Data Query 
 
 ```ts
 const { data: flaggedMemories } = useQuery({
@@ -19776,7 +19776,7 @@ const { data: flaggedMemories } = useQuery({
 });
 ```
 
-### Empty State {#empty-state-6}
+### Empty State 
 
 - Brain icon (28px, `textFaint`)  
 - "No memories yet"  
@@ -19784,9 +19784,9 @@ const { data: flaggedMemories } = useQuery({
 
 ---
 
-## 12.8 Export Analytics (Premium+) {#12.8-export-analytics-(premium+)}
+## 12.8 Export Analytics (Premium+) 
 
-### Export Dropdown {#export-dropdown}
+### Export Dropdown 
 
 2 options: "Export as CSV" (FileSpreadsheet icon) \+ "Export as JSON" (FileJson icon).
 
@@ -19806,7 +19806,7 @@ const { data: flaggedMemories } = useQuery({
 }
 ```
 
-### Implementation {#implementation-2}
+### Implementation 
 
 ```ts
 async function exportAnalytics(
@@ -19833,7 +19833,7 @@ async function exportAnalytics(
 }
 ```
 
-### CSV Format Per Tab {#csv-format-per-tab}
+### CSV Format Per Tab 
 
 **Overview:** `metric_name, value, trend, trend_direction`
 
@@ -19845,22 +19845,22 @@ async function exportAnalytics(
 
 ---
 
-## 12.9 Empty States {#12.9-empty-states}
+## 12.9 Empty States 
 
-### No Data (New User) {#no-data-(new-user)}
+### No Data (New User) 
 
 - BarChart3 icon (32px, `textFaint`)  
 - "No data yet" (16px, weight 400, `text`)  
 - "Start chatting with your Personas to see analytics here." (13px, weight 300, `textMuted`)  
 - "Go to Chat" button (accent bg, marginTop 20px). Navigates to Chat screen.
 
-### Partial Data {#partial-data}
+### Partial Data 
 
 Individual cards show: Value "—" (em-dash, 26px, weight 200, `textFaint`) \+ Trend "No data for this period" (10px, `textFaint`). Card structure remains fully rendered.
 
 ---
 
-## 12.10 Tier Feature Matrix {#12.10-tier-feature-matrix}
+## 12.10 Tier Feature Matrix 
 
 | Feature | Free | Plus | Premium | Pro |
 | :---- | :---- | :---- | :---- | :---- |
@@ -19875,15 +19875,15 @@ Individual cards show: Value "—" (em-dash, 26px, weight 200, `textFaint`) \+ T
 | Export (CSV/JSON) | — | — | ✓ | ✓ |
 | Flagged memory review | — | ✓ | ✓ | ✓ |
 
-### Gated Tab Content {#gated-tab-content}
+### Gated Tab Content 
 
 Locked tab shows: Lock icon (20px) \+ "Unlock {TabName} insights" (14px) \+ description (12px, `textMuted`) \+ "Upgrade to Plus" button (accent bg).
 
 ---
 
-## 12.11 Refresh & Caching {#12.11-refresh-&-caching}
+## 12.11 Refresh & Caching 
 
-### React Query Configuration {#react-query-configuration}
+### React Query Configuration 
 
 ```ts
 const ANALYTICS_STALE_TIME = 5 * 60 * 1000;
@@ -19900,15 +19900,15 @@ Manual refresh: `queryClient.invalidateQueries({ queryKey: ["analytics", tab, ti
 
 Tab switching: cached \+ fresh → instant render. Stale/missing → skeleton \+ background fetch. Time range persists across tab switches.
 
-### Error State {#error-state-2}
+### Error State 
 
 AlertCircle icon (24px) \+ "Failed to load analytics" \+ "Something went wrong. Please try again." \+ "Retry" button calling `refetch()`.
 
 ---
 
-## 12.12 Accessibility & Responsive {#12.12-accessibility-&-responsive}
+## 12.12 Accessibility & Responsive 
 
-### Responsive Behavior {#responsive-behavior}
+### Responsive Behavior 
 
 | Viewport | Overview Grid | Memory Grid | Model List |
 | :---- | :---- | :---- | :---- |
@@ -19921,7 +19921,7 @@ Mobile persona card: stats wrap to 2 rows via `flexWrap: "wrap", gap: "4px 16px"
 
 Mobile chart: height 100px, 3-4 x-axis labels.
 
-### Keyboard Navigation {#keyboard-navigation}
+### Keyboard Navigation 
 
 Tab pills focusable (tabIndex 0, Enter/Space activates). Time range, export, sort, refresh all keyboard-accessible. Flagged Review Modal traps focus while open.
 
@@ -19929,7 +19929,7 @@ Tab pills focusable (tabIndex 0, Enter/Space activates). Time range, export, sor
 
 *End of Part 12\. Proceed to Part 13: Settings Screen.*
 
-# PART 13: SETTINGS SCREEN {#part-13:-settings-screen-1}
+# PART 13: SETTINGS SCREEN 
 
 ---
 
@@ -19939,9 +19939,9 @@ This screen surfaces configuration that exists across multiple tables documented
 
 ---
 
-## 13.1 Data Architecture {#13.1-data-architecture}
+## 13.1 Data Architecture 
 
-### New Table: model\_role\_assignments {#new-table:-model_role_assignments}
+### New Table: model\_role\_assignments 
 
 Model role assignments define which AI model handles each functional role (e.g., Research, Writing, Coding). Each role has a primary model and a fallback. Cipher consults these assignments when routing messages (Part 14).
 
@@ -20020,7 +20020,7 @@ CREATE TRIGGER on_profile_created_seed_roles
   FOR EACH ROW EXECUTE FUNCTION public.seed_model_roles();
 ```
 
-### New Table: instance\_types {#new-table:-instance_types}
+### New Table: instance\_types 
 
 Instance types are reusable templates that provide default settings for Instances of that type. When a user creates an Instance and selects a type, the type's `default_settings` are merged into the cascade (Part 7). The `instances.type` column references the type name, not a foreign key — this allows built-in types to exist without user-specific rows.
 
@@ -20112,7 +20112,7 @@ CREATE TRIGGER on_profile_created_seed_types
   FOR EACH ROW EXECUTE FUNCTION public.seed_instance_types();
 ```
 
-### New Table: instruction\_memory {#new-table:-instruction_memory}
+### New Table: instruction\_memory 
 
 Instruction memory stores behavioral rules that Cipher has learned from user interactions. Rules are scoped to Global, a specific Instance Type, or a specific Instance. Cipher includes active rules in the system prompt when assembling context for a response (Part 14).
 
@@ -20167,7 +20167,7 @@ interface InstructionMemoryRule {
 }
 ```
 
-### Existing Tables Referenced {#existing-tables-referenced}
+### Existing Tables Referenced 
 
 | Table | Defined In | Settings Purpose |
 | :---- | :---- | :---- |
@@ -20177,7 +20177,7 @@ interface InstructionMemoryRule {
 | `credit_transactions` | Part 2 | Credit balance and history |
 | `instances` | Part 7 | `settings` JSONB stores Instance-level overrides |
 
-### Global Instance Settings {#global-instance-settings}
+### Global Instance Settings 
 
 The `profiles.preferences` JSONB includes a `global_instance_settings` key that stores defaults applied to all Instances before type templates and instance overrides:
 
@@ -20205,9 +20205,9 @@ Default value:
 
 ---
 
-## 13.2 Screen Layout {#13.2-screen-layout}
+## 13.2 Screen Layout 
 
-### Container {#container-17}
+### Container 
 
 ```ts
 {
@@ -20220,7 +20220,7 @@ Default value:
 }
 ```
 
-### Header {#header-12}
+### Header 
 
 ```ts
 {
@@ -20231,7 +20231,7 @@ Default value:
 
 - Title: "Settings" (28px, weight 300, `text`, letterSpacing \-0.03em, marginBottom 28px)
 
-### Tab Bar {#tab-bar}
+### Tab Bar 
 
 Horizontal underline-style tabs (not pill-style). Differs from analytics pill tabs — settings uses an underlined tab bar with bottom border to match the page-level navigation pattern.
 
@@ -20279,7 +20279,7 @@ Each tab button:
 
 Tier-gated tabs show a Lock icon (8px, `textFaint`) after the label for users below the required tier. Clicking a locked tab shows the gated content (same pattern as Part 12, Section 12.10): Lock icon \+ "Unlock {feature}" \+ description \+ "Upgrade" button.
 
-### Tab Content Area {#tab-content-area}
+### Tab Content Area 
 
 ```ts
 {
@@ -20291,11 +20291,11 @@ Tier-gated tabs show a Lock icon (8px, `textFaint`) after the label for users be
 
 ---
 
-## 13.3 General Tab {#13.3-general-tab}
+## 13.3 General Tab 
 
 The General tab contains all primary configuration: interface mode, account info, billing, voice/tone, storage, integrations, system intelligence, onboarding replay, and chat cleanup settings.
 
-### Setting Row Component {#setting-row-component}
+### Setting Row Component 
 
 Most General tab items use a consistent row layout:
 
@@ -20320,7 +20320,7 @@ Most General tab items use a consistent row layout:
 
 **Right:** Control element (varies per row: toggle, button, chevron, segmented selector)
 
-### Row 1: Interface Mode {#row-1:-interface-mode}
+### Row 1: Interface Mode 
 
 Controls whether the user sees the simplified Standard interface or the full Power User interface with all features exposed. This setting is stored in `profiles.preferences.interface_mode`.
 
@@ -20382,7 +20382,7 @@ async function updateInterfaceMode(mode: "standard" | "power") {
 
 When switching to Standard mode, Power-only UI elements across the app are hidden: advanced search operators, Cascade tab, browser DOM tools, team execution controls, and raw routing notes. The user can always switch back.
 
-### Row 2: Account {#row-2:-account}
+### Row 2: Account 
 
 **Icon:** User (18px)
 
@@ -20463,7 +20463,7 @@ Change Password section (email/password users only):
 - Text input for "DELETE" confirmation \+ "Delete My Account" button (red bg, white text)  
 - Implementation: calls Edge Function `delete-account` which cascades through all user data, cancels Stripe subscription, then calls `supabase.auth.admin.deleteUser()`
 
-### Row 3: Billing {#row-3:-billing}
+### Row 3: Billing 
 
 **Icon:** CreditCard (18px)
 
@@ -20546,7 +20546,7 @@ Locked features (for the current tier) are hidden entirely — only unlocked fea
 - "Manage Subscription" link (11px, accent color, cursor pointer). Opens Stripe Customer Portal via `supabase.functions.invoke("create-portal-session")`. The portal handles upgrades, downgrades, cancellation, and payment method changes.  
 - "View Invoice History" link (11px, `textMuted`, cursor pointer, marginLeft 16px). Opens Stripe Customer Portal invoice tab.
 
-### Row 4: Voice & Tone {#row-4:-voice-&-tone}
+### Row 4: Voice & Tone 
 
 **Icon:** Volume2 (18px)
 
@@ -20626,7 +20626,7 @@ Pre-filled with the current `profiles.preferences.voice_tone` value.
 
 **Save button:** Same as Account modal. Updates `profiles.preferences.voice_tone`.
 
-### Row 5: Storage {#row-5:-storage}
+### Row 5: Storage 
 
 **Icon:** HardDrive (18px)
 
@@ -20717,7 +20717,7 @@ GROUP BY origin;
 - "Your {tier\_name} plan includes {total} storage." (11px, weight 300, `textFaint`)  
 - If usage \> 75%: "Running low on space. " \+ "Upgrade" link (accent color) opening PricingModal.
 
-### Row 6: Integrations {#row-6:-integrations}
+### Row 6: Integrations 
 
 **Icon:** Link2 (18px)
 
@@ -20783,7 +20783,7 @@ Each integration row:
 3. On success, stores OAuth tokens in `integrations` table (future, not detailed here)  
 4. Shows "Connected" status with account email
 
-### System Intelligence Section {#system-intelligence-section}
+### System Intelligence Section 
 
 Below the standard rows, a grouped settings card for System Intelligence controls:
 
@@ -20857,7 +20857,7 @@ async function togglePreference(key: string) {
 }
 ```
 
-### Onboarding Replay {#onboarding-replay}
+### Onboarding Replay 
 
 Below System Intelligence:
 
@@ -20880,7 +20880,7 @@ Below System Intelligence:
 
 **Click:** Resets onboarding state and opens the onboarding modal (Part 2\) at step 0\.
 
-### Chat Cleanup & Organization Section {#chat-cleanup-&-organization-section}
+### Chat Cleanup & Organization Section 
 
 Grouped settings card:
 
@@ -20937,7 +20937,7 @@ Same toggle row layout as System Intelligence.
 
 Default: "Daily". Stored in `profiles.preferences.cleanup_frequency`.
 
-### Danger Zone {#danger-zone}
+### Danger Zone 
 
 At the bottom of General tab, a subtle section:
 
@@ -20958,11 +20958,11 @@ At the bottom of General tab, a subtle section:
 
 ---
 
-## 13.4 Models Tab {#13.4-models-tab}
+## 13.4 Models Tab 
 
 The Models tab displays role-to-model assignments. Cipher uses these assignments to route messages to the appropriate AI model based on detected intent (see Part 14). Each role has a primary model and an optional fallback that activates if the primary is unavailable or rate-limited.
 
-### Tab Header {#tab-header}
+### Tab Header 
 
 ```ts
 {
@@ -20973,7 +20973,7 @@ The Models tab displays role-to-model assignments. Cipher uses these assignments
 - "Role Assignments" (14px, weight 450, `text`, marginBottom 4px)  
 - "Each role routes to a primary model with an automatic fallback." (12px, weight 300, `textMuted`)
 
-### Available Models Registry {#available-models-registry}
+### Available Models Registry 
 
 Models available to the user depend on tier and BYOK status:
 
@@ -21063,7 +21063,7 @@ const AVAILABLE_MODELS: ModelOption[] = [
 ];
 ```
 
-### Role Assignment Rows {#role-assignment-rows}
+### Role Assignment Rows 
 
 ```ts
 {
@@ -21153,7 +21153,7 @@ If no fallback is set: dashed border chip with "Set fallback" text (`textFaint`)
 
 **Right: Provider** (10px, weight 300, `textFaint`, flexShrink 0\)
 
-### Model Selection Popover {#model-selection-popover}
+### Model Selection Popover 
 
 Clicking either the primary or fallback chip opens a model selection popover anchored to that chip:
 
@@ -21233,7 +21233,7 @@ async function updateRoleModel(
 }
 ```
 
-### Add Custom Role Button {#add-custom-role-button}
+### Add Custom Role Button 
 
 Below the role list:
 
@@ -21273,7 +21273,7 @@ Plus icon (12px) \+ "Add Custom Role"
 
 On add: inserts a new row into `model_role_assignments` with the default model for that tier as primary, no fallback.
 
-### Data Fetching {#data-fetching-1}
+### Data Fetching 
 
 ```ts
 const { data: modelRoles } = useQuery({
@@ -21291,16 +21291,16 @@ const { data: modelRoles } = useQuery({
 
 ---
 
-## 13.5 API Keys Tab {#13.5-api-keys-tab}
+## 13.5 API Keys Tab 
 
 Manages BYOK (Bring Your Own Key) API key connections. Keys are encrypted at rest and never displayed in full after initial submission.
 
-### Tab Header {#tab-header-1}
+### Tab Header 
 
 - "BYOK — Bring Your Own Keys" (14px, weight 450, `text`, marginBottom 4px)  
 - "Connect your own API keys for direct model access. Keys are encrypted at rest." (12px, weight 300, `textMuted`)
 
-### Key List {#key-list}
+### Key List 
 
 ```ts
 {
@@ -21412,7 +21412,7 @@ async function removeApiKey(keyId: string) {
 }
 ```
 
-### Add API Key Flow {#add-api-key-flow}
+### Add API Key Flow 
 
 "Add API Key" button below the list:
 
@@ -21624,7 +21624,7 @@ The `store-api-key` Edge Function encrypts the key using Supabase Vault (or AES-
 2. Extracts last 4 characters → `key_hint` (e.g., "...x9Qf")  
 3. Inserts record with status "active" and `last_validated_at = now()`
 
-### Data Fetching {#data-fetching-2}
+### Data Fetching 
 
 ```ts
 const { data: apiKeys } = useQuery({
@@ -21640,7 +21640,7 @@ const { data: apiKeys } = useQuery({
 });
 ```
 
-### Empty State {#empty-state-7}
+### Empty State 
 
 When no API keys exist:
 
@@ -21651,11 +21651,11 @@ When no API keys exist:
 
 ---
 
-## 13.6 Types Tab (Premium+) {#13.6-types-tab-(premium+)}
+## 13.6 Types Tab (Premium+) 
 
 Instance Types are reusable configuration templates. When a user creates an Instance and selects a type, the type's defaults are applied as the third layer in the settings cascade (Part 7). This tab lets users manage their type templates.
 
-### Tier Gate {#tier-gate}
+### Tier Gate 
 
 Types tab requires Premium or Pro tier. Free/Plus users see the standard gate content:
 
@@ -21664,12 +21664,12 @@ Types tab requires Premium or Pro tier. Free/Plus users see the standard gate co
 - "Create reusable configuration templates for your workspaces."  
 - "Upgrade to Premium" button
 
-### Tab Header {#tab-header-2}
+### Tab Header 
 
 - "Instance Types" (14px, weight 450, `text`, marginBottom 4px)  
 - "Types provide default settings that all Instances of that type inherit." (12px, weight 300, `textMuted`)
 
-### Type List {#type-list}
+### Type List 
 
 Each type card:
 
@@ -21703,7 +21703,7 @@ Each chip: `{key}: {value}` where key is capitalized and in `textFaint`.
 
 Example chips: "Voice: Professional", "Cleanup: Weekly", "Model: Claude Sonnet"
 
-### Instance Count Query {#instance-count-query}
+### Instance Count Query 
 
 ```ts
 const { data: typeCounts } = useQuery({
@@ -21725,7 +21725,7 @@ const { data: typeCounts } = useQuery({
 });
 ```
 
-### Edit Type Defaults Modal {#edit-type-defaults-modal}
+### Edit Type Defaults Modal 
 
 Clicking "Edit Defaults" opens a modal:
 
@@ -21801,7 +21801,7 @@ async function updateTypeDefaults(typeId: string, settings: InstanceSettings) {
 }
 ```
 
-### Create New Type {#create-new-type}
+### Create New Type 
 
 "Create New Type" button below the list (dashed border, Plus icon \+ text).
 
@@ -21817,7 +21817,7 @@ async function updateTypeDefaults(typeId: string, settings: InstanceSettings) {
 
 **Create button:** accent bg, "Create Type". On save: inserts into `instance_types` table with `is_builtin: false`.
 
-### Delete Type {#delete-type}
+### Delete Type 
 
 In the Edit modal, a "Delete Type" link appears at the bottom (12px, `#ef4444`).
 
@@ -21828,20 +21828,20 @@ On confirm: deletes the `instance_types` row. Instances with that type name keep
 
 ---
 
-## 13.7 Cascade Tab (Premium+) {#13.7-cascade-tab-(premium+)}
+## 13.7 Cascade Tab (Premium+) 
 
 The Cascade tab visualizes the four-level settings inheritance hierarchy defined in Part 7\. It shows how settings flow from platform defaults down to individual Instance overrides, making it clear where each active setting originates.
 
-### Tier Gate {#tier-gate-1}
+### Tier Gate 
 
 Requires Premium+. Same gate pattern as Types tab.
 
-### Tab Header {#tab-header-3}
+### Tab Header 
 
 - "Settings Cascade" (14px, weight 450, `text`, marginBottom 4px)  
 - "Each layer inherits from above and can override. Lower layers take precedence." (12px, weight 300, `textMuted`)
 
-### Cascade Layers {#cascade-layers}
+### Cascade Layers 
 
 4 collapsible layer cards with downward arrows between them:
 
@@ -21915,7 +21915,7 @@ Each setting item in the layer:
 
 ChevronDown icon (14px, `textFaint`)
 
-### 4 Cascade Layers {#4-cascade-layers}
+### 4 Cascade Layers 
 
 | \# | Name | Description | Data Source | Editable Here? |
 | :---- | :---- | :---- | :---- | :---- |
@@ -21959,7 +21959,7 @@ On save: updates `profiles.preferences.global_instance_settings.{key}`.
 
 **Layer 4: Instance Overrides** — shows that each Instance can have custom settings. A "Manage in Instance settings" note (10px, `textFaint`).
 
-### Resolved Settings Preview {#resolved-settings-preview}
+### Resolved Settings Preview 
 
 Below the cascade layers, a preview card shows the final resolved settings for a specific Instance:
 
@@ -22030,20 +22030,20 @@ interface ResolvedSetting {
 
 ---
 
-## 13.8 Learned Rules Tab (Plus+) {#13.8-learned-rules-tab-(plus+)}
+## 13.8 Learned Rules Tab (Plus+) 
 
 The Learned Rules tab displays instruction memory — behavioral rules that Cipher has extracted from user interactions. These rules influence how personas behave in future conversations. Users can review, toggle, edit, and delete rules.
 
-### Tier Gate {#tier-gate-2}
+### Tier Gate 
 
 Requires Plus+. Free users see the standard gate content with "Upgrade to Plus" button.
 
-### Tab Header {#tab-header-4}
+### Tab Header 
 
 - "Instruction Memory" (14px, weight 450, `text`, marginBottom 4px)  
 - "Rules learned from your interactions. Toggle or remove rules that aren't helping." (12px, weight 300, `textMuted`)
 
-### Filter Pills {#filter-pills}
+### Filter Pills 
 
 ```ts
 {
@@ -22069,11 +22069,11 @@ Requires Plus+. Free users see the standard gate content with "Upgrade to Plus" 
 
 Default: "All". Filtering is client-side.
 
-### Rule Count {#rule-count}
+### Rule Count 
 
 Below filters (10px, weight 300, `textFaint`): "Showing {n} rules" or "{n} active of {total} rules" when filtered.
 
-### Rule List {#rule-list}
+### Rule List 
 
 Each rule item:
 
@@ -22169,7 +22169,7 @@ Delete button:
 // Hover: color #ef4444
 ```
 
-### Edit Rule Inline {#edit-rule-inline}
+### Edit Rule Inline 
 
 Clicking the Edit button transforms the rule text into an editable textarea:
 
@@ -22209,7 +22209,7 @@ async function updateRule(ruleId: string, newText: string) {
 }
 ```
 
-### Delete Rule {#delete-rule}
+### Delete Rule 
 
 Clicking the Trash button opens inline confirmation (same pattern as API key removal):
 
@@ -22218,7 +22218,7 @@ Clicking the Trash button opens inline confirmation (same pattern as API key rem
 
 On confirm: hard-deletes the row from `instruction_memory`.
 
-### Add Rule Manually {#add-rule-manually}
+### Add Rule Manually 
 
 Below the rule list, an "Add Rule" button (dashed border, Plus icon \+ text).
 
@@ -22266,7 +22266,7 @@ async function addRule(rule: string, scope: string, scopeTargetId: string | null
 }
 ```
 
-### How Cipher Creates Rules (Reference) {#how-cipher-creates-rules-(reference)}
+### How Cipher Creates Rules (Reference) 
 
 This section documents the creation path for automatic rules — the primary source of instruction memory. This process is implemented in Part 14 (Cipher) but referenced here for completeness.
 
@@ -22280,7 +22280,7 @@ Each auto-created rule includes `source_chat_id` (the chat where it was detected
 
 Auto-created rules default to `active: true`. Users are notified via a non-blocking toast: "Learned: {rule\_summary}" with an "Undo" action that deactivates the rule.
 
-### Data Fetching {#data-fetching-3}
+### Data Fetching 
 
 ```ts
 const { data: rules } = useQuery({
@@ -22296,7 +22296,7 @@ const { data: rules } = useQuery({
 });
 ```
 
-### Empty State {#empty-state-8}
+### Empty State 
 
 When no instruction memory rules exist:
 
@@ -22307,9 +22307,9 @@ When no instruction memory rules exist:
 
 ---
 
-## 13.9 Responsive Behavior {#13.9-responsive-behavior}
+## 13.9 Responsive Behavior 
 
-### Mobile Layout {#mobile-layout}
+### Mobile Layout 
 
 On mobile (\< 768px):
 
@@ -22319,7 +22319,7 @@ On mobile (\< 768px):
 - API key rows: action buttons wrap below the key info  
 - Modals use `width: 90%` instead of fixed pixel widths
 
-### Tab bar scroll indicator {#tab-bar-scroll-indicator}
+### Tab bar scroll indicator 
 
 On mobile, when tabs overflow:
 
@@ -22335,9 +22335,9 @@ A subtle gradient fade on the right edge indicates more tabs are scrollable (CSS
 
 ---
 
-## 13.10 Settings Persistence & Propagation {#13.10-settings-persistence-&-propagation}
+## 13.10 Settings Persistence & Propagation 
 
-### Immediate Save Pattern {#immediate-save-pattern}
+### Immediate Save Pattern 
 
 All settings save immediately on change (no global "Save" button pattern). The update flow:
 
@@ -22347,7 +22347,7 @@ All settings save immediately on change (no global "Save" button pattern). The u
 4. React Query cache invalidated on success  
 5. On error: revert optimistic update, show error toast
 
-### Cross-Screen Propagation {#cross-screen-propagation}
+### Cross-Screen Propagation 
 
 Settings changes propagate to other screens via React Query:
 
@@ -22360,7 +22360,7 @@ Settings changes propagate to other screens via React Query:
 | Cleanup settings | Background (Cipher cleanup) | Cipher reads preferences on next scheduled run |
 | Instruction memory | Chat (system prompts) | Cipher includes active rules in context assembly |
 
-### Optimistic Update Example {#optimistic-update-example}
+### Optimistic Update Example 
 
 ```ts
 async function togglePreference(key: string) {
@@ -22393,7 +22393,7 @@ async function togglePreference(key: string) {
 
 ---
 
-## 13.11 Keyboard Accessibility {#13.11-keyboard-accessibility}
+## 13.11 Keyboard Accessibility 
 
 - All tabs are focusable (tabIndex 0), activated by Enter/Space  
 - Toggle switches are focusable and toggled by Enter/Space  
@@ -22406,7 +22406,7 @@ async function togglePreference(key: string) {
 
 *End of Part 13\. Proceed to Part 14: Cipher Orchestration Engine.*
 
-# PART 14: CIPHER ORCHESTRATION ENGINE {#part-14:-cipher-orchestration-engine-1}
+# PART 14: CIPHER ORCHESTRATION ENGINE 
 
 ---
 
@@ -22416,9 +22416,9 @@ This part defines the complete server-side implementation of Cipher across 4 pri
 
 ---
 
-## 14.1 Architecture Overview {#14.1-architecture-overview}
+## 14.1 Architecture Overview 
 
-### Core Responsibilities {#core-responsibilities}
+### Core Responsibilities 
 
 | Responsibility | Description | When It Runs |
 | :---- | :---- | :---- |
@@ -22436,7 +22436,7 @@ This part defines the complete server-side implementation of Cipher across 4 pri
 | **Multi-Persona Coordination** | Manage turn-taking and handoff in multi-persona conversations | During team runs and multi-persona chats |
 | **Server-Driven UI** | Decide when to inject structured content blocks into responses | During response processing |
 
-### Edge Function Architecture {#edge-function-architecture}
+### Edge Function Architecture 
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
@@ -22495,7 +22495,7 @@ This part defines the complete server-side implementation of Cipher across 4 pri
 └─────────────────────────────────────────────────────────────────────┘
 ```
 
-### Invocation Patterns {#invocation-patterns}
+### Invocation Patterns 
 
 | Function | Trigger | Latency Requirement |
 | :---- | :---- | :---- |
@@ -22506,11 +22506,11 @@ This part defines the complete server-side implementation of Cipher across 4 pri
 
 ---
 
-## 14.2 cipher-route: Message Processing Pipeline {#14.2-cipher-route:-message-processing-pipeline}
+## 14.2 cipher-route: Message Processing Pipeline 
 
 This is the primary Edge Function. Every user message enters here. It is the synchronous hot path that the user waits for.
 
-### Entry Point {#entry-point}
+### Entry Point 
 
 ```ts
 // supabase/functions/cipher-route/index.ts
@@ -22638,7 +22638,7 @@ serve(async (req: Request) => {
 });
 ```
 
-### Step 2: Rate Limiting {#step-2:-rate-limiting}
+### Step 2: Rate Limiting 
 
 Rate limits are enforced per user per day, based on tier. BYOK users have no rate limit.
 
@@ -22700,7 +22700,7 @@ async function checkRateLimit(
 | Premium | 1,000 messages | Unlimited |
 | Pro | 5,000 messages | Unlimited |
 
-### Step 3: Parallel Data Loading {#step-3:-parallel-data-loading}
+### Step 3: Parallel Data Loading 
 
 All context data is loaded in parallel using `Promise.all` to minimize latency:
 
@@ -22767,7 +22767,7 @@ async function loadInstanceContext(client: SupabaseClient, chatId: string) {
 }
 ```
 
-### Step 4: Insert User Message {#step-4:-insert-user-message}
+### Step 4: Insert User Message 
 
 ```ts
 async function insertUserMessage(
@@ -22812,11 +22812,11 @@ function containsUrl(text: string): boolean {
 
 ---
 
-## 14.3 Routing Algorithm {#14.3-routing-algorithm-1}
+## 14.3 Routing Algorithm 
 
 The routing algorithm determines which persona responds. It uses a priority cascade — each level is tried in order, and the first match wins.
 
-### Priority Cascade {#priority-cascade}
+### Priority Cascade 
 
 ```ts
 interface RoutingResult {
@@ -22912,7 +22912,7 @@ async function routeToPersona(
 }
 ```
 
-### Skill Matching {#skill-matching}
+### Skill Matching 
 
 Skill matching compares the user's message against each participant persona's skill set. This is a lightweight classification — not a full AI call — using keyword extraction and fuzzy matching.
 
@@ -22995,7 +22995,7 @@ async function matchBySkills(
 }
 ```
 
-### Intent Classification {#intent-classification}
+### Intent Classification 
 
 Intent classification categorizes the user's message into one of the model role categories (from Part 13). This is used for both skill matching and model selection.
 
@@ -23109,7 +23109,7 @@ function extractIntentKeywords(message: string): string[] {
 }
 ````
 
-### Skill Relevance Scoring {#skill-relevance-scoring}
+### Skill Relevance Scoring 
 
 ```ts
 function computeSkillRelevance(
@@ -23158,7 +23158,7 @@ function roleMatchesIntent(personaRole: string, intentCategory: string): boolean
 }
 ```
 
-### Conversation Context Inference {#conversation-context-inference}
+### Conversation Context Inference 
 
 When skill matching is ambiguous, Cipher looks at who has been active in the conversation recently:
 
@@ -23187,7 +23187,7 @@ function inferFromContext(
 }
 ```
 
-### Routing Note Format {#routing-note-format}
+### Routing Note Format 
 
 The routing note is stored in `messages.routing_reason` and displayed when "Show routing notes" is enabled (Part 13).
 
@@ -23202,7 +23202,7 @@ The routing note is stored in `messages.routing_reason` and displayed when "Show
 
 ---
 
-## 14.4 Skill Validation {#14.4-skill-validation}
+## 14.4 Skill Validation 
 
 After routing selects a persona, Cipher validates that the persona can handle the request by checking boundaries (will\_do / wont\_do / escalation from Part 9).
 
@@ -23299,7 +23299,7 @@ async function findAlternativePersona(
 
 ---
 
-## 14.5 Model Selection {#14.5-model-selection}
+## 14.5 Model Selection 
 
 Model selection maps the detected intent category to the user's configured model role assignments (Part 13).
 
@@ -23339,7 +23339,7 @@ function getDefaultModelForTier(tier: string): string {
 }
 ```
 
-### Fallback Chain {#fallback-chain}
+### Fallback Chain 
 
 If the primary model fails, Cipher tries the configured fallback before surfacing an error:
 
@@ -23372,7 +23372,7 @@ async function callModelWithFallback(
 }
 ```
 
-### API Key Resolution {#api-key-resolution}
+### API Key Resolution 
 
 ```ts
 async function resolveApiKey(
@@ -23413,11 +23413,11 @@ function inferProvider(modelId: string): string {
 
 ---
 
-## 14.6 Context Window Assembly {#14.6-context-window-assembly}
+## 14.6 Context Window Assembly 
 
 Context assembly is the most critical step in producing high-quality responses. Cipher builds a structured prompt that includes everything the model needs to respond as the selected persona.
 
-### Token Budget Allocation {#token-budget-allocation}
+### Token Budget Allocation 
 
 ```ts
 const MODEL_CONTEXT_LIMITS: Record<string, number> = {
@@ -23466,7 +23466,7 @@ function allocateBudget(modelId: string, userMessageTokens: number): TokenBudget
 }
 ```
 
-### Assembly Function {#assembly-function}
+### Assembly Function 
 
 ```ts
 async function assembleContext(
@@ -23537,7 +23537,7 @@ async function assembleContext(
 }
 ```
 
-### Persona Identity Builder {#persona-identity-builder}
+### Persona Identity Builder 
 
 ```ts
 function buildPersonaIdentity(persona: Persona, tokenBudget: number): string {
@@ -23563,7 +23563,7 @@ Current status: ${persona.status}`;
 }
 ```
 
-### Persona Boundaries Builder {#persona-boundaries-builder}
+### Persona Boundaries Builder 
 
 ```ts
 async function buildPersonaBoundaries(
@@ -23597,7 +23597,7 @@ async function buildPersonaBoundaries(
 }
 ```
 
-### Memory Retrieval {#memory-retrieval}
+### Memory Retrieval 
 
 Retrieves relevant memories from `persona_memories` using pgvector semantic search combined with recency and confidence weighting.
 
@@ -23693,7 +23693,7 @@ END;
 $$;
 ```
 
-### Instruction Rules Loading {#instruction-rules-loading}
+### Instruction Rules Loading 
 
 ```ts
 async function loadInstructionRules(
@@ -23734,7 +23734,7 @@ async function loadInstructionRules(
 }
 ```
 
-### Instance Context & Conversation History Builders {#instance-context-&-conversation-history-builders}
+### Instance Context & Conversation History Builders 
 
 ```ts
 function buildInstanceContext(instanceData: Instance | null, tokenBudget: number): string {
@@ -23774,7 +23774,7 @@ function buildConversationHistory(
 }
 ```
 
-### Token Estimation {#token-estimation}
+### Token Estimation 
 
 ```ts
 function estimateTokens(text: string): number {
@@ -23803,7 +23803,7 @@ async function generateEmbedding(text: string): Promise<number[]> {
 
 ---
 
-## 14.7 Streaming Response {#14.7-streaming-response}
+## 14.7 Streaming Response 
 
 Cipher streams the AI model's response back to the client using Server-Sent Events (SSE).
 
@@ -23929,7 +23929,7 @@ async function streamResponse(
 }
 ```
 
-### Content Block Detection {#content-block-detection}
+### Content Block Detection 
 
 ````ts
 function detectContentBlocks(response: string): any[] {
@@ -23968,11 +23968,11 @@ function detectContentBlocks(response: string): any[] {
 
 ---
 
-## 14.8 cipher-memory: Post-Response Processing {#14.8-cipher-memory:-post-response-processing}
+## 14.8 cipher-memory: Post-Response Processing 
 
 After every AI response, Cipher runs asynchronous post-response tasks. These do not block the user.
 
-### Dispatch {#dispatch}
+### Dispatch 
 
 ```ts
 async function dispatchPostResponseTasks(
@@ -24000,7 +24000,7 @@ async function dispatchPostResponseTasks(
 }
 ```
 
-### Memory Extraction {#memory-extraction}
+### Memory Extraction 
 
 Cipher calls a lightweight model to analyze the exchange and identify extractable memories:
 
@@ -24096,7 +24096,7 @@ Do NOT extract trivial information (greetings, acknowledgments, small talk).`;
 }
 ````
 
-### Memory Conflict Detection {#memory-conflict-detection}
+### Memory Conflict Detection 
 
 ```ts
 async function checkMemoryConflict(
@@ -24134,7 +24134,7 @@ async function checkMemoryConflict(
 }
 ```
 
-### Instruction Pattern Detection {#instruction-pattern-detection}
+### Instruction Pattern Detection 
 
 ````ts
 async function detectInstructionPatterns(
@@ -24215,7 +24215,7 @@ If this is NOT actually a behavioral instruction, respond with: null`;
 }
 ````
 
-### Auto-Rename & Suggested Move {#auto-rename-&-suggested-move}
+### Auto-Rename & Suggested Move 
 
 ```ts
 async function checkAutoRename(
@@ -24356,7 +24356,7 @@ function cosineSimilarity(a: number[], b: number[]): number {
 }
 ```
 
-### Activity Logging {#activity-logging}
+### Activity Logging 
 
 ```ts
 async function logActivity(
@@ -24381,11 +24381,11 @@ async function updateChatTimestamp(client: SupabaseClient, chatId: string) {
 
 ---
 
-## 14.9 cipher-cleanup: Background Maintenance {#14.9-cipher-cleanup:-background-maintenance}
+## 14.9 cipher-cleanup: Background Maintenance 
 
 The cleanup function runs on the user's configured schedule. It handles housekeeping that keeps the platform organized.
 
-### Scheduling {#scheduling}
+### Scheduling 
 
 ```sql
 SELECT cron.schedule(
@@ -24404,7 +24404,7 @@ SELECT cron.schedule(
 );
 ```
 
-### Implementation {#implementation-3}
+### Implementation 
 
 ```ts
 // supabase/functions/cipher-cleanup/index.ts
@@ -24449,7 +24449,7 @@ function isCleanupDue(frequency: string, now: Date): boolean {
 }
 ```
 
-### Task 1: Stale Memory Flagging {#task-1:-stale-memory-flagging}
+### Task 1: Stale Memory Flagging 
 
 ```ts
 async function flagStaleMemories(client: SupabaseClient, userId: string) {
@@ -24472,7 +24472,7 @@ async function flagStaleMemories(client: SupabaseClient, userId: string) {
 }
 ```
 
-### Task 2: Weak Memory Decay {#task-2:-weak-memory-decay}
+### Task 2: Weak Memory Decay 
 
 ```ts
 async function decayWeakMemories(client: SupabaseClient, userId: string) {
@@ -24488,7 +24488,7 @@ async function decayWeakMemories(client: SupabaseClient, userId: string) {
 }
 ```
 
-### Task 3: Temporary Skill Expiration {#task-3:-temporary-skill-expiration}
+### Task 3: Temporary Skill Expiration 
 
 ```ts
 async function expireTemporarySkills(client: SupabaseClient, userId: string) {
@@ -24501,7 +24501,7 @@ async function expireTemporarySkills(client: SupabaseClient, userId: string) {
 }
 ```
 
-### Task 4: Soft-Delete Purge {#task-4:-soft-delete-purge}
+### Task 4: Soft-Delete Purge 
 
 ```ts
 async function purgeSoftDeletedChats(client: SupabaseClient, userId: string) {
@@ -24513,7 +24513,7 @@ async function purgeSoftDeletedChats(client: SupabaseClient, userId: string) {
 }
 ```
 
-### Task 5: Old Unnamed Chat Flagging {#task-5:-old-unnamed-chat-flagging}
+### Task 5: Old Unnamed Chat Flagging 
 
 ```ts
 async function flagOldUnnamedChats(client: SupabaseClient, userId: string) {
@@ -24560,11 +24560,11 @@ async function flagOldUnnamedChats(client: SupabaseClient, userId: string) {
 
 ---
 
-## 14.10 cipher-health: Daily Health Monitoring {#14.10-cipher-health:-daily-health-monitoring}
+## 14.10 cipher-health: Daily Health Monitoring 
 
 Runs daily. Computes metrics for each persona, detects drift, identifies conflicts, updates mood.
 
-### Scheduling {#scheduling-1}
+### Scheduling 
 
 ```sql
 SELECT cron.schedule(
@@ -24583,7 +24583,7 @@ SELECT cron.schedule(
 );
 ```
 
-### Implementation {#implementation-4}
+### Implementation 
 
 ```ts
 serve(async (req: Request) => {
@@ -24632,7 +24632,7 @@ async function computePersonaHealth(
 }
 ```
 
-### Memory Stability RPC {#memory-stability-rpc}
+### Memory Stability RPC 
 
 ```sql
 CREATE OR REPLACE FUNCTION persona_memory_stability(p_persona_id UUID)
@@ -24658,7 +24658,7 @@ END;
 $$;
 ```
 
-### Drift & Mood Computation {#drift-&-mood-computation}
+### Drift & Mood Computation 
 
 ```ts
 function computeDrift(
@@ -24719,18 +24719,18 @@ async function getConflictCount(client: SupabaseClient, personaId: string): Prom
 
 ---
 
-## 14.11 Multi-Persona Conversation Coordination {#14.11-multi-persona-conversation-coordination}
+## 14.11 Multi-Persona Conversation Coordination 
 
 When multiple personas participate in the same chat, Cipher manages turn-taking and handoffs.
 
-### Turn-Taking Rules {#turn-taking-rules}
+### Turn-Taking Rules 
 
 1. **User directs a specific persona:** That persona responds. No other persona speaks unless invited.  
 2. **User sends a general message:** Cipher's routing algorithm picks the best persona. Other personas do not respond unprompted.  
 3. **Persona @mentions another persona:** If a persona's response explicitly references another participant in a handoff context, Cipher queues a follow-up from the mentioned persona.  
 4. **Team execution mode:** In team runs (Part 10), Cipher coordinates sequential or parallel persona responses according to the DAG plan.
 
-### Handoff Detection {#handoff-detection}
+### Handoff Detection 
 
 ```ts
 function detectHandoff(response: string, participants: Persona[]): Persona | null {
@@ -24758,9 +24758,9 @@ When detected, Cipher inserts a system message noting the handoff and triggers a
 
 ---
 
-## 14.12 Error Handling & Resilience {#14.12-error-handling-&-resilience}
+## 14.12 Error Handling & Resilience 
 
-### Error Classification {#error-classification}
+### Error Classification 
 
 ```ts
 function classifyError(error: any): { userMessage: string; retryable: boolean; action: string } {
@@ -24772,7 +24772,7 @@ function classifyError(error: any): { userMessage: string; retryable: boolean; a
 }
 ```
 
-### Retry Configuration {#retry-configuration}
+### Retry Configuration 
 
 | Scenario | Max Retries | Initial Delay | Backoff |
 | :---- | :---- | :---- | :---- |
@@ -24784,9 +24784,9 @@ function classifyError(error: any): { userMessage: string; retryable: boolean; a
 
 ---
 
-## 14.13 Security Considerations {#14.13-security-considerations}
+## 14.13 Security Considerations 
 
-### API Key Isolation {#api-key-isolation}
+### API Key Isolation 
 
 User BYOK keys are decrypted only inside Edge Functions. The decryption function:
 
@@ -24810,7 +24810,7 @@ async function decryptApiKey(encryptedKey: string): Promise<string> {
 }
 ```
 
-### Input Sanitization {#input-sanitization}
+### Input Sanitization 
 
 ```ts
 function sanitizeUserInput(input: string): string {
@@ -24824,7 +24824,7 @@ function sanitizeUserInput(input: string): string {
 }
 ```
 
-### Rate Limiting Defense {#rate-limiting-defense}
+### Rate Limiting Defense 
 
 | Limit | Value | Scope |
 | :---- | :---- | :---- |
@@ -24836,9 +24836,9 @@ function sanitizeUserInput(input: string): string {
 
 ---
 
-## 14.14 Observability {#14.14-observability}
+## 14.14 Observability 
 
-### Structured Logging {#structured-logging}
+### Structured Logging 
 
 ```ts
 function cipherLog(level: "info" | "warn" | "error", event: string, data: Record<string, any>) {
@@ -24852,7 +24852,7 @@ function cipherLog(level: "info" | "warn" | "error", event: string, data: Record
 }
 ```
 
-### Key Metrics {#key-metrics}
+### Key Metrics 
 
 | Metric | Source | Purpose |
 | :---- | :---- | :---- |
@@ -24869,7 +24869,7 @@ function cipherLog(level: "info" | "warn" | "error", event: string, data: Record
 
 *End of Part 14\. Proceed to Part 15: CogniGraph Memory System.*
 
-# PART 15: COGNIGRAPH MEMORY SYSTEM {#part-15:-cognigraph-memory-system-1}
+# PART 15: COGNIGRAPH MEMORY SYSTEM 
 
 ---
 
@@ -24879,7 +24879,7 @@ Part 9 defined the `persona_memories` table as persona-scoped knowledge nodes. P
 
 ---
 
-## 15.1 Architecture Overview {#15.1-architecture-overview}
+## 15.1 Architecture Overview 
 
 CogniGraph consists of three storage layers and two runtime processes:
 
@@ -24930,9 +24930,9 @@ Instruction Memory (`instruction_memory`, Part 13\) operates as a separate syste
 
 ---
 
-## 15.2 Schema Extensions {#15.2-schema-extensions}
+## 15.2 Schema Extensions 
 
-### Extending persona\_memories {#extending-persona_memories}
+### Extending persona\_memories 
 
 Part 9 defined the `persona_memories` table. CogniGraph extends it with two columns that support the memory lifecycle:
 
@@ -24983,7 +24983,7 @@ interface PersonaMemory {
 }
 ```
 
-### Adding "procedure" Memory Type {#adding-"procedure"-memory-type}
+### Adding "procedure" Memory Type 
 
 The outline specifies 5 memory types, but Part 9's CHECK constraint only includes 4 (`decision`, `fact`, `preference`, `skill`). CogniGraph adds `procedure`:
 
@@ -24996,7 +24996,7 @@ ALTER TABLE public.persona_memories
     CHECK (type IN ('decision', 'fact', 'preference', 'skill', 'procedure'));
 ```
 
-### New Table: memory\_edges {#new-table:-memory_edges}
+### New Table: memory\_edges 
 
 Memory edges form the graph layer of CogniGraph. Each edge connects two memory nodes with a typed relationship and a strength value.
 
@@ -25052,7 +25052,7 @@ interface MemoryEdge {
 }
 ```
 
-### New Table: memory\_checkpoints {#new-table:-memory_checkpoints}
+### New Table: memory\_checkpoints 
 
 Checkpoints are compressed summaries of conversation segments. They allow Cipher to represent long conversations efficiently in the context window without including every message.
 
@@ -25118,11 +25118,11 @@ interface MemoryCheckpoint {
 
 ---
 
-## 15.3 Memory Types {#15.3-memory-types-1}
+## 15.3 Memory Types 
 
 CogniGraph recognizes 5 distinct memory types. Each type serves a different role in how the persona understands and recalls information.
 
-### Decision {#decision}
+### Decision 
 
 A choice that was made during a conversation. Decisions represent the outcome of a deliberation — they capture what was chosen and implicitly exclude alternatives.
 
@@ -25140,7 +25140,7 @@ A choice that was made during a conversation. Decisions represent the outcome of
 - "Client approved the navy \+ gold color scheme"  
 - "Using Next.js 15 with app router for this project"
 
-### Fact {#fact}
+### Fact 
 
 An objective piece of information that is verifiably true or was stated as truth.
 
@@ -25158,7 +25158,7 @@ An objective piece of information that is verifiably true or was stated as truth
 - "The API rate limit is 100 requests per minute"  
 - "Project deadline is March 15th"
 
-### Preference {#preference}
+### Preference 
 
 A user or instance preference that influences future behavior. Preferences shape how the persona communicates and what it prioritizes.
 
@@ -25176,7 +25176,7 @@ A user or instance preference that influences future behavior. Preferences shape
 - "Use British English spelling in all documents"  
 - "Client dislikes rounded corners on buttons"
 
-### Skill {#skill}
+### Skill 
 
 A learned capability that the persona demonstrated or was taught. Skills represent what the persona can do, distinct from persona\_skills (Part 9\) which are declared capabilities. Skill memories track instances where the persona actually executed something.
 
@@ -25194,7 +25194,7 @@ A learned capability that the persona demonstrated or was taught. Skills represe
 - "Successfully converted Figma designs to React components"  
 - "Can write SQL queries for complex reporting dashboards"
 
-### Procedure {#procedure}
+### Procedure 
 
 How to do something — a step-by-step process or workflow that was established during a conversation. Procedures are the most structured memory type and are often created from explicit instructions.
 
@@ -25212,7 +25212,7 @@ How to do something — a step-by-step process or workflow that was established 
 - "Code review process: lint → test → manual review → merge"  
 - "Weekly report structure: summary, metrics, blockers, next steps"
 
-### Updated Extraction Prompt {#updated-extraction-prompt}
+### Updated Extraction Prompt 
 
 The memory extraction prompt in Part 14 should use this updated classification. Here is the refined extraction prompt that Cipher uses in `cipher-memory`:
 
@@ -25252,7 +25252,7 @@ Rules:
 
 ---
 
-## 15.4 Memory Lifecycle {#15.4-memory-lifecycle}
+## 15.4 Memory Lifecycle 
 
 Every memory node follows a defined lifecycle. The lifecycle determines how memories transition between states, grow or decay in confidence, and eventually become permanent knowledge or expire.
 
@@ -25288,7 +25288,7 @@ Every memory node follows a defined lifecycle. The lifecycle determines how memo
                       └────────┘  └────────┘
 ```
 
-### Stage 1: Extraction {#stage-1:-extraction}
+### Stage 1: Extraction 
 
 After every AI response, `cipher-memory` (Part 14\) analyzes the conversation exchange and creates candidate memory nodes. Each extracted memory is inserted into `persona_memories` with:
 
@@ -25304,7 +25304,7 @@ After every AI response, `cipher-memory` (Part 14\) analyzes the conversation ex
 - Working sessions (5–10 turns): 1–4 memories  
 - Deep collaboration (20+ turns): 3–8 memories
 
-### Stage 2: Open Layer (Transient) {#stage-2:-open-layer-(transient)}
+### Stage 2: Open Layer (Transient) 
 
 Open-layer memories are the default state for new extractions. They are included in context retrieval but are subject to confidence decay over time. Open memories can transition in three directions:
 
@@ -25404,7 +25404,7 @@ async function decayOpenMemories(client: SupabaseClient, userId: string) {
 
 **Conflict detection** is covered in Section 15.6.
 
-### Stage 3: Closed Layer (Permanent) {#stage-3:-closed-layer-(permanent)}
+### Stage 3: Closed Layer (Permanent) 
 
 Closed-layer memories are permanent knowledge. They are not subject to confidence decay. Closed memories can only be removed by explicit user action (delete) or by being superseded by a newer memory.
 
@@ -25415,7 +25415,7 @@ Memories can be closed by:
 3. User manually closing via the Memory tab (Part 9 — "Lock" action)  
 4. Cipher auto-closing when a memory matches an instruction\_memory rule
 
-### Stage 4: Deactivation and Deletion {#stage-4:-deactivation-and-deletion}
+### Stage 4: Deactivation and Deletion 
 
 **Deactivation:** Setting `active = false`. The memory remains in the database (for audit and graph integrity) but is excluded from context retrieval. Deactivation happens via:
 
@@ -25443,7 +25443,7 @@ async function purgeDeactivatedMemories(client: SupabaseClient, userId: string) 
 }
 ```
 
-### Stage 5: Expiration {#stage-5:-expiration}
+### Stage 5: Expiration 
 
 Memories with `expires_at` set are automatically deactivated when the timestamp passes. This is used for time-bounded facts:
 
@@ -25495,11 +25495,11 @@ function inferExpiration(memoryContent: string): string | null {
 
 ---
 
-## 15.5 Memory Edges {#15.5-memory-edges}
+## 15.5 Memory Edges 
 
 Edges transform the flat list of memories into a knowledge graph. They enable Cipher to retrieve not just individually relevant memories but clusters of interconnected knowledge.
 
-### Relationship Types {#relationship-types}
+### Relationship Types 
 
 | Relationship | Direction | Meaning | Typical Strength |
 | :---- | :---- | :---- | :---- |
@@ -25509,7 +25509,7 @@ Edges transform the flat list of memories into a knowledge graph. They enable Ci
 | `derived_from` | A → B | A was inferred or created based on B | 0.5–0.8 |
 | `supersedes` | A → B | A is newer information that replaces B | 0.8–1.0 |
 
-### Edge Creation {#edge-creation}
+### Edge Creation 
 
 Edges are created automatically during memory extraction (Part 14). After inserting a new memory node, Cipher checks for related existing memories and creates appropriate edges:
 
@@ -25592,7 +25592,7 @@ function classifyRelationship(
 }
 ```
 
-### Edge Strength Dynamics {#edge-strength-dynamics}
+### Edge Strength Dynamics 
 
 Edge strength is not static. It changes based on usage:
 
@@ -25628,7 +25628,7 @@ async function decayEdgesForMemory(client: SupabaseClient, memoryId: string) {
 }
 ```
 
-### Edge Traversal for Retrieval {#edge-traversal-for-retrieval}
+### Edge Traversal for Retrieval 
 
 During context assembly, after retrieving the top-K memories via semantic search, Cipher follows edges to pull in supporting context:
 
@@ -25682,11 +25682,11 @@ Only `supports` and `derived_from` edges are followed during retrieval — `cont
 
 ---
 
-## 15.6 Conflict Detection and Resolution {#15.6-conflict-detection-and-resolution}
+## 15.6 Conflict Detection and Resolution 
 
 When Cipher extracts a new memory that contradicts an existing one, the conflict system activates. Conflicts are surfaced to the user for resolution rather than being auto-resolved, because the system cannot always determine which memory is correct.
 
-### Detection During Extraction {#detection-during-extraction}
+### Detection During Extraction 
 
 Part 14 defined the basic conflict check. CogniGraph extends this with edge-based detection:
 
@@ -25819,7 +25819,7 @@ async function tagMemoryAsConflicted(client: SupabaseClient, memoryId: string) {
 }
 ```
 
-### Conflict Notification {#conflict-notification}
+### Conflict Notification 
 
 When conflicts are detected, the client is notified via Supabase Realtime. The Memory tab in the persona detail (Part 9\) shows a conflict indicator on affected memories.
 
@@ -25841,7 +25841,7 @@ When conflicts are detected, the client is notified via Supabase Realtime. The M
 // AlertTriangle icon (8px) + "Conflict"
 ```
 
-### Conflict Resolution Actions {#conflict-resolution-actions}
+### Conflict Resolution Actions 
 
 Users resolve conflicts via the Memory tab. When a memory is tagged as conflicted, clicking the conflict badge reveals the conflicting memory and resolution options:
 
@@ -25936,11 +25936,11 @@ async function updateEdgeRelationship(
 
 ---
 
-## 15.7 Memory Checkpoints {#15.7-memory-checkpoints}
+## 15.7 Memory Checkpoints 
 
 Checkpoints compress conversation history into summaries. They solve the fundamental problem of long conversations: the full message history exceeds the model's context window. Instead of dropping old messages, Cipher creates summaries at natural boundaries and uses those summaries during context assembly.
 
-### Checkpoint Triggers {#checkpoint-triggers}
+### Checkpoint Triggers 
 
 | Trigger | Condition | Type |
 | :---- | :---- | :---- |
@@ -25948,7 +25948,7 @@ Checkpoints compress conversation history into summaries. They solve the fundame
 | Time gap | More than 2 hours between consecutive messages | `time` |
 | Token threshold | The un-checkpointed message block exceeds 3,000 tokens | `token` |
 
-### Checkpoint Creation {#checkpoint-creation}
+### Checkpoint Creation 
 
 Checkpoints are created by `cipher-memory` as part of the post-response pipeline (Part 14). After every response, Cipher checks if any checkpoint trigger has been met:
 
@@ -26063,7 +26063,7 @@ Format your response as JSON:
 }
 ````
 
-### Trigger Detection {#trigger-detection}
+### Trigger Detection 
 
 ```ts
 function detectCheckpointTrigger(messages: Message[]): "topic" | "time" | "token" | null {
@@ -26090,7 +26090,7 @@ function detectCheckpointTrigger(messages: Message[]): "topic" | "time" | "token
 }
 ```
 
-### Checkpoint Usage in Context Assembly {#checkpoint-usage-in-context-assembly}
+### Checkpoint Usage in Context Assembly 
 
 The context assembly pipeline (Part 14, Section 14.6) uses checkpoints to represent older conversation history. This section defines the enhanced history builder that integrates checkpoints:
 
@@ -26163,7 +26163,7 @@ async function buildConversationHistoryWithCheckpoints(
 }
 ```
 
-### Checkpoint Usage in Chat Navigation {#checkpoint-usage-in-chat-navigation}
+### Checkpoint Usage in Chat Navigation 
 
 Part 5 references checkpoints as the data source for the right panel's Nav tab. Each checkpoint produces a navigable section:
 
@@ -26191,11 +26191,11 @@ checkpoints.map(cp => ({
 
 ---
 
-## 15.8 Multi-Scope Retrieval {#15.8-multi-scope-retrieval}
+## 15.8 Multi-Scope Retrieval 
 
 CogniGraph retrieves memories from multiple scopes and merges them into a single ranked list for context assembly. The scoping system ensures that the most contextually relevant memories are prioritized.
 
-### Scope Hierarchy {#scope-hierarchy}
+### Scope Hierarchy 
 
 ```
 ┌────────────────────────────────────────┐
@@ -26212,7 +26212,7 @@ CogniGraph retrieves memories from multiple scopes and merges them into a single
 └────────────────────────────────────────┘
 ```
 
-### Retrieval Pipeline {#retrieval-pipeline}
+### Retrieval Pipeline 
 
 The retrieval pipeline runs during context assembly (Part 14, Section 14.6). This section provides the complete implementation that replaces the simplified `retrieveMemories` function from Part 14:
 
@@ -26319,7 +26319,7 @@ async function retrieveMemoriesMultiScope(
 }
 ```
 
-### Instance-Scoped Memory Search {#instance-scoped-memory-search}
+### Instance-Scoped Memory Search 
 
 Searches across all personas in the same Instance, excluding the current persona (to avoid duplicating persona-scoped results):
 
@@ -26369,7 +26369,7 @@ END;
 $$;
 ```
 
-### Retrieval Scoring {#retrieval-scoring}
+### Retrieval Scoring 
 
 The retrieval score combines semantic similarity, recency, confidence, layer status, and scope priority:
 
@@ -26409,7 +26409,7 @@ function computeRetrievalScore(
 }
 ```
 
-### Memory Formatting for Context {#memory-formatting-for-context}
+### Memory Formatting for Context 
 
 Memories are formatted differently based on their scope and type:
 
@@ -26436,7 +26436,7 @@ function formatMemoryForContext(rm: RankedMemory): string {
 [Skill] Can convert Figma designs to React components (medium)
 ```
 
-### Background Reinforcement {#background-reinforcement}
+### Background Reinforcement 
 
 When memories are retrieved and used in context, their confidence is silently reinforced:
 
@@ -26479,11 +26479,11 @@ async function reinforceRetrievedMemories(
 
 ---
 
-## 15.9 Memory Statistics & Analytics Integration {#15.9-memory-statistics-&-analytics-integration}
+## 15.9 Memory Statistics & Analytics Integration 
 
 Part 12 (Insights & Analytics) displays memory health metrics. This section defines the data source for those metrics.
 
-### Statistics RPC {#statistics-rpc}
+### Statistics RPC 
 
 ```sql
 CREATE OR REPLACE FUNCTION cognigraph_stats(p_user_id UUID)
@@ -26559,7 +26559,7 @@ END;
 $$;
 ```
 
-### TypeScript Interface for Stats {#typescript-interface-for-stats}
+### TypeScript Interface for Stats 
 
 ```ts
 interface CogniGraphStats {
@@ -26584,7 +26584,7 @@ interface CogniGraphStats {
 
 ---
 
-## 15.10 Graph Visualization (Future / v2) {#15.10-graph-visualization-(future-/-v2)}
+## 15.10 Graph Visualization (Future / v2) 
 
 The Memory tab (Part 9\) currently shows memories as a flat list. A future enhancement can render the CogniGraph as an interactive graph visualization. This section documents the data shape for that visualization:
 
@@ -26653,9 +26653,9 @@ The graph would be rendered using D3.js force-directed layout (available in the 
 
 ---
 
-## 15.11 Performance Considerations {#15.11-performance-considerations}
+## 15.11 Performance Considerations 
 
-### Embedding Index Tuning {#embedding-index-tuning}
+### Embedding Index Tuning 
 
 The `ivfflat` index on `persona_memories.embedding` requires tuning as the dataset grows:
 
@@ -26677,7 +26677,7 @@ CREATE INDEX idx_memories_embedding_hnsw ON public.persona_memories
   USING hnsw (embedding vector_cosine_ops) WITH (m = 16, ef_construction = 64);
 ```
 
-### Retrieval Latency Targets {#retrieval-latency-targets}
+### Retrieval Latency Targets 
 
 | Operation | Target Latency | Strategy |
 | :---- | :---- | :---- |
@@ -26686,7 +26686,7 @@ CREATE INDEX idx_memories_embedding_hnsw ON public.persona_memories
 | Checkpoint loading | \< 20ms | Index on chat\_id \+ sequence\_number |
 | Full retrieval pipeline | \< 150ms | Parallel scope queries, cached embeddings |
 
-### Memory Limits {#memory-limits}
+### Memory Limits 
 
 | Limit | Value | Purpose |
 | :---- | :---- | :---- |
@@ -26701,7 +26701,7 @@ When a persona approaches the 5,000 memory soft limit, `cipher-cleanup` becomes 
 
 *End of Part 15\. Proceed to Part 16: Multi-Model Routing.*
 
-# PART 16: MULTI-MODEL ROUTING {#part-16:-multi-model-routing-1}
+# PART 16: MULTI-MODEL ROUTING 
 
 ---
 
@@ -26711,9 +26711,9 @@ Part 13 defined the `model_role_assignments` table and the `AVAILABLE_MODELS` cl
 
 ---
 
-## 16.1 Model Registry {#16.1-model-registry}
+## 16.1 Model Registry 
 
-### Database Table: model\_registry {#database-table:-model_registry}
+### Database Table: model\_registry 
 
 The model registry is a platform-managed table that defines every model available in aiConnected. Unlike `model_role_assignments` (which is user-specific), the model registry is shared across all users and managed by the platform team. It is the single source of truth for model capabilities, pricing, context limits, and availability.
 
@@ -26763,7 +26763,7 @@ CREATE TRIGGER set_model_registry_updated_at
   FOR EACH ROW EXECUTE FUNCTION public.handle_updated_at();
 ```
 
-### Seed Data {#seed-data}
+### Seed Data 
 
 ```sql
 INSERT INTO public.model_registry
@@ -26829,7 +26829,7 @@ VALUES
    4096, 0, false, false, false, 0.04, 0.08, 90);
 ```
 
-### TypeScript Interface {#typescript-interface-1}
+### TypeScript Interface 
 
 ```ts
 // src/types/model.ts
@@ -26857,7 +26857,7 @@ interface ModelRegistryEntry {
 }
 ```
 
-### Model Availability Resolution {#model-availability-resolution}
+### Model Availability Resolution 
 
 A model is available to a user if all of the following are true:
 
@@ -26892,7 +26892,7 @@ function isModelAvailable(
 }
 ```
 
-### Client-Side Model Query {#client-side-model-query}
+### Client-Side Model Query 
 
 ```ts
 const { data: models } = useQuery({
@@ -26930,11 +26930,11 @@ const availableModels = (models ?? []).filter(m =>
 
 ---
 
-## 16.2 Provider Abstraction Layer {#16.2-provider-abstraction-layer}
+## 16.2 Provider Abstraction Layer 
 
 The provider abstraction layer allows Cipher to call any model through a uniform interface, regardless of whether the request goes through OpenRouter or directly to a provider's API. This is critical for BYOK users who may have direct provider keys.
 
-### Routing Strategy {#routing-strategy}
+### Routing Strategy 
 
 ```
 ┌──────────────────────────────────┐
@@ -26965,7 +26965,7 @@ The provider abstraction layer allows Cipher to call any model through a uniform
      └──────────────────────┘
 ```
 
-### Provider Interface {#provider-interface}
+### Provider Interface 
 
 ```ts
 interface ProviderCallOptions {
@@ -26996,7 +26996,7 @@ interface StreamChunk {
 }
 ```
 
-### Provider Router {#provider-router}
+### Provider Router 
 
 ```ts
 async function routeModelCall(
@@ -27055,7 +27055,7 @@ async function routeModelCall(
 }
 ```
 
-### Provider Configurations {#provider-configurations}
+### Provider Configurations 
 
 ```ts
 interface ProviderConfig {
@@ -27113,7 +27113,7 @@ function getProviderConfig(provider: string): ProviderConfig {
 }
 ```
 
-### Unified Model Call {#unified-model-call}
+### Unified Model Call 
 
 The unified call function handles both OpenAI-compatible APIs (OpenAI, DeepSeek, OpenRouter) and non-compatible APIs (Anthropic, Google) through format adapters.
 
@@ -27171,7 +27171,7 @@ async function callModel(
 }
 ```
 
-### Anthropic Direct API Adapter {#anthropic-direct-api-adapter}
+### Anthropic Direct API Adapter 
 
 ```ts
 async function callAnthropicDirect(
@@ -27227,7 +27227,7 @@ async function callAnthropicDirect(
 }
 ```
 
-### Google Direct API Adapter {#google-direct-api-adapter}
+### Google Direct API Adapter 
 
 ```ts
 async function callGoogleDirect(
@@ -27290,11 +27290,11 @@ async function callGoogleDirect(
 
 ---
 
-## 16.3 Streaming Protocol {#16.3-streaming-protocol}
+## 16.3 Streaming Protocol 
 
 Streaming delivers tokens to the client in real-time as the model generates them. aiConnected uses Server-Sent Events (SSE) as the streaming transport.
 
-### SSE Event Types {#sse-event-types}
+### SSE Event Types 
 
 | Event Type | Payload | When |
 | :---- | :---- | :---- |
@@ -27303,7 +27303,7 @@ Streaming delivers tokens to the client in real-time as the model generates them
 | `error` | `{ message: string, code: number, retryable: boolean }` | Error during generation |
 | `status` | `{ status: "routing" | "generating" | "saving" }` | Progress indicator |
 
-### Streaming Call with Provider Routing {#streaming-call-with-provider-routing}
+### Streaming Call with Provider Routing 
 
 The unified streaming function extends `callModel` to support streaming across providers:
 
@@ -27340,7 +27340,7 @@ async function callModelStreaming(
 }
 ```
 
-### OpenAI-Compatible Streaming {#openai-compatible-streaming}
+### OpenAI-Compatible Streaming 
 
 ```ts
 async function streamOpenAICompatible(
@@ -27406,7 +27406,7 @@ async function streamOpenAICompatible(
 }
 ```
 
-### Anthropic Direct Streaming {#anthropic-direct-streaming}
+### Anthropic Direct Streaming 
 
 ```ts
 async function streamAnthropicDirect(
@@ -27499,7 +27499,7 @@ async function streamAnthropicDirect(
 }
 ```
 
-### Client-Side SSE Consumer {#client-side-sse-consumer}
+### Client-Side SSE Consumer 
 
 ```ts
 // src/hooks/useStreamingResponse.ts
@@ -27606,11 +27606,11 @@ function useStreamingResponse(chatId: string) {
 
 ---
 
-## 16.4 Token Accounting {#16.4-token-accounting}
+## 16.4 Token Accounting 
 
 Every model call generates token usage data that is tracked for three purposes: billing analytics (Part 12), rate limiting, and cost estimation for BYOK users.
 
-### Token Usage Table {#token-usage-table}
+### Token Usage Table 
 
 ```sql
 CREATE TABLE public.token_usage (
@@ -27668,7 +27668,7 @@ interface TokenUsageRecord {
 }
 ```
 
-### Recording Token Usage {#recording-token-usage}
+### Recording Token Usage 
 
 After every model call (both streaming and non-streaming), Cipher records usage:
 
@@ -27727,7 +27727,7 @@ async function recordTokenUsage(
 }
 ```
 
-### Aggregation RPCs {#aggregation-rpcs}
+### Aggregation RPCs 
 
 These extend the Part 12 analytics with more granular data:
 
@@ -27789,11 +27789,11 @@ $$;
 
 ---
 
-## 16.5 Rate Limiting {#16.5-rate-limiting}
+## 16.5 Rate Limiting 
 
 Rate limiting operates at three levels: daily message limits (Part 14), per-minute burst limits, and per-model quotas.
 
-### Rate Limit Table {#rate-limit-table}
+### Rate Limit Table 
 
 Rate limit state is tracked in Redis-like fashion using a lightweight table with auto-expiring counters:
 
@@ -27812,7 +27812,7 @@ CREATE INDEX idx_rate_limit_expiry ON public.rate_limit_counters(window_end);
 -- No RLS — only accessed by service role in Edge Functions
 ```
 
-### Rate Limit Check {#rate-limit-check}
+### Rate Limit Check 
 
 ```ts
 interface RateLimitConfig {
@@ -27914,7 +27914,7 @@ async function checkRateLimit(
 }
 ```
 
-### Rate Limit Cleanup {#rate-limit-cleanup}
+### Rate Limit Cleanup 
 
 ```sql
 -- Clean up expired rate limit windows (runs hourly via pg_cron)
@@ -27925,7 +27925,7 @@ SELECT cron.schedule(
 );
 ```
 
-### Rate Limit Response {#rate-limit-response}
+### Rate Limit Response 
 
 When a rate limit is hit, the Edge Function returns a structured error with retry information:
 
@@ -27967,11 +27967,11 @@ function rateLimitResponse(limitHit: string, retryAfterMs: number): Response {
 
 ---
 
-## 16.6 Fallback Chain {#16.6-fallback-chain}
+## 16.6 Fallback Chain 
 
 When a model call fails, Cipher follows a deterministic fallback chain before surfacing an error to the user.
 
-### Fallback Flow {#fallback-flow}
+### Fallback Flow 
 
 ```
 ┌─────────────────────────┐
@@ -28021,7 +28021,7 @@ When a model call fails, Cipher follows a deterministic fallback chain before su
 └──────────────────────────┘
 ```
 
-### Implementation {#implementation-5}
+### Implementation 
 
 ```ts
 async function executeWithFallbackChain(
@@ -28143,7 +28143,7 @@ function delay(ms: number): Promise<void> {
 }
 ```
 
-### Fallback Notification {#fallback-notification}
+### Fallback Notification 
 
 When a fallback model is used, the `done` SSE event includes a `fallback_note` field. The client renders this as a subtle system note below the response:
 
@@ -28161,11 +28161,11 @@ When a fallback model is used, the `done` SSE event includes a `fallback_note` f
 
 ---
 
-## 16.7 Model Override (Chat Composer) {#16.7-model-override-(chat-composer)}
+## 16.7 Model Override (Chat Composer) 
 
 Users can override the model for a single message using the model selector in the chat composer (Part 5). This bypasses Cipher's role-based selection for that specific message.
 
-### Override Priority (from Part 14\) {#override-priority-(from-part-14)}
+### Override Priority (from Part 14\) 
 
 Restated here for completeness:
 
@@ -28174,7 +28174,7 @@ Restated here for completeness:
 3. **Role-based assignment** (from model\_role\_assignments for the detected intent) → default  
 4. **Tier default** (Haiku for free, Sonnet for paid) → final fallback
 
-### Model Selector Widget {#model-selector-widget}
+### Model Selector Widget 
 
 The model selector appears in the chat composer when the user has Plus+ tier or BYOK active. It shows a dropdown of available models filtered by the user's access.
 
@@ -28254,11 +28254,11 @@ The model selector appears in the chat composer when the user has Plus+ tier or 
 
 ---
 
-## 16.8 Token Budget for Background Tasks {#16.8-token-budget-for-background-tasks}
+## 16.8 Token Budget for Background Tasks 
 
 Background Cipher tasks (memory extraction, auto-rename, suggested move, instruction detection) consume tokens independently of the user's conversation. These costs are tracked separately and are always charged to the platform key, never to the user's BYOK key.
 
-### Background Model Configuration {#background-model-configuration}
+### Background Model Configuration 
 
 ```ts
 const BACKGROUND_MODEL = "claude-haiku-4-5-20251001";
@@ -28271,7 +28271,7 @@ const BACKGROUND_MAX_TOKENS: Record<string, number> = {
 };
 ```
 
-### Background Token Tracking {#background-token-tracking}
+### Background Token Tracking 
 
 Background tasks record usage with `provider_used = 'platform_background'` to distinguish from user-facing model calls:
 
@@ -28308,7 +28308,7 @@ async function recordBackgroundUsage(
 }
 ```
 
-### Background Cost Limits {#background-cost-limits}
+### Background Cost Limits 
 
 To prevent runaway costs, each background task has a maximum cost per invocation:
 
@@ -28324,11 +28324,11 @@ If a background task exceeds its token limit, it is truncated rather than allowe
 
 ---
 
-## 16.9 OpenRouter Integration {#16.9-openrouter-integration}
+## 16.9 OpenRouter Integration 
 
 OpenRouter is the primary provider gateway. It routes model calls to the underlying providers and handles load balancing, failover, and unified billing.
 
-### OpenRouter-Specific Headers {#openrouter-specific-headers}
+### OpenRouter-Specific Headers 
 
 ```ts
 const OPENROUTER_HEADERS = {
@@ -28339,21 +28339,21 @@ const OPENROUTER_HEADERS = {
 
 These headers identify aiConnected to OpenRouter for analytics and priority routing.
 
-### OpenRouter Model ID Mapping {#openrouter-model-id-mapping}
+### OpenRouter Model ID Mapping 
 
 OpenRouter uses namespaced model IDs (e.g. `anthropic/claude-sonnet-4-5-20250929`). The `model_registry.openrouter_model_id` column stores these mapped IDs.
 
-### OpenRouter Billing {#openrouter-billing}
+### OpenRouter Billing 
 
 When using the platform OpenRouter key, model costs are billed to aiConnected's OpenRouter account. The `token_usage` table tracks these costs for internal accounting.
 
 When using a user's BYOK OpenRouter key, model costs are billed directly to the user's OpenRouter account. The `token_usage` table still tracks usage with `is_byok = true` for analytics, but the user pays OpenRouter directly.
 
-### OpenRouter Rate Limits {#openrouter-rate-limits}
+### OpenRouter Rate Limits 
 
 OpenRouter imposes its own rate limits per API key. When the platform key is rate-limited, Cipher receives a 429 response and the fallback chain activates. BYOK users hitting their OpenRouter rate limit see the same behavior — Cipher tries the fallback model, then the tier default.
 
-### OpenRouter Model Availability Monitoring {#openrouter-model-availability-monitoring}
+### OpenRouter Model Availability Monitoring 
 
 Cipher periodically checks model availability on OpenRouter:
 
@@ -28390,11 +28390,11 @@ async function checkOpenRouterModels(client: SupabaseClient) {
 
 ---
 
-## 16.10 Image Generation {#16.10-image-generation}
+## 16.10 Image Generation 
 
 DALL-E 3 is included in the model registry for the `creative` role. Image generation follows a different call pattern than text generation — it does not stream and returns a URL rather than text content.
 
-### Image Generation Flow {#image-generation-flow}
+### Image Generation Flow 
 
 ```ts
 async function generateImage(
@@ -28446,7 +28446,7 @@ When a persona with the `creative` role assignment routes to DALL-E 3, Cipher de
 }
 ```
 
-### Image Generation Detection {#image-generation-detection}
+### Image Generation Detection 
 
 ```ts
 function isImageGenerationRequest(message: string, modelId: string): boolean {
@@ -28471,11 +28471,11 @@ function isImageGenerationRequest(message: string, modelId: string): boolean {
 
 ---
 
-## 16.11 Model Health Monitoring {#16.11-model-health-monitoring}
+## 16.11 Model Health Monitoring 
 
 Model health is tracked to identify degraded models before users notice issues. This data feeds into the Insights Analytics (Part 12\) and informs fallback decisions.
 
-### Metrics per Model {#metrics-per-model}
+### Metrics per Model 
 
 ```sql
 CREATE OR REPLACE FUNCTION model_health_stats(
@@ -28512,7 +28512,7 @@ LANGUAGE sql STABLE AS $$
 $$;
 ```
 
-### Health Thresholds {#health-thresholds}
+### Health Thresholds 
 
 | Metric | Healthy | Degraded | Unhealthy |
 | :---- | :---- | :---- | :---- |
@@ -28524,7 +28524,7 @@ When a model is detected as `unhealthy` for a user, Cipher automatically prefers
 
 ---
 
-## 16.12 Cross-Reference Summary {#16.12-cross-reference-summary}
+## 16.12 Cross-Reference Summary 
 
 | Component | Defined In | Used By |
 | :---- | :---- | :---- |
@@ -28544,7 +28544,7 @@ When a model is detected as `unhealthy` for a user, Cipher automatically prefers
 
 *End of Part 16\. Proceed to Part 17: Real-Time & Collaboration.*
 
-# PART 17: REAL-TIME & COLLABORATION {#part-17:-real-time-&-collaboration-1}
+# PART 17: REAL-TIME & COLLABORATION 
 
 ---
 
@@ -28554,7 +28554,7 @@ Parts 3, 4, 5, and 14 introduced real-time behaviors in context — the activity
 
 ---
 
-## 17.1 Architecture Overview {#17.1-architecture-overview}
+## 17.1 Architecture Overview 
 
 aiConnected uses two real-time transport mechanisms:
 
@@ -28588,17 +28588,17 @@ aiConnected uses two real-time transport mechanisms:
 └─────────────────────────┘  └─────────────────────────────┘
 ```
 
-### Why Two Transports {#why-two-transports}
+### Why Two Transports 
 
 SSE is used for streaming because it delivers tokens with minimal latency (no WebSocket framing overhead) and integrates naturally with the HTTP request/response cycle of Edge Functions. Supabase Realtime is used for everything else because it provides built-in support for database change tracking, broadcast channels, and presence — all managed by Supabase infrastructure without custom server code.
 
 ---
 
-## 17.2 Channel Architecture {#17.2-channel-architecture}
+## 17.2 Channel Architecture 
 
 Every real-time subscription in aiConnected is organized into named channels. Each channel has a specific scope and set of events.
 
-### Channel Registry {#channel-registry}
+### Channel Registry 
 
 | Channel Name | Scope | Transport | Events | Subscribers |
 | :---- | :---- | :---- | :---- | :---- |
@@ -28608,7 +28608,7 @@ Every real-time subscription in aiConnected is organized into named channels. Ea
 | `browser:{session_id}` | Browser session | Realtime (broadcast) | Tab changes, navigation events, extraction completion | Browser screen |
 | `stream:{chat_id}:{message_id}` | Single response | SSE | Token chunks, completion, errors | Chat screen (active stream) |
 
-### Subscription Lifecycle {#subscription-lifecycle}
+### Subscription Lifecycle 
 
 Channels are subscribed when the user enters a screen and unsubscribed when they leave. The `user:{user_id}` channel is the exception — it is subscribed on app boot and persists for the entire session.
 
@@ -28689,11 +28689,11 @@ type ChannelHandler = PostgresChangeHandler | BroadcastHandler | PresenceHandler
 
 ---
 
-## 17.3 Chat Channel (`chat:{chat_id}`) {#17.3-chat-channel-(chat:{chat_id})}
+## 17.3 Chat Channel (`chat:{chat_id}`) 
 
 The chat channel is the most event-rich channel in the system. It handles everything that happens within a conversation.
 
-### Subscription Setup {#subscription-setup}
+### Subscription Setup 
 
 ```ts
 // src/hooks/useChatRealtime.ts
@@ -28772,9 +28772,9 @@ function useChatRealtime(chatId: string) {
 }
 ```
 
-### Event Handlers {#event-handlers}
+### Event Handlers 
 
-#### New Message {#new-message}
+#### New Message 
 
 When a new message is inserted (by the Edge Function after a persona response, or by another future client in multi-user scenarios), the handler prepends it to the cached message list:
 
@@ -28819,7 +28819,7 @@ function handleNewMessage(
 }
 ```
 
-#### Message Update {#message-update}
+#### Message Update 
 
 Handles pin toggles, metadata updates (memories\_saved count), and content edits:
 
@@ -28839,7 +28839,7 @@ function handleMessageUpdate(
 }
 ```
 
-#### Chat Update {#chat-update}
+#### Chat Update 
 
 Handles auto-rename banners, suggested move banners, and metadata changes:
 
@@ -28869,7 +28869,7 @@ function handleChatUpdate(
 }
 ```
 
-### Auto-Rename Banner {#auto-rename-banner-1}
+### Auto-Rename Banner 
 
 When `cipher-memory` updates `chats.auto_title` (Part 14), the chat channel's `UPDATE` handler detects the change and shows a rename banner:
 
@@ -28936,7 +28936,7 @@ async function dismissAutoRename(chatId: string) {
 }
 ```
 
-### Suggested Move Banner {#suggested-move-banner-1}
+### Suggested Move Banner 
 
 When `cipher-memory` sets `chats.metadata.suggested_instance_id` (Part 14), a similar banner appears:
 
@@ -28974,11 +28974,11 @@ async function acceptSuggestedMove(chatId: string, instanceId: string) {
 
 ---
 
-## 17.4 Typing Indicators {#17.4-typing-indicators}
+## 17.4 Typing Indicators 
 
 Typing indicators show when a persona is "thinking" — the gap between when the user sends a message and when the response starts streaming. This makes the interface feel responsive even during the routing and model invocation phase.
 
-### Indicator Lifecycle {#indicator-lifecycle}
+### Indicator Lifecycle 
 
 ```
 User sends message
@@ -29014,7 +29014,7 @@ User sends message
 └──────────────────────┘
 ```
 
-### Server-Side Broadcast {#server-side-broadcast}
+### Server-Side Broadcast 
 
 The `cipher-route` Edge Function broadcasts typing events on the chat channel before and after the model call:
 
@@ -29048,7 +29048,7 @@ await supabase.channel(`chat:${chatId}`).send({
 });
 ```
 
-### Client-Side Typing State {#client-side-typing-state}
+### Client-Side Typing State 
 
 ```ts
 // src/hooks/useTypingIndicator.ts
@@ -29092,7 +29092,7 @@ function useTypingIndicator(chatId: string) {
 }
 ```
 
-### Typing Indicator UI {#typing-indicator-ui}
+### Typing Indicator UI 
 
 The typing indicator renders below the last message in the message list, matching the message layout:
 
@@ -29132,7 +29132,7 @@ function TypingIndicator({ typing }: { typing: TypingState }) {
 }
 ```
 
-### Animated Dots {#animated-dots}
+### Animated Dots 
 
 ```ts
 // CSS-in-JS keyframes for typing dots
@@ -29164,7 +29164,7 @@ function TypingDots() {
 }
 ```
 
-### Multi-Persona Typing {#multi-persona-typing}
+### Multi-Persona Typing 
 
 In multi-persona conversations (team chats), multiple personas might be "thinking" simultaneously during team execution (Part 10). The typing indicator supports stacking:
 
@@ -29231,11 +29231,11 @@ function MultiTypingIndicator({ typingPersonas }: { typingPersonas: Map<string, 
 
 ---
 
-## 17.5 Stream Status Events {#17.5-stream-status-events}
+## 17.5 Stream Status Events 
 
 Beyond typing indicators, Cipher broadcasts stream status events to give the client fine-grained progress information during the response pipeline:
 
-### Status Events {#status-events}
+### Status Events 
 
 | Status | Emitted When | Client Display |
 | :---- | :---- | :---- |
@@ -29245,7 +29245,7 @@ Beyond typing indicators, Cipher broadcasts stream status events to give the cli
 | `extracting` | Post-response memory extraction begins | Subtle indicator (optional): "Learning..." |
 | `error` | Pipeline error occurred | Error message in chat |
 
-### Server-Side Status Emission {#server-side-status-emission}
+### Server-Side Status Emission 
 
 ```ts
 // In cipher-route pipeline
@@ -29300,11 +29300,11 @@ async function broadcastTyping(
 
 ---
 
-## 17.6 User Channel (`user:{user_id}`) {#17.6-user-channel-(user:{user_id})}
+## 17.6 User Channel (`user:{user_id}`) 
 
 The user channel is the global event bus. It is subscribed on app boot and remains active for the entire session. It delivers notifications, persona status changes, and system-wide updates.
 
-### Subscription Setup {#subscription-setup-1}
+### Subscription Setup 
 
 ```ts
 // src/providers/RealtimeProvider.tsx
@@ -29389,7 +29389,7 @@ function RealtimeProvider({ children }: { children: React.ReactNode }) {
 }
 ```
 
-### Notification Handler {#notification-handler}
+### Notification Handler 
 
 When a new notification is inserted, the handler updates the notification cache and triggers UI changes:
 
@@ -29428,7 +29428,7 @@ function notificationTypeToToastType(type: string): ToastType {
 }
 ```
 
-### Instruction Memory Handler {#instruction-memory-handler}
+### Instruction Memory Handler 
 
 When Cipher detects a new instruction rule (Part 14), the handler shows an inline toast with an undo action:
 
@@ -29455,7 +29455,7 @@ function handleNewInstruction(queryClient: QueryClient, instruction: Instruction
 }
 ```
 
-### Chat List Handler {#chat-list-handler}
+### Chat List Handler 
 
 Keeps the sidebar chat list in sync without polling:
 
@@ -29510,7 +29510,7 @@ function handleChatListUpdate(
 }
 ```
 
-### Persona Update Handler {#persona-update-handler}
+### Persona Update Handler 
 
 When persona mood, status, or drift\_level changes (from `cipher-health`, Part 14), the handler updates the cached persona data:
 
@@ -29535,11 +29535,11 @@ function handlePersonaUpdate(queryClient: QueryClient, updatedPersona: Persona) 
 
 ---
 
-## 17.7 Instance Channel (`instance:{instance_id}`) {#17.7-instance-channel-(instance:{instance_id})}
+## 17.7 Instance Channel (`instance:{instance_id}`) 
 
 The instance channel broadcasts changes within a workspace context. It is subscribed when the user is viewing an instance detail or a chat within that instance.
 
-### Subscription Setup {#subscription-setup-2}
+### Subscription Setup 
 
 ```ts
 function useInstanceRealtime(instanceId: string | null) {
@@ -29602,11 +29602,11 @@ function useInstanceRealtime(instanceId: string | null) {
 
 ---
 
-## 17.8 Browser Channel (`browser:{session_id}`) {#17.8-browser-channel-(browser:{session_id})}
+## 17.8 Browser Channel (`browser:{session_id}`) 
 
 The browser channel handles ephemeral events during co-browsing sessions (Part 11). These events are broadcast-only — they do not correspond to database changes.
 
-### Events {#events}
+### Events 
 
 | Event | Payload | Purpose |
 | :---- | :---- | :---- |
@@ -29615,7 +29615,7 @@ The browser channel handles ephemeral events during co-browsing sessions (Part 1
 | `extraction_complete` | `{ tab_id, extract_id, preview }` | Page content extraction finished |
 | `highlight_added` | `{ tab_id, highlight_id, text }` | User highlighted text on page |
 
-### Subscription {#subscription}
+### Subscription 
 
 ```ts
 function useBrowserRealtime(sessionId: string | null) {
@@ -29661,11 +29661,11 @@ function useBrowserRealtime(sessionId: string | null) {
 
 ---
 
-## 17.9 Toast Notification System {#17.9-toast-notification-system}
+## 17.9 Toast Notification System 
 
 Toasts are ephemeral, non-blocking notifications that appear at the bottom of the screen. They communicate transient events: learned instructions, auto-rename suggestions, errors, confirmations, and real-time status updates.
 
-### Toast Types {#toast-types}
+### Toast Types 
 
 | Type | Color | Icon | Duration | Example |
 | :---- | :---- | :---- | :---- | :---- |
@@ -29675,7 +29675,7 @@ Toasts are ephemeral, non-blocking notifications that appear at the bottom of th
 | `learned` | `#818cf8` | Sparkles (12px) | 6s | "Learned: Always use TypeScript strict mode" |
 | `neutral` | `theme.textMuted` | Bell (12px) | 4s | "Weekly summary available" |
 
-### Toast Container {#toast-container}
+### Toast Container 
 
 Toasts stack vertically from the bottom-left of the viewport:
 
@@ -29695,7 +29695,7 @@ Toasts stack vertically from the bottom-left of the viewport:
 }
 ```
 
-### Individual Toast {#individual-toast}
+### Individual Toast 
 
 ```ts
 // Each toast item
@@ -29723,7 +29723,7 @@ Toasts stack vertically from the bottom-left of the viewport:
 
 - X icon (10px, `textFaint`), cursor pointer, opacity 0.6 → 1 on hover
 
-### Toast State Management {#toast-state-management}
+### Toast State Management 
 
 ```ts
 // src/stores/toastStore.ts
@@ -29774,7 +29774,7 @@ function showToast(options: Omit<Toast, "id">) {
 }
 ```
 
-### Toast Entry Animation {#toast-entry-animation}
+### Toast Entry Animation 
 
 ```css
 @keyframes slideInFromLeft {
@@ -29802,11 +29802,11 @@ function showToast(options: Omit<Toast, "id">) {
 
 ---
 
-## 17.10 Optimistic Updates {#17.10-optimistic-updates}
+## 17.10 Optimistic Updates 
 
 Optimistic updates make the UI feel instant by applying changes locally before server confirmation. If the server rejects the change, the optimistic update is rolled back.
 
-### Pattern: Send Message {#pattern:-send-message}
+### Pattern: Send Message 
 
 The most critical optimistic update — the user's message appears immediately in the chat without waiting for the server round-trip:
 
@@ -29879,7 +29879,7 @@ async function sendMessage(chatId: string, content: string, senderName: string) 
 }
 ```
 
-### Pattern: Pin Message {#pattern:-pin-message}
+### Pattern: Pin Message 
 
 ```ts
 async function togglePin(chatId: string, messageId: string, currentlyPinned: boolean) {
@@ -29911,7 +29911,7 @@ async function togglePin(chatId: string, messageId: string, currentlyPinned: boo
 }
 ```
 
-### Pattern: Delete Chat {#pattern:-delete-chat}
+### Pattern: Delete Chat 
 
 ```ts
 async function deleteChat(chatId: string) {
@@ -29953,7 +29953,7 @@ async function deleteChat(chatId: string) {
 }
 ```
 
-### Pattern: Update Memory {#pattern:-update-memory}
+### Pattern: Update Memory 
 
 ```ts
 async function updateMemoryContent(
@@ -29988,7 +29988,7 @@ async function updateMemoryContent(
 }
 ```
 
-### Optimistic Update Rules {#optimistic-update-rules}
+### Optimistic Update Rules 
 
 | Action | Optimistic? | Rollback Strategy |
 | :---- | :---- | :---- |
@@ -30005,11 +30005,11 @@ async function updateMemoryContent(
 
 ---
 
-## 17.11 Connection State Management {#17.11-connection-state-management}
+## 17.11 Connection State Management 
 
 Network interruptions are handled gracefully. The app tracks WebSocket connection state and shows a reconnection indicator when the Realtime connection drops.
 
-### Connection State {#connection-state}
+### Connection State 
 
 ```ts
 // src/hooks/useConnectionState.ts
@@ -30054,7 +30054,7 @@ function useConnectionState() {
 }
 ```
 
-### Reconnection Banner {#reconnection-banner}
+### Reconnection Banner 
 
 When the connection drops, a subtle banner appears at the top of the screen:
 
@@ -30114,7 +30114,7 @@ function ConnectionBanner() {
 }
 ```
 
-### Reconnection Behavior {#reconnection-behavior}
+### Reconnection Behavior 
 
 Supabase Realtime automatically reconnects with exponential backoff. When the connection is restored:
 
@@ -30142,9 +30142,9 @@ function useReconnectionRefresh() {
 
 ---
 
-## 17.12 Supabase Realtime Configuration {#17.12-supabase-realtime-configuration}
+## 17.12 Supabase Realtime Configuration 
 
-### Required Realtime Setup {#required-realtime-setup}
+### Required Realtime Setup 
 
 Supabase Realtime must be enabled for the following tables:
 
@@ -30161,7 +30161,7 @@ Supabase Realtime must be enabled for the following tables:
 | `instances` | UPDATE | `id` |
 | `instance_personas` | INSERT, UPDATE, DELETE | `instance_id` |
 
-### Enabling Realtime in Supabase {#enabling-realtime-in-supabase}
+### Enabling Realtime in Supabase 
 
 ```sql
 -- Enable Realtime for required tables
@@ -30177,7 +30177,7 @@ ALTER PUBLICATION supabase_realtime ADD TABLE instances;
 ALTER PUBLICATION supabase_realtime ADD TABLE instance_personas;
 ```
 
-### Realtime RLS {#realtime-rls}
+### Realtime RLS 
 
 Supabase Realtime respects Row Level Security. Only rows that the user is authorized to read (via RLS SELECT policies) will trigger events on their channel. This means:
 
@@ -30187,7 +30187,7 @@ Supabase Realtime respects Row Level Security. Only rows that the user is author
 
 No additional authorization logic is needed in the Realtime layer — RLS policies from Parts 2–16 handle all access control.
 
-### Channel Limits {#channel-limits}
+### Channel Limits 
 
 | Limit | Value | Notes |
 | :---- | :---- | :---- |
@@ -30198,11 +30198,11 @@ No additional authorization logic is needed in the Realtime layer — RLS polici
 
 ---
 
-## 17.13 Presence (Future — v2) {#17.13-presence-(future-—-v2)}
+## 17.13 Presence (Future — v2) 
 
 Presence tracking enables showing which personas are "active" in an instance or chat, and eventually which human team members are online (enterprise). This section documents the target architecture for v2.
 
-### Persona Activity Presence {#persona-activity-presence}
+### Persona Activity Presence 
 
 In v1, persona activity is inferred from the `personas.mood` field (updated daily by `cipher-health`, Part 14). In v2, presence would be real-time:
 
@@ -30240,7 +30240,7 @@ function useInstancePresence(instanceId: string) {
 }
 ```
 
-### Human Team Presence (Enterprise) {#human-team-presence-(enterprise)}
+### Human Team Presence (Enterprise) 
 
 In a future multi-user enterprise mode, human team members would track their own presence:
 
@@ -30295,7 +30295,7 @@ interface PresenceMember {
 }
 ```
 
-### Presence UI (v2) {#presence-ui-(v2)}
+### Presence UI (v2) 
 
 Active personas and online team members would be shown as avatar stacks in the instance header:
 
@@ -30315,9 +30315,9 @@ This is scoped for v2 and not included in the v1 build. V1 uses static persona m
 
 ---
 
-## 17.14 Performance Considerations {#17.14-performance-considerations}
+## 17.14 Performance Considerations 
 
-### Subscription Cleanup {#subscription-cleanup}
+### Subscription Cleanup 
 
 Every `useEffect` that creates a channel must clean it up on unmount. Failure to do so causes WebSocket connection leaks:
 
@@ -30330,7 +30330,7 @@ useEffect(() => {
 }, [dependency]);
 ```
 
-### Debouncing Cache Updates {#debouncing-cache-updates}
+### Debouncing Cache Updates 
 
 Rapid Realtime events (e.g., during team execution where multiple personas respond quickly) can trigger excessive React re-renders. Batch updates using `queryClient.setQueryData` with a debounce:
 
@@ -30360,7 +30360,7 @@ function batchNewMessage(message: Message) {
 }
 ```
 
-### Channel Deduplication {#channel-deduplication}
+### Channel Deduplication 
 
 Prevent duplicate subscriptions when components remount:
 
@@ -30382,7 +30382,7 @@ function safeSubscribe(channelName: string, setup: (channel: any) => any) {
 }
 ```
 
-### Payload Size Management {#payload-size-management}
+### Payload Size Management 
 
 Supabase Realtime sends the full row payload by default. For large tables (like `messages` with long `content`), this can be wasteful. Mitigations:
 
@@ -30390,7 +30390,7 @@ Supabase Realtime sends the full row payload by default. For large tables (like 
 2. For bulk operations, invalidate the query instead of processing individual payloads  
 3. For the `messages` table, the full payload is necessary (we need the content), so no filtering is applied
 
-### Latency Targets {#latency-targets}
+### Latency Targets 
 
 | Event Type | Target E2E Latency | Notes |
 | :---- | :---- | :---- |
@@ -30402,7 +30402,7 @@ Supabase Realtime sends the full row payload by default. For large tables (like 
 
 ---
 
-## 17.15 Cross-Reference Summary {#17.15-cross-reference-summary}
+## 17.15 Cross-Reference Summary 
 
 | Feature | Defined In | Real-Time Component |
 | :---- | :---- | :---- |
@@ -30426,7 +30426,7 @@ Supabase Realtime sends the full row payload by default. For large tables (like 
 
 *End of Part 17\. Proceed to Part 18: Supabase Database Schema (Complete).*
 
-# PART 18: SUPABASE DATABASE SCHEMA (Complete) {#part-18:-supabase-database-schema-(complete)-1}
+# PART 18: SUPABASE DATABASE SCHEMA (Complete) 
 
 ---
 
@@ -30448,7 +30448,7 @@ This document is organized by domain. Each domain section lists tables in depend
 
 ---
 
-## 18.1 Prerequisites & Extensions {#18.1-prerequisites-&-extensions}
+## 18.1 Prerequisites & Extensions 
 
 ```sql
 -- Required extensions
@@ -30470,9 +30470,9 @@ $$ LANGUAGE plpgsql;
 
 ---
 
-## 18.2 Domain 1: User & Account {#18.2-domain-1:-user-&-account}
+## 18.2 Domain 1: User & Account 
 
-### profiles {#profiles}
+### profiles 
 
 The root user table. Every authenticated user has exactly one profile row, auto-created on signup.
 
@@ -30551,7 +30551,7 @@ CREATE TRIGGER on_auth_user_created
   FOR EACH ROW EXECUTE FUNCTION public.handle_new_user();
 ```
 
-### subscriptions {#subscriptions-1}
+### subscriptions 
 
 Stripe subscription state. One row per user. Only service role can write (via Stripe webhook).
 
@@ -30586,7 +30586,7 @@ CREATE INDEX idx_subscriptions_user ON public.subscriptions(user_id);
 CREATE INDEX idx_subscriptions_stripe ON public.subscriptions(stripe_customer_id);
 ```
 
-### api\_keys {#api_keys}
+### api\_keys 
 
 Encrypted API keys for BYOK. Part 2 defined `openrouter` only; Part 13 expanded the UI to accept `anthropic`, `openai`, and `google` providers.
 
@@ -30617,7 +30617,7 @@ CREATE INDEX idx_api_keys_user ON public.api_keys(user_id);
 CREATE INDEX idx_api_keys_provider ON public.api_keys(user_id, provider, status);
 ```
 
-### credit\_transactions {#credit_transactions}
+### credit\_transactions 
 
 Pay-as-you-go credit ledger for free-tier users.
 
@@ -30646,9 +30646,9 @@ CREATE INDEX idx_credit_transactions_created ON public.credit_transactions(creat
 
 ---
 
-## 18.3 Domain 2: Chat System {#18.3-domain-2:-chat-system}
+## 18.3 Domain 2: Chat System 
 
-### chats {#chats}
+### chats 
 
 Conversations between users and personas. Optionally scoped to an Instance.
 
@@ -30685,7 +30685,7 @@ CREATE TRIGGER set_chats_updated_at
   FOR EACH ROW EXECUTE FUNCTION public.handle_updated_at();
 ```
 
-### chat\_participants {#chat_participants}
+### chat\_participants 
 
 Links personas to chats. Supports soft-removal (removed\_at) for participant history.
 
@@ -30719,7 +30719,7 @@ CREATE INDEX idx_chat_participants_chat ON public.chat_participants(chat_id) WHE
 CREATE INDEX idx_chat_participants_persona ON public.chat_participants(persona_id) WHERE removed_at IS NULL;
 ```
 
-### messages {#messages}
+### messages 
 
 All chat messages: user, persona, system, and cipher types.
 
@@ -30775,7 +30775,7 @@ CREATE INDEX idx_messages_pinned ON public.messages(chat_id) WHERE pinned = true
 CREATE INDEX idx_messages_fulltext ON public.messages USING gin(to_tsvector('english', content));
 ```
 
-### export\_history {#export_history}
+### export\_history 
 
 Tracks chat export requests and their status.
 
@@ -30802,9 +30802,9 @@ CREATE POLICY "Users view own exports"
 
 ---
 
-## 18.4 Domain 3: Spaces & Instances {#18.4-domain-3:-spaces-&-instances}
+## 18.4 Domain 3: Spaces & Instances 
 
-### instances {#instances}
+### instances 
 
 Workspaces that group chats, personas, files, and tasks around a purpose.
 
@@ -30841,7 +30841,7 @@ CREATE TRIGGER set_instances_updated_at
   FOR EACH ROW EXECUTE FUNCTION public.handle_updated_at();
 ```
 
-### instance\_personas {#instance_personas}
+### instance\_personas 
 
 Many-to-many join between instances and personas.
 
@@ -30875,7 +30875,7 @@ CREATE INDEX idx_instance_personas_instance ON public.instance_personas(instance
 CREATE INDEX idx_instance_personas_persona ON public.instance_personas(persona_id);
 ```
 
-### instance\_types {#instance_types}
+### instance\_types 
 
 Reusable templates providing default settings for instances.
 
@@ -30908,7 +30908,7 @@ CREATE TRIGGER set_instance_types_updated_at
   FOR EACH ROW EXECUTE FUNCTION public.handle_updated_at();
 ```
 
-### tasks {#tasks}
+### tasks 
 
 Instance-scoped tasks (kanban cards).
 
@@ -30948,7 +30948,7 @@ CREATE TRIGGER set_tasks_updated_at
   FOR EACH ROW EXECUTE FUNCTION public.handle_updated_at();
 ```
 
-### workspace\_items {#workspace_items}
+### workspace\_items 
 
 Flexible collection linking various content types to instances (files, links, notes).
 
@@ -30980,9 +30980,9 @@ CREATE INDEX idx_workspace_items_instance ON public.workspace_items(instance_id,
 
 ---
 
-## 18.5 Domain 4: Files {#18.5-domain-4:-files}
+## 18.5 Domain 4: Files 
 
-### files {#files}
+### files 
 
 Global file system entries. Tracks both metadata and storage bucket references.
 
@@ -31028,9 +31028,9 @@ CREATE TRIGGER set_files_updated_at
 
 ---
 
-## 18.6 Domain 5: Personas {#18.6-domain-5:-personas}
+## 18.6 Domain 5: Personas 
 
-### personas {#personas}
+### personas 
 
 AI persona definitions with identity, configuration, and status.
 
@@ -31071,7 +31071,7 @@ CREATE TRIGGER set_personas_updated_at
   FOR EACH ROW EXECUTE FUNCTION public.handle_updated_at();
 ```
 
-### persona\_skills {#persona_skills}
+### persona\_skills 
 
 Declared capabilities for each persona with optional capacity limits.
 
@@ -31111,7 +31111,7 @@ CREATE INDEX idx_skills_category ON public.persona_skills(persona_id, category);
 CREATE INDEX idx_skills_temporary ON public.persona_skills(expires_at) WHERE temporary = true;
 ```
 
-### persona\_boundaries {#persona_boundaries}
+### persona\_boundaries 
 
 Will-do, won't-do, and escalation rules that constrain persona behavior.
 
@@ -31143,7 +31143,7 @@ CREATE POLICY "Users manage boundaries on own personas"
 CREATE INDEX idx_boundaries_persona ON public.persona_boundaries(persona_id, type);
 ```
 
-### persona\_memories {#persona_memories}
+### persona\_memories 
 
 Knowledge nodes extracted from conversations. Extended by Part 15 with lifecycle columns.
 
@@ -31192,7 +31192,7 @@ CREATE INDEX idx_memories_embedding ON public.persona_memories
   USING ivfflat (embedding vector_cosine_ops) WITH (lists = 100);
 ```
 
-### persona\_health\_snapshots {#persona_health_snapshots}
+### persona\_health\_snapshots 
 
 Daily health metrics for the persona Health tab and drift tracking.
 
@@ -31213,7 +31213,7 @@ CREATE TABLE public.persona_health_snapshots (
 CREATE INDEX idx_health_persona ON public.persona_health_snapshots(persona_id, snapshot_at DESC);
 ```
 
-### persona\_templates {#persona_templates}
+### persona\_templates 
 
 Pre-built persona configurations that users can instantiate.
 
@@ -31254,9 +31254,9 @@ CREATE INDEX idx_templates_category ON public.persona_templates(category);
 
 ---
 
-## 18.7 Domain 6: CogniGraph Memory System {#18.7-domain-6:-cognigraph-memory-system}
+## 18.7 Domain 6: CogniGraph Memory System 
 
-### memory\_edges {#memory_edges}
+### memory\_edges 
 
 Graph edges connecting memory nodes with typed relationships.
 
@@ -31294,7 +31294,7 @@ CREATE INDEX idx_edges_to ON public.memory_edges(to_node_id);
 CREATE INDEX idx_edges_relationship ON public.memory_edges(relationship);
 ```
 
-### memory\_checkpoints {#memory_checkpoints}
+### memory\_checkpoints 
 
 Compressed summaries of conversation segments for context window efficiency.
 
@@ -31337,7 +31337,7 @@ CREATE INDEX idx_checkpoints_chat ON public.memory_checkpoints(chat_id, sequence
 CREATE INDEX idx_checkpoints_type ON public.memory_checkpoints(chat_id, checkpoint_type);
 ```
 
-### instruction\_memory {#instruction_memory}
+### instruction\_memory 
 
 User-level behavioral rules detected from conversation patterns.
 
@@ -31375,9 +31375,9 @@ CREATE TRIGGER set_instruction_memory_updated_at
 
 ---
 
-## 18.8 Domain 7: Teams {#18.8-domain-7:-teams}
+## 18.8 Domain 7: Teams 
 
-### teams {#teams}
+### teams 
 
 Agentic team definitions with persona ensembles and execution strategies.
 
@@ -31411,7 +31411,7 @@ CREATE TRIGGER set_teams_updated_at
   FOR EACH ROW EXECUTE FUNCTION public.handle_updated_at();
 ```
 
-### team\_members {#team_members}
+### team\_members 
 
 Personas assigned to teams with specific roles in the execution plan.
 
@@ -31447,7 +31447,7 @@ CREATE INDEX idx_team_members_team ON public.team_members(team_id, execution_ord
 CREATE INDEX idx_team_members_persona ON public.team_members(persona_id);
 ```
 
-### team\_tasks {#team_tasks}
+### team\_tasks 
 
 Top-level task assignments that trigger team execution runs.
 
@@ -31483,7 +31483,7 @@ CREATE TRIGGER set_team_tasks_updated_at
   FOR EACH ROW EXECUTE FUNCTION public.handle_updated_at();
 ```
 
-### team\_runs {#team_runs}
+### team\_runs 
 
 Individual execution steps within a team task — one row per persona's contribution.
 
@@ -31527,9 +31527,9 @@ CREATE INDEX idx_team_runs_persona ON public.team_runs(persona_id);
 
 ---
 
-## 18.9 Domain 8: Browser {#18.9-domain-8:-browser}
+## 18.9 Domain 8: Browser 
 
-### browser\_sessions {#browser_sessions}
+### browser\_sessions 
 
 Active browser workspace sessions.
 
@@ -31560,7 +31560,7 @@ CREATE TRIGGER set_browser_sessions_updated_at
   FOR EACH ROW EXECUTE FUNCTION public.handle_updated_at();
 ```
 
-### browser\_tabs {#browser_tabs}
+### browser\_tabs 
 
 Individual tabs within a browser session.
 
@@ -31601,7 +31601,7 @@ CREATE TRIGGER set_browser_tabs_updated_at
   FOR EACH ROW EXECUTE FUNCTION public.handle_updated_at();
 ```
 
-### browser\_history {#browser_history}
+### browser\_history 
 
 Browsing history entries.
 
@@ -31627,7 +31627,7 @@ CREATE INDEX idx_browser_history_user ON public.browser_history(user_id, visited
 CREATE INDEX idx_browser_history_url ON public.browser_history(user_id, url);
 ```
 
-### browser\_extracts {#browser_extracts}
+### browser\_extracts 
 
 Saved page content extracted from the browser viewport.
 
@@ -31661,7 +31661,7 @@ CREATE INDEX idx_browser_extracts_instance ON public.browser_extracts(instance_i
 CREATE INDEX idx_browser_extracts_fulltext ON public.browser_extracts USING gin(to_tsvector('english', content));
 ```
 
-### browser\_highlights {#browser_highlights}
+### browser\_highlights 
 
 User-selected text highlights on web pages.
 
@@ -31693,9 +31693,9 @@ CREATE INDEX idx_browser_highlights_url ON public.browser_highlights(url);
 
 ---
 
-## 18.10 Domain 9: Search {#18.10-domain-9:-search}
+## 18.10 Domain 9: Search 
 
-### search\_history {#search_history}
+### search\_history 
 
 Recent search queries for the universal search screen.
 
@@ -31720,7 +31720,7 @@ CREATE POLICY "Users manage own search history"
 CREATE INDEX idx_search_history_user ON public.search_history(user_id, created_at DESC);
 ```
 
-### saved\_results {#saved_results}
+### saved\_results 
 
 User-saved search result items for later reference.
 
@@ -31750,9 +31750,9 @@ CREATE INDEX idx_saved_results_user ON public.saved_results(user_id, created_at 
 
 ---
 
-## 18.11 Domain 10: AI Model Routing {#18.11-domain-10:-ai-model-routing}
+## 18.11 Domain 10: AI Model Routing 
 
-### model\_registry {#model_registry}
+### model\_registry 
 
 Platform-managed catalog of all available AI models.
 
@@ -31800,7 +31800,7 @@ CREATE TRIGGER set_model_registry_updated_at
   FOR EACH ROW EXECUTE FUNCTION public.handle_updated_at();
 ```
 
-### model\_role\_assignments {#model_role_assignments}
+### model\_role\_assignments 
 
 User-specific model-to-role mappings consulted by Cipher during routing.
 
@@ -31831,7 +31831,7 @@ CREATE TRIGGER set_model_roles_updated_at
   FOR EACH ROW EXECUTE FUNCTION public.handle_updated_at();
 ```
 
-### token\_usage {#token_usage}
+### token\_usage 
 
 Per-call token consumption log for billing and analytics.
 
@@ -31867,7 +31867,7 @@ CREATE INDEX idx_token_usage_model ON public.token_usage(model_id, created_at DE
 CREATE INDEX idx_token_usage_chat ON public.token_usage(chat_id) WHERE chat_id IS NOT NULL;
 ```
 
-### rate\_limit\_counters {#rate_limit_counters}
+### rate\_limit\_counters 
 
 Windowed counters for per-user rate limiting.
 
@@ -31888,9 +31888,9 @@ CREATE INDEX idx_rate_limit_expiry ON public.rate_limit_counters(window_end);
 
 ---
 
-## 18.12 Domain 11: System {#18.12-domain-11:-system}
+## 18.12 Domain 11: System 
 
-### notifications {#notifications}
+### notifications 
 
 User-facing notification entries surfaced in the notification dropdown.
 
@@ -31919,7 +31919,7 @@ CREATE INDEX idx_notifications_user ON public.notifications(user_id, created_at 
 CREATE INDEX idx_notifications_unread ON public.notifications(user_id) WHERE read = false;
 ```
 
-### activity\_log {#activity_log}
+### activity\_log 
 
 Platform-wide activity events for the home dashboard and analytics.
 
@@ -31957,11 +31957,11 @@ CREATE INDEX idx_activity_actor ON public.activity_log(actor_type, actor_id);
 
 ---
 
-## 18.13 RPC Functions {#18.13-rpc-functions}
+## 18.13 RPC Functions 
 
 All server-side PostgreSQL functions referenced across the PRD. Organized by domain.
 
-### Utility Functions {#utility-functions}
+### Utility Functions 
 
 ```sql
 -- Source: Part 2
@@ -31988,7 +31988,7 @@ END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
 ```
 
-### Seed Functions {#seed-functions}
+### Seed Functions 
 
 ```sql
 -- Source: Part 13
@@ -32032,7 +32032,7 @@ CREATE TRIGGER on_profile_created_seed_types
   FOR EACH ROW EXECUTE FUNCTION public.seed_instance_types();
 ```
 
-### Search Functions {#search-functions}
+### Search Functions 
 
 ```sql
 -- Source: Part 6
@@ -32090,7 +32090,7 @@ RETURNS void LANGUAGE sql AS $$
 $$;
 ```
 
-### Memory Functions {#memory-functions}
+### Memory Functions 
 
 ```sql
 -- Source: Part 14
@@ -32187,7 +32187,7 @@ END;
 $$;
 ```
 
-### Analytics Functions {#analytics-functions}
+### Analytics Functions 
 
 ```sql
 -- Source: Part 12
@@ -32254,7 +32254,7 @@ RETURNS TABLE(total_bytes BIGINT, file_count BIGINT, by_type JSONB) LANGUAGE sql
 $$;
 ```
 
-### Token & Model Health Functions {#token-&-model-health-functions}
+### Token & Model Health Functions 
 
 ```sql
 -- Source: Part 16
@@ -32295,7 +32295,7 @@ $$;
 
 ---
 
-## 18.14 Scheduled Jobs (pg\_cron) {#18.14-scheduled-jobs-(pg_cron)}
+## 18.14 Scheduled Jobs (pg\_cron) 
 
 ```sql
 -- Source: Part 14 — Cipher cleanup (hourly)
@@ -32325,11 +32325,11 @@ SELECT cron.schedule(
 
 ---
 
-## 18.15 Storage Buckets {#18.15-storage-buckets}
+## 18.15 Storage Buckets 
 
 Supabase Storage buckets for file management.
 
-### user-files {#user-files}
+### user-files 
 
 Primary storage for user-uploaded files.
 
@@ -32354,7 +32354,7 @@ CREATE POLICY "Users manage own files in storage"
   USING (bucket_id = 'user-files' AND (storage.foldername(name))[1] = auth.uid()::text);
 ```
 
-### persona-avatars {#persona-avatars}
+### persona-avatars 
 
 Custom persona avatar images.
 
@@ -32374,7 +32374,7 @@ CREATE POLICY "Public read for persona avatars"
   USING (bucket_id = 'persona-avatars');
 ```
 
-### exports {#exports}
+### exports 
 
 Temporary storage for generated export files. Auto-cleaned after 24 hours.
 
@@ -32397,7 +32397,7 @@ SELECT cron.schedule(
 );
 ```
 
-### browser-extracts {#browser-extracts}
+### browser-extracts 
 
 Saved page content and screenshots from the browser workspace.
 
@@ -32415,7 +32415,7 @@ CREATE POLICY "Users manage own browser extracts"
 
 ---
 
-## 18.16 Entity Relationship Diagram {#18.16-entity-relationship-diagram}
+## 18.16 Entity Relationship Diagram 
 
 ```
 ┌─────────┐     ┌──────────────┐     ┌────────────────────┐
@@ -32486,7 +32486,7 @@ CREATE POLICY "Users manage own browser extracts"
 └──────────────┘  └────────────────┘  └──────────┘
 ```
 
-### Foreign Key Reference Map {#foreign-key-reference-map}
+### Foreign Key Reference Map 
 
 | Child Table | Column | References | On Delete |
 | :---- | :---- | :---- | :---- |
@@ -32564,7 +32564,7 @@ CREATE POLICY "Users manage own browser extracts"
 
 ---
 
-## 18.17 Schema Statistics {#18.17-schema-statistics}
+## 18.17 Schema Statistics 
 
 | Metric | Count |
 | :---- | :---- |
@@ -32581,7 +32581,7 @@ CREATE POLICY "Users manage own browser extracts"
 | UNIQUE constraints | 8 |
 | pgvector columns | 1 (persona\_memories.embedding) |
 
-### Tables by Domain {#tables-by-domain}
+### Tables by Domain 
 
 | Domain | Tables | Count |
 | :---- | :---- | :---- |
@@ -32599,7 +32599,7 @@ CREATE POLICY "Users manage own browser extracts"
 
 ---
 
-## 18.18 Migration Order {#18.18-migration-order}
+## 18.18 Migration Order 
 
 Tables must be created in dependency order. The following sequence respects all foreign key constraints:
 
@@ -32671,7 +32671,7 @@ Tables must be created in dependency order. The following sequence respects all 
 
 *End of Part 18\. Proceed to Part 19: API Routes & Edge Functions.*
 
-# PART 19: API ROUTES & EDGE FUNCTIONS {#part-19:-api-routes-&-edge-functions-1}
+# PART 19: API ROUTES & EDGE FUNCTIONS 
 
 ---
 
@@ -32685,15 +32685,15 @@ aiConnected's server-side architecture splits into three layers:
 
 ---
 
-## 19.1 REST API (Supabase Auto-Generated) {#19.1-rest-api-(supabase-auto-generated)-1}
+## 19.1 REST API (Supabase Auto-Generated) 
 
 Supabase provides a PostgREST-based REST API for every table in the `public` schema. The client uses the Supabase JS SDK (`@supabase/supabase-js`), which wraps these endpoints with a fluent query builder.
 
-### Authentication {#authentication}
+### Authentication 
 
 All PostgREST calls include the user's JWT in the `Authorization: Bearer {token}` header. The JWT is obtained from Supabase Auth on login and refreshed automatically. Row Level Security (RLS) policies on every table (Part 18\) ensure users can only access their own data.
 
-### Client Access Pattern {#client-access-pattern}
+### Client Access Pattern 
 
 ```ts
 import { createClient } from "@/lib/supabase/client";
@@ -32728,7 +32728,7 @@ const { error } = await supabase
   .eq("id", chatId);
 ```
 
-### Endpoint Map {#endpoint-map}
+### Endpoint Map 
 
 Every table in Part 18 gets a REST endpoint at `{SUPABASE_URL}/rest/v1/{table_name}`. The full list, grouped by usage pattern:
 
@@ -32789,7 +32789,7 @@ Every table in Part 18 gets a REST endpoint at `{SUPABASE_URL}/rest/v1/{table_na
 | `activity_log` (persona/system entries) | Various Edge Functions |
 | `team_runs` | `team-execute` |
 
-### RPC Endpoints {#rpc-endpoints}
+### RPC Endpoints 
 
 Server-side PostgreSQL functions (Part 18, Section 18.13) are exposed as RPC endpoints at `{SUPABASE_URL}/rest/v1/rpc/{function_name}`:
 
@@ -32826,11 +32826,11 @@ const { data } = await supabase.rpc("search_persona_memories", {
 
 ---
 
-## 19.2 Edge Functions {#19.2-edge-functions-1}
+## 19.2 Edge Functions 
 
 Edge Functions run on Supabase's Deno runtime. They are deployed as individual functions under `supabase/functions/{function-name}/index.ts`. Each function is invoked via HTTP at `{SUPABASE_URL}/functions/v1/{function-name}`.
 
-### Shared Infrastructure {#shared-infrastructure}
+### Shared Infrastructure 
 
 Every Edge Function starts with the same boilerplate for authentication, CORS, and error handling:
 
@@ -32899,7 +32899,7 @@ export function jsonResponse(data: any, status = 200): Response {
 }
 ```
 
-### Function Registry {#function-registry}
+### Function Registry 
 
 | \# | Function Name | Method | Auth | Invocation | Source Parts |
 | :---- | :---- | :---- | :---- | :---- | :---- |
@@ -32922,7 +32922,7 @@ export function jsonResponse(data: any, status = 200): Response {
 
 ---
 
-## 19.3 Function 1: cipher-route {#19.3-function-1:-cipher-route}
+## 19.3 Function 1: cipher-route 
 
 The primary message processing pipeline. Receives a user message, routes it through Cipher, streams the AI response back via SSE. This is the most complex Edge Function in the system.
 
@@ -32934,7 +32934,7 @@ The primary message processing pipeline. Receives a user message, routes it thro
 | Timeout | 120 seconds |
 | Detailed spec | Part 14 (Sections 14.2–14.7), Part 16 (Sections 16.3, 16.6), Part 17 (Section 17.4) |
 
-### Request {#request}
+### Request 
 
 ```ts
 interface CipherRouteRequest {
@@ -32951,7 +32951,7 @@ interface CipherRouteRequest {
 }
 ```
 
-### Response (SSE stream) {#response-(sse-stream)}
+### Response (SSE stream) 
 
 ```
 data: {"type":"status","status":"routing"}
@@ -32973,7 +32973,7 @@ Error event:
 data: {"type":"error","message":"Rate limit reached","code":429,"retryable":true,"retry_after_seconds":30}
 ```
 
-### Pipeline Steps {#pipeline-steps}
+### Pipeline Steps 
 
 Defined in detail in Part 14 (Section 14.2). Summary:
 
@@ -32989,7 +32989,7 @@ Defined in detail in Part 14 (Section 14.2). Summary:
 10. On completion: insert persona message, record token usage, broadcast typing-stop event  
 11. Fire-and-forget: invoke `cipher-memory` for post-response processing
 
-### Typing Indicator Integration {#typing-indicator-integration}
+### Typing Indicator Integration 
 
 Before streaming begins, the function broadcasts a typing event on the chat's Realtime channel (Part 17, Section 17.4):
 
@@ -33015,7 +33015,7 @@ await serviceClient
 
 ---
 
-## 19.4 Function 2: cipher-memory {#19.4-function-2:-cipher-memory}
+## 19.4 Function 2: cipher-memory 
 
 Asynchronous post-response processing. Extracts memories, detects instructions, checks auto-rename and suggested move triggers, creates checkpoints, and logs activity.
 
@@ -33027,7 +33027,7 @@ Asynchronous post-response processing. Extracts memories, detects instructions, 
 | Timeout | 30 seconds |
 | Detailed spec | Part 14 (Section 14.8), Part 15 (Sections 15.4, 15.5, 15.7) |
 
-### Request {#request-1}
+### Request 
 
 ```ts
 interface CipherMemoryRequest {
@@ -33042,7 +33042,7 @@ interface CipherMemoryRequest {
 }
 ```
 
-### Tasks (run in parallel via Promise.allSettled) {#tasks-(run-in-parallel-via-promise.allsettled)}
+### Tasks (run in parallel via Promise.allSettled) 
 
 | \# | Task | Description | Source |
 | :---- | :---- | :---- | :---- |
@@ -33054,13 +33054,13 @@ interface CipherMemoryRequest {
 | 6 | Activity log | Insert persona response activity entry | Part 14.8 |
 | 7 | Update chat timestamp | Touch chats.updated\_at | Part 14.8 |
 
-### Background Model Usage {#background-model-usage}
+### Background Model Usage 
 
 All AI calls in this function use the platform key and the background model (`claude-haiku-4-5-20251001`). Token usage is recorded with `provider_used = 'platform_background'` (Part 16, Section 16.8).
 
 ---
 
-## 19.5 Function 3: cipher-cleanup {#19.5-function-3:-cipher-cleanup}
+## 19.5 Function 3: cipher-cleanup 
 
 Scheduled background maintenance for memory decay, stale flagging, expired skill cleanup, soft-delete purging, and unnamed chat titling.
 
@@ -33073,7 +33073,7 @@ Scheduled background maintenance for memory decay, stale flagging, expired skill
 | Timeout | 300 seconds (5 minutes) |
 | Detailed spec | Part 14 (Section 14.9), Part 15 (Section 15.4) |
 
-### Cleanup Tasks per User {#cleanup-tasks-per-user}
+### Cleanup Tasks per User 
 
 | \# | Task | Description | Source |
 | :---- | :---- | :---- | :---- |
@@ -33086,7 +33086,7 @@ Scheduled background maintenance for memory decay, stale flagging, expired skill
 
 ---
 
-## 19.6 Function 4: cipher-health {#19.6-function-4:-cipher-health}
+## 19.6 Function 4: cipher-health 
 
 Daily health monitoring that computes persona drift, mood, and memory stability.
 
@@ -33099,7 +33099,7 @@ Daily health monitoring that computes persona drift, mood, and memory stability.
 | Timeout | 300 seconds |
 | Detailed spec | Part 14 (Section 14.10) |
 
-### Processing per Persona {#processing-per-persona}
+### Processing per Persona 
 
 1. Compute memory stability via `persona_memory_stability` RPC  
 2. Count messages and chats in last 7 days  
@@ -33111,7 +33111,7 @@ Daily health monitoring that computes persona drift, mood, and memory stability.
 
 ---
 
-## 19.7 Function 5: search {#19.7-function-5:-search}
+## 19.7 Function 5: search 
 
 Unified search across all content types: chats, messages, files, personas, instances, and memories.
 
@@ -33123,7 +33123,7 @@ Unified search across all content types: chats, messages, files, personas, insta
 | Timeout | 15 seconds |
 | Detailed spec | Part 6 (Sections 6.4–6.5) |
 
-### Request {#request-2}
+### Request 
 
 ```ts
 interface SearchRequest {
@@ -33140,7 +33140,7 @@ interface SearchRequest {
 }
 ```
 
-### Response {#response}
+### Response 
 
 ```ts
 interface SearchResponse {
@@ -33161,7 +33161,7 @@ interface SearchResult {
 }
 ```
 
-### Implementation {#implementation-6}
+### Implementation 
 
 Runs up to 6 parallel queries (one per content type), merges results, ranks by relevance score, and returns the top N. Uses full-text search RPC functions for text content and semantic search for memories (Part 6, Section 6.5).
 
@@ -33226,7 +33226,7 @@ serve(async (req) => {
 
 ---
 
-## 19.8 Function 6: analytics {#19.8-function-6:-analytics}
+## 19.8 Function 6: analytics 
 
 Computes aggregated analytics data for the Insights screen.
 
@@ -33238,7 +33238,7 @@ Computes aggregated analytics data for the Insights screen.
 | Timeout | 30 seconds |
 | Detailed spec | Part 12 (Sections 12.2–12.9) |
 
-### Request {#request-3}
+### Request 
 
 ```ts
 interface AnalyticsRequest {
@@ -33247,7 +33247,7 @@ interface AnalyticsRequest {
 }
 ```
 
-### Response {#response-1}
+### Response 
 
 Returns one of four data shapes depending on `type`:
 
@@ -33258,13 +33258,13 @@ Returns one of four data shapes depending on `type`:
 | `models` | `ModelUsageData` — per-model call count, token usage, estimated cost, BYOK status | Part 12.7 |
 | `memory` | `MemoryHealthData` — total active, by type, conflicts, avg confidence, memories this week | Part 12.9 |
 
-### Implementation {#implementation-7}
+### Implementation 
 
 Dispatches to the appropriate compute function based on `type`, executing multiple RPC calls in parallel via `Promise.all`. Each compute function is detailed in Part 12\.
 
 ---
 
-## 19.9 Function 7: chat-export {#19.9-function-7:-chat-export}
+## 19.9 Function 7: chat-export 
 
 Generates an export file for a chat in the requested format.
 
@@ -33276,7 +33276,7 @@ Generates an export file for a chat in the requested format.
 | Timeout | 60 seconds |
 | Detailed spec | Part 5 (Section 5.7) |
 
-### Request {#request-4}
+### Request 
 
 ```ts
 interface ChatExportRequest {
@@ -33295,7 +33295,7 @@ interface ChatExportRequest {
 }
 ```
 
-### Response {#response-2}
+### Response 
 
 ```ts
 interface ChatExportResponse {
@@ -33306,7 +33306,7 @@ interface ChatExportResponse {
 }
 ```
 
-### Implementation {#implementation-8}
+### Implementation 
 
 ```ts
 serve(async (req) => {
@@ -33456,7 +33456,7 @@ function sanitizeFilename(title: string): string {
 }
 ```
 
-### Format Generators {#format-generators}
+### Format Generators 
 
 **Markdown:**
 
@@ -33524,7 +33524,7 @@ function escapeHtml(text: string): string {
 
 ---
 
-## 19.10 Function 8: browser-proxy {#19.10-function-8:-browser-proxy}
+## 19.10 Function 8: browser-proxy 
 
 Server-side proxy that fetches web pages for the browser viewport, rewriting URLs and stripping restrictive headers.
 
@@ -33536,7 +33536,7 @@ Server-side proxy that fetches web pages for the browser viewport, rewriting URL
 | Timeout | 30 seconds |
 | Detailed spec | Part 11 (Section 11.1) |
 
-### Implementation {#implementation-9}
+### Implementation 
 
 ```ts
 serve(async (req) => {
@@ -33646,13 +33646,13 @@ function injectOverlayScript(html: string): string {
 }
 ```
 
-### Browser History Recording {#browser-history-recording}
+### Browser History Recording 
 
 The client records history entries on navigation. The proxy does not write to `browser_history` — this is handled by the client's `onNavigate` handler (Part 11).
 
 ---
 
-## 19.11 Function 9: browser-extract {#19.11-function-9:-browser-extract}
+## 19.11 Function 9: browser-extract 
 
 Extracts and stores page content from the browser viewport.
 
@@ -33664,7 +33664,7 @@ Extracts and stores page content from the browser viewport.
 | Timeout | 30 seconds |
 | Detailed spec | Part 11 (Section 11.5) |
 
-### Request {#request-5}
+### Request 
 
 ```ts
 interface BrowserExtractRequest {
@@ -33679,7 +33679,7 @@ interface BrowserExtractRequest {
 }
 ```
 
-### Implementation {#implementation-10}
+### Implementation 
 
 ```ts
 serve(async (req) => {
@@ -33722,7 +33722,7 @@ serve(async (req) => {
 
 ---
 
-## 19.12 Function 10: team-execute {#19.12-function-10:-team-execute}
+## 19.12 Function 10: team-execute 
 
 Orchestrates agentic team execution. Processes team tasks through the DAG-based execution plan.
 
@@ -33734,7 +33734,7 @@ Orchestrates agentic team execution. Processes team tasks through the DAG-based 
 | Timeout | 600 seconds (10 minutes) |
 | Detailed spec | Part 10 (Section 10.8) |
 
-### Request {#request-6}
+### Request 
 
 ```ts
 interface TeamExecuteRequest {
@@ -33745,7 +33745,7 @@ interface TeamExecuteRequest {
 }
 ```
 
-### Execution Flow {#execution-flow-1}
+### Execution Flow 
 
 1. Load team with members \+ execution config  
 2. Create `team_tasks` row (status: "running")  
@@ -33759,7 +33759,7 @@ The full implementation is specified in Part 10, Section 10.8.
 
 ---
 
-## 19.13 Function 11: validate-api-key {#19.13-function-11:-validate-api-key}
+## 19.13 Function 11: validate-api-key 
 
 Validates a user-provided API key by making a lightweight test request to the provider.
 
@@ -33771,7 +33771,7 @@ Validates a user-provided API key by making a lightweight test request to the pr
 | Timeout | 15 seconds |
 | Detailed spec | Part 13 (Section 13.5) |
 
-### Request {#request-7}
+### Request 
 
 ```ts
 interface ValidateKeyRequest {
@@ -33780,7 +33780,7 @@ interface ValidateKeyRequest {
 }
 ```
 
-### Implementation {#implementation-11}
+### Implementation 
 
 Each provider is validated with a minimal API call:
 
@@ -33795,7 +33795,7 @@ Returns `{ valid: true }` on success, `{ valid: false, error: "Invalid API key" 
 
 ---
 
-## 19.14 Function 12: store-api-key {#19.14-function-12:-store-api-key}
+## 19.14 Function 12: store-api-key 
 
 Encrypts and stores a validated API key.
 
@@ -33807,7 +33807,7 @@ Encrypts and stores a validated API key.
 | Timeout | 10 seconds |
 | Detailed spec | Part 13 (Section 13.5) |
 
-### Request {#request-8}
+### Request 
 
 ```ts
 interface StoreKeyRequest {
@@ -33816,7 +33816,7 @@ interface StoreKeyRequest {
 }
 ```
 
-### Implementation {#implementation-12}
+### Implementation 
 
 ```ts
 serve(async (req) => {
@@ -33887,7 +33887,7 @@ serve(async (req) => {
 
 ---
 
-## 19.15 Function 13: stripe-webhook {#19.15-function-13:-stripe-webhook}
+## 19.15 Function 13: stripe-webhook 
 
 Receives and processes Stripe webhook events for subscription management.
 
@@ -33899,7 +33899,7 @@ Receives and processes Stripe webhook events for subscription management.
 | Timeout | 15 seconds |
 | Detailed spec | Part 2 (Section 2.3) |
 
-### Event Handling {#event-handling}
+### Event Handling 
 
 ```ts
 import Stripe from "https://esm.sh/stripe@14";
@@ -34041,7 +34041,7 @@ function mapPriceToTier(priceId: string): string {
 
 ---
 
-## 19.16 Function 14: create-checkout-session {#19.16-function-14:-create-checkout-session}
+## 19.16 Function 14: create-checkout-session 
 
 Creates a Stripe Checkout session for subscription upgrades or credit purchases.
 
@@ -34053,7 +34053,7 @@ Creates a Stripe Checkout session for subscription upgrades or credit purchases.
 | Timeout | 15 seconds |
 | Detailed spec | Part 2 (Section 2.3) |
 
-### Request {#request-9}
+### Request 
 
 ```ts
 interface CheckoutRequest {
@@ -34063,7 +34063,7 @@ interface CheckoutRequest {
 }
 ```
 
-### Implementation {#implementation-13}
+### Implementation 
 
 ```ts
 serve(async (req) => {
@@ -34119,7 +34119,7 @@ serve(async (req) => {
 
 ---
 
-## 19.17 Function 15: files-zip {#19.17-function-15:-files-zip}
+## 19.17 Function 15: files-zip 
 
 Creates a ZIP archive of multiple files for bulk download.
 
@@ -34131,7 +34131,7 @@ Creates a ZIP archive of multiple files for bulk download.
 | Timeout | 60 seconds |
 | Detailed spec | Part 8 (Section 8.6) |
 
-### Request {#request-10}
+### Request 
 
 ```ts
 interface FilesZipRequest {
@@ -34139,7 +34139,7 @@ interface FilesZipRequest {
 }
 ```
 
-### Implementation {#implementation-14}
+### Implementation 
 
 ```ts
 import { ZipWriter, BlobWriter, Uint8ArrayReader } from "https://esm.sh/@zip.js/zip.js@2";
@@ -34202,7 +34202,7 @@ serve(async (req) => {
 
 ---
 
-## 19.18 Function 16: generate-embedding {#19.18-function-16:-generate-embedding}
+## 19.18 Function 16: generate-embedding 
 
 Internal utility function that generates vector embeddings for semantic search.
 
@@ -34214,7 +34214,7 @@ Internal utility function that generates vector embeddings for semantic search.
 | Timeout | 10 seconds |
 | Detailed spec | Part 14 (Section 14.6), Part 15 (Section 15.8) |
 
-### Request {#request-11}
+### Request 
 
 ```ts
 interface EmbeddingRequest {
@@ -34223,7 +34223,7 @@ interface EmbeddingRequest {
 }
 ```
 
-### Implementation {#implementation-15}
+### Implementation 
 
 ```ts
 import OpenAI from "https://esm.sh/openai@4";
@@ -34260,7 +34260,7 @@ serve(async (req) => {
 
 ---
 
-## 19.19 Environment Variables {#19.19-environment-variables}
+## 19.19 Environment Variables 
 
 All Edge Functions require the following environment variables, set via `supabase secrets set`:
 
@@ -34292,7 +34292,7 @@ SITE_URL=https://aiconnected.app
 
 ---
 
-## 19.20 Deployment & Directory Structure {#19.20-deployment-&-directory-structure}
+## 19.20 Deployment & Directory Structure 
 
 Edge Functions are deployed from the `supabase/functions/` directory:
 
@@ -34340,7 +34340,7 @@ supabase/
       index.ts               # Shared embedding utility
 ```
 
-### Deployment Commands {#deployment-commands}
+### Deployment Commands 
 
 ```shell
 # Deploy all functions
@@ -34361,7 +34361,7 @@ supabase functions logs cipher-route --tail
 
 ---
 
-## 19.21 Request/Response Summary {#19.21-request/response-summary}
+## 19.21 Request/Response Summary 
 
 | Function | Method | Input | Output | Latency Target |
 | :---- | :---- | :---- | :---- | :---- |
@@ -34384,11 +34384,11 @@ supabase functions logs cipher-route --tail
 
 ---
 
-## 19.22 Error Handling Conventions {#19.22-error-handling-conventions}
+## 19.22 Error Handling Conventions 
 
 All Edge Functions follow a consistent error contract:
 
-### Error Response Shape {#error-response-shape}
+### Error Response Shape 
 
 ```ts
 interface ErrorResponse {
@@ -34398,7 +34398,7 @@ interface ErrorResponse {
 }
 ```
 
-### HTTP Status Code Usage {#http-status-code-usage}
+### HTTP Status Code Usage 
 
 | Status | Meaning | When Used |
 | :---- | :---- | :---- |
@@ -34412,7 +34412,7 @@ interface ErrorResponse {
 | 502 | Bad Gateway | Upstream model provider error |
 | 503 | Service Unavailable | All models unavailable, platform outage |
 
-### Retry Behavior {#retry-behavior}
+### Retry Behavior 
 
 Functions that interact with external APIs (model calls, Stripe) implement retry logic:
 
@@ -34424,7 +34424,7 @@ Functions that interact with external APIs (model calls, Stripe) implement retry
 
 ---
 
-## 19.23 Cross-Reference: Functions by Source Part {#19.23-cross-reference:-functions-by-source-part}
+## 19.23 Cross-Reference: Functions by Source Part 
 
 | Source Part | Functions Defined |
 | :---- | :---- |
@@ -34444,7 +34444,7 @@ Functions that interact with external APIs (model calls, Stripe) implement retry
 
 *End of Part 19\. Proceed to Part 20: Frontend Component Architecture.*
 
-# PART 20: FRONTEND COMPONENT ARCHITECTURE {#part-20:-frontend-component-architecture-1}
+# PART 20: FRONTEND COMPONENT ARCHITECTURE 
 
 ---
 
@@ -34454,9 +34454,9 @@ aiConnected is a single-page application rendered client-side within Next.js App
 
 ---
 
-## 20.1 Page Structure (Next.js App Router) {#20.1-page-structure-(next.js-app-router)-1}
+## 20.1 Page Structure (Next.js App Router) 
 
-### Route Tree {#route-tree}
+### Route Tree 
 
 ```
 app/
@@ -34493,7 +34493,7 @@ app/
       route.ts                — OAuth callback handler (server route)
 ```
 
-### Root Layout {#root-layout}
+### Root Layout 
 
 The root layout wraps the entire application with font loading, metadata, and the provider stack.
 
@@ -34525,7 +34525,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 }
 ```
 
-### Authentication Gate {#authentication-gate}
+### Authentication Gate 
 
 All routes except `/auth/*` require authentication. The root layout's `Providers` component includes an auth check that redirects unauthenticated users to `/auth/login`.
 
@@ -34549,7 +34549,7 @@ Every page follows this pattern: wrap in `AppShell`, render a screen component. 
 
 ---
 
-## 20.2 Provider Stack {#20.2-provider-stack}
+## 20.2 Provider Stack 
 
 The provider hierarchy wraps the application in the correct dependency order. Each provider is a Client Component.
 
@@ -34589,7 +34589,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
 }
 ```
 
-### Provider Responsibilities {#provider-responsibilities}
+### Provider Responsibilities 
 
 | Provider | Responsibility | Source |
 | :---- | :---- | :---- |
@@ -34598,7 +34598,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
 | `ThemeProvider` | Light/dark/system theme, CSS class toggling | Part 1 |
 | `RealtimeProvider` | Global Supabase Realtime subscriptions (notifications, instruction\_memory, persona updates) | Part 17 |
 
-### AuthProvider {#authprovider}
+### AuthProvider 
 
 ```ts
 // src/components/providers/AuthProvider.tsx
@@ -34694,7 +34694,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 }
 ```
 
-### ThemeProvider {#themeprovider}
+### ThemeProvider 
 
 ```ts
 // src/components/providers/ThemeProvider.tsx
@@ -34767,17 +34767,17 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 }
 ```
 
-### RealtimeProvider {#realtimeprovider}
+### RealtimeProvider 
 
 Defined in Part 17 (Section 17.5). Subscribes to global channels: user-scoped notifications, instruction\_memory changes, persona updates, and model\_registry changes. The provider creates shared channel subscriptions and invalidates relevant TanStack Query caches when events arrive.
 
 ---
 
-## 20.3 State Management {#20.3-state-management-1}
+## 20.3 State Management 
 
 aiConnected uses three state layers, each with a distinct purpose and scope.
 
-### Layer 1: Server State (TanStack Query) {#layer-1:-server-state-(tanstack-query)}
+### Layer 1: Server State (TanStack Query) 
 
 All data from Supabase (database rows, RPC results, Edge Function responses) flows through TanStack Query. This provides automatic caching, background refetching, optimistic updates, and deduplication.
 
@@ -34789,19 +34789,19 @@ All data from Supabase (database rows, RPC results, Edge Function responses) flo
 - All mutations use `onSuccess` to invalidate affected queries  
 - Optimistic updates are used for immediate-feedback actions (pin, archive, rename)
 
-### Layer 2: UI State (Zustand) {#layer-2:-ui-state-(zustand)}
+### Layer 2: UI State (Zustand) 
 
 Ephemeral client-side state that doesn't persist to the database: which panel is open, which modal is showing, sidebar expand/collapse, active selections. Three Zustand stores manage distinct concerns.
 
-### Layer 3: URL State (Next.js searchParams) {#layer-3:-url-state-(next.js-searchparams)}
+### Layer 3: URL State (Next.js searchParams) 
 
 Shareable view state encoded in the URL: active settings tab, search query, filter selections, instance detail tab.
 
 ---
 
-## 20.4 Zustand Stores {#20.4-zustand-stores}
+## 20.4 Zustand Stores 
 
-### ui-store {#ui-store}
+### ui-store 
 
 Controls global UI chrome: sidebar, panels, modals, and toast notifications.
 
@@ -34911,7 +34911,7 @@ export const useUIStore = create<UIState>((set) => ({
 }));
 ```
 
-### navigation-store {#navigation-store}
+### navigation-store 
 
 Tracks the current screen, active entities, and selection state for multi-select operations.
 
@@ -34999,7 +34999,7 @@ export const useNavigationStore = create<NavigationState>((set, get) => ({
 }));
 ```
 
-### browser-store {#browser-store}
+### browser-store 
 
 State for the browser workspace viewport and tabs.
 
@@ -35070,7 +35070,7 @@ export const useBrowserStore = create<BrowserState>((set) => ({
 
 ---
 
-## 20.5 TanStack Query Key Registry {#20.5-tanstack-query-key-registry}
+## 20.5 TanStack Query Key Registry 
 
 Every query key used across the application. This registry ensures consistent naming, prevents key collisions, and documents invalidation dependencies.
 
@@ -35111,9 +35111,9 @@ Every query key used across the application. This registry ensures consistent na
 
 ---
 
-## 20.6 Custom Hooks {#20.6-custom-hooks}
+## 20.6 Custom Hooks 
 
-### Data Hooks {#data-hooks}
+### Data Hooks 
 
 These hooks wrap TanStack Query calls and provide typed, reusable data access.
 
@@ -35263,7 +35263,7 @@ export function useModelRegistry() {
 }
 ```
 
-### Operation Hooks {#operation-hooks}
+### Operation Hooks 
 
 ```ts
 // src/hooks/use-chat-operations.ts
@@ -35332,7 +35332,7 @@ export function useChatOperations() {
 }
 ```
 
-### Streaming Hook {#streaming-hook}
+### Streaming Hook 
 
 ```ts
 // src/hooks/use-streaming-response.ts
@@ -35423,7 +35423,7 @@ export function useStreamingResponse(chatId: string | null) {
 }
 ```
 
-### Utility Hooks {#utility-hooks}
+### Utility Hooks 
 
 ```ts
 // src/hooks/use-mobile.ts
@@ -35466,9 +35466,9 @@ export function useTierGates() {
 
 ---
 
-## 20.7 Component Hierarchy {#20.7-component-hierarchy}
+## 20.7 Component Hierarchy 
 
-### Application Shell {#application-shell}
+### Application Shell 
 
 The shell wraps every page. It renders the sidebar, top bar, content area, command palette overlay, modals, and toast container.
 
@@ -35499,7 +35499,7 @@ The shell wraps every page. It renders the sidebar, top bar, content area, comma
   └── <ConfirmDialog>                 — Confirmation overlay from ui-store
 ```
 
-### NotificationDropdown {#notificationdropdown}
+### NotificationDropdown 
 
 ```
 <NotificationDropdown>
@@ -35510,7 +35510,7 @@ The shell wraps every page. It renders the sidebar, top bar, content area, comma
   └── <DropdownFooter>                — "View all" link → notification history
 ```
 
-### CommandPalette {#commandpalette}
+### CommandPalette 
 
 ```
 <CommandPalette>                      — Full-screen overlay, dimmed bg
@@ -35529,9 +35529,9 @@ The shell wraps every page. It renders the sidebar, top bar, content area, comma
 
 ---
 
-## 20.8 Screen Components {#20.8-screen-components}
+## 20.8 Screen Components 
 
-### Home Screen {#home-screen}
+### Home Screen 
 
 ```
 <HomeScreen>
@@ -35547,7 +35547,7 @@ The shell wraps every page. It renders the sidebar, top bar, content area, comma
 
 Data: `useDashboardStats()`, `useQuery(["recent-activity"])`, `useChats("all")`
 
-### Chat Screen {#chat-screen}
+### Chat Screen 
 
 ```
 <ChatScreen>
@@ -35596,7 +35596,7 @@ Data: `useDashboardStats()`, `useQuery(["recent-activity"])`, `useChats("all")`
 
 Data: `useChats()`, `useMessages(chatId)`, `useStreamingResponse(chatId)`, `useChatRealtime(chatId)`, `useTypingIndicator(chatId)`
 
-### Search Screen {#search-screen}
+### Search Screen 
 
 ```
 <SearchScreen>
@@ -35613,7 +35613,7 @@ Data: `useChats()`, `useMessages(chatId)`, `useStreamingResponse(chatId)`, `useC
 
 Data: `useSearch(query, filter, scope)`, `useQuery(["search-history"])`
 
-### Spaces Screen (Instance List) {#spaces-screen-(instance-list)}
+### Spaces Screen (Instance List) 
 
 ```
 <SpacesScreen>
@@ -35626,7 +35626,7 @@ Data: `useSearch(query, filter, scope)`, `useQuery(["search-history"])`
 
 Data: `useInstances()`
 
-### Instance Detail Screen {#instance-detail-screen}
+### Instance Detail Screen 
 
 ```
 <InstanceDetailScreen>
@@ -35657,7 +35657,7 @@ Data: `useInstances()`
 
 Data: `useInstances()`, `useQuery(["instance-chats", id])`, `useQuery(["instance-files", id])`, `useQuery(["instance-personas", id])`
 
-### Files Screen {#files-screen}
+### Files Screen 
 
 ```
 <FilesScreen>
@@ -35680,7 +35680,7 @@ Data: `useInstances()`, `useQuery(["instance-chats", id])`, `useQuery(["instance
 
 Data: `useQuery(["global-files"])`, `useQuery(["signed-url", path])`
 
-### People Screen (Persona List) {#people-screen-(persona-list)}
+### People Screen (Persona List) 
 
 ```
 <PeopleScreen>
@@ -35693,7 +35693,7 @@ Data: `useQuery(["global-files"])`, `useQuery(["signed-url", path])`
 
 Data: `usePersonas()`
 
-### Persona Detail Screen {#persona-detail-screen}
+### Persona Detail Screen 
 
 ```
 <PersonaDetailScreen>
@@ -35727,7 +35727,7 @@ Data: `usePersonas()`
 
 Data: `usePersonas()`, `useQuery(["persona-memories", personaId, filter])`
 
-### Teams Screen {#teams-screen}
+### Teams Screen 
 
 ```
 <TeamsScreen>
@@ -35748,7 +35748,7 @@ Data: `usePersonas()`, `useQuery(["persona-memories", personaId, filter])`
 
 Data: `useTeams()`, `useQuery(["team-run-status", teamId])`
 
-### Browser Screen {#browser-screen}
+### Browser Screen 
 
 ```
 <BrowserScreen>
@@ -35773,7 +35773,7 @@ Data: `useTeams()`, `useQuery(["team-run-status", teamId])`
 
 Data: `useBrowserStore()`, `useQuery(["browser-sessions-active"])`, `useQuery(["browser-tabs", sessionId])`, `useBrowserRealtime(sessionId)`
 
-### Insights Screen {#insights-screen}
+### Insights Screen 
 
 ```
 <InsightsScreen>
@@ -35796,7 +35796,7 @@ Data: `useBrowserStore()`, `useQuery(["browser-sessions-active"])`, `useQuery(["
 
 Data: `useQuery(["analytics", type, timeRange])`
 
-### Settings Screen {#settings-screen}
+### Settings Screen 
 
 ```
 <SettingsScreen>
@@ -35832,9 +35832,9 @@ Data: `useProfile()`, `useQuery(["model-roles"])`, `useQuery(["api-keys"])`, `us
 
 ---
 
-## 20.9 Shared Component Library {#20.9-shared-component-library}
+## 20.9 Shared Component Library 
 
-### Atomic Components {#atomic-components}
+### Atomic Components 
 
 Components used across multiple screens. Defined in Part 1 (Section 1.4), specified here with full interfaces.
 
@@ -35891,7 +35891,7 @@ interface ModelBadgeProps {
 // Displays abbreviated model name (e.g., "Sonnet 4.5") with Cpu icon
 ```
 
-### Composite Components {#composite-components}
+### Composite Components 
 
 ```ts
 // src/components/shared/EmptyState.tsx
@@ -35938,7 +35938,7 @@ interface SkeletonProps {
 // Renders pulsing placeholder shapes matching each variant's dimensions
 ```
 
-### Modal Components {#modal-components}
+### Modal Components 
 
 ```ts
 // src/components/modals/ExportModal.tsx
@@ -35973,9 +35973,9 @@ interface SkeletonProps {
 
 ---
 
-## 20.10 Data Flow Patterns {#20.10-data-flow-patterns}
+## 20.10 Data Flow Patterns 
 
-### Pattern 1: Standard CRUD (Client → PostgREST → RLS) {#pattern-1:-standard-crud-(client-→-postgrest-→-rls)}
+### Pattern 1: Standard CRUD (Client → PostgREST → RLS) 
 
 Used for all user-initiated mutations: creating chats, renaming personas, updating settings.
 
@@ -35987,7 +35987,7 @@ User Action → useMutation → supabase.from(table).insert/update/delete()
   (rollback on error)         onSuccess → invalidateQueries → refetch
 ```
 
-### Pattern 2: AI Message (Client → Edge Function → SSE) {#pattern-2:-ai-message-(client-→-edge-function-→-sse)}
+### Pattern 2: AI Message (Client → Edge Function → SSE) 
 
 Used for sending messages that trigger AI responses.
 
@@ -36005,7 +36005,7 @@ User clicks Send
   cipher-memory fires (async, no client awareness)
 ```
 
-### Pattern 3: Realtime Subscription (Database → Supabase Realtime → Client) {#pattern-3:-realtime-subscription-(database-→-supabase-realtime-→-client)}
+### Pattern 3: Realtime Subscription (Database → Supabase Realtime → Client) 
 
 Used for receiving updates pushed by other sources (Edge Functions, other clients in future multi-user).
 
@@ -36021,7 +36021,7 @@ Edge Function inserts/updates row (via service client)
   Component re-renders with new data
 ```
 
-### Pattern 4: Background Fetch (Component Mount → Query → Cache) {#pattern-4:-background-fetch-(component-mount-→-query-→-cache)}
+### Pattern 4: Background Fetch (Component Mount → Query → Cache) 
 
 Used for initial data loading on screen navigation.
 
@@ -36040,7 +36040,7 @@ User navigates to /spaces
 
 ---
 
-## 20.11 TypeScript Interfaces {#20.11-typescript-interfaces}
+## 20.11 TypeScript Interfaces 
 
 Core domain types used across the frontend. Generated from Supabase's database types and extended with client-side additions.
 
@@ -36239,7 +36239,7 @@ export type StreamEvent = StreamTokenEvent | StreamDoneEvent | StreamErrorEvent 
 
 ---
 
-## 20.12 File Organization Summary {#20.12-file-organization-summary}
+## 20.12 File Organization Summary 
 
 ```
 src/
@@ -36382,9 +36382,9 @@ src/
 
 ---
 
-## 20.13 Build & Development Tooling {#20.13-build-&-development-tooling}
+## 20.13 Build & Development Tooling 
 
-### Package Dependencies {#package-dependencies}
+### Package Dependencies 
 
 ```json
 {
@@ -36417,7 +36417,7 @@ src/
 }
 ```
 
-### Environment Variables (Client-Side) {#environment-variables-(client-side)}
+### Environment Variables (Client-Side) 
 
 ```
 NEXT_PUBLIC_SUPABASE_URL=https://[project-ref].supabase.co
@@ -36426,7 +36426,7 @@ NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_live_...
 NEXT_PUBLIC_SITE_URL=https://aiconnected.app
 ```
 
-### ESLint Configuration {#eslint-configuration}
+### ESLint Configuration 
 
 ```json
 {
@@ -36442,7 +36442,7 @@ NEXT_PUBLIC_SITE_URL=https://aiconnected.app
 
 ---
 
-## 20.14 Cross-Reference Summary {#20.14-cross-reference-summary}
+## 20.14 Cross-Reference Summary 
 
 | Frontend Concern | Source Part(s) |
 | :---- | :---- |
@@ -36470,7 +36470,7 @@ NEXT_PUBLIC_SITE_URL=https://aiconnected.app
 
 *End of Part 20\. Proceed to Part 21: Empty States & Error Handling.*
 
-# PART 21: EMPTY STATES, ERROR HANDLING & LOADING STATES {#part-21:-empty-states,-error-handling-&-loading-states}
+# PART 21: EMPTY STATES, ERROR HANDLING & LOADING STATES 
 
 ---
 
@@ -36480,9 +36480,9 @@ The design philosophy: empty states should be inviting and actionable (never dea
 
 ---
 
-## 21.1 Shared Components {#21.1-shared-components}
+## 21.1 Shared Components 
 
-### EmptyState Component {#emptystate-component}
+### EmptyState Component 
 
 All empty states use the same reusable component (Part 20, Section 20.9). This section defines the canonical implementation.
 
@@ -36533,7 +36533,7 @@ interface EmptyStateProps {
 - Bordered action button: transparent bg, `border` color 1px solid, `text` color, same dimensions  
 - Secondary action: text link, 12px, weight 400, `accent` color, marginTop 12px, cursor pointer
 
-### ErrorBanner Component {#errorbanner-component}
+### ErrorBanner Component 
 
 A dismissible banner that appears at the top of the content area for recoverable errors.
 
@@ -36588,7 +36588,7 @@ interface ErrorBannerProps {
 - Action button: 11px, weight 450, underline, cursor pointer  
 - Dismiss: X icon (12px, `textFaint`, cursor pointer)
 
-### LoadingSkeleton Component {#loadingskeleton-component}
+### LoadingSkeleton Component 
 
 Pulsing placeholder shapes that match the content they replace.
 
@@ -36628,7 +36628,7 @@ interface SkeletonProps {
 | `stat-card` | 160×100 rectangle, borderRadius 12, contains 80×28 bar \+ 120×10 bar |
 | `grid-card` | 100% width, 160px height, borderRadius 12, contains stacked bars |
 
-### InlineRetry Component {#inlineretry-component}
+### InlineRetry Component 
 
 A compact retry prompt that replaces failed content inline.
 
@@ -36661,9 +36661,9 @@ interface InlineRetryProps {
 
 ---
 
-## 21.2 Empty States by Screen {#21.2-empty-states-by-screen}
+## 21.2 Empty States by Screen 
 
-### Home Dashboard {#home-dashboard}
+### Home Dashboard 
 
 **First-time user (zero instances \+ zero personas \+ zero chats):**
 
@@ -36700,7 +36700,7 @@ Hint: 12px, weight 300, `textFaint`. Multiple zeros → no hint (full empty stat
 
 ---
 
-### Chat Screen {#chat-screen-1}
+### Chat Screen 
 
 **No chats exist (drawer):**
 
@@ -36766,7 +36766,7 @@ This state appears when the user navigates to `/chat` without an active chat ID.
 
 ---
 
-### Search Screen {#search-screen-1}
+### Search Screen 
 
 **No query entered (initial state):**
 
@@ -36799,7 +36799,7 @@ Below, show recent search history (if any): "Recent searches" header \+ clickabl
 
 ---
 
-### Spaces (Instance List) {#spaces-(instance-list)}
+### Spaces (Instance List) 
 
 **No instances:**
 
@@ -36819,7 +36819,7 @@ Below, show recent search history (if any): "Recent searches" header \+ clickabl
 
 ---
 
-### Instance Detail {#instance-detail}
+### Instance Detail 
 
 **Chats tab — no chats in this instance:**
 
@@ -36871,7 +36871,7 @@ Below, show recent search history (if any): "Recent searches" header \+ clickabl
 
 ---
 
-### Files Screen {#files-screen-1}
+### Files Screen 
 
 **No files at all:**
 
@@ -36891,7 +36891,7 @@ Below, show recent search history (if any): "Recent searches" header \+ clickabl
 
 ---
 
-### People (Persona List) {#people-(persona-list)}
+### People (Persona List) 
 
 **No personas:**
 
@@ -36910,7 +36910,7 @@ Below the empty state: a horizontal carousel of 4–5 persona template cards (fr
 
 ---
 
-### Persona Detail {#persona-detail}
+### Persona Detail 
 
 **Skills tab — no skills:**
 
@@ -36957,7 +36957,7 @@ Below the empty state: a horizontal carousel of 4–5 persona template cards (fr
 
 ---
 
-### Teams Screen {#teams-screen-1}
+### Teams Screen 
 
 **No teams:**
 
@@ -36985,7 +36985,7 @@ Below the empty state: a horizontal carousel of 4–5 persona template cards (fr
 
 ---
 
-### Browser Screen {#browser-screen-1}
+### Browser Screen 
 
 **No active sessions (landing state):**
 
@@ -37013,7 +37013,7 @@ Below the empty state: a horizontal carousel of 4–5 persona template cards (fr
 
 ---
 
-### Insights Screen {#insights-screen-1}
+### Insights Screen 
 
 **No data (new user):**
 
@@ -37048,7 +37048,7 @@ Value shows "—" (em-dash, 26px, weight 200, `textFaint`). Trend shows "No data
 
 ---
 
-### Settings Screen {#settings-screen-1}
+### Settings Screen 
 
 **API Keys tab — no keys:**
 
@@ -37077,13 +37077,13 @@ Value shows "—" (em-dash, 26px, weight 200, `textFaint`). Trend shows "No data
 
 ---
 
-### Command Palette {#command-palette}
+### Command Palette 
 
 **No matching results:**
 
 - "No results" (13px, weight 350, `textFaint`, padding `20px 0`, centered)
 
-### Notification Dropdown {#notification-dropdown-1}
+### Notification Dropdown 
 
 **No notifications:**
 
@@ -37093,9 +37093,9 @@ Value shows "—" (em-dash, 26px, weight 200, `textFaint`). Trend shows "No data
 
 ---
 
-## 21.3 Error States {#21.3-error-states}
+## 21.3 Error States 
 
-### Error Classification {#error-classification-1}
+### Error Classification 
 
 All errors in the application fall into one of these categories, each with a defined UI response:
 
@@ -37113,7 +37113,7 @@ All errors in the application fall into one of these categories, each with a def
 
 ---
 
-### Network Error {#network-error}
+### Network Error 
 
 **Detection:** Any `fetch` or Supabase SDK call that throws a `TypeError` (network) or receives no response.
 
@@ -37139,7 +37139,7 @@ Positioned: fixed at the top of the content area (below top bar), z-index 50, fu
 
 ---
 
-### Authentication Session Expired {#authentication-session-expired}
+### Authentication Session Expired 
 
 **Detection:** Any API call returns 401, or `onAuthStateChange` fires with `SIGNED_OUT` event.
 
@@ -37157,7 +37157,7 @@ Positioned: fixed at the top of the content area (below top bar), z-index 50, fu
 
 ---
 
-### Tier-Gated Feature (403) {#tier-gated-feature-(403)}
+### Tier-Gated Feature (403) 
 
 **Detection:** User attempts an action restricted by their tier.
 
@@ -37203,7 +37203,7 @@ Positioned: fixed at the top of the content area (below top bar), z-index 50, fu
 
 ---
 
-### Rate Limit Hit (429) {#rate-limit-hit-(429)}
+### Rate Limit Hit (429) 
 
 **Detection:** `cipher-route` or any Edge Function returns 429\. SSE error event with `code: 429`.
 
@@ -37254,7 +37254,7 @@ If rate limit is hit during message send, the streaming area shows:
 
 ---
 
-### AI Generation Failure {#ai-generation-failure}
+### AI Generation Failure 
 
 **Detection:** SSE error event from `cipher-route`, or stream connection drops without a `done` event.
 
@@ -37312,7 +37312,7 @@ When an AI response fails, an error message appears in place of the expected per
 
 ---
 
-### File Upload Failure {#file-upload-failure}
+### File Upload Failure 
 
 **Detection:** Supabase Storage upload returns an error.
 
@@ -37358,7 +37358,7 @@ The uploading file card/row shows the progress bar in red (`#ef4444` fill) and r
 
 ---
 
-### Browser Proxy Failure {#browser-proxy-failure}
+### Browser Proxy Failure 
 
 **Detection:** The iframe fails to load, or `browser-proxy` Edge Function returns an error.
 
@@ -37400,7 +37400,7 @@ The uploading file card/row shows the progress bar in red (`#ef4444` fill) and r
 
 ---
 
-### Data Query Failure (Generic) {#data-query-failure-(generic)}
+### Data Query Failure (Generic) 
 
 **Detection:** Any `useQuery` or `useMutation` that returns an error.
 
@@ -37444,7 +37444,7 @@ retryDelay: (attempt) => Math.min(1000 * 2 ** attempt, 10000),
 
 ---
 
-### Stripe/Payment Failure {#stripe/payment-failure}
+### Stripe/Payment Failure 
 
 **Detection:** `checkout.session.completed` never arrives, or `invoice.payment_failed` webhook fires.
 
@@ -37472,7 +37472,7 @@ If `subscriptions.status === "past_due"`, a persistent (non-dismissible) warning
 
 ---
 
-### Export Failure {#export-failure}
+### Export Failure 
 
 **Detection:** `chat-export` Edge Function returns an error.
 
@@ -37500,7 +37500,7 @@ The "Export" button re-enables so the user can retry. The modal stays open.
 
 ---
 
-### Team Execution Failure {#team-execution-failure}
+### Team Execution Failure 
 
 **Detection:** `team-execute` Edge Function marks a `team_tasks` row as "failed".
 
@@ -37520,7 +37520,7 @@ Failed runs show a red status badge ("Failed") and expand to reveal:
 
 ---
 
-### API Key Validation Failure {#api-key-validation-failure}
+### API Key Validation Failure 
 
 **Detection:** `validate-api-key` Edge Function returns `{ valid: false }`.
 
@@ -37535,9 +37535,9 @@ The key row updates to show:
 
 ---
 
-## 21.4 Loading States {#21.4-loading-states}
+## 21.4 Loading States 
 
-### Page-Level Loading {#page-level-loading}
+### Page-Level Loading 
 
 **Initial app load (auth check):**
 
@@ -37564,7 +37564,7 @@ No full-page loading state. Each screen component handles its own loading via Ta
 
 ---
 
-### Skeleton Screens {#skeleton-screens}
+### Skeleton Screens 
 
 Every list, grid, and data-heavy section has a skeleton variant that matches its final layout dimensions.
 
@@ -37703,7 +37703,7 @@ Alternative for dashboard stats: show "—" in each value position (no skeleton 
 
 ---
 
-### Typing Indicator {#typing-indicator}
+### Typing Indicator 
 
 Displayed in the message list while the AI model is generating a response (Part 5, Part 17).
 
@@ -37748,7 +37748,7 @@ Displayed in the message list while the AI model is generating a response (Part 
 
 ---
 
-### Progress Indicators {#progress-indicators-1}
+### Progress Indicators 
 
 **File upload progress bar:**
 
@@ -37818,7 +37818,7 @@ Updated every 3 seconds via polling (Part 10, Section 10.8).
 
 ---
 
-### Button Loading States {#button-loading-states}
+### Button Loading States 
 
 When a button triggers an async action, it shows a loading state:
 
@@ -37846,11 +37846,11 @@ When a button triggers an async action, it shows a loading state:
 
 ---
 
-## 21.5 Toast Notifications {#21.5-toast-notifications}
+## 21.5 Toast Notifications 
 
 Toasts are the primary feedback mechanism for transient success and error messages. Managed by `useUIStore.showToast()` (Part 20, Section 20.4).
 
-### Appearance {#appearance}
+### Appearance 
 
 ```ts
 {
@@ -37891,7 +37891,7 @@ Each toast:
 | `error` | `surface` | `1px solid rgba(239,68,68,0.2)` | AlertCircle (14px, `#ef4444`) |
 | `warning` | `surface` | `1px solid rgba(245,158,11,0.2)` | AlertTriangle (14px, `#f59e0b`) |
 
-### Behavior {#behavior}
+### Behavior 
 
 - Default duration: 4000ms (auto-dismiss)  
 - Duration 0: persistent (requires manual dismiss)  
@@ -37899,7 +37899,7 @@ Each toast:
 - Dismiss: X icon (12px) on right side  
 - On mobile: full-width, bottom: 12px, right: 12px, left: 12px
 
-### Common Toast Messages {#common-toast-messages}
+### Common Toast Messages 
 
 | Event | Type | Message | Duration |
 | :---- | :---- | :---- | :---- |
@@ -37929,11 +37929,11 @@ Each toast:
 
 ---
 
-## 21.6 Confirmation Dialogs {#21.6-confirmation-dialogs}
+## 21.6 Confirmation Dialogs 
 
 Destructive actions require confirmation via the `ConfirmDialog` component (Part 20, Section 20.9).
 
-### Appearance {#appearance-1}
+### Appearance 
 
 ```ts
 // Overlay
@@ -37958,7 +37958,7 @@ Destructive actions require confirmation via the `ConfirmDialog` component (Part
 }
 ```
 
-### Actions Requiring Confirmation {#actions-requiring-confirmation}
+### Actions Requiring Confirmation 
 
 | Action | Title | Message | Confirm Label | Variant |
 | :---- | :---- | :---- | :---- | :---- |
@@ -37983,11 +37983,11 @@ Both variants include a "Cancel" button (bordered, `text` color) that closes the
 
 ---
 
-## 21.7 Offline Behavior {#21.7-offline-behavior}
+## 21.7 Offline Behavior 
 
 aiConnected is a cloud-first application and does not support offline mode. However, it handles intermittent connectivity gracefully.
 
-### Detection {#detection-1}
+### Detection 
 
 ```ts
 // src/hooks/use-online-status.ts
@@ -38007,7 +38007,7 @@ export function useOnlineStatus() {
 }
 ```
 
-### Offline Banner {#offline-banner}
+### Offline Banner 
 
 When `online === false`, a persistent banner appears at the top of the content area:
 
@@ -38026,13 +38026,13 @@ When connectivity returns:
 3. Supabase Realtime reconnects automatically (Part 17, Section 17.7)  
 4. Toast: "Connection restored" (success, 3000ms)
 
-### Optimistic Actions While Offline {#optimistic-actions-while-offline}
+### Optimistic Actions While Offline 
 
 TanStack Query mutations that fail due to network errors are marked as failed (no silent retry). The UI shows the inline error with a retry button. When connectivity returns, the user can retry manually.
 
 ---
 
-## 21.8 Cross-Reference {#21.8-cross-reference}
+## 21.8 Cross-Reference 
 
 | State Category | Source Part(s) |
 | :---- | :---- |
@@ -38057,7 +38057,7 @@ TanStack Query mutations that fail due to network errors are marked as failed (n
 
 *End of Part 21\. Proceed to Part 22: Testing & Quality Assurance.*
 
-# PART 22: TESTING & QUALITY ASSURANCE {#part-22:-testing-&-quality-assurance-1}
+# PART 22: TESTING & QUALITY ASSURANCE 
 
 ---
 
@@ -38065,7 +38065,7 @@ This part defines the complete testing strategy for aiConnected: the testing fra
 
 ---
 
-## 22.1 Testing Frameworks & Tooling {#22.1-testing-frameworks-&-tooling}
+## 22.1 Testing Frameworks & Tooling 
 
 | Tool | Purpose | Configuration |
 | :---- | :---- | :---- |
@@ -38076,7 +38076,7 @@ This part defines the complete testing strategy for aiConnected: the testing fra
 | Supabase CLI | Local database | `supabase start` spins up a full local Supabase stack (Postgres, Auth, Realtime, Edge Functions) for integration tests. |
 | Faker.js | Test data generation | Creates realistic fake data for personas, chats, messages, files. |
 
-### Installation {#installation}
+### Installation 
 
 ```shell
 # Test frameworks
@@ -38092,7 +38092,7 @@ npm install -D @playwright/test
 npm install -D @faker-js/faker
 ```
 
-### Vitest Configuration {#vitest-configuration}
+### Vitest Configuration 
 
 ```ts
 // vitest.config.ts
@@ -38134,7 +38134,7 @@ export default defineConfig({
 });
 ```
 
-### Playwright Configuration {#playwright-configuration}
+### Playwright Configuration 
 
 ```ts
 // playwright.config.ts
@@ -38166,7 +38166,7 @@ export default defineConfig({
 });
 ```
 
-### Test Setup {#test-setup}
+### Test Setup 
 
 ```ts
 // tests/setup.ts
@@ -38203,7 +38203,7 @@ vi.mock("@/lib/supabase/client", () => ({
 
 ---
 
-## 22.2 Test Directory Structure {#22.2-test-directory-structure}
+## 22.2 Test Directory Structure 
 
 ```
 tests/
@@ -38339,9 +38339,9 @@ tests/
 
 ---
 
-## 22.3 Mock Infrastructure {#22.3-mock-infrastructure}
+## 22.3 Mock Infrastructure 
 
-### Mock Supabase Client {#mock-supabase-client}
+### Mock Supabase Client 
 
 A chainable mock that simulates the Supabase JS SDK query builder without network calls.
 
@@ -38424,7 +38424,7 @@ export const mockSupabaseClient = {
 };
 ```
 
-### Test Data Factories {#test-data-factories}
+### Test Data Factories 
 
 ```ts
 // tests/mocks/factories/personas.ts
@@ -38532,7 +38532,7 @@ export function buildMessage(overrides: Partial<Message> = {}): Message {
 // Each follows the same pattern: faker defaults + spread overrides.
 ```
 
-### MSW Handlers {#msw-handlers}
+### MSW Handlers 
 
 ```ts
 // tests/mocks/handlers.ts
@@ -38595,11 +38595,11 @@ export const handlers = [
 
 ---
 
-## 22.4 Unit Tests {#22.4-unit-tests}
+## 22.4 Unit Tests 
 
 Unit tests verify pure functions, utility logic, store behavior, and isolated algorithms. They run in Vitest's JSDOM environment with no database or network dependencies.
 
-### Utility Functions {#utility-functions-1}
+### Utility Functions 
 
 ```ts
 // tests/unit/lib/tier-gates.test.ts
@@ -38682,7 +38682,7 @@ describe("formatting utilities", () => {
 });
 ```
 
-### Zustand Stores {#zustand-stores}
+### Zustand Stores 
 
 ```ts
 // tests/unit/stores/ui-store.test.ts
@@ -38767,7 +38767,7 @@ describe("useNavigationStore", () => {
 });
 ```
 
-### Cipher Routing Algorithm {#cipher-routing-algorithm}
+### Cipher Routing Algorithm 
 
 ```ts
 // tests/unit/cipher/routing-algorithm.test.ts
@@ -38833,7 +38833,7 @@ describe("Cipher routing algorithm", () => {
 });
 ```
 
-### Token Budgeting {#token-budgeting}
+### Token Budgeting 
 
 ```ts
 // tests/unit/cipher/token-budgeting.test.ts
@@ -38868,7 +38868,7 @@ describe("Token budgeting", () => {
 });
 ```
 
-### Memory Extraction {#memory-extraction-1}
+### Memory Extraction 
 
 ```ts
 // tests/unit/cipher/memory-extraction.test.ts
@@ -38897,7 +38897,7 @@ describe("Memory extraction", () => {
 });
 ```
 
-### Edge Function Logic {#edge-function-logic}
+### Edge Function Logic 
 
 ```ts
 // tests/unit/edge-functions/store-api-key.test.ts
@@ -38928,7 +38928,7 @@ describe("stripe-webhook event handling", () => {
 });
 ```
 
-### Unit Test Coverage Targets {#unit-test-coverage-targets}
+### Unit Test Coverage Targets 
 
 | Module | Target Coverage | Priority |
 | :---- | :---- | :---- |
@@ -38944,11 +38944,11 @@ describe("stripe-webhook event handling", () => {
 
 ---
 
-## 22.5 Integration Tests {#22.5-integration-tests}
+## 22.5 Integration Tests 
 
 Integration tests verify that multiple components work together against a real (local) Supabase instance. These require `supabase start` to be running.
 
-### Database: RLS Policies {#database:-rls-policies}
+### Database: RLS Policies 
 
 ```ts
 // tests/integration/database/rls-policies.test.ts
@@ -39018,7 +39018,7 @@ describe("Row Level Security", () => {
 });
 ```
 
-### Database: RPC Functions {#database:-rpc-functions}
+### Database: RPC Functions 
 
 ```ts
 // tests/integration/database/rpc-functions.test.ts
@@ -39063,7 +39063,7 @@ describe("RPC functions", () => {
 });
 ```
 
-### Database: Triggers {#database:-triggers}
+### Database: Triggers 
 
 ```ts
 // tests/integration/database/triggers.test.ts
@@ -39104,7 +39104,7 @@ describe("Database triggers", () => {
 });
 ```
 
-### Pipelines {#pipelines}
+### Pipelines 
 
 ```ts
 // tests/integration/pipelines/message-to-response.test.ts
@@ -39179,7 +39179,7 @@ describe("File upload → Storage pipeline", () => {
 
 ---
 
-## 22.6 Component Tests {#22.6-component-tests}
+## 22.6 Component Tests 
 
 Component tests render React components with mock data and verify that the correct elements are visible, interactive, and accessible.
 
@@ -39324,7 +39324,7 @@ describe("ExportModal", () => {
 });
 ```
 
-### Component Test Coverage Targets {#component-test-coverage-targets}
+### Component Test Coverage Targets 
 
 | Component Category | Coverage | Notes |
 | :---- | :---- | :---- |
@@ -39336,11 +39336,11 @@ describe("ExportModal", () => {
 
 ---
 
-## 22.7 End-to-End Tests {#22.7-end-to-end-tests}
+## 22.7 End-to-End Tests 
 
 E2E tests run against a real application (local dev server \+ local Supabase) in a real browser via Playwright.
 
-### Test Accounts {#test-accounts}
+### Test Accounts 
 
 ```ts
 // tests/e2e/fixtures.ts
@@ -39352,7 +39352,7 @@ export const testUsers = {
 };
 ```
 
-### Critical Flow Tests {#critical-flow-tests}
+### Critical Flow Tests 
 
 ```ts
 // tests/e2e/auth.spec.ts
@@ -39583,7 +39583,7 @@ test.describe("Accessibility", () => {
 
 ---
 
-## 22.8 Performance Benchmarks {#22.8-performance-benchmarks}
+## 22.8 Performance Benchmarks 
 
 Performance targets that must be met before launch. Measured via Playwright performance tracing and Vercel Analytics.
 
@@ -39603,7 +39603,7 @@ Performance targets that must be met before launch. Measured via Playwright perf
 | Command palette open | \< 50ms | Instant — no data fetch required |
 | Export generation (100 messages) | \< 10s | Edge Function response time |
 
-### Performance Test Suite {#performance-test-suite}
+### Performance Test Suite 
 
 ```ts
 // tests/e2e/performance.spec.ts
@@ -39642,9 +39642,9 @@ test.describe("Performance", () => {
 
 ---
 
-## 22.9 CI/CD Pipeline {#22.9-ci/cd-pipeline}
+## 22.9 CI/CD Pipeline 
 
-### GitHub Actions Workflow {#github-actions-workflow}
+### GitHub Actions Workflow 
 
 ```
 # .github/workflows/ci.yml
@@ -39725,7 +39725,7 @@ jobs:
           path: playwright-report/
 ```
 
-### Package.json Scripts {#package.json-scripts}
+### Package.json Scripts 
 
 ```json
 {
@@ -39748,7 +39748,7 @@ jobs:
 }
 ```
 
-### Quality Gates {#quality-gates}
+### Quality Gates 
 
 Pull requests are blocked from merging if any of these fail:
 
@@ -39765,11 +39765,11 @@ Pull requests are blocked from merging if any of these fail:
 
 ---
 
-## 22.10 Launch Readiness Checklist {#22.10-launch-readiness-checklist}
+## 22.10 Launch Readiness Checklist 
 
 A release candidate must pass all items before deployment to production.
 
-### Functional Readiness {#functional-readiness}
+### Functional Readiness 
 
 - [ ] All 14 E2E test suites pass on Chromium  
 - [ ] Auth flow works for email signup, email login, Google OAuth, GitHub OAuth  
@@ -39784,7 +39784,7 @@ A release candidate must pass all items before deployment to production.
 - [ ] Settings changes persist across page refreshes  
 - [ ] Realtime subscriptions deliver messages, typing indicators, and notifications
 
-### Performance Readiness {#performance-readiness}
+### Performance Readiness 
 
 - [ ] LCP \< 2.5s on production build  
 - [ ] FCP \< 1.5s on production build  
@@ -39793,7 +39793,7 @@ A release candidate must pass all items before deployment to production.
 - [ ] Bundle size \< 200KB gzipped initial JS  
 - [ ] No memory leaks in Realtime subscriptions (verified via 1-hour soak test)
 
-### Security Readiness {#security-readiness}
+### Security Readiness 
 
 - [ ] RLS policies verified for all 35 tables (cross-user isolation confirmed)  
 - [ ] API key encryption verified (encrypted\_key cannot be reversed without secret)  
@@ -39802,7 +39802,7 @@ A release candidate must pass all items before deployment to production.
 - [ ] No API keys or secrets in client-side bundle (verified via `next build` output grep)  
 - [ ] Rate limiting functional and tested at all tier levels
 
-### Accessibility Readiness {#accessibility-readiness}
+### Accessibility Readiness 
 
 - [ ] All interactive elements have keyboard focus indicators  
 - [ ] Command palette navigable via keyboard  
@@ -39810,7 +39810,7 @@ A release candidate must pass all items before deployment to production.
 - [ ] Color contrast meets WCAG 2.1 AA (4.5:1 for text, 3:1 for UI components)  
 - [ ] Screen reader can navigate sidebar, message list, and forms
 
-### Error Handling Readiness {#error-handling-readiness}
+### Error Handling Readiness 
 
 - [ ] All empty states render correctly (verified per Part 21 catalog)  
 - [ ] Network loss shows offline banner and recovers gracefully  
@@ -39822,7 +39822,7 @@ A release candidate must pass all items before deployment to production.
 
 ---
 
-## 22.11 Cross-Reference {#22.11-cross-reference}
+## 22.11 Cross-Reference 
 
 | Test Category | Covers Parts |
 | :---- | :---- |
@@ -39856,7 +39856,7 @@ A release candidate must pass all items before deployment to production.
 
 *End of Part 22\. Proceed to Part 23: Deployment & Infrastructure.*
 
-# PART 23: DEPLOYMENT & INFRASTRUCTURE {#part-23:-deployment-&-infrastructure-1}
+# PART 23: DEPLOYMENT & INFRASTRUCTURE 
 
 ---
 
@@ -39864,7 +39864,7 @@ This part defines the complete deployment architecture for aiConnected: the thre
 
 ---
 
-## 23.1 Architecture Overview {#23.1-architecture-overview}
+## 23.1 Architecture Overview 
 
 aiConnected runs on two managed platforms with no custom servers to operate:
 
@@ -39903,9 +39903,9 @@ aiConnected runs on two managed platforms with no custom servers to operate:
 
 ---
 
-## 23.2 Environments {#23.2-environments}
+## 23.2 Environments 
 
-### Development (Local) {#development-(local)}
+### Development (Local) 
 
 Developers run the full stack locally using the Supabase CLI and Next.js dev server.
 
@@ -39962,7 +39962,7 @@ supabase db reset    # Drops, recreates, runs migrations, then runs seed.sql
 - 1 sample instance with chats and messages  
 - Sample search history entries
 
-### Staging {#staging}
+### Staging 
 
 A dedicated Supabase project and Vercel preview environment for pre-production testing.
 
@@ -40008,7 +40008,7 @@ NEXT_PUBLIC_SITE_URL=https://aiconnected-staging.vercel.app
 - Contains synthetic test data, not real user data  
 - Accessible to team members only (Vercel password protection)
 
-### Production {#production}
+### Production 
 
 | Component | Platform | URL |
 | :---- | :---- | :---- |
@@ -40036,9 +40036,9 @@ supabase functions deploy
 
 ---
 
-## 23.3 Database Migration Workflow {#23.3-database-migration-workflow}
+## 23.3 Database Migration Workflow 
 
-### Migration File Structure {#migration-file-structure}
+### Migration File Structure 
 
 ```
 supabase/
@@ -40068,7 +40068,7 @@ supabase/
   seed.sql                                  — Development seed data
 ```
 
-### Migration Commands {#migration-commands}
+### Migration Commands 
 
 ```shell
 # Create a new migration
@@ -40089,7 +40089,7 @@ supabase db diff --use-migra [migration_name]
 # → Creates migration SQL from schema differences
 ```
 
-### Migration Rules {#migration-rules}
+### Migration Rules 
 
 1. **Forward-only:** Migrations are append-only. Never edit a migration that has been applied to staging or production.  
 2. **Idempotent where possible:** Use `CREATE TABLE IF NOT EXISTS`, `CREATE OR REPLACE FUNCTION`, `CREATE INDEX IF NOT EXISTS`.  
@@ -40097,7 +40097,7 @@ supabase db diff --use-migra [migration_name]
 4. **Test locally first:** Every migration runs against `supabase db reset` locally before being pushed to staging.  
 5. **Review before production:** Migrations to production are reviewed by reading the SQL diff and confirmed manually.
 
-### Schema Change Process {#schema-change-process}
+### Schema Change Process 
 
 ```
 Developer creates migration locally
@@ -40119,9 +40119,9 @@ supabase db push --linked (production)
 
 ---
 
-## 23.4 Edge Function Deployment {#23.4-edge-function-deployment}
+## 23.4 Edge Function Deployment 
 
-### Deployment Process {#deployment-process}
+### Deployment Process 
 
 Edge Functions are deployed independently from the Next.js frontend. They run in Supabase's Deno runtime.
 
@@ -40136,7 +40136,7 @@ supabase functions deploy search
 # ... etc.
 ```
 
-### Function Directory Structure (Part 19, Section 19.20) {#function-directory-structure-(part-19,-section-19.20)}
+### Function Directory Structure (Part 19, Section 19.20) 
 
 ```
 supabase/functions/
@@ -40165,7 +40165,7 @@ supabase/functions/
   generate-embedding/index.ts
 ```
 
-### Function Configuration {#function-configuration}
+### Function Configuration 
 
 Each function can have specific resource limits set in `supabase/config.toml`:
 
@@ -40189,7 +40189,7 @@ verify_jwt = false  # Stripe signature verification instead
 verify_jwt = false  # Service role auth
 ```
 
-### Deployment Verification {#deployment-verification}
+### Deployment Verification 
 
 After deploying, verify each function is reachable:
 
@@ -40209,9 +40209,9 @@ curl -X POST https://[project-ref].supabase.co/functions/v1/search \
 
 ---
 
-## 23.5 Environment Variable Management {#23.5-environment-variable-management}
+## 23.5 Environment Variable Management 
 
-### Complete Variable Registry {#complete-variable-registry}
+### Complete Variable Registry 
 
 All environment variables across both platforms, organized by service:
 
@@ -40246,7 +40246,7 @@ All environment variables across both platforms, organized by service:
 | `SENTRY_DSN` | Client \+ Server | Sentry error tracking |
 | `SENTRY_AUTH_TOKEN` | Server only | Sentry release upload |
 
-### Secret Rotation {#secret-rotation}
+### Secret Rotation 
 
 | Secret | Rotation Schedule | Process |
 | :---- | :---- | :---- |
@@ -40256,7 +40256,7 @@ All environment variables across both platforms, organized by service:
 | `API_KEY_ENCRYPTION_SECRET` | Never (re-encryption required) | Generate new secret → run re-encryption migration → update |
 | `SENTRY_AUTH_TOKEN` | Annually | Regenerate in Sentry → update Vercel env |
 
-### Environment Parity {#environment-parity}
+### Environment Parity 
 
 All three environments (dev, staging, production) must have the same variables set. The only differences:
 
@@ -40268,9 +40268,9 @@ All three environments (dev, staging, production) must have the same variables s
 
 ---
 
-## 23.6 CI/CD Pipeline {#23.6-ci/cd-pipeline}
+## 23.6 CI/CD Pipeline 
 
-### Branch Strategy {#branch-strategy}
+### Branch Strategy 
 
 ```
 main                — Production. Protected branch. Requires PR + CI pass.
@@ -40279,7 +40279,7 @@ main                — Production. Protected branch. Requires PR + CI pass.
   └── release/*     — Release prep branches (rare). PR to main.
 ```
 
-### Pipeline Stages {#pipeline-stages}
+### Pipeline Stages 
 
 ```
 Push to feature branch
@@ -40313,7 +40313,7 @@ Vercel auto-deploys to production (frontend)
 Manual: supabase db push + functions deploy (database + Edge Functions)
 ```
 
-### GitHub Actions Workflow {#github-actions-workflow-1}
+### GitHub Actions Workflow 
 
 Full workflow defined in Part 22, Section 22.9. Key additions for deployment:
 
@@ -40369,7 +40369,7 @@ jobs:
           SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
 ```
 
-### Vercel Configuration {#vercel-configuration}
+### Vercel Configuration 
 
 ```json
 // vercel.json
@@ -40396,7 +40396,7 @@ jobs:
 }
 ```
 
-### Vercel Deployment Settings {#vercel-deployment-settings}
+### Vercel Deployment Settings 
 
 | Setting | Value |
 | :---- | :---- |
@@ -40413,9 +40413,9 @@ jobs:
 
 ---
 
-## 23.7 Monitoring & Observability {#23.7-monitoring-&-observability}
+## 23.7 Monitoring & Observability 
 
-### Frontend Monitoring {#frontend-monitoring}
+### Frontend Monitoring 
 
 **Vercel Analytics (built-in):**
 
@@ -40460,7 +40460,7 @@ Sentry.init({
 - Performance traces (route transitions, data fetching)  
 - Session replays for error reproduction
 
-### Backend Monitoring {#backend-monitoring}
+### Backend Monitoring 
 
 **Supabase Dashboard (built-in):**
 
@@ -40532,7 +40532,7 @@ log("error", "cipher_route_error", {
 | `stripe-webhook` | `stripe_event_processed` | event\_type, customer\_id, tier\_change |
 | `team-execute` | `team_run_complete` | team\_id, steps\_completed, steps\_failed, total\_duration |
 
-### Custom Metrics (activity\_log table) {#custom-metrics-(activity_log-table)}
+### Custom Metrics (activity\_log table) 
 
 The `activity_log` table (Part 18\) serves as a persistent audit trail. Key metrics extracted from it:
 
@@ -40546,15 +40546,15 @@ The `activity_log` table (Part 18\) serves as a persistent audit trail. Key metr
 
 ---
 
-## 23.8 Security Hardening {#23.8-security-hardening}
+## 23.8 Security Hardening 
 
-### Transport Security {#transport-security}
+### Transport Security 
 
 - All traffic is HTTPS only. Vercel enforces HTTPS with automatic certificate management.  
 - Supabase connections use TLS. The Supabase JS SDK connects over HTTPS.  
 - WebSocket (Realtime) connections use WSS.
 
-### Authentication Security {#authentication-security}
+### Authentication Security 
 
 | Measure | Implementation |
 | :---- | :---- |
@@ -40565,7 +40565,7 @@ The `activity_log` table (Part 18\) serves as a persistent audit trail. Key metr
 | Email confirmation | Required for email signup (Supabase Auth setting) |
 | Rate limiting on auth | Supabase built-in: 30 requests per hour per IP |
 
-### Data Security {#data-security}
+### Data Security 
 
 | Measure | Implementation |
 | :---- | :---- |
@@ -40576,7 +40576,7 @@ The `activity_log` table (Part 18\) serves as a persistent audit trail. Key metr
 | Input sanitization | `sanitizeUserInput()` in cipher-route (Part 14). `escapeHtml()` in exports. |
 | SQL injection prevention | Supabase SDK uses parameterized queries. No raw SQL from user input. |
 
-### HTTP Security Headers {#http-security-headers}
+### HTTP Security Headers 
 
 Set in `vercel.json` (Section 23.6):
 
@@ -40588,7 +40588,7 @@ Set in `vercel.json` (Section 23.6):
 | `Referrer-Policy` | `strict-origin-when-cross-origin` | Limit referrer leakage |
 | `Permissions-Policy` | `camera=(), microphone=(), geolocation=()` | Disable unnecessary browser APIs |
 
-### Content Security Policy {#content-security-policy}
+### Content Security Policy 
 
 Added via Next.js middleware for more granular control:
 
@@ -40622,7 +40622,7 @@ export const config = {
 };
 ```
 
-### Browser Workspace Security {#browser-workspace-security}
+### Browser Workspace Security 
 
 The browser proxy (Part 11\) has specific security measures:
 
@@ -40634,7 +40634,7 @@ The browser proxy (Part 11\) has specific security measures:
 | Clickjacking | Proxy strips `X-Frame-Options` and `CSP` from proxied content (necessary for iframe display) |
 | postMessage injection | Origin checking on all postMessage handlers |
 
-### Dependency Security {#dependency-security}
+### Dependency Security 
 
 ```shell
 # Run dependency audit
@@ -40657,9 +40657,9 @@ Add to CI pipeline:
 
 ---
 
-## 23.9 Performance Optimization {#23.9-performance-optimization}
+## 23.9 Performance Optimization 
 
-### Frontend Optimizations {#frontend-optimizations}
+### Frontend Optimizations 
 
 **Code splitting:** Next.js App Router automatically code-splits by route. Each page loads only its required JavaScript.
 
@@ -40723,7 +40723,7 @@ const nextConfig = {
 | Dashboard stats | 30s | 5 min | refetchOnWindowFocus \+ Realtime |
 | Activity feed | 15s | 5 min | Realtime insert handler |
 
-### Database Optimizations {#database-optimizations}
+### Database Optimizations 
 
 **Indexes** (Part 18, Section 18.16):
 
@@ -40751,7 +40751,7 @@ SELECT cron.schedule('refresh-analytics-daily', '0 3 * * *',
 
 **Connection pooling:** Supabase manages connection pooling via PgBouncer (Supavisor). Default pool mode is `transaction`. No application-level pooling configuration required.
 
-### Edge Function Optimizations {#edge-function-optimizations}
+### Edge Function Optimizations 
 
 | Optimization | Implementation |
 | :---- | :---- |
@@ -40763,9 +40763,9 @@ SELECT cron.schedule('refresh-analytics-daily', '0 3 * * *',
 
 ---
 
-## 23.10 Backup & Recovery {#23.10-backup-&-recovery}
+## 23.10 Backup & Recovery 
 
-### Database Backups {#database-backups}
+### Database Backups 
 
 **Supabase managed backups:**
 
@@ -40788,7 +40788,7 @@ pg_dump -h db.[ref].supabase.co -U postgres -d postgres > backup_$(date +%Y%m%d)
 pg_dump -h db.[ref].supabase.co -U postgres -d postgres -t profiles -t chats -t messages > partial_backup.sql
 ```
 
-### Storage Backups {#storage-backups}
+### Storage Backups 
 
 Supabase Storage files are stored in the same project infrastructure. For additional redundancy:
 
@@ -40798,7 +40798,7 @@ npx supabase storage ls user-files --recursive > file_manifest.txt
 # Download critical files using signed URLs or the Storage API
 ```
 
-### Recovery Procedures {#recovery-procedures}
+### Recovery Procedures 
 
 | Scenario | Recovery Method | RTO | RPO |
 | :---- | :---- | :---- | :---- |
@@ -40809,7 +40809,7 @@ npx supabase storage ls user-files --recursive > file_manifest.txt
 | Storage file deletion | Restore from backup or Supabase support | 1–24 hours | Up to 24 hours |
 | Full Supabase outage | Wait for platform recovery (managed service) | Depends on Supabase | Depends on Supabase |
 
-### Vercel Rollback {#vercel-rollback}
+### Vercel Rollback 
 
 Vercel maintains all previous deployments. Instant rollback:
 
@@ -40823,11 +40823,11 @@ vercel rollback [deployment-url]
 
 ---
 
-## 23.11 Scaling Considerations {#23.11-scaling-considerations}
+## 23.11 Scaling Considerations 
 
 aiConnected is designed for the initial launch scale (hundreds to low thousands of users). The architecture is horizontally scalable through platform features.
 
-### Scaling Levers {#scaling-levers}
+### Scaling Levers 
 
 | Bottleneck | Scaling Lever | Trigger |
 | :---- | :---- | :---- |
@@ -40840,7 +40840,7 @@ aiConnected is designed for the initial launch scale (hundreds to low thousands 
 | AI model throughput | OpenRouter handles scaling | N/A |
 | Stripe webhook volume | Stripe handles delivery | N/A |
 
-### When to Consider Additional Infrastructure {#when-to-consider-additional-infrastructure}
+### When to Consider Additional Infrastructure 
 
 | Signal | Action | Timeline |
 | :---- | :---- | :---- |
@@ -40852,16 +40852,16 @@ aiConnected is designed for the initial launch scale (hundreds to low thousands 
 
 ---
 
-## 23.12 Domain & DNS Configuration {#23.12-domain-&-dns-configuration}
+## 23.12 Domain & DNS Configuration 
 
-### Domain Setup {#domain-setup}
+### Domain Setup 
 
 | Domain | Purpose | DNS Provider |
 | :---- | :---- | :---- |
 | `aiconnected.app` | Production application | Registrar DNS or Cloudflare |
 | `staging.aiconnected.app` | Staging environment (optional) | Same |
 
-### DNS Records {#dns-records}
+### DNS Records 
 
 ```
 Type    Name                  Value                           TTL
@@ -40869,7 +40869,7 @@ A       aiconnected.app       76.76.21.21 (Vercel)           300
 CNAME   www                   cname.vercel-dns.com            300
 ```
 
-### Vercel Domain Configuration {#vercel-domain-configuration}
+### Vercel Domain Configuration 
 
 ```shell
 # Add custom domain
@@ -40881,7 +40881,7 @@ vercel domains add aiconnected.app
 # → Enable automatic HTTPS (Let's Encrypt)
 ```
 
-### Supabase Custom Domain (Optional) {#supabase-custom-domain-(optional)}
+### Supabase Custom Domain (Optional) 
 
 For white-labeling the Supabase URL (e.g., `api.aiconnected.app` instead of `[ref].supabase.co`):
 
@@ -40893,9 +40893,9 @@ For white-labeling the Supabase URL (e.g., `api.aiconnected.app` instead of `[re
 
 ---
 
-## 23.13 Stripe Configuration {#23.13-stripe-configuration}
+## 23.13 Stripe Configuration 
 
-### Stripe Products & Prices {#stripe-products-&-prices}
+### Stripe Products & Prices 
 
 Create in Stripe Dashboard (or via Stripe CLI):
 
@@ -40908,7 +40908,7 @@ Create in Stripe Dashboard (or via Stripe CLI):
 | 300 Credits Pack | `STRIPE_PRICE_CREDITS_300` | $12 (one-time) | — |
 | 1000 Credits Pack | `STRIPE_PRICE_CREDITS_1000` | $35 (one-time) | — |
 
-### Webhook Configuration {#webhook-configuration}
+### Webhook Configuration 
 
 In Stripe Dashboard → Developers → Webhooks:
 
@@ -40918,7 +40918,7 @@ In Stripe Dashboard → Developers → Webhooks:
 | Events | `checkout.session.completed`, `customer.subscription.updated`, `customer.subscription.deleted`, `invoice.payment_failed`, `invoice.paid` |
 | Signing secret | Stored as `STRIPE_WEBHOOK_SECRET` |
 
-### Customer Portal {#customer-portal}
+### Customer Portal 
 
 Configure Stripe Customer Portal for self-service subscription management:
 
@@ -40932,9 +40932,9 @@ Configure Stripe Customer Portal for self-service subscription management:
 
 ---
 
-## 23.14 Incident Response {#23.14-incident-response}
+## 23.14 Incident Response 
 
-### Severity Levels {#severity-levels}
+### Severity Levels 
 
 | Severity | Definition | Response Time | Examples |
 | :---- | :---- | :---- | :---- |
@@ -40943,7 +40943,7 @@ Configure Stripe Customer Portal for self-service subscription management:
 | P3 (Medium) | Feature degraded or broken for some users | 4 hours | Search returning incomplete results, one model provider failing |
 | P4 (Low) | Minor issue, workaround available | 24 hours | UI glitch, non-critical toast not appearing, analytics stale |
 
-### Response Procedures {#response-procedures}
+### Response Procedures 
 
 **P1 — Critical:**
 
@@ -40966,7 +40966,7 @@ Configure Stripe Customer Portal for self-service subscription management:
 2. Schedule fix in next sprint  
 3. Deploy with regular release cycle
 
-### Status Page {#status-page}
+### Status Page 
 
 Use a lightweight status page service (e.g., Instatus, Upptime, or Betteruptime) to communicate:
 
@@ -40974,7 +40974,7 @@ Use a lightweight status page service (e.g., Instatus, Upptime, or Betteruptime)
 - Incident history  
 - Planned maintenance windows
 
-### Health Check Endpoints {#health-check-endpoints}
+### Health Check Endpoints 
 
 ```ts
 // app/api/health/route.ts (Next.js server route)
@@ -41016,9 +41016,9 @@ Endpoint: `GET /api/health` — used by uptime monitors.
 
 ---
 
-## 23.15 Operational Runbooks {#23.15-operational-runbooks}
+## 23.15 Operational Runbooks 
 
-### Runbook: Deploy a Database Migration {#runbook:-deploy-a-database-migration}
+### Runbook: Deploy a Database Migration 
 
 ```
 1. Ensure migration is committed and tested locally (supabase db reset)
@@ -41031,7 +41031,7 @@ Endpoint: `GET /api/health` — used by uptime monitors.
 8. If failure: evaluate PITR restore or forward-fix
 ```
 
-### Runbook: Add a New Edge Function {#runbook:-add-a-new-edge-function}
+### Runbook: Add a New Edge Function 
 
 ```
 1. Create directory: supabase/functions/[function-name]/index.ts
@@ -41045,7 +41045,7 @@ Endpoint: `GET /api/health` — used by uptime monitors.
 9. Update this PRD if the function has user-facing behavior
 ```
 
-### Runbook: Rotate OpenRouter API Key {#runbook:-rotate-openrouter-api-key}
+### Runbook: Rotate OpenRouter API Key 
 
 ```
 1. Generate new key at https://openrouter.ai/keys
@@ -41056,7 +41056,7 @@ Endpoint: `GET /api/health` — used by uptime monitors.
 6. Revoke old key in OpenRouter dashboard
 ```
 
-### Runbook: Respond to Stripe Webhook Failure {#runbook:-respond-to-stripe-webhook-failure}
+### Runbook: Respond to Stripe Webhook Failure 
 
 ```
 1. Check Stripe Dashboard → Developers → Webhooks → Event Deliveries
@@ -41067,7 +41067,7 @@ Endpoint: `GET /api/health` — used by uptime monitors.
 6. Verify subscriptions table is consistent with Stripe state
 ```
 
-### Runbook: Emergency Vercel Rollback {#runbook:-emergency-vercel-rollback}
+### Runbook: Emergency Vercel Rollback 
 
 ```
 1. Go to Vercel Dashboard → [project] → Deployments
@@ -41080,7 +41080,7 @@ Endpoint: `GET /api/health` — used by uptime monitors.
 
 ---
 
-## 23.16 Cross-Reference {#23.16-cross-reference}
+## 23.16 Cross-Reference 
 
 | Infrastructure Concern | Source Part(s) |
 | :---- | :---- |
