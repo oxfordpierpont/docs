@@ -1,0 +1,2636 @@
+# Contact by aiConnected
+
+## Complete Product Documentation
+
+---
+
+## Table of Contents
+
+1. [Overview](#overview)
+2. [The Problem](#the-problem)
+3. [How Contact Solves It](#how-contact-solves-it)
+4. [Core Concepts](#core-concepts)
+5. [Architecture](#architecture)
+6. [User Experience Flows](#user-experience-flows)
+7. [Technical Implementation](#technical-implementation)
+8. [API Reference](#api-reference)
+9. [Ecosystem Integration](#ecosystem-integration)
+10. [Privacy & Compliance](#privacy-and-compliance)
+11. [Deployment Guide](#deployment-guide)
+12. [Pricing & Business Model](#pricing-and-business-model)
+
+---
+
+## Overview
+
+Contact by aiConnected transforms the traditional contact form from a passive data collection tool into an intelligent engagement system that captures leads at their moment of highest intent.
+
+### What Contact Does
+
+Contact analyzes form submissions in real-time and immediately engages visitors through a conversational interface while they're still on your website. Instead of showing a thank you page and letting leads go cold, Contact keeps them engaged, answers their questions, and facilitates immediate connection with your team.
+
+### Key Differentiators
+
+- **Instant engagement** after form submission (no "thank you and wait" dead zone)
+- **AI-powered triage** that distinguishes high-intent leads from spam in milliseconds
+- **Conversational continuation** via lightweight chat interface
+- **Real-time sales alerts** when valuable leads are active on-site
+- **Voice escalation** for immediate phone conversations with hot leads
+- **Knowledge integration** for accurate, context-aware responses
+- **Privacy-first design** with no cross-site tracking or persistent memory
+
+### What Contact Is NOT
+
+Contact is not a traditional chatbot, live chat system, or comprehensive CRM. It is specifically designed to solve the "form submission to engagement" gap that causes most businesses to lose 40-60% of inbound leads.
+
+---
+
+## The Problem
+
+### The Traditional Contact Form Failure Pattern
+
+**Standard flow:**
+1. Visitor fills out contact form with genuine interest
+2. Submits form
+3. Sees generic "Thank you! We'll be in touch" message
+4. Leaves website
+5. **2-48 hours pass** before anyone responds
+6. Lead is now cold, visitor has moved on to competitors
+
+**The cost:**
+- Studies show 78% of buyers choose the vendor who responds first
+- Every hour of delay reduces conversion probability by 10%
+- 50-70% of web leads never receive any response at all
+- Average form-to-contact conversion rate: 5-15%
+
+### Why This Happens
+
+**Human bandwidth limitations:**
+- Sales teams can't monitor forms 24/7
+- Response requires context gathering and personalization
+- High-value leads get lost in noise and spam
+- No way to prioritize without reading every message
+
+**Technical limitations:**
+- Traditional forms have no intelligence layer
+- No way to distinguish urgent leads from casual inquiries
+- No mechanism to engage visitors before they leave
+- Integration gaps between form, CRM, and communication tools
+
+### Peak Intent Moment Wasted
+
+When a visitor submits a contact form, they have:
+- Actively sought you out
+- Given you their contact information
+- Articulated their need
+- Clicked "submit" (conversion action)
+
+**This is peak engagement.** Yet 99% of contact forms waste this moment by immediately disconnecting from the visitor.
+
+---
+
+## How Contact Solves It
+
+### The Contact Approach
+
+Contact capitalizes on the peak intent moment by **continuing the conversation immediately** after form submission, while the visitor is still engaged and on your website.
+
+### Three-Phase System
+
+#### Phase 1: Intelligent Analysis (< 500ms)
+
+Upon form submission, Contact's AI engine analyzes:
+- **Intent classification**: Sales, support, billing, partnership, recruiting, press, other
+- **Urgency scoring**: 0-100 scale based on language, entities, and context
+- **Sentiment detection**: Positive, neutral, negative, frustrated, excited
+- **Spam probability**: Behavioral fingerprinting and content analysis
+- **Entity extraction**: Company name, budget signals, timeline, product interest
+- **Lead scoring**: Overall quality assessment for routing priority
+
+#### Phase 2: Conditional Engagement
+
+Based on analysis results, Contact takes different paths:
+
+**High-intent, non-spam leads (urgency > 70, spam < 0.2):**
+- Transform form into conversational chat interface
+- AI initiates contextual follow-up questions
+- Offer immediate scheduling, voice callback, or information
+- Alert sales team in real-time that lead is active on-site
+- Enable human takeover if sales rep wants to jump in
+
+**Medium-intent leads (urgency 40-70):**
+- Provide helpful auto-response using Knowledge integration
+- Offer self-service options (FAQ, resource links, scheduling)
+- Log for follow-up within business hours
+- No immediate sales alert (managed in pipeline)
+
+**Low-intent or informational inquiries (urgency < 40):**
+- Answer questions using Knowledge base
+- Provide relevant resources
+- Offer to connect them with support
+- Route to appropriate department
+
+**Spam or solicitation (spam > 0.8):**
+- Show generic thank you message
+- Do not engage with chat interface
+- Silently depreciate, no alerts sent
+- Log for pattern learning
+
+#### Phase 3: Ecosystem Activation
+
+While engaging the visitor, Contact triggers relevant aiConnected services:
+
+- **Voice by aiConnected**: Immediate callback for ultra-high-intent leads
+- **Knowledge by aiConnected**: Accurate answers from company's knowledge base
+- **Paper by aiConnected**: Personalized follow-up content generation
+- **Agency CRM**: Structured data sync with lead intelligence attached
+
+### The Result
+
+**Typical outcomes with Contact:**
+- Form-to-conversation rate: 70-85% (vs. 5-15% traditional)
+- Time to first engagement: 30 seconds (vs. 2-48 hours traditional)
+- Lead qualification accuracy: 94% (vs. manual review required)
+- Sales team response efficiency: 3x faster (only notified for real opportunities)
+- Spam handling: 99.2% filtered automatically (vs. manual review)
+
+---
+
+## Core Concepts
+
+### 1. The Peak Intent Window
+
+**Definition:** The 60-180 second period immediately after form submission when visitor engagement is at its highest.
+
+**Why it matters:**
+- Visitor is still on your website
+- Their need is top-of-mind
+- They've already committed to engagement (gave contact info)
+- Competitors haven't responded yet
+- Psychological momentum is in your favor
+
+**How Contact exploits it:**
+- Instant response (< 500ms analysis time)
+- Conversational continuation (doesn't feel like disconnection)
+- Immediate value delivery (answers, scheduling, connection)
+- Prevents "submit and forget" behavior
+
+### 2. Conversational Transformation
+
+**Traditional:** Form → Submit Button → Thank You Page → Exit
+
+**Contact:** Form → Submit Button → Chat Interface → Continued Engagement
+
+The form widget morphs into a lightweight chat interface, creating the perception of seamless conversation rather than a transactional submission.
+
+### 3. Intelligence-Driven Routing
+
+Contact doesn't treat all submissions equally. The AI analysis determines:
+
+**Engagement level:**
+- Ultra-high intent → Aggressive engagement (voice callback offer)
+- High intent → Conversational engagement (chat with options)
+- Medium intent → Helpful engagement (answers + scheduling)
+- Low intent → Minimal engagement (auto-response)
+- Spam → No engagement (silent depreciation)
+
+**Human notification:**
+- Urgency > 85 → Immediate Slack/SMS alert
+- Urgency 70-85 → Email alert, added to hot leads queue
+- Urgency 40-70 → CRM sync, standard pipeline
+- Urgency < 40 → Support routing or auto-handled
+
+### 4. Privacy Boundary Respect
+
+**What Contact does NOT do:**
+- Track visitors across multiple sites
+- Store behavioral history beyond single session
+- Create persistent user profiles without consent
+- Integrate with Brain by aiConnected (reserved for authenticated users)
+
+**Why this matters:**
+- GDPR/CCPA compliance by design
+- No surveillance capitalism concerns
+- Transparent data handling
+- Visitor trust and brand protection
+
+Contact treats each form submission as an isolated, consented interaction. Any persistent tracking requires explicit opt-in through different mechanisms.
+
+### 5. Clean Output Philosophy
+
+Contact is an **intelligence API**, not a workflow automation platform.
+
+**What Contact provides:**
+- Structured JSON analysis of form submission
+- Real-time conversational engagement
+- Webhook triggers with clean data
+- Optional integrations (calendar, Voice, Knowledge)
+
+**What agencies/businesses handle:**
+- CRM integration logic
+- Custom workflow automation (via their n8n, Zapier, Make)
+- Department-specific routing rules
+- Follow-up sequences beyond initial engagement
+
+This separation ensures Contact remains flexible, fast, and maintainable while giving customers full control over their business processes.
+
+---
+
+## Architecture
+
+### System Overview
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                     Website Visitor                         │
+└─────────────────────────────────────────────────────────────┘
+                              ↓
+┌─────────────────────────────────────────────────────────────┐
+│                  Contact Form Widget                        │
+│         (Embedded React Component on Client Site)           │
+└─────────────────────────────────────────────────────────────┘
+                              ↓
+                    [Form Submission Event]
+                              ↓
+┌─────────────────────────────────────────────────────────────┐
+│                   Contact API Service                       │
+│                                                              │
+│  ┌──────────────────────────────────────────────────────┐  │
+│  │  1. Receive Submission                                │  │
+│  │     - Validate data structure                         │  │
+│  │     - Extract metadata (source, UTM, timestamp)       │  │
+│  └──────────────────────────────────────────────────────┘  │
+│                         ↓                                    │
+│  ┌──────────────────────────────────────────────────────┐  │
+│  │  2. Spam Detection (Fast Filter)                      │  │
+│  │     - Behavioral fingerprinting                       │  │
+│  │     - Content pattern matching                        │  │
+│  │     - Email validation                                │  │
+│  │     - Returns: spam probability (0-1)                 │  │
+│  └──────────────────────────────────────────────────────┘  │
+│                         ↓                                    │
+│            [If spam > 0.8: Short-circuit]                   │
+│                         ↓                                    │
+│  ┌──────────────────────────────────────────────────────┐  │
+│  │  3. AI Classification (Claude API)                    │  │
+│  │     - Intent: sales/support/billing/other             │  │
+│  │     - Urgency: 0-100 score                            │  │
+│  │     - Sentiment: positive/neutral/negative            │  │
+│  │     - Entities: company, budget, timeline             │  │
+│  │     - Lead score: 0-100 overall quality               │  │
+│  └──────────────────────────────────────────────────────┘  │
+│                         ↓                                    │
+│  ┌──────────────────────────────────────────────────────┐  │
+│  │  4. Routing Logic                                     │  │
+│  │     - Determine engagement strategy                   │  │
+│  │     - Select notification recipients                  │  │
+│  │     - Prepare webhook payloads                        │  │
+│  └──────────────────────────────────────────────────────┘  │
+│                         ↓                                    │
+│  ┌──────────────────────────────────────────────────────┐  │
+│  │  5. Return Analysis + Instructions                    │  │
+│  │     - JSON response to widget                         │  │
+│  │     - Engagement directives                           │  │
+│  │     - Initial AI message                              │  │
+│  └──────────────────────────────────────────────────────┘  │
+└─────────────────────────────────────────────────────────────┘
+                              ↓
+        ┌─────────────────────┴─────────────────────┐
+        ↓                                            ↓
+┌──────────────────┐                    ┌──────────────────────┐
+│  Widget UI       │                    │  Alert System        │
+│  Transformation  │                    │                      │
+│                  │                    │  - Slack messages    │
+│  - Show chat UI  │                    │  - SMS alerts        │
+│  - AI greeting   │                    │  - Email notifications│
+│  - Conversation  │                    │  - CRM webhooks      │
+│    handlers      │                    └──────────────────────┘
+└──────────────────┘
+        ↓
+┌──────────────────────────────────────────────────────────────┐
+│              Conversational Engagement Loop                  │
+│                                                               │
+│  User Message → Contact Chat API → AI Response               │
+│       ↓              ↓                  ↓                     │
+│  [Query Knowledge]  [Offer Voice]  [Show Calendar]           │
+│       ↓              ↓                  ↓                     │
+│  Knowledge API   Voice API      Calendar Integration         │
+└──────────────────────────────────────────────────────────────┘
+                              ↓
+                    [Conversation Ends]
+                              ↓
+┌──────────────────────────────────────────────────────────────┐
+│                   Post-Engagement Actions                     │
+│                                                               │
+│  - Paper API: Queue follow-up email                          │
+│  - CRM Sync: Create/update contact with conversation data    │
+│  - Analytics: Log interaction metrics                        │
+│  - Webhook: Send complete payload to agency systems          │
+└──────────────────────────────────────────────────────────────┘
+```
+
+### Component Breakdown
+
+#### 1. Contact Form Widget (Frontend)
+
+**Technology:** React component (embeddable via script tag or npm package)
+
+**Responsibilities:**
+- Render customizable form fields
+- Handle form submission without page reload
+- Transform into chat interface post-submission
+- Manage conversation state
+- Communicate with Contact API
+- Handle voice/calendar integrations
+
+**Key features:**
+- Fully responsive design
+- Accessibility compliance (WCAG 2.1 AA)
+- Customizable styling (matches client brand)
+- Progressive enhancement (works without JavaScript)
+- Real-time typing indicators
+- Voice message recording
+- Calendar embed support
+
+#### 2. Contact API Service (Backend)
+
+**Technology:** Node.js (Express or Fastify)
+
+**Responsibilities:**
+- Receive and validate form submissions
+- Execute spam detection algorithms
+- Orchestrate AI classification via Claude API
+- Apply business logic for routing decisions
+- Manage conversation state during chat engagement
+- Trigger external integrations (Voice, Knowledge, Paper)
+- Send real-time alerts to sales teams
+- Provide webhook delivery to agency systems
+
+**Architecture principles:**
+- Stateless request handling (horizontally scalable)
+- Fast response times (< 500ms for analysis)
+- Graceful degradation (if Claude API slow, fall back to rule-based)
+- Comprehensive logging and monitoring
+- Rate limiting and abuse protection
+
+#### 3. AI Classification Engine
+
+**Technology:** Claude API (Sonnet 4.5 for speed/cost balance)
+
+**Input:**
+```json
+{
+  "name": "Bob Johnson",
+  "email": "bob@acmecorp.com",
+  "phone": "+1-555-0199",
+  "message": "Looking to hire 3 experienced SaaS salespeople ASAP",
+  "metadata": {
+    "source": "pricing-page",
+    "timestamp": "2026-04-17T14:23:11Z",
+    "utm_campaign": "google-ads-hiring",
+    "userAgent": "Mozilla/5.0..."
+  }
+}
+```
+
+**Prompt structure:**
+```
+Analyze this contact form submission for intent, urgency, and routing.
+
+Submission:
+Name: {name}
+Email: {email}
+Message: {message}
+Source page: {metadata.source}
+
+Provide JSON analysis:
+{
+  "intent": "sales|support|billing|partnership|recruiting|press|other",
+  "subIntent": "specific category within intent",
+  "urgency": 0-100,
+  "sentiment": "positive|neutral|negative|frustrated|excited",
+  "leadScore": 0-100,
+  "entities": {
+    "companyName": "extracted company name or null",
+    "companySize": "small|medium|large|enterprise or null",
+    "budget": "budget signals or null",
+    "timeline": "immediate|this-week|this-month|this-quarter|exploring or null",
+    "productInterest": ["specific products mentioned"]
+  },
+  "suggestedActions": ["route_to_sales", "high_priority_alert", "schedule_callback"],
+  "reasoning": "brief explanation of classification",
+  "confidence": 0-1
+}
+
+Be precise. Err toward conservative urgency scoring to avoid false positives.
+```
+
+**Output:**
+```json
+{
+  "intent": "recruiting",
+  "subIntent": "saas_sales_hiring",
+  "urgency": 88,
+  "sentiment": "neutral_positive",
+  "leadScore": 92,
+  "entities": {
+    "companyName": "Acme Corp",
+    "companySize": "medium",
+    "budget": null,
+    "timeline": "immediate",
+    "productInterest": ["sales_recruiting"]
+  },
+  "suggestedActions": [
+    "route_to_recruiting",
+    "high_priority_alert",
+    "offer_immediate_call"
+  ],
+  "reasoning": "High urgency indicated by 'ASAP', specific need for 'experienced SaaS salespeople', company context suggests qualified lead",
+  "confidence": 0.94
+}
+```
+
+#### 4. Spam Detection System
+
+**Multi-layer approach:**
+
+**Layer 1: Email validation (< 10ms)**
+- MX record verification
+- Disposable email domain blacklist
+- Known spam email patterns
+
+**Layer 2: Content analysis (< 50ms)**
+- Keyword spam indicators
+- Excessive links or promotional language
+- Generic template detection
+- Language coherence check
+
+**Layer 3: Behavioral fingerprinting (< 100ms)**
+- Form fill speed (too fast = bot)
+- Mouse movement patterns (honeypot field interaction)
+- Browser fingerprint (known bad actors)
+- IP reputation score
+
+**Layer 4: AI semantic analysis (< 400ms, only if layers 1-3 inconclusive)**
+- Contextual spam detection via Claude
+- Distinguishes legitimate urgency from spam urgency
+- Catches sophisticated spam that passes rule-based filters
+
+**Output:**
+```json
+{
+  "spamProbability": 0.02,
+  "spamIndicators": [],
+  "emailValid": true,
+  "ipReputation": "good",
+  "recommendation": "engage"
+}
+```
+
+#### 5. Conversation Manager
+
+**Responsibilities:**
+- Maintain chat context during active conversation
+- Route user messages to appropriate handlers
+- Determine when to query Knowledge API
+- Detect intent to schedule or request callback
+- Enable human takeover when sales rep joins
+- Track conversation metrics (response time, message count, outcome)
+
+**State management:**
+```json
+{
+  "conversationId": "conv_abc123",
+  "visitorEmail": "bob@acmecorp.com",
+  "startedAt": "2026-04-17T14:23:12Z",
+  "lastMessageAt": "2026-04-17T14:27:45Z",
+  "messageCount": 8,
+  "status": "active|ended|transferred_to_human",
+  "analysis": { /* original AI classification */ },
+  "messages": [
+    {
+      "role": "system",
+      "content": "Thanks for reaching out, Bob!",
+      "timestamp": "2026-04-17T14:23:12Z"
+    },
+    {
+      "role": "assistant",
+      "content": "I see you're looking to hire SaaS salespeople...",
+      "timestamp": "2026-04-17T14:23:13Z"
+    },
+    {
+      "role": "user",
+      "content": "Yes, what's your placement fee?",
+      "timestamp": "2026-04-17T14:24:31Z"
+    }
+  ],
+  "outcome": "scheduled_call|answered_question|transferred_to_human|abandoned|spam"
+}
+```
+
+**Human takeover protocol:**
+When sales rep clicks "Jump into conversation":
+1. Notify visitor: "Connecting you with [Rep Name]..."
+2. Send full conversation history to rep's interface
+3. Transfer message handling to rep
+4. AI transitions to assistant mode (can suggest responses to rep)
+5. Log takeover event with timing
+
+---
+
+## User Experience Flows
+
+### Flow 1: High-Intent Sales Lead
+
+**Scenario:** Bob visits company website, fills out contact form expressing urgent need to hire salespeople.
+
+**Step-by-step:**
+
+1. **Form Interaction (0:00)**
+   - Bob navigates to contact page
+   - Sees clean, professional form
+   - Fills in: Name, Email, Phone, Message
+   - Message: "Looking to hire 3 experienced SaaS salespeople ASAP for our company"
+   - Clicks "Submit"
+
+2. **Analysis Phase (0:01 - 0:01.5)**
+   - Form submission sent to Contact API
+   - Spam check: 0.01 probability (legitimate)
+   - AI analysis returns:
+     - Intent: recruiting
+     - Urgency: 88
+     - Lead score: 92
+     - Timeline: immediate
+   - Routing decision: High-priority engagement + alert sales team
+
+3. **UI Transformation (0:01.5 - 0:02)**
+   - Form smoothly transitions to chat interface
+   - System message: "Thanks for reaching out, Bob!"
+   - AI message (appears with typing animation):
+     ```
+     I see you're looking to hire SaaS salespeople. I can help with that.
+     
+     Would you like to:
+     • Talk to our recruiting team right now
+     • Schedule a call for later this week  
+     • Get more information about our services
+     • Ask me any questions
+     ```
+
+4. **Real-Time Alert (0:02)**
+   - Sales team Slack channel receives:
+     ```
+     🔥 HIGH-INTENT LEAD ACTIVE NOW
+     
+     Bob Johnson - bob@acmecorp.com
+     Urgency: 88/100 | Lead Score: 92/100
+     
+     Need: Hire 3 SaaS salespeople (immediate timeline)
+     Currently: Engaged in chat on website
+     
+     [Jump into conversation] [Schedule callback] [View details]
+     ```
+
+5. **Bob's Response (0:15)**
+   - Bob types: "What's your typical placement fee?"
+
+6. **Knowledge Integration (0:15.5 - 0:16.5)**
+   - Contact queries Knowledge by aiConnected
+   - Knowledge returns accurate answer from company's pricing docs
+   - AI responds:
+     ```
+     Our standard placement fee is 20% of first-year salary for 
+     full-time hires. For multiple placements, we offer:
+     
+     • 2-3 hires: 18% per placement
+     • 4+ hires: 15% per placement
+     
+     We also guarantee replacements within 90 days if a hire 
+     doesn't work out.
+     
+     Would you like to discuss your specific needs with our team?
+     ```
+
+7. **Bob's Decision (0:45)**
+   - Bob types: "Yes, can someone call me today?"
+
+8. **Voice Escalation Trigger (0:45.5 - 0:46)**
+   - Contact detects intent to speak
+   - AI responds:
+     ```
+     Absolutely! I can have our recruiting director call you 
+     within the next 30 minutes.
+     
+     Best number to reach you: +1-555-0199?
+     ```
+
+9. **Confirmation (1:00)**
+   - Bob: "Yes, that number works"
+   - AI:
+     ```
+     Perfect! Sarah from our recruiting team will call you 
+     shortly. I've sent you a confirmation email with her 
+     contact info in case you need to reach her first.
+     
+     Is there anything else I can help with while we wait?
+     ```
+
+10. **Voice Callback Triggered (1:01)**
+    - Contact API calls Voice by aiConnected
+    - Creates callback task with context:
+      ```json
+      {
+        "phone": "+1-555-0199",
+        "priority": "immediate",
+        "context": "Bob Johnson from Acme Corp needs to hire 3 SaaS salespeople ASAP. Asked about placement fees. Wants to discuss today.",
+        "conversationHistory": [ /* full chat log */ ],
+        "assignTo": "recruiting_director",
+        "callbackWindow": "30_minutes"
+      }
+      ```
+
+11. **Background Actions (1:01)**
+    - Paper by aiConnected queues follow-up email with:
+      - Recruiting team contact info
+      - Relevant case studies
+      - Pricing overview document
+    - CRM sync creates contact record with:
+      - Full conversation transcript
+      - AI analysis data
+      - High-priority tag
+      - Auto-assigned to recruiting director
+
+12. **Callback Delivery (Within 30 minutes)**
+    - Voice system alerts recruiting director
+    - Director sees full context before calling
+    - Calls Bob with complete background
+    - Conversation is warm (not starting from scratch)
+
+**Result:** Lead captured, qualified, and connected to sales within 30 minutes of form submission. Traditional approach would have taken 24-48 hours and likely lost the lead.
+
+### Flow 2: Support Question (Auto-Resolved)
+
+**Scenario:** Existing customer has password reset question.
+
+**Step-by-step:**
+
+1. **Form Submission (0:00)**
+   - Customer submits: "How do I reset my password?"
+
+2. **Analysis (0:01)**
+   - Intent: support
+   - Urgency: 30 (not urgent)
+   - Spam: 0.01
+   - Routing: Auto-resolve via Knowledge
+
+3. **Chat Engagement (0:02)**
+   - AI message:
+     ```
+     I can help with that! Here's how to reset your password:
+     
+     1. Go to the login page
+     2. Click "Forgot Password" below the login button
+     3. Enter your email address
+     4. Check your email for the reset link (arrives within 2 minutes)
+     5. Click the link and create your new password
+     
+     The reset link is valid for 24 hours.
+     
+     Did this answer your question, or would you like me to 
+     connect you with our support team?
+     ```
+
+4. **Customer Response (0:20)**
+   - "Perfect, thanks!"
+
+5. **Conversation End (0:21)**
+   - AI: "You're welcome! Let me know if you need anything else."
+   - Contact logs successful self-service resolution
+   - No human involvement required
+   - Support ticket NOT created (issue resolved)
+
+**Result:** Customer question answered in 21 seconds with zero human time required. Traditional approach would have created support ticket, response time 2-4 hours.
+
+### Flow 3: Spam Detected
+
+**Scenario:** Bot submits generic sales pitch.
+
+**Step-by-step:**
+
+1. **Form Submission (0:00)**
+   - Message: "GET CHEAP LEADS NOW!!! Visit www.spamsite.com for amazing deals!!!"
+
+2. **Spam Detection (0:00.5)**
+   - Multiple spam indicators triggered:
+     - Excessive caps and punctuation
+     - Promotional URL
+     - Generic template language
+     - Fast form fill (bot speed)
+   - Spam probability: 0.97
+
+3. **Silent Handling (0:01)**
+   - Show generic thank you message
+   - Do NOT transform to chat interface
+   - Do NOT send any alerts
+   - Log submission for spam pattern learning
+   - IP address flagged for monitoring
+
+4. **Background Action (0:01)**
+   - Spam submission added to training data
+   - No CRM sync, no notifications, no follow-up
+
+**Result:** Spam filtered without wasting sales team time or AI conversation resources. Traditional approach would have cluttered inbox and required manual review.
+
+### Flow 4: Medium-Intent Lead with Scheduling
+
+**Scenario:** Prospect interested in product demo but not ready for immediate conversation.
+
+**Step-by-step:**
+
+1. **Form Submission (0:00)**
+   - Message: "I'd like to learn more about your platform and see a demo"
+
+2. **Analysis (0:01)**
+   - Intent: sales
+   - Sub-intent: demo_request
+   - Urgency: 65 (interested but not urgent)
+   - Lead score: 72
+
+3. **Chat Engagement (0:02)**
+   - AI message:
+     ```
+     Thanks for your interest! I'd be happy to set up a demo for you.
+     
+     Our product demos typically last 30 minutes and cover:
+     • Platform overview and key features
+     • Use cases relevant to your industry
+     • Q&A and custom configuration options
+     
+     Would you like to:
+     • Schedule a demo now
+     • Learn more first (I can answer questions)
+     • Speak with someone on our team today
+     ```
+
+4. **Visitor Response (0:30)**
+   - "I'd like to schedule for next week"
+
+5. **Calendar Integration (0:31)**
+   - AI: "Great! Here are some available times next week:"
+   - Embedded calendar widget appears showing availability
+   - Calendar synced with sales team's actual availability
+
+6. **Scheduling (1:00)**
+   - Visitor selects Tuesday, 2pm
+   - Confirmation shown in chat
+   - Calendar invite sent to visitor and assigned sales rep
+   - CRM updated with scheduled meeting
+
+7. **Follow-Up (1:01)**
+   - Paper generates pre-demo email with:
+     - Meeting confirmation
+     - Preparation guide (optional survey about needs)
+     - Product overview PDF
+     - Customer success stories
+
+**Result:** Demo scheduled within 1 minute of initial contact. Traditional approach would require multiple back-and-forth emails over 2-3 days.
+
+### Flow 5: Human Takeover Mid-Conversation
+
+**Scenario:** Complex question that requires human expertise, sales rep available and jumps in.
+
+**Step-by-step:**
+
+1. **Active Conversation (0:00 - 2:00)**
+   - Lead engaged in chat with AI
+   - Asking detailed questions about enterprise features
+   - Urgency score: 82 (sales team alerted)
+
+2. **Sales Rep Monitoring (2:00)**
+   - Rep sees alert in Slack
+   - Reviews conversation history in real-time
+   - Decides this is worth immediate personal attention
+   - Clicks "Jump into conversation"
+
+3. **Handoff Notification (2:01)**
+   - Visitor sees: "Connecting you with Sarah from our enterprise team..."
+   - Brief transition animation
+   - Rep's name and photo appear in chat
+
+4. **Rep Takes Over (2:05)**
+   - Rep types: "Hi! I'm Sarah, I lead our enterprise sales team. I see you're asking about SSO integration and custom SLAs. I can help with that."
+   - AI transitions to silent assistant mode
+   - Rep sees AI suggested responses based on Knowledge (can use or ignore)
+
+5. **Human Conversation Continues (2:05 - 10:00)**
+   - Rep has full conversation with context
+   - Can access visitor's full history
+   - Can trigger actions (send resources, schedule follow-up, create proposal)
+
+6. **Conversation Ends (10:00)**
+   - Rep: "I'm going to send you a custom proposal by end of day. Sound good?"
+   - Visitor: "Perfect, thanks!"
+   - Rep manually marks conversation as "proposal_pending"
+   - Full transcript saved to CRM
+
+**Result:** AI handled qualification and initial engagement, human took over when expertise needed. Best of both worlds.
+
+---
+
+## Technical Implementation
+
+### Installation & Deployment
+
+#### Option 1: Embedded Widget (Recommended for Most)
+
+**Installation:**
+
+```html
+<!-- Add to website <head> -->
+<script src="https://cdn.aiconnected.ai/contact/v1/widget.js"></script>
+
+<!-- Add where form should appear -->
+<div id="aiconnected-contact"></div>
+
+<script>
+  AIConnectedContact.init({
+    apiKey: 'your_api_key_here',
+    companyId: 'your_company_id',
+    
+    // Customization
+    theme: {
+      primaryColor: '#0066cc',
+      fontFamily: 'Inter, sans-serif',
+      position: 'center' // 'left', 'center', 'right', 'popup'
+    },
+    
+    // Form fields
+    fields: [
+      { name: 'name', label: 'Name', required: true },
+      { name: 'email', label: 'Email', required: true, type: 'email' },
+      { name: 'phone', label: 'Phone', required: false, type: 'tel' },
+      { name: 'company', label: 'Company', required: false },
+      { name: 'message', label: 'Message', required: true, type: 'textarea' }
+    ],
+    
+    // Features
+    features: {
+      voiceEnabled: true,
+      knowledgeIntegration: true,
+      calendarIntegration: true
+    },
+    
+    // Callbacks (optional)
+    onSubmit: (data) => console.log('Form submitted:', data),
+    onEngagement: (conversationId) => console.log('Chat started:', conversationId),
+    onSchedule: (event) => console.log('Meeting scheduled:', event)
+  });
+</script>
+```
+
+#### Option 2: React Component
+
+**Installation:**
+
+```bash
+npm install @aiconnected/contact-react
+```
+
+**Usage:**
+
+```jsx
+import { ContactForm } from '@aiconnected/contact-react';
+
+function MyPage() {
+  return (
+    <ContactForm
+      apiKey="your_api_key_here"
+      companyId="your_company_id"
+      theme={{
+        primaryColor: '#0066cc',
+        fontFamily: 'Inter, sans-serif'
+      }}
+      fields={[
+        { name: 'name', label: 'Name', required: true },
+        { name: 'email', label: 'Email', required: true, type: 'email' },
+        { name: 'message', label: 'Message', required: true, type: 'textarea' }
+      ]}
+      onSubmit={(data) => console.log(data)}
+    />
+  );
+}
+```
+
+#### Option 3: WordPress Plugin
+
+**Installation:**
+
+1. Download Contact by aiConnected plugin
+2. Upload to `/wp-content/plugins/`
+3. Activate plugin
+4. Navigate to Settings → Contact by aiConnected
+5. Enter API key and configure settings
+6. Use shortcode `[aiconnected_contact]` on any page
+
+**Shortcode options:**
+
+```
+[aiconnected_contact 
+  theme="blue" 
+  voice="true" 
+  calendar="true"
+  fields="name,email,phone,message"]
+```
+
+#### Option 4: API-Only Integration
+
+For custom implementations, use the Contact API directly:
+
+```javascript
+// POST to Contact API
+const response = await fetch('https://api.aiconnected.ai/v1/contact/analyze', {
+  method: 'POST',
+  headers: {
+    'Authorization': 'Bearer your_api_key',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    companyId: 'your_company_id',
+    submission: {
+      name: 'Bob Johnson',
+      email: 'bob@acmecorp.com',
+      phone: '+1-555-0199',
+      message: 'Looking to hire salespeople',
+      metadata: {
+        source: window.location.pathname,
+        timestamp: new Date().toISOString(),
+        userAgent: navigator.userAgent
+      }
+    }
+  })
+});
+
+const analysis = await response.json();
+
+// Handle analysis result
+if (analysis.spam < 0.2 && analysis.urgency > 70) {
+  // Show chat interface
+  showChatInterface(analysis);
+} else if (analysis.spam > 0.8) {
+  // Show generic thank you
+  showThankYou();
+}
+```
+
+### Configuration Guide
+
+#### Company Settings
+
+**Access:** Dashboard → Settings → Company Profile
+
+**Required fields:**
+- Company name
+- Industry
+- Website URL
+- Timezone
+- Business hours
+
+**Optional fields:**
+- Company description (helps AI with context)
+- Target customer profile
+- Key products/services
+- Custom keywords for routing
+
+#### Routing Rules
+
+**Access:** Dashboard → Settings → Routing
+
+**Example configuration:**
+
+```json
+{
+  "urgencyThresholds": {
+    "immediate": 85,
+    "high": 70,
+    "medium": 40,
+    "low": 0
+  },
+  "intentRouting": {
+    "sales": {
+      "email": "sales@company.com",
+      "slack": "#sales-leads",
+      "urgencyFilter": 60
+    },
+    "support": {
+      "email": "support@company.com",
+      "slack": "#support-tickets",
+      "urgencyFilter": 50
+    },
+    "billing": {
+      "email": "billing@company.com",
+      "urgencyFilter": 40
+    }
+  },
+  "priorityAlerts": {
+    "urgency": 85,
+    "methods": ["slack", "sms"],
+    "recipients": [
+      {
+        "name": "Sales Director",
+        "slack": "@sarah.jones",
+        "sms": "+1-555-0100"
+      }
+    ]
+  },
+  "customRules": [
+    {
+      "condition": "message contains 'enterprise' AND leadScore > 80",
+      "action": "alert",
+      "recipient": "enterprise@company.com",
+      "priority": "immediate"
+    }
+  ]
+}
+```
+
+#### Integration Settings
+
+**CRM Integration:**
+
+```json
+{
+  "crm": {
+    "provider": "hubspot", // or "salesforce", "pipedrive", etc.
+    "credentials": {
+      "apiKey": "encrypted_key_here"
+    },
+    "fieldMapping": {
+      "contact.name": "firstName lastName",
+      "contact.email": "email",
+      "contact.phone": "phone",
+      "deal.pipeline": "Inbound Leads",
+      "deal.stage": "New Lead"
+    },
+    "customFields": {
+      "ai_urgency_score": "analysis.urgency",
+      "ai_intent": "analysis.intent",
+      "lead_source": "Contact Form AI"
+    }
+  }
+}
+```
+
+**Calendar Integration:**
+
+```json
+{
+  "calendar": {
+    "provider": "google_calendar", // or "calendly", "cal.com"
+    "credentials": {
+      "oauth_token": "encrypted_token"
+    },
+    "settings": {
+      "defaultDuration": 30,
+      "bufferTime": 15,
+      "workingHours": {
+        "monday": ["09:00-17:00"],
+        "tuesday": ["09:00-17:00"],
+        "wednesday": ["09:00-17:00"],
+        "thursday": ["09:00-17:00"],
+        "friday": ["09:00-17:00"]
+      },
+      "meetingTypes": {
+        "demo": {
+          "duration": 30,
+          "assignTo": "sales_team"
+        },
+        "consultation": {
+          "duration": 60,
+          "assignTo": "consulting_team"
+        }
+      }
+    }
+  }
+}
+```
+
+**Knowledge Integration:**
+
+```json
+{
+  "knowledge": {
+    "enabled": true,
+    "knowledgeBaseId": "kb_abc123",
+    "confidenceThreshold": 0.85,
+    "fallbackBehavior": "offer_human_contact"
+  }
+}
+```
+
+**Voice Integration:**
+
+```json
+{
+  "voice": {
+    "enabled": true,
+    "urgencyThreshold": 85,
+    "callbackWindow": "30_minutes",
+    "businessHoursOnly": true,
+    "voiceAgent": "recruiting_specialist"
+  }
+}
+```
+
+### Webhook Configuration
+
+Contact can send webhook payloads to your systems for custom workflow automation.
+
+**Webhook settings:**
+
+```json
+{
+  "webhooks": [
+    {
+      "url": "https://agency.com/webhook/contact",
+      "events": ["submission", "chat_started", "chat_ended", "scheduled"],
+      "headers": {
+        "Authorization": "Bearer your_webhook_secret"
+      },
+      "retryPolicy": {
+        "maxRetries": 3,
+        "backoff": "exponential"
+      }
+    }
+  ]
+}
+```
+
+**Webhook payload structure:**
+
+```json
+{
+  "event": "submission",
+  "timestamp": "2026-04-17T14:23:12Z",
+  "companyId": "comp_abc123",
+  "conversationId": "conv_xyz789",
+  "data": {
+    "submission": {
+      "name": "Bob Johnson",
+      "email": "bob@acmecorp.com",
+      "phone": "+1-555-0199",
+      "message": "Looking to hire salespeople",
+      "metadata": {
+        "source": "/contact",
+        "utm_campaign": "google-ads"
+      }
+    },
+    "analysis": {
+      "intent": "recruiting",
+      "subIntent": "saas_sales_hiring",
+      "urgency": 88,
+      "sentiment": "neutral_positive",
+      "leadScore": 92,
+      "spamProbability": 0.01,
+      "entities": {
+        "companyName": "Acme Corp",
+        "timeline": "immediate"
+      },
+      "suggestedActions": ["route_to_recruiting", "high_priority_alert"],
+      "confidence": 0.94
+    }
+  }
+}
+```
+
+### Security Best Practices
+
+**API Key Management:**
+- Never expose API keys in frontend code
+- Use environment variables for keys
+- Rotate keys quarterly
+- Use separate keys for dev/staging/production
+
+**Data Handling:**
+- All API communication over HTTPS
+- Form data encrypted in transit
+- PII automatically redacted in logs
+- Conversation data retained for 90 days by default (configurable)
+
+**Spam Protection:**
+- Rate limiting: 100 requests/minute per IP
+- CAPTCHA fallback for suspicious patterns
+- IP blocklist for repeat offenders
+- Honeypot fields in form
+
+### Monitoring & Analytics
+
+**Access:** Dashboard → Analytics
+
+**Key metrics:**
+- Total submissions
+- Spam filtered (percentage)
+- Engagement rate (form → chat)
+- Average conversation length
+- Outcome distribution (scheduled/answered/transferred/abandoned)
+- Response time (form submit to first engagement)
+- Intent breakdown (sales/support/billing/other)
+- Urgency distribution
+- Lead score distribution
+
+**Custom reports:**
+- Conversion funnel (submission → engagement → outcome)
+- Time-to-engagement trends
+- Sales team response times
+- Knowledge accuracy (answers accepted vs. escalated)
+- ROI tracking (leads captured vs. baseline)
+
+---
+
+## API Reference
+
+### Base URL
+
+```
+https://api.aiconnected.ai/v1
+```
+
+### Authentication
+
+All API requests require authentication via Bearer token:
+
+```
+Authorization: Bearer your_api_key_here
+```
+
+### Endpoints
+
+#### POST /contact/analyze
+
+Analyze a contact form submission and receive AI classification.
+
+**Request:**
+
+```json
+{
+  "companyId": "comp_abc123",
+  "submission": {
+    "name": "Bob Johnson",
+    "email": "bob@acmecorp.com",
+    "phone": "+1-555-0199",
+    "company": "Acme Corp",
+    "message": "Looking to hire 3 SaaS salespeople ASAP",
+    "metadata": {
+      "source": "/contact",
+      "timestamp": "2026-04-17T14:23:11Z",
+      "utm_campaign": "google-ads-hiring",
+      "userAgent": "Mozilla/5.0..."
+    }
+  }
+}
+```
+
+**Response (200 OK):**
+
+```json
+{
+  "conversationId": "conv_xyz789",
+  "analysis": {
+    "intent": "recruiting",
+    "subIntent": "saas_sales_hiring",
+    "urgency": 88,
+    "sentiment": "neutral_positive",
+    "leadScore": 92,
+    "spamProbability": 0.01,
+    "entities": {
+      "companyName": "Acme Corp",
+      "companySize": "medium",
+      "budget": null,
+      "timeline": "immediate",
+      "productInterest": ["sales_recruiting"]
+    },
+    "suggestedActions": [
+      "route_to_recruiting",
+      "high_priority_alert",
+      "offer_immediate_call"
+    ],
+    "reasoning": "High urgency indicated by 'ASAP', specific need for 'experienced SaaS salespeople'",
+    "confidence": 0.94
+  },
+  "engagement": {
+    "shouldEngage": true,
+    "strategy": "conversational",
+    "initialMessage": "Thanks for reaching out, Bob! I see you're looking to hire SaaS salespeople. I can help with that.\n\nWould you like to:\n• Talk to our recruiting team right now\n• Schedule a call for later this week\n• Get more information about our services",
+    "features": {
+      "voiceCallbackOffered": true,
+      "calendarOffered": true,
+      "knowledgeEnabled": true
+    }
+  },
+  "routing": {
+    "primaryRoute": "recruiting@company.com",
+    "alerts": [
+      {
+        "method": "slack",
+        "recipient": "#recruiting-leads",
+        "priority": "high"
+      }
+    ]
+  },
+  "original": {
+    "name": "Bob Johnson",
+    "email": "bob@acmecorp.com",
+    "phone": "+1-555-0199",
+    "company": "Acme Corp",
+    "message": "Looking to hire 3 SaaS salespeople ASAP"
+  },
+  "metadata": {
+    "processedAt": "2026-04-17T14:23:12Z",
+    "processingTime": "847ms",
+    "model": "claude-sonnet-4.5",
+    "version": "1.2.0"
+  }
+}
+```
+
+#### POST /contact/chat
+
+Send a message in an active conversation.
+
+**Request:**
+
+```json
+{
+  "conversationId": "conv_xyz789",
+  "message": "What's your placement fee?",
+  "timestamp": "2026-04-17T14:24:31Z"
+}
+```
+
+**Response (200 OK):**
+
+```json
+{
+  "conversationId": "conv_xyz789",
+  "response": {
+    "content": "Our standard placement fee is 20% of first-year salary for full-time hires. For multiple placements, we offer:\n\n• 2-3 hires: 18% per placement\n• 4+ hires: 15% per placement\n\nWe also guarantee replacements within 90 days if a hire doesn't work out.\n\nWould you like to discuss your specific needs with our team?",
+    "source": "knowledge",
+    "confidence": 0.96,
+    "suggestedActions": ["offer_callback", "schedule_call"]
+  },
+  "conversationState": {
+    "status": "active",
+    "messageCount": 4,
+    "lastMessageAt": "2026-04-17T14:24:32Z"
+  }
+}
+```
+
+#### POST /contact/schedule
+
+Schedule a meeting via calendar integration.
+
+**Request:**
+
+```json
+{
+  "conversationId": "conv_xyz789",
+  "attendee": {
+    "name": "Bob Johnson",
+    "email": "bob@acmecorp.com",
+    "phone": "+1-555-0199"
+  },
+  "meetingType": "demo",
+  "preferredTime": "2026-04-22T14:00:00Z",
+  "duration": 30,
+  "notes": "Interested in recruiting services for SaaS sales roles"
+}
+```
+
+**Response (200 OK):**
+
+```json
+{
+  "eventId": "evt_abc123",
+  "status": "confirmed",
+  "details": {
+    "title": "Product Demo - Acme Corp",
+    "startTime": "2026-04-22T14:00:00Z",
+    "endTime": "2026-04-22T14:30:00Z",
+    "attendees": [
+      {
+        "name": "Bob Johnson",
+        "email": "bob@acmecorp.com"
+      },
+      {
+        "name": "Sarah Jones",
+        "email": "sarah@company.com",
+        "role": "host"
+      }
+    ],
+    "meetingLink": "https://zoom.us/j/123456789",
+    "calendarInviteSent": true
+  }
+}
+```
+
+#### POST /contact/voice
+
+Trigger Voice by aiConnected callback.
+
+**Request:**
+
+```json
+{
+  "conversationId": "conv_xyz789",
+  "phone": "+1-555-0199",
+  "priority": "immediate",
+  "context": "Bob from Acme Corp needs to hire SaaS salespeople. Asked about placement fees. Wants to discuss today.",
+  "callbackWindow": "30_minutes"
+}
+```
+
+**Response (200 OK):**
+
+```json
+{
+  "callbackId": "call_def456",
+  "status": "queued",
+  "estimatedCallTime": "2026-04-17T14:30:00Z",
+  "assignedTo": "recruiting_director"
+}
+```
+
+#### GET /contact/conversation/{conversationId}
+
+Retrieve full conversation history.
+
+**Response (200 OK):**
+
+```json
+{
+  "conversationId": "conv_xyz789",
+  "startedAt": "2026-04-17T14:23:12Z",
+  "endedAt": "2026-04-17T14:27:45Z",
+  "status": "ended",
+  "outcome": "scheduled_call",
+  "participant": {
+    "name": "Bob Johnson",
+    "email": "bob@acmecorp.com"
+  },
+  "analysis": {
+    "intent": "recruiting",
+    "urgency": 88,
+    "leadScore": 92
+  },
+  "messages": [
+    {
+      "role": "system",
+      "content": "Thanks for reaching out, Bob!",
+      "timestamp": "2026-04-17T14:23:12Z"
+    },
+    {
+      "role": "assistant",
+      "content": "I see you're looking to hire SaaS salespeople...",
+      "timestamp": "2026-04-17T14:23:13Z"
+    },
+    {
+      "role": "user",
+      "content": "What's your placement fee?",
+      "timestamp": "2026-04-17T14:24:31Z"
+    },
+    {
+      "role": "assistant",
+      "content": "Our standard placement fee is 20%...",
+      "timestamp": "2026-04-17T14:24:32Z",
+      "source": "knowledge"
+    }
+  ],
+  "metrics": {
+    "totalMessages": 8,
+    "averageResponseTime": "1.2s",
+    "engagementDuration": "4m 33s"
+  }
+}
+```
+
+### Error Codes
+
+| Code | Description |
+|------|-------------|
+| 400 | Bad Request - Invalid input data |
+| 401 | Unauthorized - Invalid or missing API key |
+| 403 | Forbidden - API key doesn't have access to this company |
+| 404 | Not Found - Resource doesn't exist |
+| 429 | Too Many Requests - Rate limit exceeded |
+| 500 | Internal Server Error - Contact support |
+
+**Error response format:**
+
+```json
+{
+  "error": {
+    "code": "invalid_input",
+    "message": "Email address is required",
+    "details": {
+      "field": "email",
+      "constraint": "required"
+    }
+  }
+}
+```
+
+---
+
+## Ecosystem Integration
+
+### Integration with Voice by aiConnected
+
+**Purpose:** Immediate phone callback for high-urgency leads.
+
+**Trigger conditions:**
+- Urgency score > 85 (configurable)
+- Visitor explicitly requests phone call
+- Complex question requiring human expertise
+- Sales rep initiates manual callback
+
+**Integration flow:**
+
+1. Contact detects callback trigger condition
+2. Contact calls Voice API with context payload:
+   ```json
+   {
+     "phone": "+1-555-0199",
+     "priority": "immediate",
+     "context": "Full conversation summary",
+     "conversationHistory": [ /* chat messages */ ],
+     "leadData": { /* AI analysis */ },
+     "callbackWindow": "30_minutes"
+   }
+   ```
+3. Voice system queues callback and assigns to appropriate agent
+4. Agent receives full context before calling
+5. Voice logs call outcome back to Contact conversation record
+
+**Configuration:**
+
+```json
+{
+  "voiceIntegration": {
+    "enabled": true,
+    "urgencyThreshold": 85,
+    "businessHoursOnly": true,
+    "callbackTypes": {
+      "immediate": {
+        "window": "15_minutes",
+        "assignTo": "sales_director"
+      },
+      "high": {
+        "window": "30_minutes",
+        "assignTo": "sales_team"
+      },
+      "standard": {
+        "window": "2_hours",
+        "assignTo": "sales_team"
+      }
+    }
+  }
+}
+```
+
+### Integration with Knowledge by aiConnected
+
+**Purpose:** Provide accurate answers from company's knowledge base during chat conversations.
+
+**Usage scenarios:**
+- Visitor asks factual question about products/services
+- Pricing inquiries
+- Technical specifications
+- Policy questions
+- FAQ-type queries
+
+**Integration flow:**
+
+1. Visitor asks question in chat: "What's your pricing?"
+2. Contact sends query to Knowledge API:
+   ```json
+   {
+     "query": "What's your pricing?",
+     "knowledgeBaseId": "kb_abc123",
+     "context": {
+       "intent": "sales",
+       "leadScore": 92,
+       "previousMessages": [ /* conversation history */ ]
+     }
+   }
+   ```
+3. Knowledge returns structured answer with confidence score:
+   ```json
+   {
+     "answer": "Our pricing starts at $X/month...",
+     "confidence": 0.96,
+     "sources": ["pricing_page", "faq_doc"],
+     "relatedTopics": ["enterprise_pricing", "volume_discounts"]
+   }
+   ```
+4. Contact evaluates confidence:
+   - Confidence > 0.85: Use answer directly
+   - Confidence 0.7-0.85: Use answer but offer human verification
+   - Confidence < 0.7: Offer to connect with human
+
+**Fallback behavior:**
+
+If Knowledge doesn't have sufficient information:
+- Contact offers to connect visitor with human
+- OR offers to schedule call with expert
+- OR collects detailed question for follow-up
+
+**Configuration:**
+
+```json
+{
+  "knowledgeIntegration": {
+    "enabled": true,
+    "knowledgeBaseId": "kb_abc123",
+    "confidenceThreshold": 0.85,
+    "fallbackBehavior": "offer_human_contact",
+    "maxQueriesPerConversation": 5
+  }
+}
+```
+
+### Integration with Paper by aiConnected
+
+**Purpose:** Automated, personalized follow-up content after conversation ends.
+
+**Trigger conditions:**
+- Conversation ends naturally (visitor says goodbye)
+- Scheduled meeting booked (send confirmation + prep materials)
+- Question answered but no further action (send resources)
+- Lead not immediately converted (nurture sequence)
+
+**Integration flow:**
+
+1. Contact conversation ends with outcome data
+2. Contact calls Paper API with context:
+   ```json
+   {
+     "recipient": "bob@acmecorp.com",
+     "context": {
+       "conversationSummary": "Bob inquired about recruiting services for SaaS sales roles",
+       "intent": "recruiting",
+       "leadScore": 92,
+       "questions": ["placement fees", "guarantee policy"],
+       "outcome": "scheduled_call",
+       "scheduledMeeting": {
+         "date": "2026-04-22T14:00:00Z",
+         "type": "demo"
+       }
+     },
+     "contentType": "meeting_confirmation_with_prep"
+   }
+   ```
+3. Paper generates personalized email:
+   - Meeting confirmation details
+   - Preparation guide tailored to their questions
+   - Relevant case studies (recruiting + SaaS industry)
+   - Additional resources about guarantee policy
+
+4. Paper queues delivery (immediate for confirmations, delayed for nurture)
+
+**Configuration:**
+
+```json
+{
+  "paperIntegration": {
+    "enabled": true,
+    "templates": {
+      "meeting_confirmation": {
+        "enabled": true,
+        "sendDelay": "immediate"
+      },
+      "answered_questions": {
+        "enabled": true,
+        "sendDelay": "1_hour",
+        "includeResources": true
+      },
+      "nurture_sequence": {
+        "enabled": true,
+        "touchPoints": [
+          { "delay": "1_day", "content": "educational" },
+          { "delay": "3_days", "content": "case_study" },
+          { "delay": "7_days", "content": "offer" }
+        ]
+      }
+    }
+  }
+}
+```
+
+### Why Brain Is NOT Integrated
+
+**Brain by aiConnected is designed for:**
+- Authenticated user interactions (logged-in customers)
+- Consented AI assistants (explicit user opt-in)
+- Cross-platform persistent memory (ChatGPT, Claude, local apps)
+- Long-term relationship building
+
+**Contact form visitors are:**
+- Anonymous (no authentication)
+- First-time or infrequent visitors
+- No explicit consent for persistent tracking
+- Single-session interactions
+
+**Privacy boundary:**
+
+Connecting Contact to Brain would:
+- Violate GDPR (tracking without consent)
+- Violate CCPA (no notice/opt-out mechanism)
+- Create surveillance concerns (tracking across sites)
+- Damage user trust
+
+**The correct separation:**
+
+- **Contact**: Anonymous, single-session intelligence for lead capture
+- **Brain**: Authenticated, multi-session memory for ongoing relationships
+
+**If persistent memory is needed:**
+
+After a lead converts to customer and authenticates (creates account), then Brain can be activated for that specific, consented relationship. But never for anonymous contact form submissions.
+
+### Ecosystem Bundle Offering
+
+**"Complete Lead Intelligence Suite"**
+
+Bundle Contact + Voice + Knowledge + Paper for agencies:
+
+**What agencies get:**
+- Contact captures and qualifies leads
+- Voice calls back high-intent prospects immediately  
+- Knowledge answers questions accurately
+- Paper nurtures with personalized content
+- All products work together seamlessly
+- Single dashboard for monitoring
+- Unified analytics and reporting
+
+**Pricing:**
+- Individual products: $50-400/mo each
+- Bundle discount: $599/mo for all four
+- Agency white-label: $999/mo unlimited usage
+
+**Value proposition:**
+"Your competitors are still sending 'thanks, we'll be in touch' emails. You're having personalized conversations, making phone calls, and sending tailored content within minutes. This is how modern lead capture works."
+
+---
+
+## Privacy and Compliance
+
+### Data Collection
+
+**What Contact collects:**
+- Name, email, phone (voluntarily submitted by visitor)
+- Message content (submitted via form)
+- Basic metadata (timestamp, source page, UTM parameters)
+- Technical data (IP address, user agent, browser fingerprint)
+- Conversation data (chat messages exchanged)
+
+**What Contact does NOT collect:**
+- Browsing history beyond current session
+- Cross-site tracking data
+- Persistent identifiers without consent
+- Sensitive personal information (SSN, credit cards, health data)
+
+### Data Usage
+
+**Contact uses collected data to:**
+- Analyze intent and urgency of inquiry
+- Route messages to appropriate teams
+- Engage in conversational follow-up
+- Improve spam detection models
+- Generate analytics for customers
+
+**Contact does NOT:**
+- Sell data to third parties
+- Use data for advertising purposes
+- Track individuals across multiple websites
+- Build persistent profiles without consent
+
+### Data Retention
+
+**Default retention policies:**
+- Form submissions: 90 days
+- Conversation transcripts: 90 days
+- Analytics data (aggregated): Indefinite
+- Spam fingerprints: 180 days
+
+**Customer-configurable options:**
+- 30 days (minimum)
+- 90 days (default)
+- 180 days
+- 365 days
+- Indefinite (for compliance requirements)
+
+**Data deletion:**
+- Customers can request deletion of specific conversations
+- Bulk deletion available via API
+- Automated deletion after retention period
+- Right to be forgotten requests honored within 30 days
+
+### GDPR Compliance
+
+**Lawful basis for processing:**
+- **Legitimate interest** for initial form analysis and spam detection
+- **Consent** for ongoing conversation (implied by continued engagement)
+- **Contract** for scheduled meetings or service requests
+
+**User rights honored:**
+- Right to access: Full conversation export via API
+- Right to rectification: Update contact information
+- Right to erasure: Delete conversation data
+- Right to restriction: Pause processing while dispute resolved
+- Right to data portability: Export in machine-readable format
+- Right to object: Opt out of analytics/marketing use
+
+**GDPR features built-in:**
+- Cookie consent banner (optional, configurable)
+- Privacy policy link in widget
+- Clear data usage disclosure
+- Easy opt-out mechanisms
+- DPA (Data Processing Agreement) available for enterprise
+
+### CCPA Compliance
+
+**California resident rights:**
+- Right to know what data is collected
+- Right to delete personal information
+- Right to opt-out of sale (N/A - Contact doesn't sell data)
+- Right to non-discrimination
+
+**CCPA features:**
+- "Do Not Sell My Personal Information" respected
+- Clear privacy notice in widget
+- Consumer request portal for data access/deletion
+- Response to requests within 45 days
+
+### Security Measures
+
+**Data in transit:**
+- All API communication over TLS 1.3
+- Certificate pinning for mobile apps
+- HSTS enforced
+
+**Data at rest:**
+- AES-256 encryption for stored messages
+- Separate encryption keys per customer
+- Key rotation every 90 days
+
+**Access controls:**
+- Role-based access control (RBAC)
+- Multi-factor authentication required
+- Audit logging of all data access
+- IP whitelisting for sensitive operations
+
+**Infrastructure:**
+- SOC 2 Type II certified data centers
+- Regular penetration testing
+- Automated vulnerability scanning
+- Incident response plan documented
+
+### Spam Data Handling
+
+**Special considerations for spam:**
+- Spam submissions are flagged but not immediately deleted
+- Used for improving spam detection models
+- PII in spam submissions redacted before model training
+- Spam data retained separately with 180-day automatic deletion
+
+### Third-Party Integrations
+
+**When data is shared with integrations:**
+
+**Voice by aiConnected:**
+- Shared: Name, phone, conversation context
+- Purpose: Enable phone callback
+- Retention: Per Voice retention policy
+- DPA: Covered under main agreement
+
+**Knowledge by aiConnected:**
+- Shared: Message queries only (no PII)
+- Purpose: Retrieve relevant answers
+- Retention: Query logs 30 days
+- DPA: Covered under main agreement
+
+**Paper by aiConnected:**
+- Shared: Email, name, conversation summary
+- Purpose: Send personalized follow-up
+- Retention: Per Paper retention policy
+- DPA: Covered under main agreement
+
+**Customer CRMs (HubSpot, Salesforce, etc.):**
+- Shared: Full form data + analysis
+- Purpose: Customer's CRM integration
+- Retention: Customer controls
+- DPA: Customer's responsibility with CRM vendor
+
+**Webhook endpoints:**
+- Shared: Full payload including PII
+- Purpose: Customer's custom workflows
+- Retention: Customer controls
+- Security: Customer responsible for endpoint security
+
+### Consent Management
+
+**Progressive consent approach:**
+
+**Level 1: Form submission (implied consent)**
+- Visitor submits form voluntarily
+- Consent to receive response
+- Short-term data processing
+
+**Level 2: Continued conversation (ongoing consent)**
+- Visitor continues chat engagement
+- Consent to conversational analysis
+- Knowledge queries to answer questions
+
+**Level 3: Scheduling/Voice (explicit consent)**
+- Visitor requests callback or schedules meeting
+- Explicit consent to phone contact
+- Calendar integration
+
+**Opt-out mechanisms:**
+- "Stop" keyword in chat ends conversation immediately
+- Unsubscribe link in all follow-up emails
+- Data deletion request form available
+
+### Cookie Policy
+
+**Cookies used by Contact widget:**
+
+**Essential (no consent required):**
+- Session ID (conversation continuity)
+- CSRF token (security)
+- Expires: Session end
+
+**Analytics (consent required in EU):**
+- Engagement metrics
+- Conversion tracking
+- Expires: 90 days
+
+**Configuration:**
+```json
+{
+  "cookies": {
+    "essentialOnly": false,
+    "analytics": true,
+    "consentBanner": true,
+    "consentBannerStyle": "minimal"
+  }
+}
+```
+
+### Compliance Certifications
+
+**Current:**
+- SOC 2 Type II (in progress)
+- GDPR compliant (self-certified)
+- CCPA compliant (self-certified)
+
+**Planned:**
+- ISO 27001 (2026)
+- HIPAA compliance option for healthcare (2027)
+
+---
+
+## Deployment Guide
+
+### Self-Hosted Deployment (Enterprise)
+
+For enterprises requiring full data control, Contact can be deployed to your infrastructure.
+
+**Requirements:**
+- Node.js 18+ environment
+- PostgreSQL 14+ database
+- Redis for session management
+- HTTPS/SSL certificate
+- Claude API access
+
+**Architecture:**
+
+```
+┌─────────────────────────────────────────┐
+│     Load Balancer (nginx/HAProxy)       │
+└─────────────────────────────────────────┘
+                  ↓
+┌─────────────────────────────────────────┐
+│   Contact API Servers (Node.js)         │
+│   - Auto-scaling group                  │
+│   - Min: 2 instances                    │
+│   - Max: 10 instances                   │
+└─────────────────────────────────────────┘
+         ↓                    ↓
+┌──────────────────┐  ┌──────────────────┐
+│  PostgreSQL      │  │  Redis           │
+│  (Primary/Replica)│  │  (Session/Cache) │
+└──────────────────┘  └──────────────────┘
+```
+
+**Installation steps:**
+
+```bash
+# 1. Clone repository
+git clone https://github.com/aiconnected/contact-api.git
+cd contact-api
+
+# 2. Install dependencies
+npm install
+
+# 3. Configure environment
+cp .env.example .env
+nano .env
+
+# Required environment variables:
+# DATABASE_URL=postgresql://user:pass@localhost:5432/contact
+# REDIS_URL=redis://localhost:6379
+# CLAUDE_API_KEY=your_claude_api_key
+# JWT_SECRET=your_random_secret
+# ENCRYPTION_KEY=your_encryption_key
+
+# 4. Run database migrations
+npm run migrate
+
+# 5. Start server
+npm run start
+
+# Production with PM2:
+pm2 start ecosystem.config.js
+```
+
+**Docker deployment:**
+
+```yaml
+# docker-compose.yml
+version: '3.8'
+
+services:
+  contact-api:
+    image: aiconnected/contact-api:latest
+    ports:
+      - "3000:3000"
+    environment:
+      - DATABASE_URL=postgresql://postgres:password@db:5432/contact
+      - REDIS_URL=redis://redis:6379
+      - CLAUDE_API_KEY=${CLAUDE_API_KEY}
+    depends_on:
+      - db
+      - redis
+    restart: unless-stopped
+
+  db:
+    image: postgres:14-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=contact
+      - POSTGRES_PASSWORD=password
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+```
+
+**Deploy:**
+
+```bash
+docker-compose up -d
+```
+
+### Cloud Deployment Options
+
+#### AWS (Recommended)
+
+**Architecture:**
+
+- **Compute**: ECS Fargate or EC2 Auto Scaling Group
+- **Database**: RDS PostgreSQL (Multi-AZ)
+- **Cache**: ElastiCache Redis
+- **Load Balancer**: Application Load Balancer
+- **Storage**: S3 for conversation archives
+- **Monitoring**: CloudWatch + X-Ray
+
+**Terraform example:**
+
+```hcl
+# main.tf
+module "contact_api" {
+  source = "./modules/contact-api"
+  
+  vpc_id = var.vpc_id
+  subnet_ids = var.private_subnet_ids
+  
+  rds_instance_class = "db.t3.medium"
+  redis_node_type = "cache.t3.small"
+  
+  ecs_task_cpu = 512
+  ecs_task_memory = 1024
+  ecs_desired_count = 2
+  
+  claude_api_key = var.claude_api_key
+}
+```
+
+#### Google Cloud Platform
+
+**Architecture:**
+
+- **Compute**: Cloud Run or GKE
+- **Database**: Cloud SQL PostgreSQL
+- **Cache**: Memorystore Redis
+- **Load Balancer**: Cloud Load Balancing
+- **Storage**: Cloud Storage
+
+#### Azure
+
+**Architecture:**
+
+- **Compute**: Container Apps or AKS
+- **Database**: Azure Database for PostgreSQL
+- **Cache**: Azure Cache for Redis
+- **Load Balancer**: Application Gateway
+- **Storage**: Blob Storage
+
+### Scaling Considerations
+
+**Vertical scaling (single instance):**
+- Handles ~500 concurrent conversations
+- 10,000 form submissions per day
+- Recommended for small deployments (< 50 customers)
+
+**Horizontal scaling (multiple instances):**
+- Stateless API design enables easy scaling
+- Redis for shared session state
+- PostgreSQL read replicas for query performance
+- Recommended for production (> 50 customers)
+
+**Database optimization:**
+- Partition conversation data by month
+- Archive old conversations to S3/Cloud Storage
+- Index on conversationId, email, timestamp
+- Connection pooling (pgBouncer)
+
+**Caching strategy:**
+- Redis for conversation state (TTL: 1 hour)
+- Redis for spam fingerprints (TTL: 24 hours)
+- CDN for widget static assets
+- API response caching for Knowledge queries
+
+### Monitoring & Observability
+
+**Key metrics to track:**
+
+**Application metrics:**
+- Request rate (requests/second)
+- Response time (p50, p95, p99)
+- Error rate (4xx, 5xx)
+- AI classification latency
+- Spam detection accuracy
+
+**Business metrics:**
+- Form submissions (total, spam, legitimate)
+- Engagement rate (chat started / submissions)
+- Conversation outcomes (scheduled, answered, abandoned)
+- Average conversation duration
+- Lead score distribution
+
+**Infrastructure metrics:**
+- CPU utilization
+- Memory usage
+- Database connections
+- Redis memory usage
+- Network throughput
+
+**Alerting rules:**
+
+```yaml
+# example-alerts.yml
+alerts:
+  - name: HighErrorRate
+    condition: error_rate > 5%
+    duration: 5m
+    severity: critical
+    
+  - name: SlowAIResponses
+    condition: ai_latency_p95 > 2s
+    duration: 5m
+    severity: warning
+    
+  - name: DatabaseConnections
+    condition: db_connections > 80%
+    duration: 2m
+    severity: warning
+```
+
+**Logging:**
+
+```javascript
+// Structured logging format
+{
+  "timestamp": "2026-04-17T14:23:12Z",
+  "level": "info",
+  "service": "contact-api",
+  "event": "submission_analyzed",
+  "conversationId": "conv_xyz789",
+  "intent": "sales",
+  "urgency": 88,
+  "processingTime": 847,
+  "spam": false
+}
+```
+
+### Backup & Disaster Recovery
+
+**Backup strategy:**
+
+**Database backups:**
+- Automated daily snapshots (retained 30 days)
+- Point-in-time recovery (up to 7 days)
+- Cross-region replication for DR
+
+**Conversation archives:**
+- Weekly export to object storage (S3/Cloud Storage)
+- Encrypted at rest
+- Retained per customer retention policy
+
+**Configuration backups:**
+- Version control (git) for infrastructure code
+- Encrypted secrets in AWS Secrets Manager / GCP Secret Manager
+- Documented recovery procedures
+
+**RTO/RPO targets:**
+
+- **Recovery Time Objective (RTO)**: 1 hour
+- **Recovery Point Objective (RPO)**: 15 minutes
+
+**Disaster recovery plan:**
+
+1. Detect outage via monitoring alerts
+2. Assess impact and root cause
+3. If regional failure: Failover to DR region
+4. Restore database from latest backup
+5. Deploy application from container registry
+6. Update DNS to point to DR environment
+7. Verify functionality with smoke tests
+8. Communicate status to customers
+
+---
+
+## Pricing and Business Model
+
+### SaaS Pricing Tiers
+
+#### Starter - $49/month
+
+**Limits:**
+- 1,000 form submissions per month
+- Basic AI classification
+- Email notifications only
+- Standard spam filtering
+- 30-day conversation retention
+- Email support
+
+**Best for:**
+- Small businesses
+- Solo professionals
+- Testing/evaluation
+
+#### Professional - $149/month
+
+**Limits:**
+- 5,000 form submissions per month
+- Advanced AI classification with entity extraction
+- Slack + Email + SMS notifications
+- Enhanced spam filtering
+- Voice callback integration
+- Knowledge integration
+- Calendar integration
+- 90-day conversation retention
+- Priority email support
+
+**Best for:**
+- Growing businesses
+- Small sales teams
+- Service providers
+
+#### Business - $299/month
+
+**Limits:**
+- 15,000 form submissions per month
+- All Professional features
+- Paper follow-up integration
+- Custom routing rules
+- Webhook integrations
+- Advanced analytics
+- 180-day conversation retention
+- Phone + email support
+
+**Best for:**
+- Established businesses
+- Multi-person sales teams
+- Agencies serving clients
+
+#### Enterprise - Custom Pricing
+
+**Features:**
+- Unlimited submissions
+- Self-hosted deployment option
+- Custom AI model training
+- Dedicated account manager
+- SLA guarantees (99.9% uptime)
+- Custom retention policies
+- White-label options
+- Advanced security features
+- 24/7 phone support
+
+**Best for:**
+- Large enterprises
+- Agency white-label resellers
+- High-volume operations
+
+### Agency White-Label Program
+
+**Agency Partner - $999/month**
+
+**Includes:**
+- Unlimited submissions across all clients
+- Full white-label capabilities
+- Custom domain (contact-api.agencyname.com)
+- Branded widget and dashboard
+- Reseller dashboard for client management
+- Bulk provisioning via API
+- Revenue share option (agency keeps margin)
+- Priority partner support
+
+**Agency value proposition:**
+- Charge clients $100-300/mo per client
+- Serve 10-20 clients = $1,000-6,000/mo revenue
+- Pay aiConnected $999/mo flat
+- Net margin: $1-5,000/mo
+
+**Example agency pricing:**
+- Agency charges client $199/mo for "AI Lead Intelligence"
+- 15 clients = $2,985/mo revenue
+- aiConnected cost: $999/mo
+- Agency margin: $1,986/mo (66% margin)
+
+### Usage-Based Add-Ons
+
+**Overages:**
+- Additional submissions: $0.05 per submission beyond plan limit
+- Example: Professional plan (5,000 included) + 2,000 overage = $149 + $100 = $249
+
+**Premium features (per month):**
+- Voice callback integration: +$50/mo
+- Knowledge integration: +$30/mo  
+- Paper integration: +$30/mo
+- Advanced analytics: +$20/mo
+- Extended retention (365 days): +$25/mo
+
+### ROI Calculator for Customers
+
+**Typical ROI scenario:**
+
+**Before Contact:**
+- 100 form submissions/month
+- 10% convert to conversations (10 leads)
+- Average deal value: $5,000
+- Monthly revenue from form leads: $50,000
+
+**After Contact:**
+- 100 form submissions/month
+- 50% convert to conversations (50 leads)
+- Same average deal value: $5,000
+- Monthly revenue from form leads: $250,000
+
+**Net impact:**
+- Additional revenue: $200,000/month
+- Contact cost: $149/month (Professional plan)
+- ROI: 134,228%
+- Payback period: Immediate
+
+**Conservative scenario (50% improvement):**
+- Form-to-conversation rate: 10% → 15%
+- Additional 5 leads/month × $5,000 = $25,000/month
+- Contact cost: $149/month
+- ROI: 16,677%
+
+### Competitive Pricing Analysis
+
+**How Contact compares:**
+
+| Solution | Starting Price | Key Limitation |
+|----------|---------------|----------------|
+| **Drift** | $2,500/mo | Chat-first, expensive, enterprise-focused |
+| **Intercom** | $74/mo | Limited AI, requires heavy manual work |
+| **HubSpot Forms** | Free-$45/mo | No AI, basic routing only |
+| **Custom build** | $10,000+ | High dev cost, ongoing maintenance |
+| **Contact** | $49/mo | Purpose-built, affordable, intelligent |
+
+### Implementation Costs
+
+**Typical implementation timeline:**
+
+**Week 1: Setup**
+- Account creation
+- Widget installation
+- Basic configuration
+- Cost: $0 (self-service) or $500 (white-glove setup)
+
+**Week 2: Integration**
+- CRM connection
+- Calendar sync
+- Knowledge base setup
+- Voice integration
+- Cost: $0 (self-service) or $1,000 (assisted setup)
+
+**Week 3: Optimization**
+- Routing rule refinement
+- Response testing
+- Team training
+- Cost: $0 (self-service) or $500 (training session)
+
+**Total implementation:**
+- Self-service: $0
+- Assisted: $2,000 one-time
+
+### Customer Acquisition Economics
+
+**CAC (Customer Acquisition Cost):**
+- Target CAC: $150 (self-service) to $500 (sales-assisted)
+- Average LTV: $3,576 (Professional plan, 24-month retention)
+- LTV:CAC ratio: 7:1 to 24:1 (healthy SaaS metrics)
+
+**Payback period:**
+- Self-service: 1 month
+- Sales-assisted: 3-4 months
+
+**Retention targets:**
+- Month 1-3: 95% retention (onboarding phase)
+- Month 4-12: 90% retention (value realization)
+- Month 13+: 95% retention (sticky integration)
+- Churn reasons: Out of business, acquired, budget cuts
+
+---
+
+## Appendix: Frequently Asked Questions
+
+### General Questions
+
+**Q: How is Contact different from a chatbot?**
+
+A: Traditional chatbots are proactive (pop up and interrupt browsing). Contact is reactive (activates after intentional form submission). Chatbots require visitors to engage; Contact engages visitors who've already expressed interest. Contact also doesn't replace your entire website interaction like chatbots try to do.
+
+**Q: Does Contact work with my existing website?**
+
+A: Yes. Contact is a simple embed (script tag) that works with any website platform: WordPress, Webflow, Squarespace, custom HTML, React apps, etc. No technical changes to your site required.
+
+**Q: What happens if AI makes a mistake in classification?**
+
+A: Contact includes confidence scores with every classification. Low-confidence results trigger human review. You can also configure override rules ("always route X to Y"). The AI learns from corrections over time.
+
+**Q: Can I customize the conversational responses?**
+
+A: Yes. You can provide custom prompts, tone guidelines, and response templates. Knowledge integration ensures answers come from your actual content, not generic AI responses.
+
+### Privacy & Compliance
+
+**Q: Is Contact GDPR compliant?**
+
+A: Yes. Contact is designed with GDPR principles: data minimization, purpose limitation, storage limitation, and user rights (access, deletion, portability). Cookie consent banners and privacy notices are configurable.
+
+**Q: Where is data stored?**
+
+A: SaaS version: US-based servers (AWS/GCP). Enterprise self-hosted: Your infrastructure. EU data residency option available for GDPR requirements.
+
+**Q: Can visitors opt out?**
+
+A: Yes. Visitors can type "stop" to end conversation immediately, unsubscribe from follow-up emails, or request data deletion via privacy policy link.
+
+**Q: Why doesn't Contact use Brain for memory?**
+
+A: Brain is for authenticated, consented relationships. Contact form visitors are anonymous and haven't consented to persistent tracking. Using Brain would violate GDPR/CCPA. We maintain strict privacy boundaries.
+
+### Technical Questions
+
+**Q: What's the latency for AI analysis?**
+
+A: Typical analysis time is 400-800ms. The widget shows this as a smooth transition from form to chat, so users don't notice the brief delay.
+
+**Q: What if Claude API is down?**
+
+A: Contact has fallback to rule-based classification. Submissions are still captured and routed based on keywords. AI analysis runs retroactively when API recovers.
+
+**Q: How accurate is spam detection?**
+
+A: 99.2% accuracy in production. False positive rate < 0.5%. Multi-layer approach (email validation, content analysis, behavioral fingerprinting, AI semantic analysis) catches sophisticated spam.
+
+**Q: Can I customize the widget design?**
+
+A: Yes. Full CSS customization, brand colors, fonts, positioning, and field layout. Design system tokens make it easy to match your brand.
+
+**Q: Does Contact work on mobile?**
+
+A: Yes. Fully responsive design. Touch-optimized chat interface. Voice recording works on mobile browsers (with user permission).
+
+### Integration Questions
+
+**Q: Which CRMs does Contact integrate with?**
+
+A: Direct integrations: HubSpot, Salesforce, Pipedrive, GoHighLevel. Via Zapier/Make: 5,000+ apps. Via webhook: Any system with API.
+
+**Q: Can I use my own calendar system?**
+
+A: Yes. Google Calendar, Calendly, Cal.com, Microsoft Outlook supported. Custom calendar via API webhook also possible.
+
+**Q: Does Contact work with my existing forms?**
+
+A: Contact can replace your existing form or enhance it. If you want to keep existing form, Contact can receive data via API integration.
+
+**Q: Can I connect Contact to my help desk?**
+
+A: Yes. Support tickets can be created automatically via webhook or API integration (Zendesk, Freshdesk, Help Scout, etc.).
+
+### Business Questions
+
+**Q: What's the contract term?**
+
+A: Month-to-month for Starter/Professional/Business. Annual contracts available with 20% discount. Enterprise contracts are typically 12-month minimum.
+
+**Q: Can I try before buying?**
+
+A: Yes. 14-day free trial (no credit card required). Full access to Professional tier features during trial.
+
+**Q: What if I exceed my submission limit?**
+
+A: Automatic overage billing at $0.05/submission. You'll receive warning email at 80% and 100% of limit. Can upgrade plan anytime.
+
+**Q: How do I cancel?**
+
+A: Cancel anytime from dashboard. No cancellation fees. Data exported before final deletion (per retention policy).
+
+**Q: Do you offer refunds?**
+
+A: 30-day money-back guarantee if Contact doesn't meet expectations. Prorated refunds for annual plans if canceled mid-term.
+
+### Agency Questions
+
+**Q: Can I white-label Contact for my clients?**
+
+A: Yes. Agency Partner program ($999/mo) includes full white-label: custom domain, branded widget, client dashboard, your company name throughout.
+
+**Q: How do I manage multiple clients?**
+
+A: Reseller dashboard allows you to provision client accounts, view aggregate analytics, manage billing, and provide support from single interface.
+
+**Q: Can I charge whatever I want?**
+
+A: Yes. Agency Partner program is flat $999/mo regardless of client count or revenue. You set your own pricing and keep the margin.
+
+**Q: What support do agencies get?**
+
+A: Priority support for agencies: dedicated Slack channel, monthly strategy calls, early access to new features, co-marketing opportunities.
+
+---
+
+## Contact & Support
+
+**Sales Inquiries:**
+- Email: sales@aiconnected.ai
+- Website: www.aiconnected.ai/contact
+- Phone: +1 (555) CONTACT
+
+**Technical Support:**
+- Email: support@aiconnected.ai
+- Documentation: docs.aiconnected.ai/contact
+- Status page: status.aiconnected.ai
+
+**Agency Partnerships:**
+- Email: partnerships@aiconnected.ai
+- Application: aiconnected.ai/agency-partners
+
+**General Information:**
+- Website: www.aiconnected.ai
+- Blog: blog.aiconnected.ai
+- Twitter: @aiconnected
+- LinkedIn: linkedin.com/company/aiconnected
+
+---
+
+**Document Version:** 1.0  
+**Last Updated:** April 17, 2026  
+**Maintained by:** aiConnected Product Team
+
+---
+
+*This documentation is subject to change as Contact by aiConnected evolves. Check docs.aiconnected.ai for the latest version.*
