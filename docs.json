@@ -41,9 +41,8 @@
           {
             "group": "Getting Started",
             "pages": [
-              "index",
               "quickstart/overview",
-              "start-here"
+              "knowledge-base/introduction"
             ]
           },
           {
@@ -138,9 +137,11 @@
             ]
           },
           {
-            "group": "Research & Document Requirements",
-            "icon": "clipboard-list",
+            "group": "Planning Documents",
+            "icon": "map",
             "pages": [
+              "business-planning/business-plan-outline",
+              "business-planning/writing-sequence",
               "business-planning/research-and-document-requirements"
             ]
           }
@@ -187,8 +188,6 @@
                   "knowledge-base/aiconnected-os/aiconnected-os-17-in-chat-navigation",
                   "knowledge-base/aiconnected-os/aiconnected-os-18-context-windows-in-ai",
                   "knowledge-base/aiconnected-os/aiconnected-os-19-fluid-ui-architecture",
-                  "knowledge-base/aiconnected-os/aiconnected-os-16-enterprise-potential",
-                  "knowledge-base/aiconnected-os/aiconnected-os-20-extensible-ai-capability-system",
                   "knowledge-base/aiconnected-os/aiconnected-os-conversation-split-and-route",
                   "knowledge-base/aiconnected-os/aiconnected-os-forget-this-feature",
                   "knowledge-base/aiconnected-os/aiconnected-os-import-and-migration",
@@ -205,8 +204,7 @@
               {
                 "group": "Personas",
                 "pages": [
-                  "knowledge-base/aiconnected-os/aiconnected-os-persona-apprenticeships",
-                  "knowledge-base/aiconnected-os/ai-connected-os-prototype-jsx"
+                  "knowledge-base/aiconnected-os/aiconnected-os-persona-apprenticeships"
                 ]
               }
             ]
@@ -268,14 +266,12 @@
                   "knowledge-base/aiconnected-apps-and-modules/modules/funnelChat/legacy-kb-chat-lead-capture-routing"
                 ]
               },
-              "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-contact",
-              "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-webinar",
-              "knowledge-base/aiconnected-apps-and-modules/modules/legacy-siteGuide-prd",
+              "knowledge-base/aiconnected-apps-and-modules/modules/aiconnected-webinar",
+              "knowledge-base/aiconnected-apps-and-modules/modules/legacy-siteguide-prd",
               "knowledge-base/aiconnected-apps-and-modules/modules/aiconnected-modules-overview",
               {
                 "group": "aiConnected Contact",
                 "pages": [
-                  "knowledge-base/aiconnected-apps-and-modules/modules/aiconnected-contact",
                   "knowledge-base/aiconnected-apps-and-modules/modules/aiconnected-webinar"
                 ]
               },
