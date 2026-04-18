@@ -501,6 +501,7 @@
           {
             "group": "aiConnected Spatial Computing & Security",
             "pages": [
+              "context-window-architecture-rotating-and-infinite",
               "the-four-dimensional-computing-system",
               "the-stateless-user-interface",
               "rotating-context-window",
