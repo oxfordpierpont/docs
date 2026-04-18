@@ -129,6 +129,24 @@
         ]
       },
       {
+        "tab": "Business Planning",
+        "groups": [
+          {
+            "group": "Overview",
+            "pages": [
+              "business-planning/index"
+            ]
+          },
+          {
+            "group": "Research & Document Requirements",
+            "icon": "clipboard-list",
+            "pages": [
+              "business-planning/research-and-document-requirements"
+            ]
+          }
+        ]
+      },
+      {
         "tab": "Knowledge Base",
         "groups": [
           {
