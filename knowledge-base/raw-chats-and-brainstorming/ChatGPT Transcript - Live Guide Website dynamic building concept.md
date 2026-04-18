@@ -275,7 +275,7 @@ I want to call this Live Guide by aiConnected.
 2/2
 
 ## Response:
-<<AudioTranscription: Oh, that’s a really strong name! “Live Guide by aiConnected” captures exactly what it does—guiding people in real time, but with that personal AI-driven touch. It feels clear, professional, and memorable. I think it fits perfectly as the brand for this feature.>>
+Audio transcription: "Oh, that’s a really strong name! 'Live Guide by aiConnected' captures exactly what it does, guiding people in real time with that personal AI-driven touch. It feels clear, professional, and memorable. I think it fits perfectly as the brand for this feature."
 
 
 

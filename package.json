@@ -1,0 +1,25 @@
+{
+  "name": "docs",
+  "version": "1.0.0",
+  "description": "This is the documentation and internal knowledge base for the **aiConnected** platform — a cognitive operating system for persistent AI personas. Built on [Mintlify](https://mintlify.com).",
+  "main": "index.js",
+  "scripts": {
+    "dev": "mint dev",
+    "broken-links": "mint broken-links",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oxfordpierpont/docs.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oxfordpierpont/docs/issues"
+  },
+  "homepage": "https://github.com/oxfordpierpont/docs#readme",
+  "devDependencies": {
+    "mintlify": "^4.2.521"
+  }
+}

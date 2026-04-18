@@ -1,3 +1,4 @@
+~~~~text
 # Blog Engine RSS Filter
 
 **User:** Anonymous  
@@ -15,6 +16,7 @@ How can I create a filter step in n8n that reviews the original content from the
 
 Here is an example of bad content from the BBC RSS feed:
 
+```json
 [
 {
 "creator": 
@@ -37,6 +39,7 @@ Here is an example of bad content from the BBC RSS feed:
 "2024-10-10T14:56:10.000Z"
 }
 ]
+```
 
 ## Response:
 To create a filter step in n8n that ensures only relevant, useful, and accurate content is processed from the RSS feed, you can implement a combination of keyword filtering, content analysis, and rule-based logic. Here's how you can do it:
@@ -726,6 +729,7 @@ Follow the exact format of this code, as it is working code. You are only updati
 
 Here is the code:
 
+```javascript
 return [
   {
     json: {
@@ -734,6 +738,7 @@ return [
   },
   {
     json: {
+```
       url: 'https://dev.to/feed/n8n',
     }
   }
@@ -1009,3 +1014,4 @@ This repeats the structure you provided until it reaches Feed 25. Let me know if
 
 ---
 Powered by [ChatGPT Exporter](https://www.chatgptexporter.com)
+~~~~

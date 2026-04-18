@@ -125,12 +125,56 @@
             ]
           },
           {
+            "group": "SDK",
+            "pages": [
+              "api-reference/sdk/overview",
+              "api-reference/sdk/manifest-contracts",
+              "api-reference/sdk/schemas",
+              "api-reference/sdk/client-cli",
+              "api-reference/sdk/platform-app-apis",
+              "api-reference/sdk/capabilities-apis"
+            ]
+          },
+          {
             "group": "aiConnectedOS",
             "pages": [
               "api-reference/os/personas-instances",
               "api-reference/os/memory-context",
               "api-reference/os/workspace-features",
               "api-reference/os/conversation-tools"
+            ]
+          },
+          {
+            "group": "OS features I",
+            "pages": [
+              "api-reference/os/features/spaces-dashboard",
+              "api-reference/os/features/tasks",
+              "api-reference/os/features/live-documents",
+              "api-reference/os/features/whiteboards",
+              "api-reference/os/features/folders",
+              "api-reference/os/features/conversation-references",
+              "api-reference/os/features/pinning",
+              "api-reference/os/features/cognition-console",
+              "api-reference/os/features/collaborative-personas",
+              "api-reference/os/features/computer-use",
+              "api-reference/os/features/chat-cleanup",
+              "api-reference/os/features/skill-slots"
+            ]
+          },
+          {
+            "group": "OS features II",
+            "pages": [
+              "api-reference/os/features/adaptive-tutorials",
+              "api-reference/os/features/ideas",
+              "api-reference/os/features/in-chat-navigation",
+              "api-reference/os/features/context-windows",
+              "api-reference/os/features/fluid-ui",
+              "api-reference/os/features/split-and-route",
+              "api-reference/os/features/forget",
+              "api-reference/os/features/import-migration",
+              "api-reference/os/features/meeting-mode",
+              "api-reference/os/features/dynamic-persona-waking",
+              "api-reference/os/features/dynamic-screen-routing"
             ]
           },
           {
@@ -174,6 +218,165 @@
               "business-planning/business-plan-outline",
               "business-planning/writing-sequence",
               "business-planning/research-and-document-requirements"
+            ]
+          },
+          {
+            "group": "Phase 1 — Founding",
+            "icon": "seedling",
+            "pages": [
+              "business-planning/founding/bp-found-01-founder-biography",
+              "business-planning/founding/bp-found-02-company-origin-mission",
+              "business-planning/founding/bp-found-03-acquired-intelligence-philosophy",
+              "business-planning/founding/bp-found-04-two-layer-strategy"
+            ]
+          },
+          {
+            "group": "Phase 2 — Product",
+            "icon": "puzzle-piece",
+            "pages": [
+              "business-planning/product/bp-prod-01-master-product-architecture",
+              "business-planning/product/bp-prod-02-business-platform-summary",
+              "business-planning/product/bp-prod-03-aiconnectedos-summary",
+              "business-planning/product/bp-prod-04-product-roadmap",
+              "business-planning/product/bp-prod-05-neurigraph-nontechnical-summary",
+              "business-planning/product/bp-prod-06-product-status-matrix",
+              "business-planning/product/bp-prod-07-engine-module-revenue-analysis",
+              "business-planning/product/bp-prod-08-platform-glossary"
+            ]
+          },
+          {
+            "group": "Phase 3 — Market Research",
+            "icon": "chart-line",
+            "pages": [
+              "business-planning/market-research/bp-market-01-ai-saas-market-sizing",
+              "business-planning/market-research/bp-market-02-agency-software-market",
+              "business-planning/market-research/bp-market-03-tam-analysis",
+              "business-planning/market-research/bp-market-04-sam-calculation",
+              "business-planning/market-research/bp-market-05-som-projection",
+              "business-planning/market-research/bp-market-06-ai-memory-market-sizing",
+              "business-planning/market-research/bp-market-07-robotics-cognitive-market",
+              "business-planning/market-research/bp-market-08-voice-ai-market",
+              "business-planning/market-research/bp-mktres-05-agency-customer-discovery",
+              "business-planning/market-research/bp-mktres-06-business-client-pain-points",
+              "business-planning/market-research/bp-mktres-08-agency-icp",
+              "business-planning/market-research/bp-mktres-09-business-client-icp"
+            ]
+          },
+          {
+            "group": "Phase 4 — Competitive Intelligence",
+            "icon": "chess",
+            "pages": [
+              "business-planning/competitive/bp-comp-01-gohighlevel-deep-dive",
+              "business-planning/competitive/bp-comp-02-chatgpt-enterprise-profile",
+              "business-planning/competitive/bp-comp-03-mem0-openMemory-analysis",
+              "business-planning/competitive/bp-comp-04-vapi-retell-profile",
+              "business-planning/competitive/bp-comp-05-manus-agentic-analysis",
+              "business-planning/competitive/bp-comp-06-robotics-ai-landscape",
+              "business-planning/competitive/bp-comp-07-competitive-matrix"
+            ]
+          },
+          {
+            "group": "Phase 5 — Financial Models",
+            "icon": "calculator",
+            "pages": [
+              "business-planning/financial/bp-fin-09-pricing-architecture",
+              "business-planning/financial/bp-fin-01-revenue-model-business-platform",
+              "business-planning/financial/bp-fin-02-revenue-model-aiconnectedos",
+              "business-planning/financial/bp-fin-03-revenue-model-neurigraph-licensing",
+              "business-planning/financial/bp-fin-04-api-resale-revenue-model",
+              "business-planning/financial/bp-fin-05-customer-success-revenue",
+              "business-planning/financial/bp-fin-06-developer-ecosystem-revenue",
+              "business-planning/financial/bp-fin-07-use-of-funds",
+              "business-planning/financial/bp-fin-08-neurigraph-licensing-revenue",
+              "business-planning/financial/bp-fin-10-consolidated-5year-projections",
+              "business-planning/financial/bp-fin-11-unit-economics",
+              "business-planning/financial/bp-fin-12-break-even-analysis",
+              "business-planning/financial/bp-fin-13-consolidated-pl-model",
+              "business-planning/financial/bp-fin-14-monthly-cashflow-year1",
+              "business-planning/financial/bp-fin-15-proforma-balance-sheet",
+              "business-planning/financial/bp-fin-16-operating-cost-model",
+              "business-planning/financial/bp-fin-17-sensitivity-scenario-analysis"
+            ]
+          },
+          {
+            "group": "Phase 6 — Operations",
+            "icon": "people-group",
+            "pages": [
+              "business-planning/operations/bp-ops-01-current-org-state",
+              "business-planning/operations/bp-ops-02-org-chart",
+              "business-planning/operations/bp-ops-03-job-descriptions",
+              "business-planning/operations/bp-ops-04-compensation-philosophy",
+              "business-planning/operations/bp-ops-05-advisory-board",
+              "business-planning/operations/bp-ops-06-operational-infrastructure",
+              "business-planning/operations/bp-ops-07-development-workflow"
+            ]
+          },
+          {
+            "group": "Phase 6 — Technology",
+            "icon": "server",
+            "pages": [
+              "business-planning/technology/bp-tech-01-technology-stack",
+              "business-planning/technology/bp-tech-02-infrastructure-architecture",
+              "business-planning/technology/bp-tech-03-security-architecture",
+              "business-planning/technology/bp-tech-04-enterprise-readiness-checklist"
+            ]
+          },
+          {
+            "group": "Phase 6 — Legal",
+            "icon": "scale-balanced",
+            "pages": [
+              "business-planning/legal/bp-legal-01-entity-corporate-records",
+              "business-planning/legal/bp-legal-04-cap-table",
+              "business-planning/legal/bp-legal-08-nda-confidentiality"
+            ]
+          },
+          {
+            "group": "Phase 6 — Risk & Compliance",
+            "icon": "shield-halved",
+            "pages": [
+              "business-planning/risk/bp-risk-01-risk-register",
+              "business-planning/risk/bp-risk-02-gdpr-compliance",
+              "business-planning/risk/bp-risk-03-ccpa-compliance",
+              "business-planning/risk/bp-risk-04-ai-regulatory-risk",
+              "business-planning/risk/bp-risk-05-robotics-regulatory-landscape",
+              "business-planning/risk/bp-risk-08-vendor-dependency-risk"
+            ]
+          },
+          {
+            "group": "Phase 7 — Go-to-Market",
+            "icon": "bullhorn",
+            "pages": [
+              "business-planning/go-to-market/bp-gtm-01-launch-strategy",
+              "business-planning/go-to-market/bp-gtm-02-agency-acquisition-playbook",
+              "business-planning/go-to-market/bp-gtm-03-sales-team-structure",
+              "business-planning/go-to-market/bp-gtm-04-agency-onboarding-flow",
+              "business-planning/go-to-market/bp-gtm-05-launch-marketing-plan",
+              "business-planning/go-to-market/bp-gtm-06-content-thought-leadership",
+              "business-planning/go-to-market/bp-gtm-07-developer-community-strategy",
+              "business-planning/go-to-market/bp-gtm-08-partner-channel-strategy",
+              "business-planning/go-to-market/bp-gtm-09-first-10-agency-targets",
+              "business-planning/go-to-market/bp-gtm-10-enterprise-readiness",
+              "business-planning/go-to-market/bp-gtm-11-churn-prevention"
+            ]
+          },
+          {
+            "group": "Phase 7 — Investor Materials",
+            "icon": "handshake",
+            "pages": [
+              "business-planning/investor/bp-invest-01-pitch-deck-surface",
+              "business-planning/investor/bp-invest-02-executive-summary-standalone",
+              "business-planning/investor/bp-invest-03-gohighlevel-comparison",
+              "business-planning/investor/bp-invest-04-term-sheet-reference",
+              "business-planning/investor/bp-invest-05-series-a-milestones",
+              "business-planning/investor/bp-invest-06-pitch-deck-deep",
+              "business-planning/investor/bp-invest-07-data-room-index"
+            ]
+          },
+          {
+            "group": "The Business Plan",
+            "icon": "file-contract",
+            "pages": [
+              "business-planning/the-business-plan/aiconnected-business-plan"
             ]
           }
         ]

@@ -1,3 +1,4 @@
+~~~~text
 # browserENGINE Pricing Discussion 
 
 **User:** Anonymous  
@@ -336,7 +337,7 @@ Short take: plan for **~10–30 visits/day** as a baseline for an average small 
 
 Why I’m using that range:
 
-*   Local-business studies (BrightLocal, summarized by SEJ/others) have long shown many small local sites get **<500 visits/month**—that’s **≈17/day**; the reported average was about **506 sessions/month** (≈**17/day**). [Search Engine Journal](https://www.searchenginejournal.com/over-50-of-local-business-websites-receive-less-than-500-visits-per-month/338137/?utm_source=chatgpt.com)[SMK](https://smk.co/50-of-local-business-sites-receive-under-500-visits-monthly/?utm_source=chatgpt.com)
+*   Local-business studies (BrightLocal, summarized by SEJ/others) have long shown many small local sites get **&lt;500 visits/month**. That’s **≈17/day**; the reported average was about **506 sessions/month** (≈**17/day**). [Search Engine Journal](https://www.searchenginejournal.com/over-50-of-local-business-websites-receive-less-than-500-visits-per-month/338137/?utm_source=chatgpt.com) [SMK](https://smk.co/50-of-local-business-sites-receive-under-500-visits-monthly/?utm_source=chatgpt.com)
 *   Broader web benchmarks (not just small services) show a big chunk of sites in **1,001–15,000 visits/month** (≈**33–500/day**), which is where healthier small service sites tend to land once they’re investing in marketing. [HubSpot Blog](https://blog.hubspot.com/website/web-traffic-analytics-report?utm_source=chatgpt.com)
 
 If you want a single planning number for browserENGINE load/costs: use **~20 visits/day** as “average,” and a “healthy” scenario of **~75/day**.
@@ -480,7 +481,7 @@ What it takes to make self-hosted voice cheap
 
 *   **STT:** Whisper small/distilled, INT8, GPU when available else CPU. Stream via WebSocket in 20–40 ms chunks.
 *   **TTS:** Lightweight neural TTS (e.g., VITS/FastPitch + HiFi-GAN or Kokoro/Piper class), quantized, exported to ONNX/TensorRT. Serve behind **NVIDIA Triton** or a simple gRPC server.
-*   **Streaming audio:** WebRTC Opus @ 16–24 kbps; chunked playback to start speaking <200 ms.
+*   **Streaming audio:** WebRTC Opus @ 16–24 kbps; chunked playback to start speaking &lt;200 ms.
 *   **Caching:** Hash SSML’d text → cache WAV/OGG. Common phrases (“Hi there…”, “Here’s pricing…”, “I’ve sent that to your email…”) are reused across sessions → near-zero marginal cost.
 *   **Budget guardrails:** Voice is **push-to-talk only**, total **≤90s TTS** and **≤90s STT** per session. Everything else is text + highlights.
 
@@ -853,3 +854,4 @@ Want me to set a quick reminder to revisit this, or spin up a one-page decision 
 
 ---
 Powered by [ChatGPT Exporter](https://www.chatgptexporter.com)
+~~~~

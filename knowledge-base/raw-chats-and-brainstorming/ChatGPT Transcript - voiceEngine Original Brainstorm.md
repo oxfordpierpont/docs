@@ -1,3 +1,4 @@
+~~~~text
 # Reassess answerEngine strategy
 
 **User:** Anonymous  
@@ -107,7 +108,7 @@ If you want to make voiceENGINE your lead nationwide product, you’ll need to t
 **a) Shift the product definition**
 
 *   Position voiceEngine not as “AI agent handles _every call_” but as “AI agent **triages calls** and sets appointments.”
-*   That keeps calls short (often <2 minutes). At $0.32/min, that’s <$1 per call — much more manageable.
+*   That keeps calls short (often &lt;2 minutes). At $0.32/min, that’s &lt;$1 per call, which is much more manageable.
 *   Think of it as: AI captures leads, qualifies, and books appointments → humans handle depth.
 
 **b) Pass the cost to the client transparently**
@@ -835,7 +836,7 @@ These are **field‑friendly** estimates assuming real‑time streaming (not off
 
 ### 3) LLM (response generation)
 
-*   Model: **Llama‑3 8B** (int4/int8 KV cache), short responses (<= 60–90 tokens).
+*   Model: **Llama‑3 8B** (int4/int8 KV cache), short responses (`<= 60–90 tokens`).
 *   Throughput target: you want **~5–8 tokens/s per active call** at peak to feel snappy with barge‑in handling.
 *   A single **L40S** can comfortably serve **~40–60 active turns** at that rate with conservative settings; to keep latency low during simultaneous turns, plan **~2–3× L40S**.
 *   For **100 concurrent calls**: **3× L40S** (N+1 → **3**, since you’ll rarely have all 100 “thinking” at once; the ASR/TTS time overlaps).
@@ -3782,3 +3783,4 @@ If you want, I can draft the **exact Twilio Media Streams JSON handling** the AI
 
 ---
 Powered by [ChatGPT Exporter](https://www.chatgptexporter.com)
+~~~~

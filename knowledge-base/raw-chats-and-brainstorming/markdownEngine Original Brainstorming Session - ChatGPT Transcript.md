@@ -1938,7 +1938,7 @@ For high-tier clients, you can optionally:
 | Plan | Checks | Tools Used | Cost to You | User Price |
 | --- | --- | --- | --- | --- |
 | Free | None | – | $0 | $0 |
-| Pro | Check 10 pages/day on Perplexity only | Scraper | <$0.50/month | $10/month |
+| Pro | Check 10 pages/day on Perplexity only | Scraper | &lt;$0.50/month | $10/month |
 | Enterprise | Check top 20 AI engines, validate with LLM | n8n + OpenRouter | $5–$15/month | $49–$99/month |
 
 * * *

@@ -50,7 +50,7 @@ Intent Parser
 
 ### Architecture Pattern: **Agent + Tool Orchestration**
 
-javascript
+```javascript
 // Core Architecture
 class MultiTaskAgent {
   constructor() {
@@ -85,12 +85,13 @@ class MultiTaskAgent {
     return graph.topologicalSort();
   }
 }
+```
 
 ### Key Components You’ll Need
 
 **1. LLM Integration (Function Calling)**
 
-javascript
+```javascript
 // Modern LLMs support structured function calling
 const tools = [
   {
@@ -124,10 +125,11 @@ const response = await openai.chat.completions.create({
   tools: tools,
   tool_choice: "auto" // Let LLM decide when to call tools
 });
+```
 
 **2. Tool Registry Pattern**
 
-javascript
+```javascript
 class ToolRegistry {
   constructor() {
     this.tools = new Map();
@@ -159,11 +161,12 @@ registry.register('calendar.create', async (params, ctx) => {
     calendarId: 'primary',
     resource: params
   });
+```
 });
 
 **3. Smart Dependency Resolution**
 
-javascript
+```javascript
 class DependencyResolver {
   async resolve(tool, params) {
     const deps = [];
@@ -198,10 +201,11 @@ class DependencyResolver {
     return deps;
   }
 }
+```
 
 **4. Context Management**
 
-javascript
+```javascript
 class ContextManager {
   constructor() {
     this.sessionContext = {
@@ -238,6 +242,7 @@ class ContextManager {
     });
   }
 }
+```
 
 ### Tech Stack Recommendations
 
@@ -269,7 +274,7 @@ class ContextManager {
 
 ### Example Implementation Flow
 
-javascript
+```javascript
 // Express endpoint
 app.post('/api/chat', async (req, res) => {
   const { message, sessionId } = req.body;
@@ -310,6 +315,7 @@ app.post('/api/chat', async (req, res) => {
   res.write('data: [DONE]\n\n');
   res.end();
 });
+```
 
 ### The Secret Sauce
 

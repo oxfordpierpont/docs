@@ -4,6 +4,7 @@ description: "v5"
 ---
 
 
+~~~~md
 # aiConnected OS — Product Requirements Document (Outline) 
 
 **Version:** 1.0 Draft **Last Updated:** February 13, 2026 **Author:** Bob (Oxford Pierpont) **Build Target:** Claude Code \+ Supabase **UI Reference:** `aiconnected-os-v5-final.jsx` (3,038-line interactive prototype)
@@ -2124,7 +2125,7 @@ description: "v5"
 
 [Subscription Lifecycle	702](#subscription-lifecycle)
 
-[17.3 Chat Channel (chat:{chat\_id})	704](#17.3-chat-channel-\(chat:{chat_id}\))
+17.3 Chat Channel (`chat:{chat_id}`) 704
 
 [Subscription Setup	704](#subscription-setup)
 
@@ -2160,7 +2161,7 @@ description: "v5"
 
 [Server-Side Status Emission	718](#server-side-status-emission)
 
-[17.6 User Channel (user:{user\_id})	719](#17.6-user-channel-\(user:{user_id}\))
+17.6 User Channel (`user:{user_id}`) 719
 
 [Subscription Setup	719](#subscription-setup-1)
 
@@ -2172,11 +2173,11 @@ description: "v5"
 
 [Persona Update Handler	724](#persona-update-handler)
 
-[17.7 Instance Channel (instance:{instance\_id})	725](#17.7-instance-channel-\(instance:{instance_id}\))
+17.7 Instance Channel (`instance:{instance_id}`) 725
 
 [Subscription Setup	725](#subscription-setup-2)
 
-[17.8 Browser Channel (browser:{session\_id})	727](#17.8-browser-channel-\(browser:{session_id}\))
+17.8 Browser Channel (`browser:{session_id}`) 727
 
 [Events	727](#events)
 
@@ -3113,7 +3114,7 @@ This PRD will serve as the single source of truth for Claude Code to build a ful
 ### 4.1 Layout 
 
 - Centered content (max-width 900px)  
-- Greeting: "Welcome back, {name}"  
+- Greeting: `Welcome back, {name}`  
 - Subtitle: "Here's your workspace at a glance."
 
 ### 4.2 Quick Stats 
@@ -3176,7 +3177,7 @@ This PRD will serve as the single source of truth for Claude Code to build a ful
 
 - Bottom-pinned input bar with border and background  
 - Left side: PersonaSelector (@mention dropdown), ModelSelector (model picker with provider info)  
-- Center: text input, dynamic placeholder ("Message everyone..." or "Message {persona}...")  
+- Center: text input, dynamic placeholder (`Message everyone...` or `Message {persona}...`)  
 - Right side: Mic, Paperclip (file attach), Send (ArrowUp)  
 - Draft persistence: auto-save indicator appears when typing ("Draft saved" with green dot)  
 - Model selector: dropdown showing available models with provider, tag (fast/balanced/powerful)
@@ -3398,7 +3399,7 @@ This PRD will serve as the single source of truth for Claude Code to build a ful
 - Learnable toggle per skill  
 - Temporary vs permanent indicator  
 - Add skill manually  
-- Skill capacity: "{current}/{ceiling} skills"  
+- Skill capacity: `{current}/{ceiling} skills`  
 - Learning consent flow: persona proposes learning → user approves → skill added
 
 #### 9.3.6 Health Tab 
@@ -3572,7 +3573,7 @@ All modes maintain the same chat state. Switching views does NOT reset conversat
 
 ### 11.6 Page Awareness System 
 
-- Badge indicator: "{Persona name} is reading this page" (top-right of viewport)  
+- Badge indicator: `"{Persona name} is reading this page"` (top-right of viewport)  
 - Dismissible  
 - Triggered when a persona has been given the page's extracted content  
 - Persona can reference specific sections of the page in conversation
@@ -5770,18 +5771,18 @@ Breadcrumbs are generated dynamically based on the current screen and sub-contex
 | Screen | Crumbs |
 | :---- | :---- |
 | `home` | Dashboard |
-| `chat` | Chat \> {Instance Name} \> {Chat Title} |
+| `chat` | Chat \> `{Instance Name}` \> `{Chat Title}` |
 | `search` | Search |
 | `files` | Files |
 | `teams` | Teams |
 | `browser` (sessions) | Browser |
-| `browser` (browse) | Browser \> {domain} |
+| `browser` (browse) | Browser \> `{domain}` |
 | `insights` | Insights |
 | `spaces` (list) | Spaces |
-| `spaces` (detail) | Spaces \> {Instance Name} \> {Tab Name} (if not Overview) |
+| `spaces` (detail) | Spaces \> `{Instance Name}` \> `{Tab Name}` (if not Overview) |
 | `people` (list) | People |
-| `people` (detail) | People \> {Persona Name} |
-| `settings` | Settings \> {Tab Label} (if not General) |
+| `people` (detail) | People \> `{Persona Name}` |
+| `settings` | Settings \> `{Tab Label}` (if not General) |
 
 **Crumb styling:**
 
@@ -6510,15 +6511,15 @@ Activity log entries are created by triggers and Edge Functions throughout the p
 | User starts a new Chat | user | "You" | "started a conversation" | chat | Chat title (or "New conversation") |
 | User uploads a File | user | "You" | "uploaded a file" | file | File name |
 | User creates a Browser Extract | user | "You" | "extracted content" | browser\_extract | Extract title |
-| Persona responds in chat | persona | "{Persona name}" | "updated hero section mockup" | chat | Chat title |
-| Persona completes a task | persona | "{Persona name}" | "completed competitor analysis" | task | Task title |
-| Persona learns a new skill | persona | "{Persona name}" | "learned a new skill: {skill name}" | persona | Persona name |
-| System extracts memories | system | "System" | "saved {n} new memories" | chat | Chat title |
+| Persona responds in chat | persona | `{Persona name}` | `updated hero section mockup` | chat | Chat title |
+| Persona completes a task | persona | `{Persona name}` | `completed competitor analysis` | task | Task title |
+| Persona learns a new skill | persona | `{Persona name}` | `learned a new skill: {skill name}` | persona | Persona name |
+| System extracts memories | system | `System` | `saved {n} new memories` | chat | Chat title |
 | System auto-renames a chat | system | "System" | "renamed a conversation" | chat | New chat title |
 | System suggests moving a chat | system | "System" | "suggested moving a chat" | chat | Chat title |
 | Team run completes | system | "System" | "team run completed" | team | Team name |
 | Team run fails | system | "System" | "team run failed" | team | Team name |
-| Weekly cleanup runs | system | "System" | "archived {n} old chats" | (null) | (null) |
+| Weekly cleanup runs | system | `System` | `archived {n} old chats` | (null) | (null) |
 
 **Implementation approach:** For user-initiated actions (create, upload, delete), the activity log insert is performed in the same client-side function that performs the action (e.g., `createInstance()` also inserts an activity log entry). For persona and system actions, the Edge Function that processes the AI response or background job inserts the entry using the service role.
 
@@ -6602,7 +6603,7 @@ The activity list shows the 20 most recent events. Each item is a row with a bot
 
 **Left side** (flex 1, minWidth 0):
 
-- Primary text: `{actor_name} {action}` (14px, weight 400, `text` color)
+- Primary text: ``{actor_name} {action}`` (14px, weight 400, `text` color)
 
 ```ts
 {
@@ -6617,7 +6618,7 @@ The activity list shows the 20 most recent events. Each item is a row with a bot
 
 The actor\_name should be visually distinguished. If actor\_type is "persona", render the name in weight 500\. If actor\_type is "user", show "You" in weight 400\. If "system", show "System" in `textMuted` color, weight 400\.
 
-- Secondary text: `{entity_name}` (12px, weight 300, `textMuted`, marginTop 3px)
+- Secondary text: ``{entity_name}`` (12px, weight 300, `textMuted`, marginTop 3px)
 
 ```ts
 {
@@ -7232,7 +7233,7 @@ When multi-select is active, each chat item shows a checkbox on the left. Select
 }
 ```
 
-- Selected count: `{n}` (10px, weight 450\)  
+- Selected count: ``{n}`` (10px, weight 450\)  
 - Move button: ArrowRight icon (9px) \+ "Move" (9px)  
 - Archive button: Archive icon (9px) \+ "Archive" (9px)  
 - Delete button: Trash2 icon (9px) \+ "Delete" (9px, color \#ef4444)
@@ -7357,7 +7358,7 @@ At the bottom of the chat list, below a thin divider:
 ```
 
 - Title: 11px, weight 350, `textMuted`, ellipsis  
-- Expiry text: "Expires {n} days" (9px, weight 300, `textFaint`)  
+- Expiry text: `Expires {n} days` (9px, weight 300, `textFaint`)  
 - Restore button: RotateCcw icon (10px, `textFaint`)  
 - Permanent delete button: Trash2 icon (10px, `#ef4444`, opacity 0.6)
 
@@ -7416,7 +7417,7 @@ Appears when Cipher has generated a suggested title (stored in `chats.auto_title
 ```
 
 - Sparkles icon (13px, `textMuted`)  
-- Text: `Rename to "{auto_title}"?` (12px, weight 350, `textSec`). The suggested title is in `<strong>` with weight 500\.  
+- Text: ``Rename to "{auto_title}"?`` (12px, weight 350, `textSec`). The suggested title is in `<strong>` with weight 500\.  
 - "Apply" button: accent bg, 11px, weight 450, borderRadius 6, padding 3px 10px. Clicking updates `chats.title` to the `auto_title` value and clears `auto_title`.  
 - Dismiss (X): 12px, `textFaint`. Clicking clears `auto_title` without applying.
 
@@ -7440,7 +7441,7 @@ Appears when Cipher detects the chat's content matches an existing Instance.
 ```
 
 - ArrowRight icon (13px, `textMuted`)  
-- Text: `This looks like it belongs in "{instance_name}"` (12px, weight 350, `textSec`)  
+- Text: ``This looks like it belongs in "{instance_name}"`` (12px, weight 350, `textSec`)  
 - "Move" button: accent bg, moves chat to the suggested instance  
 - "Choose" button: bordered, opens instance picker to select a different destination  
 - Dismiss (X): clears the suggestion
@@ -7483,7 +7484,7 @@ Displayed above persona messages when the user has "Show routing notes" enabled 
 ```
 
 - Zap icon (9px, `textFaint`)  
-- Text: `Routed to {persona_name} ({persona_role})` (10px, weight 300, `textFaint`, italic)
+- Text: ``Routed to {persona_name} ({persona_role})`` (10px, weight 300, `textFaint`, italic)
 
 Only shown for `sender_type === 'persona'` messages when `routing_reason` is not null.
 
@@ -7588,7 +7589,7 @@ When a message has `content_blocks`, they render below the text content at `padd
 ```
 
 - Title: 12px, weight 450  
-- Estimate: "Est: {time}" (11px, weight 300, `textMuted`)  
+- Estimate: `Est: {time}` (11px, weight 300, `textMuted`)  
 - Status: 10px, weight 400, colored by status (green for "Ready", amber for "Pending")  
 - Footer label: "Interactive component" (9px, weight 300, `textFaint`, italic)
 
@@ -7710,7 +7711,7 @@ Items:
 - Each chat participant persona: 18px avatar \+ name (11px, weight 400\) \+ role (9px, `textFaint`)  
 - Active persona highlighted with `surfaceAlt` background
 
-When a persona is selected, the input placeholder changes from "Message everyone..." to `Message {persona_name}...`.
+When a persona is selected, the input placeholder changes from `Message everyone...` to `Message {persona_name}...`.
 
 ### Left Side: Model Selector 
 
@@ -8031,7 +8032,7 @@ Each chip:
 **Filter count:** Shown below chips when any filter is active:
 
 ```
-Showing {filteredCount} of {totalCount} messages
+Showing `{filteredCount}` of `{totalCount}` messages
 ```
 
 (10px, weight 300, `textFaint`)
@@ -8065,7 +8066,7 @@ Lists all pinned messages from the current chat.
 }
 ```
 
-- Sender \+ time: 10px, weight 300, `textFaint`, format: `{sender} · {time}`  
+- Sender \+ time: 10px, weight 300, `textFaint`, format: ``{sender} · {time}``  
 - Preview: 11px, weight 350, `textSec`, line-height 1.4, truncated to 100 characters
 
 Clicking a pinned message scrolls the main message list to that message.
@@ -8576,7 +8577,7 @@ If the user navigated to Search from within an Instance context, or scoped the s
 ```
 
 - LayoutGrid icon (11px, `textMuted`)  
-- Text: `Scoped to: {instance_name}` (11px, weight 400, `textSec`)  
+- Text: ``Scoped to: {instance_name}`` (11px, weight 400, `textSec`)  
 - Remove button: X icon (10px, `textFaint`, cursor pointer, background none, border none, padding 1px)
 
 Clicking the X removes the scope and returns to global search. When scoped, all search backends filter their results to entities belonging to that Instance (except web search, which is always global).
@@ -41098,3 +41099,4 @@ Endpoint: `GET /api/health` — used by uptime monitors.
 | Stripe products, webhook events | Part 2 (Section 2.3) |
 | Browser proxy security | Part 11 (Section 11.8) |
 | CORS headers | Part 19 (Section 19.2) |
+~~~~

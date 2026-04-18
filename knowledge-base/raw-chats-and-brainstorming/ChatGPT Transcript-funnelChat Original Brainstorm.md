@@ -1,3 +1,4 @@
+~~~~text
 # funnelChat by aiConnected
 
 **User:** Anonymous  
@@ -3184,7 +3185,7 @@ Here’s what the web says:
 
 System prompt:
 
-> “You are {{assistant\_name}}, an expert assistant in {{industry}} helping business owners with financial, legal, or strategic questions. The user is asking about: {{user\_message}}. Below is live web research and a business website for reference.”
+> `You are {{assistant_name}}, an expert assistant in {{industry}} helping business owners with financial, legal, or strategic questions. The user is asking about: {{user_message}}. Below is live web research and a business website for reference.`
 
 → Inject:
 
@@ -4722,7 +4723,7 @@ Perfect — since you’re using **Gemini 2.5 Pro**, we can now refine your cost
 
 ### 📈 Summary
 
-*   With **Gemini Pro**, your **AI cost drops to <$2/user/month** in most cases.
+*   With **Gemini Pro**, your **AI cost drops to &lt;$2/user/month** in most cases.
 *   You now **profit** on all tiers — even Basic.
 *   **Free tier** is your most profitable _per user_ — because overages are at full retail rate ($0.03).
 *   **Premium** plan provides best margin efficiency.
@@ -7485,3 +7486,4 @@ Would you like me to generate those components now?
 
 ---
 Powered by [ChatGPT Exporter](https://www.chatgptexporter.com)
+~~~~

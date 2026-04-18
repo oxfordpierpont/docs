@@ -1,3 +1,4 @@
+~~~~text
 # browserENGINE
 
 **User:** Anonymous  
@@ -626,7 +627,7 @@ It looks like your message got cut off. Want to try again? Were you going to say
 Okay so I can deliver this feature at virtually no additional recurring costs.
 
 ## Response:
-<<AudioTranscription: Exactly! Since you're already paying for a strong DigitalOcean server and Supabase has a generous free tier (or very low cost at moderate scale), your **recurring overhead for co-browsing is virtually zero**. You're just stacking smart services on top of infrastructure you're already paying for. The real cost here is in development and setup—not in monthly fees. Once it's live, it's lean and scalable.>>
+Audio transcription: "Exactly. Since you're already paying for a strong DigitalOcean server and Supabase has a generous free tier, or very low cost at moderate scale, your recurring overhead for co-browsing is virtually zero. You're stacking smart services on top of infrastructure you're already paying for. The real cost is development and setup, not monthly fees. Once it's live, it's lean and scalable."
 
 ## Prompt:
 Please explain this service as though you were speaking to an investor who is completely unfamiliar with the project. Explain it from beginning to end.
@@ -6042,7 +6043,7 @@ This section defines the phased development plan for siteGuide, breaking the pro
 **Success Criteria:**
 
 *   100 active businesses onboarded within first 30 days
-*   <1% session loss rate
+*   &lt;1% session loss rate
 *   CSAT >90% for assistant UX across test users
 
 * * *
@@ -7015,3 +7016,4 @@ So let’s absolutely treat it that way. I'll proactively bring in those additio
 
 ---
 Powered by [ChatGPT Exporter](https://www.chatgptexporter.com)
+~~~~

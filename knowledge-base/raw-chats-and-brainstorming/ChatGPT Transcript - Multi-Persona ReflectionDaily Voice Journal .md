@@ -233,7 +233,7 @@ Data model (Supabase)
 
 **trackers** _(what to track)_
 
-*   id, user\_id, name (‘gym’, ‘revenue’, ‘sleep\_hrs’, ‘meditation\_min’, ‘anger\_count’), unit, target\_type (‘>=’, ‘<=’, ‘=’)
+*   id, user\_id, name (‘gym’, ‘revenue’, ‘sleep\_hrs’, ‘meditation\_min’, ‘anger\_count’), unit, target\_type (`>=`, `<=`, `=`)
 
 **tracker\_logs**
 

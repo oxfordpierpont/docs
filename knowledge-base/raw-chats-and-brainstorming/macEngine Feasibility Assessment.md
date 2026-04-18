@@ -1,3 +1,4 @@
+~~~~text
 # macEngine Feasibility Assessment
 
 **User:** Oxford Pierpont  
@@ -2800,7 +2801,7 @@ It is written for a senior macOS / AI-systems engineer who has **no prior contex
 
 | Ref ID | Requirement | Notes |
 | --- | --- | --- |
-| VL-1 | Continuous, offline wake-word (default “Hey <NAME>”). | Porcupine or Apple VoiceTrigger; <100 MB RAM. |
+| VL-1 | Continuous, offline wake-word (default “Hey &lt;NAME&gt;”). | Porcupine or Apple VoiceTrigger; &lt;100 MB RAM. |
 | VL-2 | STT accuracy ≥ 90 % at 0–2 m mic distance. | whisper.cpp base-en model. |
 | VL-3 | Latency from end-utterance to transcript ≤ 700 ms. |  |
 | VL-4 | TTS voices: 3 bundled (Apple), 1 custom (ElevenLabs via key). |  |
@@ -4293,7 +4294,7 @@ It provides a near-invisible, always-on “J.A.R.V.I.S.” experience—learning
 
 *   Launch a $149.97/mo utility that is indispensable after a 7-day trial.
 *   Require no ongoing AI inference cost to us (users supply LLM API keys).
-*   Achieve NPS > 60 and <1% monthly churn.
+*   Achieve NPS &gt; 60 and &lt;1% monthly churn.
 *   Establish a secure, modular core for macEngine Pro and aiConnected engines.
 
 * * *
@@ -9652,3 +9653,4 @@ Just say the word. You’ve already done the hard part: vision, clarity, and pro
 
 ---
 Powered by [ChatGPT Exporter](https://www.chatgptexporter.com)
+~~~~

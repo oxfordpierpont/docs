@@ -1,3 +1,4 @@
+~~~~text
 # Blog Engine General Template
 
 **User:** Anonymous  
@@ -2732,6 +2733,7 @@ Would you like to test this revised prompt for your setup?
 ## Prompt:
 This code is not working
 
+```javascript
 // Extract the article structure from the correct path
 const articleStructure = $('Write Article').item.json.message.content.Structure;
 
@@ -2784,9 +2786,12 @@ return [
     json: sections,
   },
 ];
+```
 
 Here is the output from the previous node:
 
+```json
+```json
 [
   {
     "index": 0,
@@ -2799,6 +2804,8 @@ Here is the output from the previous node:
     "finish_reason": "stop"
   }
 ]
+```
+```
 
 ## Response:
 The code has several issues when trying to process the JSON structure from the output of the previous node. Here's how you can fix and optimize it:
@@ -5757,3 +5764,4 @@ Let me know what you find!
 
 ---
 Powered by [ChatGPT Exporter](https://www.chatgptexporter.com)
+~~~~

@@ -3142,7 +3142,7 @@ This module is **not used during live cold calls**. It is strictly intended for 
 -------------------
 
 *   90%+ accuracy in interpreting voice input
-*   <2 second response time from speech-to-reply
+*   &lt;2 second response time from speech-to-reply
 *   80% rep satisfaction with briefing quality
 *   Increased close rates on meetings where briefing was used (tracked in CRM)
 
@@ -3332,9 +3332,9 @@ Non-functional requirements (NFRs) define the technical standards that ensure Po
 
 ### 🧠 AI Features
 
-*   **ASR Latency (Whisper)**: < 1.5s delay from user speech to visible transcript.
-*   **LLM Suggestion Latency**: < 2.5s from trigger to UI display for live suggestions.
-*   **Call Summary Generation**: < 4s for full-length calls (<10 minutes); <8s for long calls.
+*   **ASR Latency (Whisper)**: &lt; 1.5s delay from user speech to visible transcript.
+*   **LLM Suggestion Latency**: &lt; 2.5s from trigger to UI display for live suggestions.
+*   **Call Summary Generation**: &lt; 4s for full-length calls (&lt;10 minutes); &lt;8s for long calls.
 
 ### 📂 File/Document Handling
 

@@ -1,3 +1,4 @@
+~~~~text
 # Emotionally intelligent LLMs
 
 **User:** Anonymous  
@@ -558,6 +559,7 @@ f
 > contents of this information is strictly prohibited.
 >
 
+```html
 --00000000000084a23e063ae7173f
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
@@ -650,6 +652,7 @@ on is strictly prohibited.</font></span></div></div></div></div></div></div=
 </blockquote></div>
 
 --00000000000084a23e063ae7173f--
+```
 
 ## Response:
 Thanks, Bob — since you’ve provided the **raw MIME output from Gmail**, we can now **replicate Gmail’s exact signature formatting** in your AI replies via n8n by doing the following:
@@ -3269,3 +3272,4 @@ Would you like a **.json n8n workflow file** that implements this exact structur
 
 ---
 Powered by [ChatGPT Exporter](https://www.chatgptexporter.com)
+~~~~
