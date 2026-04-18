@@ -437,14 +437,14 @@ async def create_recall_file(focused_node_id, transcript, summary, keywords, art
 ### SearchBar.tsx
 - Always visible at top of page
 - Calls `GET /api/search?q={query}` with debounce
-- Results appear in a dropdown showing: matching summary snippet, node path (Broad > Focused), relevance score
+- Results appear in a dropdown showing: matching summary snippet, node path (Broad &gt; Focused), relevance score
 - Clicking a result navigates to that chunk in context
 
 ### ViewToggle.tsx
 - Toggles between: Feed (default), Table, and Tree views
 - Feed = MemoryCard list
 - Table = sortable columns (date, topic, summary, keywords, temperature)
-- Tree = file-system-like expandable tree (Broad > Focused > Chunks)
+- Tree = file-system-like expandable tree (Broad &gt; Focused &gt; Chunks)
 
 ---
 

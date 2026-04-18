@@ -341,7 +341,7 @@ When adding content to an empty GAM directory:
 
 **Step 2 — Chunking**:
 - Count total tokens using a tokenizer (tiktoken)
-- If total tokens > max_chunk_tokens: split into chunks
+- If total tokens &gt; max_chunk_tokens: split into chunks
 - Chunking algorithm (see Section 5.2)
 
 **Step 3 — Memory Generation** (Parallel):
@@ -980,18 +980,18 @@ TEST: Concurrent add operations
 
 | Package | Purpose |
 |---------|---------|
-| pydantic >= 2.0 | Data validation and schemas |
-| openai >= 1.0 | LLM API client |
-| tiktoken >= 0.5 | Token counting |
-| tqdm >= 4.60 | Progress bars |
-| python-dotenv >= 1.0 | Environment variable loading |
-| json-repair >= 0.58 | Fix malformed LLM JSON output |
+| pydantic &gt;= 2.0 | Data validation and schemas |
+| openai &gt;= 1.0 | LLM API client |
+| tiktoken &gt;= 0.5 | Token counting |
+| tqdm &gt;= 4.60 | Progress bars |
+| python-dotenv &gt;= 1.0 | Environment variable loading |
+| json-repair &gt;= 0.58 | Fix malformed LLM JSON output |
 
 ### 12.2 Optional
 
 | Package | Purpose |
 |---------|---------|
-| docker >= 7.0 | Docker workspace support |
+| docker &gt;= 7.0 | Docker workspace support |
 | PyPDF2 | PDF text extraction |
 | pyserini | BM25 search index |
 | flask | Web API (if serving over HTTP) |

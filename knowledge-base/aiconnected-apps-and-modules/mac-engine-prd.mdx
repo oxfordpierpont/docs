@@ -29,7 +29,7 @@ macEngine is a locally installed, voice-first, AI-powered “operating layer” 
 
 * Require no ongoing AI inference cost to us (users supply LLM API keys).
 
-* Achieve NPS \> 60 and \<1% monthly churn.
+* Achieve NPS \&gt; 60 and \&lt;1% monthly churn.
 
 * Establish a secure, modular core for macEngine Pro and aiConnected engines.
 
@@ -91,7 +91,7 @@ macEngine is a locally installed, voice-first, AI-powered “operating layer” 
 
   * Local/offline (“Hey macEngine”, custom name support).
 
-  * Porcupine or Apple VoiceTrigger; \<50 MB RAM.
+  * Porcupine or Apple VoiceTrigger; \&lt;50 MB RAM.
 
   * Wake-word profiles stored per-persona.
 
@@ -105,7 +105,7 @@ macEngine is a locally installed, voice-first, AI-powered “operating layer” 
 
   * Native Apple voices (default), ElevenLabs option (API key).
 
-  * Latency \<300ms.
+  * Latency \&lt;300ms.
 
   * Voice selection by persona, instant switch on “Switch to \[persona\] mode.”
 
@@ -117,7 +117,7 @@ macEngine is a locally installed, voice-first, AI-powered “operating layer” 
 
   * Slot filling (parse date/time/app, user, command context).
 
-  * Clarification dialog if intent confidence \<0.65 (“Did you mean...?”)
+  * Clarification dialog if intent confidence \&lt;0.65 (“Did you mean...?”)
 
 * **Context History:**
 
@@ -293,7 +293,7 @@ macEngine is a locally installed, voice-first, AI-powered “operating layer” 
 
 * Reliable, responsive wake-word detection with custom names (per-persona).
 
-* Accurate STT with latency \<1s, including fallback if mic or model errors.
+* Accurate STT with latency \&lt;1s, including fallback if mic or model errors.
 
 * Clear, context-appropriate TTS (switches with persona).
 
@@ -345,15 +345,15 @@ macEngine is a locally installed, voice-first, AI-powered “operating layer” 
 
 ### **5.1 Performance**
 
-* Idle CPU \<7% (on M1/M2), memory \<800MB.
+* Idle CPU \&lt;7% (on M1/M2), memory \&lt;800MB.
 
-* Action execution (from command to result) \<300ms (where possible).
+* Action execution (from command to result) \&lt;300ms (where possible).
 
-* STT and TTS latency \<1s total, including switching voices.
+* STT and TTS latency \&lt;1s total, including switching voices.
 
 ### **5.2 Reliability & Stability**
 
-* macEngine is crash-free \>99.5% of user hours.
+* macEngine is crash-free \&gt;99.5% of user hours.
 
 * All failed actions prompt the user for correction, retry, or “teach mode” (for new routine creation).
 
@@ -500,7 +500,7 @@ macEngine is a locally installed, voice-first, AI-powered “operating layer” 
 
 * 99.5% crash-free operation in beta.
 
-* User feedback during onboarding \>90% “easy to use.”
+* User feedback during onboarding \&gt;90% “easy to use.”
 
 * All sensitive actions require explicit consent; no privacy surprises.
 
@@ -908,7 +908,7 @@ version: "1.0"
 
 * If `intent` is \["creative", "summarize\_pdf", "code", "research"\]: use persona’s cloud model if available
 
-* If cloud LLM fails: retry 3x, fallback to local if \< context window
+* If cloud LLM fails: retry 3x, fallback to local if \&lt; context window
 
 * If local model fails: error message, log event, suggest upgrade
 
@@ -1108,7 +1108,7 @@ version: "1.0"
 
 # **9\. RECOMMENDED TEST CASES (EXAMPLES)**
 
-* Voice: Wake word accuracy (10,000 trials, \<1% miss), STT accuracy on standard/poor mics, TTS fallback on network loss.
+* Voice: Wake word accuracy (10,000 trials, \&lt;1% miss), STT accuracy on standard/poor mics, TTS fallback on network loss.
 
 * Command: Intent parse errors, ambiguous slot filling, clarify flow.
 

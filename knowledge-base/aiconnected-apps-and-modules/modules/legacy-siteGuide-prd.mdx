@@ -625,13 +625,13 @@ The goal is to create a **self-guided, AI-native co-browsing assistant** that ca
 
 | Feature | Success Metric |
 | :---- | :---- |
-| AI answers contextually | \>85% questions answered using current page content |
-| Scroll/highlight accuracy | \>90% successful targeting of correct element |
+| AI answers contextually | \&gt;85% questions answered using current page content |
+| Scroll/highlight accuracy | \&gt;90% successful targeting of correct element |
 | Persistent memory | Session resumes accurately across pages/devices |
-| Lead capture efficacy | \>50% completion rate in natural convo flow |
-| Plugin install time | \<3 minutes average install by non-technical user |
-| Voice accuracy (STT) | \>90% correct speech transcription |
-| WebSocket latency | \<200ms round trip for scroll/highlight commands |
+| Lead capture efficacy | \&gt;50% completion rate in natural convo flow |
+| Plugin install time | \&lt;3 minutes average install by non-technical user |
+| Voice accuracy (STT) | \&gt;90% correct speech transcription |
+| WebSocket latency | \&lt;200ms round trip for scroll/highlight commands |
 
 ---
 
@@ -1284,7 +1284,7 @@ The following objectives define what SiteGuide must accomplish by the end of the
 6. **Real-time AI control via WebSocket**  
    Actions like scrolling and highlighting must be triggered instantly via two-way communication between the LLM backend and the browser widget. WebSocket architecture must support:  
    * Persistent connections  
-   * Low latency (\<200ms)  
+   * Low latency (\&lt;200ms)  
    * Session reconnection across page reloads  
 7. **Front-end behavior must be fast and intuitive**  
    The assistant must not delay page load, interfere with page behavior, or create user frustration due to visual lag, misfires, or conflicting styles.
@@ -1301,9 +1301,9 @@ These KPIs define whether SiteGuide is functionally and commercially successful:
 | Lead capture rate | % of engaged sessions resulting in email or name capture | ≥ 50% |
 | Session recall success | % of returning users whose session was successfully resumed | ≥ 80% |
 | Voice recognition accuracy | % of correctly interpreted voice commands | ≥ 90% |
-| Widget load time | Time from page load to widget ready | \< 1.5s |
-| Real-time latency | Time from AI decision to scroll/highlight action | \< 200ms |
-| Plugin install time | Time from plugin install to first working assistant interaction | \< 3 minutes |
+| Widget load time | Time from page load to widget ready | \&lt; 1.5s |
+| Real-time latency | Time from AI decision to scroll/highlight action | \&lt; 200ms |
+| Plugin install time | Time from plugin install to first working assistant interaction | \&lt; 3 minutes |
 
 ---
 
@@ -1929,7 +1929,7 @@ Once the AI has scrolled the user to the relevant content on the page, it must c
 | Scenario | Behavior |
 | :---- | :---- |
 | Target element not visible | Log event, fallback to chat-only message |
-| Element too small (\<32px height) | Scroll to parent element instead |
+| Element too small (\&lt;32px height) | Scroll to parent element instead |
 | Highlight already active | Restart animation and update styling |
 | User navigates away during animation | Cancel highlight and clear class |
 
@@ -2234,7 +2234,7 @@ $settings = [
 | Successful voice input | ≥ 90% of attempted speech transcriptions are valid |
 | Successful voice output | ≥ 95% of AI responses spoken aloud without interruption |
 | Compatibility rate (voice input) | Voice input works on ≥ 80% of mobile sessions |
-| Playback latency | Voice begins \<1 second after text render |
+| Playback latency | Voice begins \&lt;1 second after text render |
 | Voice fallback behavior | 100% of unsupported sessions silently degrade to text |
 
 ---
@@ -2419,7 +2419,7 @@ localStorage.setItem('siteguide_session_id', '7c49f920-89a0-442e-8f89-a1d0e4b915
 | :---- | :---- |
 | Short-term memory continuity | Session is preserved across 100% of internal page loads |
 | Long-term memory rehydration | ≥ 90% of returning sessions restore correctly via session ID |
-| Session write failure rate | \< 1% of interactions lost due to sync failure |
+| Session write failure rate | \&lt; 1% of interactions lost due to sync failure |
 | Message retention | 100% of user-AI interactions visible across pages |
 | Assistant open/closed state continuity | Preserved across ≥ 95% of page reloads |
 
@@ -2564,9 +2564,9 @@ checkForEmailLinkedSession(email)
 | Objective | Metric |
 | :---- | :---- |
 | Session restoration via email | ≥ 90% accuracy on email-linked resumption |
-| Dropoff rate post-email prompt | \< 25% abandonment after email offer |
-| Session match speed | \< 500ms Supabase query time |
-| User confusion rate | \< 5% of users say “this isn’t what I asked about” after resuming session |
+| Dropoff rate post-email prompt | \&lt; 25% abandonment after email offer |
+| Session match speed | \&lt; 500ms Supabase query time |
+| User confusion rate | \&lt; 5% of users say “this isn’t what I asked about” after resuming session |
 | Merged session integrity | No data loss during merge, flagged correctly |
 
 ---
@@ -2699,7 +2699,7 @@ To keep prompt size minimal, summary injection should be less than 1,000 tokens 
 | Memory summaries updated every 3–5 turns | Automatic summarization confirmed via logs |
 | LLM response accuracy ↑ | Lower confusion rate in conversations using memory |
 | Developer edit UI works | Manual memory override/edit persists correctly |
-| Memory injection latency \< 300ms | Total memory prep time for prompt payload |
+| Memory injection latency \&lt; 300ms | Total memory prep time for prompt payload |
 
 ---
 
@@ -2911,10 +2911,10 @@ Internal action:
 | Objective | Metric |
 | :---- | :---- |
 | Visual feedback on 95% of triggers | Element highlight or pointer rendered |
-| Scroll accuracy \> 90% | Element in viewport after scroll |
-| Click-to-UI delay \< 300ms | Time between message and element response |
+| Scroll accuracy \&gt; 90% | Element in viewport after scroll |
+| Click-to-UI delay \&lt; 300ms | Time between message and element response |
 | No unintended actions triggered | No clicks on sensitive forms/buttons |
-| Overlay performance impact \< 5% | Lighthouse or PageSpeed impact minimal |
+| Overlay performance impact \&lt; 5% | Lighthouse or PageSpeed impact minimal |
 
 ---
 
@@ -3051,7 +3051,7 @@ If the assistant fails to detect or support a requested language:
     
   “I’m still learning that language, but I can try English or Spanish for now.”
 
-If WCAG audit tools detect a failure (e.g., Lighthouse score \< 90):
+If WCAG audit tools detect a failure (e.g., Lighthouse score \&lt; 90):
 
 * Developer must log and fix within patch window.
 
@@ -3061,8 +3061,8 @@ If WCAG audit tools detect a failure (e.g., Lighthouse score \< 90):
 
 | Goal | Measurement |
 | :---- | :---- |
-| \>95% accessibility compliance score | Measured via Lighthouse \+ Axe \+ WAVE |
-| \>90% response accuracy in native language | Manual verification on assistant output |
+| \&gt;95% accessibility compliance score | Measured via Lighthouse \+ Axe \+ WAVE |
+| \&gt;90% response accuracy in native language | Manual verification on assistant output |
 | Keyboard navigation coverage 100% | All elements usable with Tab/Shift+Tab |
 | No critical accessibility violations | Zero blocking WCAG 2.2 errors |
 
@@ -3225,7 +3225,7 @@ In all cases, SiteGuide must first confirm the session **exists** and is **valid
 | Objective | Measurement |
 | :---- | :---- |
 | Anonymous users recognized across sessions | 90% recovery using UUID |
-| Email-identified users resume seamlessly | \>95% accuracy in memory rehydration |
+| Email-identified users resume seamlessly | \&gt;95% accuracy in memory rehydration |
 | LLM responses reflect prior goals & memory | No repetitive restarts unless session lost |
 | Users report continuity in experience | Qualitative feedback during onboarding |
 
@@ -3313,8 +3313,8 @@ Enable SiteGuide to function not only as a guide, but also as a **high-convertin
 
 If enabled, SiteGuide can apply basic lead scoring based on:
 
-* Page visited (e.g., /pricing \> \+5)  
-* Number of messages exchanged (\>10 \= \+2)  
+* Page visited (e.g., /pricing \&gt; \+5)  
+* Number of messages exchanged (\&gt;10 \= \+2)  
 * Use of commercial keywords like “quote,” “pricing,” “demo” (+10)  
 * Email collected (+10)
 
@@ -3370,10 +3370,10 @@ This helps prioritize which leads receive immediate follow-up.
 
 | Goal | KPI |
 | :---- | :---- |
-| Email capture rate | \> 15% of total users |
-| Lead delivery success rate | \> 99% of leads reach CRM or webhook target |
+| Email capture rate | \&gt; 15% of total users |
+| Lead delivery success rate | \&gt; 99% of leads reach CRM or webhook target |
 | Follow-up email open rate (external stat) | Tracked by marketing system |
-| Conversation-to-lead conversion | \> 20% for high-intent pages |
+| Conversation-to-lead conversion | \&gt; 20% for high-intent pages |
 | Average lead score of captured contacts | Tracked internally for QA |
 
 ---
@@ -3501,10 +3501,10 @@ This dashboard can be built inside Supabase’s built-in UI or using a frontend 
 
 | Type | Triggered When | Method |
 | :---- | :---- | :---- |
-| High engagement | \>100 sessions in a day | Email to admin |
-| Lead spike | \>10 leads in \<1hr | Email or webhook |
-| Error spike | \>5 API errors in 10 minutes | Slack/Discord |
-| Negative feedback | \>5 thumbs-downs in a day | Internal flag |
+| High engagement | \&gt;100 sessions in a day | Email to admin |
+| Lead spike | \&gt;10 leads in \&lt;1hr | Email or webhook |
+| Error spike | \&gt;5 API errors in 10 minutes | Slack/Discord |
+| Negative feedback | \&gt;5 thumbs-downs in a day | Internal flag |
 
 ---
 
@@ -3520,13 +3520,13 @@ This dashboard can be built inside Supabase’s built-in UI or using a frontend 
 
 | Metric | Target Value |
 | :---- | :---- |
-| Daily active sessions | \>10 per 1,000 visitors |
-| Session-to-lead conversion rate | \>15% |
-| LLM response time | \<2 seconds (average) |
-| Assistant load time | \<1.5 seconds (95th percentile) |
+| Daily active sessions | \&gt;10 per 1,000 visitors |
+| Session-to-lead conversion rate | \&gt;15% |
+| LLM response time | \&lt;2 seconds (average) |
+| Assistant load time | \&lt;1.5 seconds (95th percentile) |
 | Error-free sessions (API uptime) | 99.9% |
 | Dashboard availability | 100% via Supabase or external |
-| Thumbs-up to thumbs-down ratio | \>4:1 |
+| Thumbs-up to thumbs-down ratio | \&gt;4:1 |
 
 ---
 
@@ -3671,11 +3671,11 @@ All settings are scoped to the customer’s project key and domain, with row-lev
 
 | Objective | Metric |
 | :---- | :---- |
-| Easy setup | 90%+ of users complete onboarding in \<15min |
+| Easy setup | 90%+ of users complete onboarding in \&lt;15min |
 | Lead visibility | 100% of leads logged and visible in panel |
-| Customization adoption | \>75% of users modify branding or messaging |
+| Customization adoption | \&gt;75% of users modify branding or messaging |
 | Data security | Zero cross-tenant data leakage |
-| Dashboard responsiveness | Loads in \<2s on 4G connection |
+| Dashboard responsiveness | Loads in \&lt;2s on 4G connection |
 | Export reliability | 100% download success for CSV exports |
 
 ---
@@ -3813,10 +3813,10 @@ Example:
 
 | Metric | Threshold |
 | :---- | :---- |
-| Time to deploy on new client site | \< 2 minutes via script or plugin |
-| Script load time (embed \+ UI) | \< 800ms over 4G |
-| Admin Panel load time | \< 1.5s first contentful paint |
-| Supabase API response latency | \< 250ms average |
+| Time to deploy on new client site | \&lt; 2 minutes via script or plugin |
+| Script load time (embed \+ UI) | \&lt; 800ms over 4G |
+| Admin Panel load time | \&lt; 1.5s first contentful paint |
+| Supabase API response latency | \&lt; 250ms average |
 | Real-time co-browsing sync events | 99.5% delivered within 500ms |
 | Deployment errors per release | Zero regressions in script loader |
 
@@ -3985,7 +3985,7 @@ In case of breach:
 | Metric | Target |
 | :---- | :---- |
 | User PII stored without consent | 0 incidents |
-| Average time to fulfill deletion request | \< 48 hours |
+| Average time to fulfill deletion request | \&lt; 48 hours |
 | % of sessions tracked anonymously | ≥ 90% unless lead is captured |
 | Admin exports logged and auditable | 100% |
 | Compliance review status | GDPR \+ CCPA certified policies |
@@ -4167,10 +4167,10 @@ Business users can replay sessions in real-time or scrub through a timeline to a
 
 | Functionality | Success Definition |
 | :---- | :---- |
-| Assistant installed | \>95% of registered users complete embed |
+| Assistant installed | \&gt;95% of registered users complete embed |
 | Leads captured | ≥15% of sessions yield lead or booking |
 | Business user login frequency | 2+ logins per week |
-| Customization usage | \>50% of users change at least 2 default settings |
+| Customization usage | \&gt;50% of users change at least 2 default settings |
 | Export/download compliance | 100% consent and access logs recorded |
 
 ---
@@ -4627,7 +4627,7 @@ This section defines the phased development plan for siteGuide, breaking the pro
 
 * Assistant can read and highlight a paragraph on command  
 * Page reload does not lose the session transcript  
-* Voice interaction succeeds in \>90% of test cases
+* Voice interaction succeeds in \&gt;90% of test cases
 
 ---
 
@@ -4657,7 +4657,7 @@ This section defines the phased development plan for siteGuide, breaking the pro
 * Installable via 1-line script on any WordPress site  
 * Leads successfully captured and stored  
 * Memory persists across navigation and logout/login  
-* Works with \>80% of tested themes and site builders
+* Works with \&gt;80% of tested themes and site builders
 
 ---
 
@@ -4682,8 +4682,8 @@ This section defines the phased development plan for siteGuide, breaking the pro
 **Success Criteria:**
 
 * 100 active businesses onboarded within first 30 days  
-* \<1% session loss rate  
-* CSAT \>90% for assistant UX across test users
+* \&lt;1% session loss rate  
+* CSAT \&gt;90% for assistant UX across test users
 
 ---
 
@@ -4708,7 +4708,7 @@ This section defines the phased development plan for siteGuide, breaking the pro
 **Success Criteria:**
 
 * CRM integration used by at least 25% of active customers  
-* Average lead volume per business increases \>30% over beta  
+* Average lead volume per business increases \&gt;30% over beta  
 * Third-party developer contributions submitted
 
 ---

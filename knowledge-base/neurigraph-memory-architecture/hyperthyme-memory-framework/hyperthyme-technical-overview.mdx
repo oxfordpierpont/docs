@@ -618,21 +618,21 @@ Multiple sessions may access the same user's memory:
 
 | Operation | Target Latency | Notes |
 | :---- | :---- | :---- |
-| Memory search (hot) | \<50ms | Cached, in-memory |
-| Memory search (warm) | \<200ms | Disk read for transcript |
-| Memory search (cold) | \<1s | Decompression \+ read |
-| Recall File creation | \<500ms | Async summary generation |
-| Knowledge Graph update | \<100ms | Incremental |
-| Vector embedding | \<200ms | Depends on embedding model |
+| Memory search (hot) | \&lt;50ms | Cached, in-memory |
+| Memory search (warm) | \&lt;200ms | Disk read for transcript |
+| Memory search (cold) | \&lt;1s | Decompression \+ read |
+| Recall File creation | \&lt;500ms | Async summary generation |
+| Knowledge Graph update | \&lt;100ms | Incremental |
+| Vector embedding | \&lt;200ms | Depends on embedding model |
 
 ### Scaling Considerations
 
 | Corpus Size | Architecture |
 | :---- | :---- |
-| \<10K Recall Files | Single PostgreSQL instance |
+| \&lt;10K Recall Files | Single PostgreSQL instance |
 | 10K-100K | PostgreSQL \+ dedicated vector DB |
 | 100K-1M | Sharded PostgreSQL \+ vector DB cluster |
-| \>1M | Distributed architecture with regional caching |
+| \&gt;1M | Distributed architecture with regional caching |
 
 ---
 

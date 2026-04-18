@@ -6,13 +6,22 @@ References:
 - https://www.mintlify.com/docs/organize/pages
 - https://www.mintlify.com/docs/components
 
-- Normalized files: 49
+- Normalized files: 96
 
 ## Updated Files
 
 - `knowledge-base/aiconnected-apps-and-modules/5-year-ai-business-landscape.mdx` -> `knowledge-base/aiconnected-apps-and-modules/5-year-ai-business-landscape.mdx`
 - `knowledge-base/aiconnected-apps-and-modules/mac-engine-prd.mdx` -> `knowledge-base/aiconnected-apps-and-modules/mac-engine-prd.mdx`
+- `knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-contact-revised.mdx` -> `knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-contact-revised.mdx`
 - `knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-contact.mdx` -> `knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-contact.mdx`
+- `knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-modules-overview.mdx` -> `knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-modules-overview.mdx`
+- `knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-paper/paper-claude.mdx` -> `knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-paper/paper-claude.mdx`
+- `knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-paper/paper-design-spec-overiew.mdx` -> `knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-paper/paper-design-spec-overiew.mdx`
+- `knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-paper/paper-dev-overview.mdx` -> `knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-paper/paper-dev-overview.mdx`
+- `knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-paper/paper-developer-prd.mdx` -> `knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-paper/paper-developer-prd.mdx`
+- `knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-paper/paper-product-overview.mdx` -> `knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-paper/paper-product-overview.mdx`
+- `knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-paper/paper-readme.mdx` -> `knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-paper/paper-readme.mdx`
+- `knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-paper/paper-ui-ux-spec.mdx` -> `knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-paper/paper-ui-ux-spec.mdx`
 - `knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-voice/GoToConnect-integration-spec.mdx` -> `knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-voice/GoToConnect-integration-spec.mdx`
 - `knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-voice/aiConnected-voice-credentials-checklist.mdx` -> `knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-voice/aiConnected-voice-credentials-checklist.mdx`
 - `knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-voice/aiConnected-voice-deep-dive.mdx` -> `knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-voice/aiConnected-voice-deep-dive.mdx`
@@ -28,26 +37,57 @@ References:
 - `knowledge-base/aiconnected-apps-and-modules/modules/funnelChat/legacy-funnelChat-chatInsights-alt.mdx` -> `knowledge-base/aiconnected-apps-and-modules/modules/funnelChat/legacy-funnelChat-chatInsights-alt.mdx`
 - `knowledge-base/aiconnected-apps-and-modules/modules/funnelChat/legacy-funnelChat-conversation-flow-sample.mdx` -> `knowledge-base/aiconnected-apps-and-modules/modules/funnelChat/legacy-funnelChat-conversation-flow-sample.mdx`
 - `knowledge-base/aiconnected-apps-and-modules/modules/funnelChat/legacy-funnelChat-overview.mdx` -> `knowledge-base/aiconnected-apps-and-modules/modules/funnelChat/legacy-funnelChat-overview.mdx`
+- `knowledge-base/aiconnected-apps-and-modules/modules/funnelChat/legacy-funnelChat-prd.mdx` -> `knowledge-base/aiconnected-apps-and-modules/modules/funnelChat/legacy-funnelChat-prd.mdx`
 - `knowledge-base/aiconnected-apps-and-modules/modules/funnelChat/legacy-funnelChat-raw-brainstorm.mdx` -> `knowledge-base/aiconnected-apps-and-modules/modules/funnelChat/legacy-funnelChat-raw-brainstorm.mdx`
+- `knowledge-base/aiconnected-apps-and-modules/modules/funnelChat/legacy-funnelChat-readme.mdx` -> `knowledge-base/aiconnected-apps-and-modules/modules/funnelChat/legacy-funnelChat-readme.mdx`
 - `knowledge-base/aiconnected-apps-and-modules/modules/funnelChat/legacy-funnelChat-training-prompts.mdx` -> `knowledge-base/aiconnected-apps-and-modules/modules/funnelChat/legacy-funnelChat-training-prompts.mdx`
+- `knowledge-base/aiconnected-apps-and-modules/modules/funnelChat/legacy-kb-chat-lead-capture-routing.mdx` -> `knowledge-base/aiconnected-apps-and-modules/modules/funnelChat/legacy-kb-chat-lead-capture-routing.mdx`
+- `knowledge-base/aiconnected-apps-and-modules/modules/incomplete-logicLegal-oxpi-aiConnected-prd-outline.mdx` -> `knowledge-base/aiconnected-apps-and-modules/modules/incomplete-logicLegal-oxpi-aiConnected-prd-outline.mdx`
 - `knowledge-base/aiconnected-apps-and-modules/modules/kb-generator/ai-knowledge-training-system.mdx` -> `knowledge-base/aiconnected-apps-and-modules/modules/kb-generator/ai-knowledge-training-system.mdx`
 - `knowledge-base/aiconnected-apps-and-modules/modules/kb-generator/kb-generator-prompts.mdx` -> `knowledge-base/aiconnected-apps-and-modules/modules/kb-generator/kb-generator-prompts.mdx`
 - `knowledge-base/aiconnected-apps-and-modules/modules/kb-generator/kb-generator-readme.mdx` -> `knowledge-base/aiconnected-apps-and-modules/modules/kb-generator/kb-generator-readme.mdx`
 - `knowledge-base/aiconnected-apps-and-modules/modules/kb-generator/kb-generator-template-sample.mdx` -> `knowledge-base/aiconnected-apps-and-modules/modules/kb-generator/kb-generator-template-sample.mdx`
 - `knowledge-base/aiconnected-apps-and-modules/modules/legacy-siteGuide-prd.mdx` -> `knowledge-base/aiconnected-apps-and-modules/modules/legacy-siteGuide-prd.mdx`
+- `knowledge-base/aiconnected-apps-and-modules/modules/logicLegal/logicLegal-overview.mdx` -> `knowledge-base/aiconnected-apps-and-modules/modules/logicLegal/logicLegal-overview.mdx`
 - `knowledge-base/aiconnected-apps-and-modules/original-aiConnected-engines.mdx` -> `knowledge-base/aiconnected-apps-and-modules/original-aiConnected-engines.mdx`
 - `knowledge-base/aiconnected-business-platform/ai-services-business-directory.mdx` -> `knowledge-base/aiconnected-business-platform/ai-services-business-directory.mdx`
 - `knowledge-base/aiconnected-business-platform/legacy-aiConnected-marketplace.mdx` -> `knowledge-base/aiconnected-business-platform/legacy-aiConnected-marketplace.mdx`
 - `knowledge-base/aiconnected-business-platform/legacy-business-platform-specification.mdx` -> `knowledge-base/aiconnected-business-platform/legacy-business-platform-specification.mdx`
+- `knowledge-base/aiconnected-business-platform/legacy-n8n-build-business-services-directory.mdx` -> `knowledge-base/aiconnected-business-platform/legacy-n8n-build-business-services-directory.mdx`
 - `knowledge-base/aiconnected-business-platform/legacy-platform-redesign-spec.mdx` -> `knowledge-base/aiconnected-business-platform/legacy-platform-redesign-spec.mdx`
 - `knowledge-base/aiconnected-business-platform/legacy-platform-sidebar-spec.mdx` -> `knowledge-base/aiconnected-business-platform/legacy-platform-sidebar-spec.mdx`
+- `knowledge-base/aiconnected-os/aiConnectedOS-conversation-splitting.mdx` -> `knowledge-base/aiconnected-os/aiConnectedOS-conversation-splitting.mdx`
+- `knowledge-base/aiconnected-os/aiConnectedOS-forget-ignore-button.mdx` -> `knowledge-base/aiconnected-os/aiConnectedOS-forget-ignore-button.mdx`
+- `knowledge-base/aiconnected-os/aiConnectedOS-import-migration-prd-addon.mdx` -> `knowledge-base/aiconnected-os/aiConnectedOS-import-migration-prd-addon.mdx`
+- `knowledge-base/aiconnected-os/aiConnectedOS-persona-apprenticeships.mdx` -> `knowledge-base/aiconnected-os/aiConnectedOS-persona-apprenticeships.mdx`
+- `knowledge-base/aiconnected-os/aiConnectedOS-persona-meeting-mode.mdx` -> `knowledge-base/aiconnected-os/aiConnectedOS-persona-meeting-mode.mdx`
+- `knowledge-base/aiconnected-os/aiConnectedOS-robotics-developer-docs.mdx` -> `knowledge-base/aiconnected-os/aiConnectedOS-robotics-developer-docs.mdx`
+- `knowledge-base/aiconnected-os/quick-system-overview.mdx` -> `knowledge-base/aiconnected-os/quick-system-overview.mdx`
+- `knowledge-base/aiconnected-os/system-standards-and-philosophy.mdx` -> `knowledge-base/aiconnected-os/system-standards-and-philosophy.mdx`
+- `knowledge-base/aiconnected-os/virtual-employee-personas.mdx` -> `knowledge-base/aiconnected-os/virtual-employee-personas.mdx`
+- `knowledge-base/aiconnected-supporting-docs/aiConnected-fundraising-strategy.mdx` -> `knowledge-base/aiconnected-supporting-docs/aiConnected-fundraising-strategy.mdx`
+- `knowledge-base/aiconnected-supporting-docs/aiConnected-project-memory-backup.mdx` -> `knowledge-base/aiconnected-supporting-docs/aiConnected-project-memory-backup.mdx`
+- `knowledge-base/aiconnected-supporting-docs/aiConnected-trademark-and-patents/aiConnected-branding-and-trademark.mdx` -> `knowledge-base/aiconnected-supporting-docs/aiConnected-trademark-and-patents/aiConnected-branding-and-trademark.mdx`
+- `knowledge-base/aiconnected-supporting-docs/aiConnected-trademark-and-patents/trademark-filing-preparation.mdx` -> `knowledge-base/aiconnected-supporting-docs/aiConnected-trademark-and-patents/trademark-filing-preparation.mdx`
+- `knowledge-base/aiconnected-supporting-docs/aiConnectedOS-memory-backup.mdx` -> `knowledge-base/aiconnected-supporting-docs/aiConnectedOS-memory-backup.mdx`
 - `knowledge-base/aiconnected-supporting-docs/persona-ide-system-prompt.mdx` -> `knowledge-base/aiconnected-supporting-docs/persona-ide-system-prompt.mdx`
+- `knowledge-base/neurigraph-memory-architecture/Neurigraph_Licensing.mdx` -> `knowledge-base/neurigraph-memory-architecture/Neurigraph_Licensing.mdx`
+- `knowledge-base/neurigraph-memory-architecture/acquired-intelligence/ai-terminology-reframing.mdx` -> `knowledge-base/neurigraph-memory-architecture/acquired-intelligence/ai-terminology-reframing.mdx`
+- `knowledge-base/neurigraph-memory-architecture/acquired-intelligence-rough-outline.mdx` -> `knowledge-base/neurigraph-memory-architecture/acquired-intelligence-rough-outline.mdx`
+- `knowledge-base/neurigraph-memory-architecture/ai-structured-creativity-with-neurigraph.mdx` -> `knowledge-base/neurigraph-memory-architecture/ai-structured-creativity-with-neurigraph.mdx`
+- `knowledge-base/neurigraph-memory-architecture/amygdala-dynamic-heat-threshold-control.mdx` -> `knowledge-base/neurigraph-memory-architecture/amygdala-dynamic-heat-threshold-control.mdx`
+- `knowledge-base/neurigraph-memory-architecture/cross-platform-memory-transfer-architecture.mdx` -> `knowledge-base/neurigraph-memory-architecture/cross-platform-memory-transfer-architecture.mdx`
 - `knowledge-base/neurigraph-memory-architecture/hyperthyme-memory-framework/hyperthyme-investor-overview.mdx` -> `knowledge-base/neurigraph-memory-architecture/hyperthyme-memory-framework/hyperthyme-investor-overview.mdx`
 - `knowledge-base/neurigraph-memory-architecture/hyperthyme-memory-framework/hyperthyme-junior-dev-guide.mdx` -> `knowledge-base/neurigraph-memory-architecture/hyperthyme-memory-framework/hyperthyme-junior-dev-guide.mdx`
 - `knowledge-base/neurigraph-memory-architecture/hyperthyme-memory-framework/hyperthyme-master-project-checklist.mdx` -> `knowledge-base/neurigraph-memory-architecture/hyperthyme-memory-framework/hyperthyme-master-project-checklist.mdx`
 - `knowledge-base/neurigraph-memory-architecture/hyperthyme-memory-framework/hyperthyme-technical-architecture.mdx` -> `knowledge-base/neurigraph-memory-architecture/hyperthyme-memory-framework/hyperthyme-technical-architecture.mdx`
 - `knowledge-base/neurigraph-memory-architecture/hyperthyme-memory-framework/hyperthyme-technical-overview.mdx` -> `knowledge-base/neurigraph-memory-architecture/hyperthyme-memory-framework/hyperthyme-technical-overview.mdx`
+- `knowledge-base/neurigraph-memory-architecture/hyperthyme-memory-framework/legacy-memory-recall-overview.mdx` -> `knowledge-base/neurigraph-memory-architecture/hyperthyme-memory-framework/legacy-memory-recall-overview.mdx`
+- `knowledge-base/neurigraph-memory-architecture/legacy-aiConnected-brain.mdx` -> `knowledge-base/neurigraph-memory-architecture/legacy-aiConnected-brain.mdx`
+- `knowledge-base/neurigraph-memory-architecture/legacy-brain-api-pricing-strategy.mdx` -> `knowledge-base/neurigraph-memory-architecture/legacy-brain-api-pricing-strategy.mdx`
+- `knowledge-base/neurigraph-memory-architecture/legacy-brain-z-axis-spec.mdx` -> `knowledge-base/neurigraph-memory-architecture/legacy-brain-z-axis-spec.mdx`
 - `knowledge-base/neurigraph-memory-architecture/neurigraph-build-plan.mdx` -> `knowledge-base/neurigraph-memory-architecture/neurigraph-build-plan.mdx`
+- `knowledge-base/neurigraph-memory-architecture/neurigraph-memory-systems-competitive-comparison.mdx` -> `knowledge-base/neurigraph-memory-architecture/neurigraph-memory-systems-competitive-comparison.mdx`
 - `knowledge-base/neurigraph-memory-architecture/neurigraph-tool-references/01-MCP-Knowledge-Graph-Memory-Server.mdx` -> `knowledge-base/neurigraph-memory-architecture/neurigraph-tool-references/01-MCP-Knowledge-Graph-Memory-Server.mdx`
 - `knowledge-base/neurigraph-memory-architecture/neurigraph-tool-references/02-Multi-Database-Conversation-Memory-System.mdx` -> `knowledge-base/neurigraph-memory-architecture/neurigraph-tool-references/02-Multi-Database-Conversation-Memory-System.mdx`
 - `knowledge-base/neurigraph-memory-architecture/neurigraph-tool-references/03-Temporal-Knowledge-Graph-Adaptive-Decay.mdx` -> `knowledge-base/neurigraph-memory-architecture/neurigraph-tool-references/03-Temporal-Knowledge-Graph-Adaptive-Decay.mdx`
@@ -59,3 +99,10 @@ References:
 - `knowledge-base/neurigraph-memory-architecture/neurigraph-tool-references/09-Artifact-Panel-Starter-Template.mdx` -> `knowledge-base/neurigraph-memory-architecture/neurigraph-tool-references/09-Artifact-Panel-Starter-Template.mdx`
 - `knowledge-base/neurigraph-memory-architecture/neurigraph-tool-references/10-Lightweight-Fact-Based-AI-Memory-API.mdx` -> `knowledge-base/neurigraph-memory-architecture/neurigraph-tool-references/10-Lightweight-Fact-Based-AI-Memory-API.mdx`
 - `knowledge-base/neurigraph-memory-architecture/neurigraph-tool-references/11-Full-Stack-AI-Memory-Platform-Hybrid-Search.mdx` -> `knowledge-base/neurigraph-memory-architecture/neurigraph-tool-references/11-Full-Stack-AI-Memory-Platform-Hybrid-Search.mdx`
+- `knowledge-base/neurigraph-memory-architecture/object-deconstruction-graph-dev-documentation.mdx` -> `knowledge-base/neurigraph-memory-architecture/object-deconstruction-graph-dev-documentation.mdx`
+- `knowledge-base/neurigraph-memory-architecture/object-deconstruction-graph-overview.mdx` -> `knowledge-base/neurigraph-memory-architecture/object-deconstruction-graph-overview.mdx`
+- `knowledge-base/papers-and-research/aiConnected-influencer-cold-outreach-with-messaging.mdx` -> `knowledge-base/papers-and-research/aiConnected-influencer-cold-outreach-with-messaging.mdx`
+- `knowledge-base/papers-and-research/building-ai-service-directory-n8n.mdx` -> `knowledge-base/papers-and-research/building-ai-service-directory-n8n.mdx`
+- `knowledge-base/papers-and-research/enterprise-service-research.mdx` -> `knowledge-base/papers-and-research/enterprise-service-research.mdx`
+- `knowledge-base/papers-and-research/global-ai-marketplace-research-doc.mdx` -> `knowledge-base/papers-and-research/global-ai-marketplace-research-doc.mdx`
+- `knowledge-base/papers-and-research/the-future-of-persistent-ai-in-business.mdx` -> `knowledge-base/papers-and-research/the-future-of-persistent-ai-in-business.mdx`

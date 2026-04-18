@@ -205,10 +205,10 @@ This document does not cover:
 
 | Goal | Target | Priority |
 | :---- | :---- | :---- |
-| End-to-end latency | \< 1000ms | Critical |
-| Time to first byte (TTS) | \< 500ms | Critical |
-| Interruption response | \< 200ms | High |
-| Transcription accuracy | \> 95% | High |
+| End-to-end latency | \&lt; 1000ms | Critical |
+| Time to first byte (TTS) | \&lt; 500ms | Critical |
+| Interruption response | \&lt; 200ms | High |
+| Transcription accuracy | \&gt; 95% | High |
 | Natural conversation flow | Subjective | High |
 | Graceful degradation | 100% uptime | Medium |
 
@@ -437,9 +437,9 @@ Human conversation has natural response gaps. Studies show:
 - **200-300ms**: Feels instantaneous, slightly unnatural  
 - **500-700ms**: Natural conversation pace  
 - **800-1000ms**: Acceptable, feels thoughtful  
-- **\>1200ms**: Noticeably slow, awkward
+- **\&gt;1200ms**: Noticeably slow, awkward
 
-Our target: **\< 1000ms end-to-end** with **\< 500ms time-to-first-byte**.
+Our target: **\&lt; 1000ms end-to-end** with **\&lt; 500ms time-to-first-byte**.
 
 ### 3.2 Latency Budget Breakdown &#123;#3.2-latency-budget-breakdown&#125;
 
@@ -596,11 +596,11 @@ class LatencyTracker:
 
 | Metric | Warning | Critical |
 | :---- | :---- | :---- |
-| E2E Latency P50 | \> 800ms | \> 1200ms |
-| E2E Latency P95 | \> 1200ms | \> 2000ms |
-| LLM TTFB P50 | \> 300ms | \> 500ms |
-| TTS TTFB P50 | \> 200ms | \> 400ms |
-| STT Latency P50 | \> 150ms | \> 300ms |
+| E2E Latency P50 | \&gt; 800ms | \&gt; 1200ms |
+| E2E Latency P95 | \&gt; 1200ms | \&gt; 2000ms |
+| LLM TTFB P50 | \&gt; 300ms | \&gt; 500ms |
+| TTS TTFB P50 | \&gt; 200ms | \&gt; 400ms |
+| STT Latency P50 | \&gt; 150ms | \&gt; 300ms |
 
 ---
 

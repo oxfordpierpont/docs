@@ -439,7 +439,7 @@ All modes support these filters:
 When creating a new memory, check for duplicates:
 
 1. **Exact match**: SHA-256 hash of content matches existing memory → skip creation
-2. **Near-duplicate**: Cosine similarity > 0.95 with existing memory → merge
+2. **Near-duplicate**: Cosine similarity &gt; 0.95 with existing memory → merge
 
 **Merge strategy**:
 - Keep the older memory (lower ID)
@@ -452,7 +452,7 @@ When creating a new memory, check for duplicates:
 
 A periodic process that combines related memories:
 
-1. Find clusters of memories with high pairwise similarity (> 0.85)
+1. Find clusters of memories with high pairwise similarity (&gt; 0.85)
 2. For each cluster:
    a. Select the memory with highest confidence as the "primary"
    b. Merge observations from other memories into primary

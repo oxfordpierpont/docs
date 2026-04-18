@@ -18,12 +18,24 @@ ROOT = Path(__file__).resolve().parent.parent
 REPORT_PATH = ROOT / "selected-doc-normalization-report.md"
 
 EXPLICIT_TARGETS = [
+    "knowledge-base/aiconnected-os/quick-system-overview.mdx",
+    "knowledge-base/aiconnected-os/system-standards-and-philosophy.mdx",
+    "knowledge-base/aiconnected-os/aiConnectedOS-conversation-splitting",
+    "knowledge-base/aiconnected-os/aiConnectedOS-forget-ignore-button.md",
+    "knowledge-base/aiconnected-os/aiConnectedOS-import-migration-prd-addon.md",
+    "knowledge-base/aiconnected-os/aiConnectedOS-persona-apprenticeships.md",
+    "knowledge-base/aiconnected-os/aiConnectedOS-persona-meeting-mode.md",
+    "knowledge-base/aiconnected-os/aiConnectedOS-robotics-developer-docs.md",
+    "knowledge-base/aiconnected-os/virtual-employee-personas.md",
     "knowledge-base/aiconnected-apps-and-modules/5-year-ai-business-landscape.mdx",
     "knowledge-base/aiconnected-apps-and-modules/mac-engine-prd.mdx",
     "knowledge-base/aiconnected-apps-and-modules/original-aiConnected-engines.mdx",
     "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-contact.mdx",
+    "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-contact-revised.mdx",
+    "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-modules-overview.mdx",
     "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-webinar.mdx",
     "knowledge-base/aiconnected-apps-and-modules/modules/legacy-siteGuide-prd.mdx",
+    "knowledge-base/aiconnected-apps-and-modules/modules/incomplete-logicLegal-oxpi-aiConnected-prd-outline.md",
     "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-voice/GoToConnect-integration-spec.mdx",
     "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-voice/aiConnected-voice-credentials-checklist.mdx",
     "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-voice/aiConnected-voice-deep-dive.mdx",
@@ -44,12 +56,20 @@ EXPLICIT_TARGETS = [
     "knowledge-base/aiconnected-business-platform/legacy-business-platform-specification.mdx",
     "knowledge-base/aiconnected-business-platform/legacy-platform-redesign-spec.mdx",
     "knowledge-base/aiconnected-business-platform/legacy-platform-sidebar-spec.mdx",
+    "knowledge-base/aiconnected-business-platform/legacy-n8n-build-business-services-directory.md",
+    "knowledge-base/aiconnected-supporting-docs/aiConnected-fundraising-strategy.md",
+    "knowledge-base/aiconnected-supporting-docs/aiConnected-project-memory-backup.md",
+    "knowledge-base/aiconnected-supporting-docs/aiConnectedOS-memory-backup.md",
     "knowledge-base/aiconnected-supporting-docs/persona-ide-system-prompt.mdx",
 ]
 
 FOLDER_ROOTS = [
     "knowledge-base/aiconnected-apps-and-modules/modules/funnelChat",
+    "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-paper",
+    "knowledge-base/aiconnected-apps-and-modules/modules/logicLegal",
+    "knowledge-base/aiconnected-supporting-docs/aiConnected-trademark-and-patents",
     "knowledge-base/neurigraph-memory-architecture",
+    "knowledge-base/papers-and-research",
 ]
 
 
@@ -81,7 +101,7 @@ def main() -> None:
         description = build_description(body, title)
         original_reference = source.relative_to(ROOT).as_posix()
         destination = source
-        if source.suffix.lower() == ".md":
+        if source.suffix.lower() in {"", ".md"}:
             destination = source.with_suffix(".mdx")
             original_reference = source.relative_to(ROOT).as_posix()
 
@@ -111,7 +131,18 @@ def main() -> None:
 
 
 def collect_targets() -> list[Path]:
-    paths = {ROOT / rel for rel in EXPLICIT_TARGETS}
+    paths = set()
+    for rel in EXPLICIT_TARGETS:
+        candidate = ROOT / rel
+        if candidate.exists():
+            paths.add(candidate)
+            continue
+        if candidate.suffix.lower() in {"", ".md"}:
+            mdx_candidate = candidate.with_suffix(".mdx")
+            if mdx_candidate.exists():
+                paths.add(mdx_candidate)
+                continue
+        paths.add(candidate)
     for folder in FOLDER_ROOTS:
         root = ROOT / folder
         for path in root.rglob("*"):
@@ -369,6 +400,7 @@ def escape_text_line(line: str) -> str:
         lambda match: "&lt;" + match.group(1) + "&gt;",
         protected,
     )
+    protected = protected.replace("<", "&lt;").replace(">", "&gt;")
 
     for idx, original in enumerate(placeholders):
         protected = protected.replace(f"@@PLACEHOLDER{idx}@@", original)

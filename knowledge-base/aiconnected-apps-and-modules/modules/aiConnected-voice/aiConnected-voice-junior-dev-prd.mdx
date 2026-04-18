@@ -684,7 +684,7 @@ Why build this now? Because all the pieces finally exist:
 
 1. **LLMs are good enough.** Claude, GPT-4, and others can now hold genuinely helpful conversations. Two years ago, they couldn't.  
      
-2. **Speech technology has matured.** Deepgram's Nova-2 model achieves \>95% accuracy. Text-to-speech voices (like Chatterbox) are nearly indistinguishable from humans.  
+2. **Speech technology has matured.** Deepgram's Nova-2 model achieves \&gt;95% accuracy. Text-to-speech voices (like Chatterbox) are nearly indistinguishable from humans.  
      
 3. **Real-time infrastructure exists.** LiveKit provides sub-100ms audio routing. WebRTC is battle-tested.  
      
@@ -764,10 +764,10 @@ Why build this now? Because all the pieces finally exist:
 | Metric | Target | How We'll Measure |
 | :---- | :---- | :---- |
 | Call Answer Rate | 99.9% | Calls answered / calls received |
-| First Response Latency | \<2 seconds | Time from call connect to AI speaking |
-| Response Latency | \<1000ms | Time from human stops speaking to AI starts |
-| Speech Recognition Accuracy | \>95% | Deepgram reported confidence scores |
-| Call Completion Rate | \>85% | Calls that end normally vs. dropped/failed |
+| First Response Latency | \&lt;2 seconds | Time from call connect to AI speaking |
+| Response Latency | \&lt;1000ms | Time from human stops speaking to AI starts |
+| Speech Recognition Accuracy | \&gt;95% | Deepgram reported confidence scores |
+| Call Completion Rate | \&gt;85% | Calls that end normally vs. dropped/failed |
 | System Uptime | 99.9% | Total uptime / total time |
 | Concurrent Call Capacity | 100/tenant | Load tested maximum |
 
@@ -779,9 +779,9 @@ Why build this now? Because all the pieces finally exist:
 | Total Tenants | 250 | Across all agencies |
 | Monthly Call Minutes | 500,000 | Billable minutes |
 | Monthly Recurring Revenue | $50,000 | From agency subscriptions |
-| Gross Margin | \>60% | Revenue minus direct costs |
-| Net Promoter Score | \>40 | Customer satisfaction |
-| Churn Rate | \<5%/month | Agencies leaving |
+| Gross Margin | \&gt;60% | Revenue minus direct costs |
+| Net Promoter Score | \&gt;40 | Customer satisfaction |
+| Churn Rate | \&lt;5%/month | Agencies leaving |
 
 ### What "Done" Looks Like for MVP
 
@@ -994,7 +994,7 @@ The conversational pattern of one party speaking, then the other, back and forth
 
 The delay between cause and effect. In our context: the time between when the caller stops speaking and when the AI starts responding.
 
-**Why it matters:** High latency feels unnatural. We target \<1000ms total latency.
+**Why it matters:** High latency feels unnatural. We target \&lt;1000ms total latency.
 
 ### Streaming
 
@@ -5068,10 +5068,10 @@ CREATE TABLE calls_y2026m02 PARTITION OF calls_partitioned
 
 ### When to Partition
 
-- **calls**: When \> 10M rows  
-- **call\_events**: When \> 50M rows  
-- **transcript\_turns**: When \> 100M rows  
-- **usage\_records**: When \> 50M rows
+- **calls**: When \&gt; 10M rows  
+- **call\_events**: When \&gt; 50M rows  
+- **transcript\_turns**: When \&gt; 100M rows  
+- **usage\_records**: When \&gt; 50M rows
 
 ---
 
@@ -10852,12 +10852,12 @@ The bridge acts as an intelligent intermediary that speaks both "languages."
 
 | Goal | Target | Why It Matters |
 | :---- | :---- | :---- |
-| Audio latency | \< 50ms bridge overhead | Users notice delays \> 150ms total |
-| Connection setup | \< 2 seconds | Callers expect fast answers |
+| Audio latency | \&lt; 50ms bridge overhead | Users notice delays \&gt; 150ms total |
+| Connection setup | \&lt; 2 seconds | Callers expect fast answers |
 | Audio quality | No degradation | Poor quality \= poor user experience |
 | Reliability | 99.9% call completion | Dropped calls lose customers |
 | Scalability | 1000 concurrent calls | Support growth |
-| Resource efficiency | \< 50MB RAM per call | Keep infrastructure costs low |
+| Resource efficiency | \&lt; 50MB RAM per call | Keep infrastructure costs low |
 
 ## 28.5 Technology Choice: aiortc
 
@@ -18648,13 +18648,13 @@ In human conversation, we naturally expect responses within 200-400ms. Here's ho
 
 | Latency | User Perception |
 | :---- | :---- |
-| \< 500ms | Feels instant, like talking to a human |
+| \&lt; 500ms | Feels instant, like talking to a human |
 | 500-1000ms | Feels responsive, acceptable |
 | 1000-1500ms | Noticeable delay, still usable |
 | 1500-2000ms | Awkward pause, frustrating |
-| \> 2000ms | Feels broken, users hang up |
+| \&gt; 2000ms | Feels broken, users hang up |
 
-Our target is **\< 1000ms** mouth-to-ear.
+Our target is **\&lt; 1000ms** mouth-to-ear.
 
 ---
 
@@ -19760,7 +19760,7 @@ class STTHandler:
 ### Section 41: Pipeline Architecture
 
 - The voice pipeline transforms speech → text → AI response → speech  
-- Target latency: \<1000ms mouth-to-ear  
+- Target latency: \&lt;1000ms mouth-to-ear  
 - Key optimization: streaming at every stage  
 - Pipeline states: IDLE → LISTENING → CAPTURING → PROCESSING → SPEAKING
 
@@ -21542,7 +21542,7 @@ class PipelineStateMachine:
 
 **Key Metrics:**
 
-- Target latency: \<1000ms mouth-to-ear  
+- Target latency: \&lt;1000ms mouth-to-ear  
 - STT: Deepgram Nova-2 (\~200ms)  
 - LLM: Claude Sonnet (\~300ms TTFB)  
 - TTS: Chatterbox (\~150ms TTFB)
@@ -23095,7 +23095,7 @@ WITH (lists = 100);
 -- Rule of thumb: sqrt(row_count) to row_count/1000
 ```
 
-**Pros**: Fast to build, good for \< 1M vectors **Cons**: Approximate (may miss some results)
+**Pros**: Fast to build, good for \&lt; 1M vectors **Cons**: Approximate (may miss some results)
 
 ### HNSW Index
 
@@ -26379,11 +26379,11 @@ Voice AI has strict performance requirements:
 
 | Metric | Target | Impact if Exceeded |
 | :---- | :---- | :---- |
-| Latency (P50) | \< 1000ms | Unnatural conversation |
-| Latency (P95) | \< 1500ms | User frustration |
-| Latency (P99) | \< 2000ms | Call abandonment |
+| Latency (P50) | \&lt; 1000ms | Unnatural conversation |
+| Latency (P95) | \&lt; 1500ms | User frustration |
+| Latency (P99) | \&lt; 2000ms | Call abandonment |
 | Concurrent calls | 100+ per instance | Service degradation |
-| Error rate | \< 0.1% | Trust loss |
+| Error rate | \&lt; 0.1% | Trust loss |
 
 ## 58.2 Load Testing with Locust
 
@@ -28605,7 +28605,7 @@ groups:
   - alert: ServiceDown expr: up{job=\~"voiceai-.\*"} \== 0 for: 1m labels: severity: critical team: voice-platform annotations: summary: "Service {{ $labels.job }} is down" description: "Service has been unreachable for 1 minute" runbook: "[https://wiki.internal/runbooks/service-down](https://wiki.internal/runbooks/service-down)"  
       
 ```
-  - alert: NoActiveCalls expr: | sum(voiceai\_calls\_active) \== 0 and hour() \>= 9 and hour() \<= 17 and day\_of\_week() \>= 1 and day\_of\_week() \<= 5 for: 30m labels: severity: warning team: voice-platform annotations: summary: "No active calls during business hours" description: "No calls for 30 minutes during peak hours"
+  - alert: NoActiveCalls expr: | sum(voiceai\_calls\_active) \== 0 and hour() \&gt;= 9 and hour() \&lt;= 17 and day\_of\_week() \&gt;= 1 and day\_of\_week() \&lt;= 5 for: 30m labels: severity: warning team: voice-platform annotations: summary: "No active calls during business hours" description: "No calls for 30 minutes during peak hours"
 
   # \============================================================
 
