@@ -1,33 +1,61 @@
 ---
-title: 'Introduction'
-description: 'Example section for showcasing API endpoints'
+title: "Introduction"
+description: "Build the aiConnected platform against the documented shell, OS, and module contracts in this repository."
 ---
 
-<Note>
-  If you're not looking to build API reference documentation, you can delete
-  this section by removing the api-reference folder.
-</Note>
+## What this section covers
 
-## Welcome
+This API reference turns the repository's planning and product docs into a developer-facing contract set for the aiConnected platform.
 
-There are two ways to build API documentation: [OpenAPI](https://mintlify.com/docs/api-playground/openapi/setup) and [MDX components](https://mintlify.com/docs/api-playground/mdx/configuration). For the starter kit, we are using the following OpenAPI specification.
+Use it to understand:
 
-<Card
-  title="Plant Store Endpoints"
-  icon="leaf"
-  href="https://github.com/mintlify/starter/blob/main/api-reference/openapi.json"
->
-  View the OpenAPI specification file
-</Card>
+- The platform shell APIs every module depends on
+- The aiConnectedOS service contracts for personas, memory, and workspace features
+- The first-party module contracts for Knowledge, Chat, Contact Forms, Co-Browser, Voice, Paper, LogicLegal, and macEngine
 
-## Authentication
+## How to read these docs
 
-All API endpoints are authenticated using Bearer tokens and picked up from the specification file.
+Each page labels the contract type clearly:
 
-```json
-"security": [
-  {
-    "bearerAuth": []
-  }
-]
-```
+- `Canonical route contract` means the source docs define concrete endpoints
+- `Canonical interface contract` means the source docs define required operations, entities, events, or manifests but not fixed route paths
+- `Derived implementation contract` means the repository defines behavior strongly enough to support implementation, but the final path names still need to be locked in code
+
+This matters because the repo mixes PRDs, architectural docs, and developer guides. These reference pages preserve that distinction instead of pretending everything was already finalized as OpenAPI.
+
+## Source documents
+
+This section is based on the documentation already in the repository, especially:
+
+- [aiConnected Platform overview](/knowledge-base/aiconnected-business-platform/aiconnected-platform-overview)
+- [aiConnected Platform foundation PRD](/knowledge-base/aiconnected-business-platform/aiconnected-platform-foundation-prd)
+- [aiConnected Platform MVP specification](/knowledge-base/aiconnected-business-platform/aiconnected-platform-v1-mvp-specification)
+- [aiConnected Platform v2 port map](/knowledge-base/aiconnected-business-platform/aiconnected-platform-v2-port-map)
+- [What is the platform shell](/knowledge-base/aiconnected-business-platform/what-is-the-platform-shell)
+- [aiConnectedOS developer documentation](/knowledge-base/aiconnected-os/aiconnected-os-developer-documentation)
+- [aiConnected modules overview](/knowledge-base/aiconnected-apps-and-modules/modules/aiconnected-modules-overview)
+
+## Coverage map
+
+The API Reference tab is organized into three layers:
+
+1. `Platform core`
+The multi-tenant shell, shared entities, event bus, module registry, themes, layouts, and developer extension model.
+
+2. `aiConnectedOS`
+Persistent personas, instances, Neurigraph-backed memory, and the feature-level workspace contracts described in the OS docs.
+
+3. `First-party modules`
+The first modules called out across the MVP and module docs: Knowledge, Chat, Contact Forms, Chat Monitor, Co-Browser, Voice, Paper, LogicLegal, and macEngine.
+
+## Implementation guidance
+
+Build the platform in this order:
+
+1. Ship the shell contracts first.
+2. Implement shared entities and event routing next.
+3. Add aiConnectedOS services that provide persona and memory infrastructure.
+4. Layer first-party modules on top of the shared shell and event bus.
+5. Keep every module manifest-first and container-isolated.
+
+That sequence is consistent with the repo's foundation PRD, MVP spec, and v2 build plan.

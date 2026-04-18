@@ -113,6 +113,37 @@
             "pages": [
               "api-reference/introduction"
             ]
+          },
+          {
+            "group": "Platform Core",
+            "pages": [
+              "api-reference/platform/overview",
+              "api-reference/platform/auth-tenancy",
+              "api-reference/platform/shared-entities",
+              "api-reference/platform/modules-events",
+              "api-reference/platform/theme-layout"
+            ]
+          },
+          {
+            "group": "aiConnectedOS",
+            "pages": [
+              "api-reference/os/personas-instances",
+              "api-reference/os/memory-context",
+              "api-reference/os/workspace-features",
+              "api-reference/os/conversation-tools"
+            ]
+          },
+          {
+            "group": "Modules",
+            "pages": [
+              "api-reference/modules/knowledge-chat",
+              "api-reference/modules/contact-monitor-cobrowser",
+              "api-reference/modules/voice",
+              "api-reference/modules/paper",
+              "api-reference/modules/logiclegal",
+              "api-reference/modules/mac-engine",
+              "api-reference/modules/additional-modules"
+            ]
           }
         ]
       },
