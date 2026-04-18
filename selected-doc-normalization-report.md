@@ -6,7 +6,7 @@ References:
 - https://www.mintlify.com/docs/organize/pages
 - https://www.mintlify.com/docs/components
 
-- Normalized files: 96
+- Normalized files: 108
 
 ## Updated Files
 
@@ -62,6 +62,8 @@ References:
 - `knowledge-base/aiconnected-os/aiConnectedOS-persona-apprenticeships.mdx` -> `knowledge-base/aiconnected-os/aiConnectedOS-persona-apprenticeships.mdx`
 - `knowledge-base/aiconnected-os/aiConnectedOS-persona-meeting-mode.mdx` -> `knowledge-base/aiconnected-os/aiConnectedOS-persona-meeting-mode.mdx`
 - `knowledge-base/aiconnected-os/aiConnectedOS-robotics-developer-docs.mdx` -> `knowledge-base/aiconnected-os/aiConnectedOS-robotics-developer-docs.mdx`
+- `knowledge-base/aiconnected-os/aiConnectedOS-three-tier-access-model.md` -> `knowledge-base/aiconnected-os/aiConnectedOS-three-tier-access-model.mdx`
+- `knowledge-base/aiconnected-os/aiConnectedOS-web-based-OS-ui-ux.md` -> `knowledge-base/aiconnected-os/aiConnectedOS-web-based-OS-ui-ux.mdx`
 - `knowledge-base/aiconnected-os/quick-system-overview.mdx` -> `knowledge-base/aiconnected-os/quick-system-overview.mdx`
 - `knowledge-base/aiconnected-os/system-standards-and-philosophy.mdx` -> `knowledge-base/aiconnected-os/system-standards-and-philosophy.mdx`
 - `knowledge-base/aiconnected-os/virtual-employee-personas.mdx` -> `knowledge-base/aiconnected-os/virtual-employee-personas.mdx`
@@ -72,11 +74,14 @@ References:
 - `knowledge-base/aiconnected-supporting-docs/aiConnectedOS-memory-backup.mdx` -> `knowledge-base/aiconnected-supporting-docs/aiConnectedOS-memory-backup.mdx`
 - `knowledge-base/aiconnected-supporting-docs/persona-ide-system-prompt.mdx` -> `knowledge-base/aiconnected-supporting-docs/persona-ide-system-prompt.mdx`
 - `knowledge-base/neurigraph-memory-architecture/Neurigraph_Licensing.mdx` -> `knowledge-base/neurigraph-memory-architecture/Neurigraph_Licensing.mdx`
+- `knowledge-base/neurigraph-memory-architecture/a-system-of-long-term-autobiographical-memory.mdx` -> `knowledge-base/neurigraph-memory-architecture/a-system-of-long-term-autobiographical-memory.mdx`
 - `knowledge-base/neurigraph-memory-architecture/acquired-intelligence/ai-terminology-reframing.mdx` -> `knowledge-base/neurigraph-memory-architecture/acquired-intelligence/ai-terminology-reframing.mdx`
 - `knowledge-base/neurigraph-memory-architecture/acquired-intelligence-rough-outline.mdx` -> `knowledge-base/neurigraph-memory-architecture/acquired-intelligence-rough-outline.mdx`
 - `knowledge-base/neurigraph-memory-architecture/ai-structured-creativity-with-neurigraph.mdx` -> `knowledge-base/neurigraph-memory-architecture/ai-structured-creativity-with-neurigraph.mdx`
 - `knowledge-base/neurigraph-memory-architecture/amygdala-dynamic-heat-threshold-control.mdx` -> `knowledge-base/neurigraph-memory-architecture/amygdala-dynamic-heat-threshold-control.mdx`
+- `knowledge-base/neurigraph-memory-architecture/creating-seed-personality-templates-based-in-part-on-the-myers-briggs-16-personality-profiles-and-documentation.mdx` -> `knowledge-base/neurigraph-memory-architecture/creating-seed-personality-templates-based-in-part-on-the-myers-briggs-16-personality-profiles-and-documentation.mdx`
 - `knowledge-base/neurigraph-memory-architecture/cross-platform-memory-transfer-architecture.mdx` -> `knowledge-base/neurigraph-memory-architecture/cross-platform-memory-transfer-architecture.mdx`
+- `knowledge-base/neurigraph-memory-architecture/global-pattern-recognition-for-behavioral-prediction.mdx` -> `knowledge-base/neurigraph-memory-architecture/global-pattern-recognition-for-behavioral-prediction.mdx`
 - `knowledge-base/neurigraph-memory-architecture/hyperthyme-memory-framework/hyperthyme-investor-overview.mdx` -> `knowledge-base/neurigraph-memory-architecture/hyperthyme-memory-framework/hyperthyme-investor-overview.mdx`
 - `knowledge-base/neurigraph-memory-architecture/hyperthyme-memory-framework/hyperthyme-junior-dev-guide.mdx` -> `knowledge-base/neurigraph-memory-architecture/hyperthyme-memory-framework/hyperthyme-junior-dev-guide.mdx`
 - `knowledge-base/neurigraph-memory-architecture/hyperthyme-memory-framework/hyperthyme-master-project-checklist.mdx` -> `knowledge-base/neurigraph-memory-architecture/hyperthyme-memory-framework/hyperthyme-master-project-checklist.mdx`
@@ -88,6 +93,8 @@ References:
 - `knowledge-base/neurigraph-memory-architecture/legacy-brain-z-axis-spec.mdx` -> `knowledge-base/neurigraph-memory-architecture/legacy-brain-z-axis-spec.mdx`
 - `knowledge-base/neurigraph-memory-architecture/neurigraph-build-plan.mdx` -> `knowledge-base/neurigraph-memory-architecture/neurigraph-build-plan.mdx`
 - `knowledge-base/neurigraph-memory-architecture/neurigraph-memory-systems-competitive-comparison.mdx` -> `knowledge-base/neurigraph-memory-architecture/neurigraph-memory-systems-competitive-comparison.mdx`
+- `knowledge-base/neurigraph-memory-architecture/neurigraph-multitrack-reasoning-system.mdx` -> `knowledge-base/neurigraph-memory-architecture/neurigraph-multitrack-reasoning-system.mdx`
+- `knowledge-base/neurigraph-memory-architecture/neurigraph-pattern-recognition-database-comprehensive-prd-outline.mdx` -> `knowledge-base/neurigraph-memory-architecture/neurigraph-pattern-recognition-database-comprehensive-prd-outline.mdx`
 - `knowledge-base/neurigraph-memory-architecture/neurigraph-tool-references/01-MCP-Knowledge-Graph-Memory-Server.mdx` -> `knowledge-base/neurigraph-memory-architecture/neurigraph-tool-references/01-MCP-Knowledge-Graph-Memory-Server.mdx`
 - `knowledge-base/neurigraph-memory-architecture/neurigraph-tool-references/02-Multi-Database-Conversation-Memory-System.mdx` -> `knowledge-base/neurigraph-memory-architecture/neurigraph-tool-references/02-Multi-Database-Conversation-Memory-System.mdx`
 - `knowledge-base/neurigraph-memory-architecture/neurigraph-tool-references/03-Temporal-Knowledge-Graph-Adaptive-Decay.mdx` -> `knowledge-base/neurigraph-memory-architecture/neurigraph-tool-references/03-Temporal-Knowledge-Graph-Adaptive-Decay.mdx`
@@ -101,6 +108,11 @@ References:
 - `knowledge-base/neurigraph-memory-architecture/neurigraph-tool-references/11-Full-Stack-AI-Memory-Platform-Hybrid-Search.mdx` -> `knowledge-base/neurigraph-memory-architecture/neurigraph-tool-references/11-Full-Stack-AI-Memory-Platform-Hybrid-Search.mdx`
 - `knowledge-base/neurigraph-memory-architecture/object-deconstruction-graph-dev-documentation.mdx` -> `knowledge-base/neurigraph-memory-architecture/object-deconstruction-graph-dev-documentation.mdx`
 - `knowledge-base/neurigraph-memory-architecture/object-deconstruction-graph-overview.mdx` -> `knowledge-base/neurigraph-memory-architecture/object-deconstruction-graph-overview.mdx`
+- `knowledge-base/neurigraph-memory-architecture/pattern-recognition-database-for-behavioral-prediction-in-users.mdx` -> `knowledge-base/neurigraph-memory-architecture/pattern-recognition-database-for-behavioral-prediction-in-users.mdx`
+- `knowledge-base/neurigraph-memory-architecture/predicting-user-behavior-and-mental-states-through-tonal-interpretation.mdx` -> `knowledge-base/neurigraph-memory-architecture/predicting-user-behavior-and-mental-states-through-tonal-interpretation.mdx`
+- `knowledge-base/neurigraph-memory-architecture/research-and-improve-the-processing-of-background-cognitive-functions.mdx` -> `knowledge-base/neurigraph-memory-architecture/research-and-improve-the-processing-of-background-cognitive-functions.mdx`
+- `knowledge-base/neurigraph-memory-architecture/research-the-correlations-between-synapses-synapse-firing-and-neuroplasticity-and-whether-or-not-these-cognitive-functions-have-parallels-in-the-knowledge-graph-structure.mdx` -> `knowledge-base/neurigraph-memory-architecture/research-the-correlations-between-synapses-synapse-firing-and-neuroplasticity-and-whether-or-not-these-cognitive-functions-have-parallels-in-the-knowledge-graph-structure.mdx`
+- `knowledge-base/neurigraph-memory-architecture/simulating-introspective-awareness-via-digital-anterior-insula.mdx` -> `knowledge-base/neurigraph-memory-architecture/simulating-introspective-awareness-via-digital-anterior-insula.mdx`
 - `knowledge-base/papers-and-research/aiConnected-influencer-cold-outreach-with-messaging.mdx` -> `knowledge-base/papers-and-research/aiConnected-influencer-cold-outreach-with-messaging.mdx`
 - `knowledge-base/papers-and-research/building-ai-service-directory-n8n.mdx` -> `knowledge-base/papers-and-research/building-ai-service-directory-n8n.mdx`
 - `knowledge-base/papers-and-research/enterprise-service-research.mdx` -> `knowledge-base/papers-and-research/enterprise-service-research.mdx`

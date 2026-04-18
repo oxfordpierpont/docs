@@ -1,7 +1,11 @@
 ---
 title: "Multitrack Thinking: The Core System"
+description: "Track 1: Foreground (Active Conversation) Real time response generation User input → Persona output Latency requirement: 2 4 seconds max (human conversation..."
 ---
 
+<Info>
+Normalized for Mintlify from `knowledge-base/neurigraph-memory-architecture/neurigraph-multitrack-reasoning-system.mdx`.
+</Info>
 **Track 1: Foreground (Active Conversation)**
 
 - Real-time response generation
@@ -390,7 +394,7 @@ Option A: Embedding-based matching (recommended for scale)
 Option B: Rule-based pattern matching
 
 - Explicit pattern rules (IF behavior X and context Y, THEN pattern Z)
-- Faster for smaller pattern sets (\<1000 patterns)
+- Faster for smaller pattern sets (\&lt;1000 patterns)
 - Harder to scale but more interpretable
 - Cost: Very low (algorithmic)
 
@@ -704,7 +708,7 @@ Option C: Specialized reasoning API
 **Open Question**
 
 - How much reasoning is enough? Risk of over-analysis and endless reasoning loops
-- Solution: Set max reasoning steps (e.g., max 5 logical chains, max 3 scenarios) and confidence threshold (only include insights \>0.6 confidence)
+- Solution: Set max reasoning steps (e.g., max 5 logical chains, max 3 scenarios) and confidence threshold (only include insights \&gt;0.6 confidence)
 
 ---
 
@@ -1531,8 +1535,8 @@ Each track has a specific output schema (defined in Section 2). These should be 
 **Acceptance Criteria:**
 
 - MTE can spawn and manage concurrent tracks
-- Track 1 generates responses in \<4s
-- Track 2 returns pattern results in \<500ms
+- Track 1 generates responses in \&lt;4s
+- Track 2 returns pattern results in \&lt;500ms
 - Shared context properly accumulates and provides results
 - No latency impact on foreground response
 
@@ -1557,8 +1561,8 @@ Each track has a specific output schema (defined in Section 2). These should be 
 
 **Acceptance Criteria:**
 
-- Track 3 detects emotional markers with \>85% accuracy on test set
-- Track 5 retrieves relevant memories \>70% of the time
+- Track 3 detects emotional markers with \&gt;85% accuracy on test set
+- Track 5 retrieves relevant memories \&gt;70% of the time
 - Track 7 successfully decompresses memories without corruption
 - All tracks operate within latency budgets
 - Integration with shared context works seamlessly
@@ -1601,7 +1605,7 @@ Each track has a specific output schema (defined in Section 2). These should be 
 **Acceptance Criteria:**
 
 - System handles all concurrent tracks without resource contention
-- Latency remains \<4s for foreground regardless of background load
+- Latency remains \&lt;4s for foreground regardless of background load
 - Failure in any track doesn't impact foreground response
 - 95%\+ uptime on integration testing
 - All latency budgets maintained
@@ -1626,21 +1630,21 @@ Each track has a specific output schema (defined in Section 2). These should be 
 
 **Performance:**
 
-- Foreground response latency: \<4 seconds (soft: \<3s)
+- Foreground response latency: \&lt;4 seconds (soft: \&lt;3s)
 - Background track latencies: within individual budgets
 - No blocking: foreground never waits on background
 - Throughput: system can handle concurrent users without degradation
 
 **Quality:**
 
-- Pattern recognition accuracy: \>80% (validated against gold standard set)
-- Emotional analysis accuracy: \>85%
-- Memory retrieval relevance: \>70% top-3 results relevant
-- Reasoning coherence: human reviewers rate \>4/5 for logical consistency
+- Pattern recognition accuracy: \&gt;80% (validated against gold standard set)
+- Emotional analysis accuracy: \&gt;85%
+- Memory retrieval relevance: \&gt;70% top-3 results relevant
+- Reasoning coherence: human reviewers rate \&gt;4/5 for logical consistency
 
 **Reliability:**
 
-- System uptime: \>99%
+- System uptime: \&gt;99%
 - Graceful degradation: any single track failure doesn't impact response
 - No memory leaks or resource exhaustion
 - Data integrity maintained across decompression/activation
@@ -1670,7 +1674,7 @@ Each track has a specific output schema (defined in Section 2). These should be 
 
 **Track 3 (Emotional Analysis):**
 
-- \[ \] Identifies emotional markers with \>85% accuracy
+- \[ \] Identifies emotional markers with \&gt;85% accuracy
 - \[ \] Distinguishes between surface and underlying emotion
 - \[ \] Correctly identifies crisis markers (0% false negatives acceptable)
 - \[ \] Emotional trajectory analysis shows clear escalation/de-escalation
@@ -1684,8 +1688,8 @@ Each track has a specific output schema (defined in Section 2). These should be 
 
 **Track 5 (Episodic Memory Search):**
 
-- \[ \] Finds relevant prior conversations \>70% of the time
-- \[ \] Returns memories in \<3s
+- \[ \] Finds relevant prior conversations \&gt;70% of the time
+- \[ \] Returns memories in \&lt;3s
 - \[ \] Identifies narrative continuity accurately
 - \[ \] Memory excerpts are relevant and contextual
 

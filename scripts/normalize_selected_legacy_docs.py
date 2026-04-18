@@ -26,6 +26,8 @@ EXPLICIT_TARGETS = [
     "knowledge-base/aiconnected-os/aiConnectedOS-persona-apprenticeships.md",
     "knowledge-base/aiconnected-os/aiConnectedOS-persona-meeting-mode.md",
     "knowledge-base/aiconnected-os/aiConnectedOS-robotics-developer-docs.md",
+    "knowledge-base/aiconnected-os/aiConnectedOS-three-tier-access-model.md",
+    "knowledge-base/aiconnected-os/aiConnectedOS-web-based-OS-ui-ux.md",
     "knowledge-base/aiconnected-os/virtual-employee-personas.md",
     "knowledge-base/aiconnected-apps-and-modules/5-year-ai-business-landscape.mdx",
     "knowledge-base/aiconnected-apps-and-modules/mac-engine-prd.mdx",

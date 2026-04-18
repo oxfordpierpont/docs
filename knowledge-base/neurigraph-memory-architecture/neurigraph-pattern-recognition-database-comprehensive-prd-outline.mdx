@@ -1,7 +1,11 @@
 ---
 title: "Neurigraph Pattern Recognition Database: Comprehensive PRD Outline"
+description: "Version : 1.0 Status : Production Ready Last Updated : 2026 04 18 Document Length : ~45,000 words Part 1: Vision and Architecture Part 2: Data Models and Sch..."
 ---
 
+<Info>
+Normalized for Mintlify from `knowledge-base/neurigraph-memory-architecture/neurigraph-pattern-recognition-database-comprehensive-prd-outline.mdx`.
+</Info>
 **Version**: 1.0\
 **Status**: Production Ready\
 **Last Updated**: 2026-04-18\
@@ -25,13 +29,13 @@ title: "Neurigraph Pattern Recognition Database: Comprehensive PRD Outline"
 
 ---
 
-<Frame>
-  <img
+&lt;Frame&gt;
+  &lt;img
     src="/images/image.png"
     alt="Image"
     title="Image"
-  />
-</Frame>
+  /&gt;
+&lt;/Frame&gt;
 
 # PART 1: VISION AND ARCHITECTURE
 
@@ -347,7 +351,7 @@ When MTE Track 2 needs pattern information, this layer handles the query.
 
 Characteristics:
 
-- Fast pattern matching (\<500ms)
+- Fast pattern matching (\&lt;500ms)
 - Relevance ranking and filtering
 - Confidence-aware (only returns patterns above threshold)
 - Integrates with local cache and central database
@@ -442,9 +446,9 @@ Implementation consequence: Pattern matching is done via lookup and similarity s
 
 Not all patterns are equally reliable. The system returns patterns with confidence scores and applies thresholds:
 
-- High-confidence patterns (\>0.8): Can guide behavior
+- High-confidence patterns (\&gt;0.8): Can guide behavior
 - Medium-confidence patterns (0.5-0.8): Inform but don't determine behavior
-- Low-confidence patterns (\<0.5): Return as informational only, don't influence behavior
+- Low-confidence patterns (\&lt;0.5): Return as informational only, don't influence behavior
 
 This means personas use patterns as guidance, not gospel.
 
@@ -963,7 +967,7 @@ Every pattern stored in NPRD must pass the following validation rules:
 
 - If vulnerability\_flags present, must have escalation\_triggers
 - If risk\_level is "high" in manipulation\_risk, must have safeguards\_required
-- If validation\_status is "mature", must have prediction\_success\_rate \> 0.7
+- If validation\_status is "mature", must have prediction\_success\_rate \&gt; 0.7
 - If validation\_status is "deprecated", must have deprecation\_reason
 
 **Type Constraints**
@@ -1077,7 +1081,7 @@ When a pattern is triggered, what does the person typically do?
 - always: This response occurs in nearly 100% of triggering situations
 - usually: This response occurs in 70-90% of triggering situations
 - sometimes: This response occurs in 30-70% of triggering situations
-- rarely: This response occurs in \<30% of triggering situations
+- rarely: This response occurs in \&lt;30% of triggering situations
 
 **Response Timing**
 
@@ -1631,27 +1635,27 @@ This pattern would be considered "validated" (confidence ~0.66) and ready for us
 
 Different use cases have different confidence requirements.
 
-**Threshold 1: Information Only (Confidence \> 0.3)**
+**Threshold 1: Information Only (Confidence \&gt; 0.3)**
 
 - Pattern is returned but labeled as "exploratory" or "low-confidence"
 - Persona can reference it but must be tentative: "I notice you might... but I could be wrong"
 - Used for research or pattern learning
 
-**Threshold 2: Guidance (Confidence \> 0.5)**
+**Threshold 2: Guidance (Confidence \&gt; 0.5)**
 
 - Pattern can guide persona behavior
 - Persona can use DO/DON'T rules
 - User won't notice pattern application explicitly
 - Persona adjusts communication style based on pattern
 
-**Threshold 3: Behavioral (Confidence \> 0.7)**
+**Threshold 3: Behavioral (Confidence \&gt; 0.7)**
 
 - Pattern can be applied with confidence
 - Persona can anticipate needs
 - DO rules become strong recommendations
 - Can reference pattern indirectly: "I'm noticing..."
 
-**Threshold 4: Critical (Confidence \> 0.85)**
+**Threshold 4: Critical (Confidence \&gt; 0.85)**
 
 - Pattern can guide significant behavioral decisions
 - DO rules are mandatory for this pattern
@@ -1662,7 +1666,7 @@ Different use cases have different confidence requirements.
 
 - For patterns involving self-harm, suicidality, abuse
 - Lower confidence acceptable for escalation (better to over-escalate than miss)
-- Escalation triggered at confidence \> 0.5 for critical safety patterns
+- Escalation triggered at confidence \&gt; 0.5 for critical safety patterns
 - Can't miss = more sensitive threshold
 
 ---
@@ -1945,7 +1949,7 @@ Pattern is well-established, highly reliable, widely used.
 
 Characteristics:
 
-- Confidence: \> 0.85 (very high)
+- Confidence: \&gt; 0.85 (very high)
 - Availability: High priority in pattern cache
 - Use case: Full, confident use in all contexts
 - Duration: Indefinite, unless contradicted by new evidence
@@ -2041,7 +2045,7 @@ temperature_decay = current_temperature * e^(-decay_rate * days_since_last_obser
 - Temperature 0.7-0.9: Moderately recent, still relevant
 - Temperature 0.5-0.7: Older, may need re-validation
 - Temperature 0.3-0.5: Significantly aged, consider archiving
-- Temperature \< 0.3: Very old, likely obsolete
+- Temperature \&lt; 0.3: Very old, likely obsolete
 
 **Temperature Decay**
 
@@ -2058,7 +2062,7 @@ Days since last observation → Temperature multiplier:
 
 **What Happens at Low Temperature?**
 
-- Temperature \< 0.3: Pattern moved to "archived" status
+- Temperature \&lt; 0.3: Pattern moved to "archived" status
 - Archived patterns are not queryable in production
 - Can be reactivated if new observations appear
 - Keeps database clean, removes obsolete patterns
@@ -2241,7 +2245,7 @@ Four main database options were considered for NPRD:
 
 Pros:
 
-- Extremely fast similarity matching (\<100ms)
+- Extremely fast similarity matching (\&lt;100ms)
 - Natural fit for pattern embeddings
 - Built-in relevance ranking
 - Scales well with pattern count
@@ -2771,18 +2775,18 @@ def hybrid_pattern_matching(
 
 ### 13.3 Performance Requirements and Optimization
 
-**Latency Budget: \<500ms Total**
+**Latency Budget: \&lt;500ms Total**
 
 Breakdown:
 
-- Query execution: \<200ms
-- Result processing and ranking: \<100ms
-- Return to persona: \<200ms buffer
+- Query execution: \&lt;200ms
+- Result processing and ranking: \&lt;100ms
+- Return to persona: \&lt;200ms buffer
 
 **Optimization Techniques**
 
 1. **Query Caching (Redis)**
-   - Cache common queries (behavior\_context hash -\> results)
+   - Cache common queries (behavior\_context hash -\&gt; results)
    - TTL: 1 hour (patterns change slowly)
    - Miss rate: Expected 20-30% (new users, novel behavior)
 2. **Pattern Embedding Pre-computation**
@@ -3599,9 +3603,9 @@ Governance ensures patterns are used safely and appropriately.
 
 **Governance Question 3: Who Can Modify or Deprecate Patterns?**
 
-- Any pattern with confidence \< 0.5: Auto-archival possible
+- Any pattern with confidence \&lt; 0.5: Auto-archival possible
 - Patterns with confidence 0.5-0.8: Modification requires human approval
-- High-confidence patterns (\> 0.85): Modification requires high-level approval
+- High-confidence patterns (\&gt; 0.85): Modification requires high-level approval
 - Deprecated patterns: Cannot be un-deprecated except through re-validation
 
 **Governance Question 4: Who Owns the Pattern Database?**
@@ -4654,7 +4658,7 @@ Deliverables:
 Success criteria:
 
 - Database operational and tested
-- Query latency \< 200ms
+- Query latency \&lt; 200ms
 - Anonymization enforced
 - Basic CRUD operations working
 
@@ -4671,8 +4675,8 @@ Deliverables:
 Success criteria:
 
 - Track 2 queries pattern database successfully
-- Query latency \< 500ms including all overhead
-- Pattern matching accuracy \> 80%
+- Query latency \&lt; 500ms including all overhead
+- Pattern matching accuracy \&gt; 80%
 - No latency impact on Track 1
 
 ### Phase 3: Governance and Validation (Weeks 13-18)
@@ -4716,15 +4720,15 @@ Success criteria:
 **Functional Success**
 
 - \[✓\] Patterns stored and retrieved correctly
-- \[✓\] Pattern matching accuracy \> 80%
-- \[✓\] Query latency \<500ms
+- \[✓\] Pattern matching accuracy \&gt; 80%
+- \[✓\] Query latency \&lt;500ms
 - \[✓\] Anonymization enforced
 - \[✓\] Governance rules enforced
 
 **Operational Success**
 
-- \[✓\] System uptime \> 99.9%
-- \[✓\] Query throughput \>1000/second
+- \[✓\] System uptime \&gt; 99.9%
+- \[✓\] Query throughput \&gt;1000/second
 - \[✓\] All governance processes followed
 - \[✓\] Zero unintended data leaks
 - \[✓\] Audit trails complete
@@ -4796,7 +4800,7 @@ Success criteria:
 **Multitrack Reasoning System (MTE)**
 
 - Track 1: Foreground response generation (doesn't wait for patterns)
-- Track 2: Pattern matching (queries NPRD, \<500ms latency budget)
+- Track 2: Pattern matching (queries NPRD, \&lt;500ms latency budget)
 - Shared context: Pattern results available for next response
 
 **Neurigraph Memory Architecture**
