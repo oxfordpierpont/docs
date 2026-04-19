@@ -297,7 +297,6 @@
                   "knowledge-base/aiconnected-apps-and-modules/modules/funnelChat/legacy-kb-chat-lead-capture-routing"
                 ]
               },
-              "knowledge-base/aiconnected-apps-and-modules/modules/aiconnected-webinar",
               "knowledge-base/aiconnected-apps-and-modules/modules/legacy-siteguide-prd",
               "knowledge-base/aiconnected-apps-and-modules/modules/aiconnected-modules-overview",
               {
@@ -339,13 +338,9 @@
               "knowledge-base/aiconnected-business-platform/aiconnected-platform-v1-audit",
               "knowledge-base/aiconnected-business-platform/aiconnected-platform-v2-port-map",
               "knowledge-base/aiconnected-business-platform/production-readiness-checklist",
-              "knowledge-base/aiconnected-business-platform/legacy-platform-v1-inventory",
               "knowledge-base/aiconnected-business-platform/platform-v1-context",
               "knowledge-base/aiconnected-business-platform/ai-services-business-directory",
               "knowledge-base/aiconnected-business-platform/legacy-aiConnected-marketplace",
-              "knowledge-base/aiconnected-business-platform/legacy-business-platform-specification",
-              "knowledge-base/aiconnected-business-platform/legacy-platform-redesign-spec",
-              "knowledge-base/aiconnected-business-platform/legacy-platform-sidebar-spec",
               {
                 "group": "Layout Manager",
                 "pages": [
@@ -390,7 +385,6 @@
                   "knowledge-base/neurigraph-memory-architecture/hyperthyme-memory-framework/hyperthyme-junior-dev-guide",
                   "knowledge-base/neurigraph-memory-architecture/hyperthyme-memory-framework/hyperthyme-master-project-checklist",
                   "knowledge-base/neurigraph-memory-architecture/hyperthyme-memory-framework/hyperthyme-investor-overview",
-                  "knowledge-base/neurigraph-memory-architecture/neurigraph-build-plan",
                   "knowledge-base/neurigraph-memory-architecture/hyperthyme-memory-framework/legacy-memory-recall-overview"
                 ]
               },
@@ -433,7 +427,6 @@
               "knowledge-base/neurigraph-memory-architecture/amygdala-dynamic-heat-threshold-control",
               "knowledge-base/neurigraph-memory-architecture/ai-structured-creativity-with-neurigraph",
               "knowledge-base/neurigraph-memory-architecture/cross-platform-memory-transfer-architecture",
-              "knowledge-base/neurigraph-memory-architecture/ai-terminology-reframing",
               {
                 "group": "Object Deconstruction Graph",
                 "pages": [
