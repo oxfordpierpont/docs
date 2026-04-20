@@ -109,6 +109,7 @@
       },
       {
         "tab": "API Reference",
+        "icon": "link-horizontal",
         "groups": [
           {
             "group": "Introduction",
@@ -182,6 +183,7 @@
       },
       {
         "tab": "Knowledge Base",
+        "icon": "file-doc",
         "groups": [
           {
             "group": "Introduction",
