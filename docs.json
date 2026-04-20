@@ -655,14 +655,14 @@
     }
   },
   "fonts": {
-    "family": "Montserrat",
+    "family": "Poppins",
     "weight": 400,
     "heading": {
       "family": "Poppins",
-      "weight": 600
+      "weight": 700
     },
     "body": {
-      "family": "Montserrat",
+      "family": "Poppins",
       "weight": 400
     }
   },
