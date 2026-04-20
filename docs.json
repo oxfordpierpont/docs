@@ -43,7 +43,8 @@
             "icon": "house",
             "pages": [
               "knowledge-base/introduction"
-            ]
+            ],
+            "expanded": false
           },
           {
             "group": "aiConnected OS",
@@ -91,16 +92,19 @@
                   "knowledge-base/aiconnected-os/aiconnected-os-forget-this-feature",
                   "knowledge-base/aiconnected-os/aiconnected-os-import-and-migration",
                   "knowledge-base/aiconnected-os/aiconnected-os-persona-meeting-mode"
-                ]
+                ],
+                "expanded": false
               },
               {
                 "group": "Personas",
                 "icon": "user-group",
                 "pages": [
                   "knowledge-base/aiconnected-os/aiconnected-os-persona-apprenticeships"
-                ]
+                ],
+                "expanded": false
               }
-            ]
+            ],
+            "expanded": false
           },
           {
             "group": "Business Platform",
@@ -125,7 +129,8 @@
                   "knowledge-base/aiconnected-business-platform/layout-manager/layout-manager-codex-prd",
                   "knowledge-base/aiconnected-business-platform/what-is-the-platform-shell",
                   "knowledge-base/aiconnected-business-platform/shell-codex-prd"
-                ]
+                ],
+                "expanded": false
               },
               {
                 "group": "Legacy Platform",
@@ -137,9 +142,11 @@
                   "knowledge-base/aiconnected-business-platform/legacy-platform-sidebar-spec",
                   "knowledge-base/aiconnected-business-platform/legacy-aiConnected-marketplace",
                   "knowledge-base/aiconnected-business-platform/legacy-n8n-ai-services-directory-prd"
-                ]
+                ],
+                "expanded": false
               }
-            ]
+            ],
+            "expanded": false
           },
           {
             "group": "Apps & Modules",
@@ -171,7 +178,8 @@
                   "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-voice/Task-List",
                   "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-voice/Original-Context",
                   "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-voice/Feasibility-Analysis"
-                ]
+                ],
+                "expanded": false
               },
               {
                 "group": "KB Generator",
@@ -186,7 +194,8 @@
                   "knowledge-base/aiconnected-apps-and-modules/modules/kb-generator/kb-generator-template-sample",
                   "knowledge-base/aiconnected-apps-and-modules/modules/kb-generator/kb-generator-sales-copy",
                   "knowledge-base/aiconnected-apps-and-modules/modules/kb-generator/kb-generator-target-industry-analysis"
-                ]
+                ],
+                "expanded": false
               },
               {
                 "group": "Paper",
@@ -199,7 +208,8 @@
                   "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-paper/paper-ui-ux-spec",
                   "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-paper/paper-dev-overview",
                   "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-paper/paper-claude"
-                ]
+                ],
+                "expanded": false
               },
               {
                 "group": "logicLegal",
@@ -207,7 +217,8 @@
                 "pages": [
                   "knowledge-base/aiconnected-apps-and-modules/modules/logicLegal/logicLegal-overview",
                   "knowledge-base/aiconnected-apps-and-modules/modules/logicLegal/logicLegal-prd-outline"
-                ]
+                ],
+                "expanded": false
               },
               {
                 "group": "Legacy Modules",
@@ -221,9 +232,11 @@
                   "knowledge-base/aiconnected-apps-and-modules/modules/funnelChat/legacy-kb-chat-lead-capture-routing",
                   "knowledge-base/aiconnected-apps-and-modules/modules/funnelChat/legacy-funnelChat-raw-brainstorm",
                   "knowledge-base/aiconnected-apps-and-modules/modules/legacy-siteguide-prd"
-                ]
+                ],
+                "expanded": false
               }
-            ]
+            ],
+            "expanded": false
           },
           {
             "group": "Neurigraph",
@@ -251,7 +264,8 @@
                   "knowledge-base/neurigraph-memory-architecture/neurigraph-global-pattern-recognition",
                   "knowledge-base/neurigraph-memory-architecture/neurigraph-pattern-recognition-simple-explanation",
                   "knowledge-base/neurigraph-memory-architecture/novelty-and-feasibility-study"
-                ]
+                ],
+                "expanded": false
               },
               {
                 "group": "Object Deconstruction Graph",
@@ -259,7 +273,8 @@
                 "pages": [
                   "knowledge-base/neurigraph-memory-architecture/object-deconstruction-graph-overview",
                   "knowledge-base/neurigraph-memory-architecture/object-deconstruction-graph-dev-documentation"
-                ]
+                ],
+                "expanded": false
               },
               {
                 "group": "Hyperthyme Memory Framework",
@@ -272,7 +287,8 @@
                   "knowledge-base/neurigraph-memory-architecture/hyperthyme-memory-framework/hyperthyme-investor-overview",
                   "knowledge-base/neurigraph-memory-architecture/hyperthyme-memory-framework/data-flow-reference",
                   "knowledge-base/neurigraph-memory-architecture/hyperthyme-memory-framework/legacy-memory-recall-overview"
-                ]
+                ],
+                "expanded": false
               },
               {
                 "group": "Tool References",
@@ -289,7 +305,8 @@
                   "knowledge-base/neurigraph-memory-architecture/neurigraph-tool-references/09-Artifact-Panel-Starter-Template",
                   "knowledge-base/neurigraph-memory-architecture/neurigraph-tool-references/10-Lightweight-Fact-Based-AI-Memory-API",
                   "knowledge-base/neurigraph-memory-architecture/neurigraph-tool-references/11-Full-Stack-AI-Memory-Platform-Hybrid-Search"
-                ]
+                ],
+                "expanded": false
               },
               {
                 "group": "Legacy Brain Docs",
@@ -298,9 +315,11 @@
                   "knowledge-base/neurigraph-memory-architecture/legacy-aiConnected-brain",
                   "knowledge-base/neurigraph-memory-architecture/legacy-brain-z-axis-spec",
                   "knowledge-base/neurigraph-memory-architecture/legacy-brain-api-pricing-strategy"
-                ]
+                ],
+                "expanded": false
               }
-            ]
+            ],
+            "expanded": false
           },
           {
             "group": "Acquired Intelligence",
@@ -308,7 +327,8 @@
             "pages": [
               "knowledge-base/neurigraph-memory-architecture/acquired-intelligence-rough-outline",
               "knowledge-base/neurigraph-memory-architecture/ai-terminology-reframing"
-            ]
+            ],
+            "expanded": false
           },
           {
             "group": "Spatial Computing",
@@ -320,7 +340,8 @@
               "rotating-context-window",
               "infinite-context-window",
               "infinite-spatial-data-rotation"
-            ]
+            ],
+            "expanded": false
           },
           {
             "group": "Papers & Research",
@@ -331,7 +352,8 @@
               "knowledge-base/papers-and-research/global-ai-marketplace-research-doc",
               "knowledge-base/papers-and-research/building-ai-service-directory-n8n",
               "knowledge-base/papers-and-research/aiConnected-influencer-cold-outreach-with-messaging"
-            ]
+            ],
+            "expanded": false
           },
           {
             "group": "Supporting Docs",
@@ -354,9 +376,11 @@
                 "pages": [
                   "knowledge-base/aiconnected-supporting-docs/aiconnected-trademark-and-patents/aiConnected-branding-and-trademark",
                   "knowledge-base/aiconnected-supporting-docs/aiconnected-trademark-and-patents/trademark-filing-preparation"
-                ]
+                ],
+                "expanded": false
               }
-            ]
+            ],
+            "expanded": false
           },
           {
             "group": "Archive",
@@ -364,7 +388,8 @@
             "pages": [
               "knowledge-base/aiconnected-supporting-docs/document-inventory-194-docs",
               "knowledge-base/aiconnected-supporting-docs/doc-dump-2-64-of-258-docs"
-            ]
+            ],
+            "expanded": false
           }
         ]
       },
