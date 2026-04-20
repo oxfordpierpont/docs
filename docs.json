@@ -43,7 +43,7 @@
           },
           {
             "group": "aiConnected OS",
-            "expanded": true,
+            "expanded": false,
             "pages": [
               "knowledge-base/aiconnected-os/aiconnected-os-prd",
               "knowledge-base/aiconnected-os/quick-system-overview",
