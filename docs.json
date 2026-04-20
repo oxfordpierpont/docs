@@ -41,8 +41,9 @@
           {
             "group": "Getting Started",
             "pages": [
-              "index",
               "quickstart/overview",
+              "knowledge-base/introduction",
+              "index",
               "start-here"
             ]
           },
@@ -114,6 +115,37 @@
             "pages": [
               "api-reference/introduction"
             ]
+          },
+          {
+            "group": "Platform Core",
+            "pages": [
+              "api-reference/platform/overview",
+              "api-reference/platform/auth-tenancy",
+              "api-reference/platform/shared-entities",
+              "api-reference/platform/modules-events",
+              "api-reference/platform/theme-layout"
+            ]
+          },
+          {
+            "group": "aiConnectedOS",
+            "pages": [
+              "api-reference/os/personas-instances",
+              "api-reference/os/memory-context",
+              "api-reference/os/workspace-features",
+              "api-reference/os/conversation-tools"
+            ]
+          },
+          {
+            "group": "Modules",
+            "pages": [
+              "api-reference/modules/knowledge-chat",
+              "api-reference/modules/contact-monitor-cobrowser",
+              "api-reference/modules/voice",
+              "api-reference/modules/paper",
+              "api-reference/modules/logiclegal",
+              "api-reference/modules/mac-engine",
+              "api-reference/modules/additional-modules"
+            ]
           }
         ]
       },
@@ -124,6 +156,26 @@
             "group": "Introduction",
             "pages": [
               "webhooks/introduction"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Business Planning",
+        "groups": [
+          {
+            "group": "Overview",
+            "pages": [
+              "business-planning/index"
+            ]
+          },
+          {
+            "group": "Planning Documents",
+            "icon": "map",
+            "pages": [
+              "business-planning/business-plan-outline",
+              "business-planning/writing-sequence",
+              "business-planning/research-and-document-requirements"
             ]
           }
         ]
@@ -141,20 +193,13 @@
             "group": "aiConnected OS",
             "icon": "infinity",
             "pages": [
-              "knowledge-base/aiconnected-os/quick-system-overview",
-              "knowledge-base/aiconnected-os/system-standards-and-philosophy",
-              "knowledge-base/aiconnected-os/aiconnected-os-prd",
               "knowledge-base/aiconnected-os/ai-connected-os-master-planning-document",
-              "knowledge-base/aiconnected-os/aiconnected-os-developer-documentation",
-              "knowledge-base/aiconnected-os/aiconnected-os-three-tier-access-model",
-              "knowledge-base/aiconnected-os/aiconnected-os-web-based-ui-ux",
-              "knowledge-base/aiconnected-os/ai-critical-thinking-protocol",
               "knowledge-base/aiconnected-os/ai-connected-os-branding-config",
               "knowledge-base/aiconnected-os/aiconnected-os-branding-config-design-build-spec",
+              "knowledge-base/aiconnected-os/ai-critical-thinking-protocol",
               "knowledge-base/aiconnected-os/dynamic-persona-waking-voice",
               "knowledge-base/aiconnected-os/dynamic-screen-routing",
               "knowledge-base/aiconnected-os/chat-nav-topic-log",
-              "knowledge-base/aiconnected-os/aiconnected-os-robotics-platform",
               {
                 "group": "Feature Specs",
                 "pages": [
@@ -173,17 +218,24 @@
                   "knowledge-base/aiconnected-os/aiconnected-os-13-adaptive-ui-tutorials",
                   "knowledge-base/aiconnected-os/aiconnected-os-14-build-plan-review",
                   "knowledge-base/aiconnected-os/aiconnected-os-15-document-and-organize-ideas",
-                  "knowledge-base/aiconnected-os/aiconnected-os-16-enterprise-potential",
                   "knowledge-base/aiconnected-os/aiconnected-os-17-in-chat-navigation",
                   "knowledge-base/aiconnected-os/aiconnected-os-18-context-windows-in-ai",
                   "knowledge-base/aiconnected-os/aiconnected-os-19-fluid-ui-architecture",
-                  "knowledge-base/aiconnected-os/aiconnected-os-20-extensible-ai-capability-system",
                   "knowledge-base/aiconnected-os/aiconnected-os-conversation-split-and-route",
                   "knowledge-base/aiconnected-os/aiconnected-os-forget-this-feature",
                   "knowledge-base/aiconnected-os/aiconnected-os-import-and-migration",
-                  "knowledge-base/aiconnected-os/aiconnected-os-persona-meeting-mode"
+                  "knowledge-base/aiconnected-os/aiconnected-os-persona-meeting-mode",
+                  "knowledge-base/aiconnected-os/aiconnected-os-16-enterprise-potential",
+                  "knowledge-base/aiconnected-os/aiconnected-os-20-extensible-ai-capability-system"
                 ]
               },
+              "knowledge-base/aiconnected-os/quick-system-overview",
+              "knowledge-base/aiconnected-os/system-standards-and-philosophy",
+              "knowledge-base/aiconnected-os/aiconnected-os-prd",
+              "knowledge-base/aiconnected-os/aiconnected-os-developer-documentation",
+              "knowledge-base/aiconnected-os/aiconnected-os-three-tier-access-model",
+              "knowledge-base/aiconnected-os/aiconnected-os-robotics-platform",
+              "knowledge-base/aiconnected-os/aiconnected-os-web-based-ui-ux",
               {
                 "group": "Personas",
                 "pages": [
@@ -193,47 +245,9 @@
             ]
           },
           {
-            "group": "Business Platform",
-            "icon": "building",
-            "pages": [
-              "knowledge-base/aiconnected-business-platform/aiconnected-platform-overview",
-              "knowledge-base/aiconnected-business-platform/aiconnected-platform-overview-non-technical",
-              "knowledge-base/aiconnected-business-platform/aiconnected-platform-foundation-prd",
-              "knowledge-base/aiconnected-business-platform/aiconnected-platform-mvp-specification",
-              "knowledge-base/aiconnected-business-platform/aiconnected-platform-v1-mvp-specification",
-              "knowledge-base/aiconnected-business-platform/aiconnected-platform-v2-build-plan",
-              "knowledge-base/aiconnected-business-platform/aiconnected-platform-v1-audit",
-              "knowledge-base/aiconnected-business-platform/aiconnected-platform-v2-port-map",
-              "knowledge-base/aiconnected-business-platform/production-readiness-checklist",
-              "knowledge-base/aiconnected-business-platform/platform-v1-context",
-              "knowledge-base/aiconnected-business-platform/ai-services-business-directory",
-              "knowledge-base/aiconnected-business-platform/legacy-aiConnected-marketplace",
-              "knowledge-base/aiconnected-business-platform/legacy-n8n-ai-services-directory-prd",
-              {
-                "group": "Layout Manager",
-                "pages": [
-                  "knowledge-base/aiconnected-business-platform/layout-manager/what-is-the-layout-manager",
-                  "knowledge-base/aiconnected-business-platform/layout-manager/layout-manager-codex-prd",
-                  "knowledge-base/aiconnected-business-platform/what-is-the-platform-shell",
-                  "knowledge-base/aiconnected-business-platform/shell-codex-prd"
-                ]
-              },
-              {
-                "group": "Legacy Platform",
-                "pages": [
-                  "knowledge-base/aiconnected-business-platform/legacy-platform-v1-inventory",
-                  "knowledge-base/aiconnected-business-platform/legacy-business-platform-specification",
-                  "knowledge-base/aiconnected-business-platform/legacy-platform-redesign-spec",
-                  "knowledge-base/aiconnected-business-platform/legacy-platform-sidebar-spec"
-                ]
-              }
-            ]
-          },
-          {
             "group": "Apps & Modules",
             "icon": "puzzle-piece",
             "pages": [
-              "knowledge-base/aiconnected-apps-and-modules/modules/aiconnected-modules-overview",
               "knowledge-base/aiconnected-apps-and-modules/ai-connected-site-guide-co-browser",
               "knowledge-base/aiconnected-apps-and-modules/remote-work-engine-requirements",
               "knowledge-base/aiconnected-apps-and-modules/mac-engine-prd",
@@ -244,66 +258,57 @@
                 "pages": [
                   "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-voice/Developer-Introduction",
                   "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-voice/GoToConnect-API-Endpoints-Capabilities",
-                  "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-voice/GoToConnect-integration-spec",
                   "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-voice/Original-Context",
                   "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-voice/Feasibility-Analysis",
                   "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-voice/Index-and-Build-Phases",
                   "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-voice/Task-List",
-                  "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-voice/system-architecture",
-                  "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-voice/voice-pipeline-architecture",
-                  "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-voice/complete-infra-stack",
-                  "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-voice/webrtc-bridge-technical-design",
-                  "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-voice/dev-env-setup-guide",
+                  "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-voice/GoToConnect-integration-spec",
                   "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-voice/aiConnected-voice-credentials-checklist",
                   "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-voice/aiConnected-voice-deep-dive",
+                  "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-voice/aiConnected-voice-investor-explaination",
                   "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-voice/aiConnected-voice-junior-dev-prd",
-                  "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-voice/aiConnected-voice-investor-explaination"
+                  "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-voice/complete-infra-stack",
+                  "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-voice/dev-env-setup-guide",
+                  "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-voice/system-architecture",
+                  "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-voice/voice-pipeline-architecture",
+                  "knowledge-base/aiconnected-apps-and-modules/modules/aiConnected-voice/webrtc-bridge-technical-design"
                 ]
               },
               {
                 "group": "KB Generator",
                 "pages": [
-                  "knowledge-base/aiconnected-apps-and-modules/modules/kb-generator/kb-generator-readme",
                   "knowledge-base/aiconnected-apps-and-modules/modules/kb-generator/kb-generator-design-build-instructions",
                   "knowledge-base/aiconnected-apps-and-modules/modules/kb-generator/kb-generator-field-reference",
                   "knowledge-base/aiconnected-apps-and-modules/modules/kb-generator/kb-generator-onboarding-screen-plan",
                   "knowledge-base/aiconnected-apps-and-modules/modules/kb-generator/ai-knowledge-training-system",
                   "knowledge-base/aiconnected-apps-and-modules/modules/kb-generator/kb-generator-prompts",
+                  "knowledge-base/aiconnected-apps-and-modules/modules/kb-generator/kb-generator-readme",
                   "knowledge-base/aiconnected-apps-and-modules/modules/kb-generator/kb-generator-template-sample",
                   "knowledge-base/aiconnected-apps-and-modules/modules/kb-generator/kb-generator-sales-copy",
                   "knowledge-base/aiconnected-apps-and-modules/modules/kb-generator/kb-generator-target-industry-analysis"
                 ]
               },
               {
-                "group": "aiConnected Contact",
-                "pages": [
-                  "knowledge-base/aiconnected-apps-and-modules/modules/aiconnected-contact",
-                  "knowledge-base/aiconnected-apps-and-modules/modules/aiconnected-webinar"
-                ]
-              },
-              {
                 "group": "funnelChat",
                 "pages": [
-                  "knowledge-base/aiconnected-apps-and-modules/modules/funnelChat/legacy-funnelChat-readme",
                   "knowledge-base/aiconnected-apps-and-modules/modules/funnelChat/legacy-funnelChat-overview",
-                  "knowledge-base/aiconnected-apps-and-modules/modules/funnelChat/legacy-funnelChat-prd",
                   "knowledge-base/aiconnected-apps-and-modules/modules/funnelChat/legacy-funnelChat-chatInsights-alt",
                   "knowledge-base/aiconnected-apps-and-modules/modules/funnelChat/legacy-funnelChat-conversation-flow-sample",
                   "knowledge-base/aiconnected-apps-and-modules/modules/funnelChat/legacy-funnelChat-training-prompts",
-                  "knowledge-base/aiconnected-apps-and-modules/modules/funnelChat/legacy-kb-chat-lead-capture-routing",
-                  "knowledge-base/aiconnected-apps-and-modules/modules/funnelChat/legacy-funnelChat-raw-brainstorm"
                   "knowledge-base/aiconnected-apps-and-modules/modules/funnelChat/legacy-funnelChat-raw-brainstorm",
                   "knowledge-base/aiconnected-apps-and-modules/modules/funnelChat/legacy-funnelChat-readme",
                   "knowledge-base/aiconnected-apps-and-modules/modules/funnelChat/legacy-funnelChat-prd",
                   "knowledge-base/aiconnected-apps-and-modules/modules/funnelChat/legacy-kb-chat-lead-capture-routing"
                 ]
               },
+              "knowledge-base/aiconnected-apps-and-modules/modules/aiconnected-webinar",
               "knowledge-base/aiconnected-apps-and-modules/modules/legacy-siteguide-prd",
               "knowledge-base/aiconnected-apps-and-modules/modules/aiconnected-modules-overview",
               {
                 "group": "aiConnected Contact",
                 "pages": [
-                  "knowledge-base/aiconnected-apps-and-modules/modules/aiconnected-webinar"
+                  "knowledge-base/aiconnected-apps-and-modules/modules/aiconnected-webinar",
+                  "knowledge-base/aiconnected-apps-and-modules/modules/aiconnected-contact"
                 ]
               },
               {
@@ -324,28 +329,13 @@
                   "knowledge-base/aiconnected-apps-and-modules/modules/logicLegal/logicLegal-overview",
                   "knowledge-base/aiconnected-apps-and-modules/modules/logicLegal/logicLegal-prd-outline"
                 ]
-              },
-              "knowledge-base/aiconnected-apps-and-modules/modules/legacy-siteguide-prd"
+              }
             ]
           },
           {
-            "group": "Neurigraph Memory Architecture",
-            "icon": "diagram-project",
+            "group": "Business Platform",
+            "icon": "building",
             "pages": [
-              "knowledge-base/neurigraph-memory-architecture/neurigraph-build-plan",
-              "knowledge-base/neurigraph-memory-architecture/neurigraph-licensing",
-              "knowledge-base/neurigraph-memory-architecture/neurigraph-multitrack-reasoning-system",
-              "knowledge-base/neurigraph-memory-architecture/neurigraph-memory-systems-competitive-comparison",
-              "knowledge-base/neurigraph-memory-architecture/a-system-of-long-term-autobiographical-memory",
-              "knowledge-base/neurigraph-memory-architecture/cross-platform-memory-transfer-architecture",
-              "knowledge-base/neurigraph-memory-architecture/ai-structured-creativity-with-neurigraph",
-              "knowledge-base/neurigraph-memory-architecture/amygdala-dynamic-heat-threshold-control",
-              "knowledge-base/neurigraph-memory-architecture/simulating-introspective-awareness-via-digital-anterior-insula",
-              "knowledge-base/neurigraph-memory-architecture/research-and-improve-the-processing-of-background-cognitive-functions",
-              "knowledge-base/neurigraph-memory-architecture/research-the-correlations-between-synapses-synapse-firing-and-neuroplasticity-and-whether-or-not-these-cognitive-functions-have-parallels-in-the-knowledge-graph-structure",
-              "knowledge-base/neurigraph-memory-architecture/predicting-user-behavior-and-mental-states-through-tonal-interpretation",
-              "knowledge-base/neurigraph-memory-architecture/creating-seed-personality-templates-based-in-part-on-the-myers-briggs-16-personality-profiles-and-documentation",
-              "knowledge-base/neurigraph-memory-architecture/ai-terminology-reframing",
               "knowledge-base/aiconnected-business-platform/aiconnected-platform-overview",
               "knowledge-base/aiconnected-business-platform/aiconnected-platform-overview-non-technical",
               "knowledge-base/aiconnected-business-platform/aiconnected-platform-mvp-specification",
@@ -354,26 +344,32 @@
               "knowledge-base/aiconnected-business-platform/aiconnected-platform-v1-audit",
               "knowledge-base/aiconnected-business-platform/aiconnected-platform-v2-port-map",
               "knowledge-base/aiconnected-business-platform/production-readiness-checklist",
+              "knowledge-base/aiconnected-business-platform/legacy-platform-v1-inventory",
               "knowledge-base/aiconnected-business-platform/platform-v1-context",
               "knowledge-base/aiconnected-business-platform/ai-services-business-directory",
               "knowledge-base/aiconnected-business-platform/legacy-aiConnected-marketplace",
+              "knowledge-base/aiconnected-business-platform/legacy-business-platform-specification",
+              "knowledge-base/aiconnected-business-platform/legacy-platform-redesign-spec",
+              "knowledge-base/aiconnected-business-platform/legacy-platform-sidebar-spec",
               {
-                "group": "Pattern Recognition",
+                "group": "Layout Manager",
                 "pages": [
-                  "knowledge-base/neurigraph-memory-architecture/neurigraph-pattern-recognition-database-comprehensive-prd-outline",
-                  "knowledge-base/neurigraph-memory-architecture/pattern-recognition-database-for-behavioral-prediction-in-users",
-                  "knowledge-base/neurigraph-memory-architecture/global-pattern-recognition-for-behavioral-prediction",
-                  "knowledge-base/neurigraph-memory-architecture/novelty-and-feasibility-study",
-                  "knowledge-base/neurigraph-memory-architecture/neurigraph-pattern-recognition-simple-explanation"
+                  "knowledge-base/aiconnected-business-platform/layout-manager/what-is-the-layout-manager",
+                  "knowledge-base/aiconnected-business-platform/layout-manager/layout-manager-codex-prd",
+                  "knowledge-base/aiconnected-business-platform/what-is-the-platform-shell",
+                  "knowledge-base/aiconnected-business-platform/shell-codex-prd"
                 ]
               },
+              "knowledge-base/aiconnected-business-platform/aiconnected-platform-v1-mvp-specification",
+              "knowledge-base/aiconnected-business-platform/legacy-n8n-ai-services-directory-prd",
               {
-                "group": "Object Deconstruction Graph",
+                "group": "Legacy Platform",
                 "pages": [
-                  "knowledge-base/neurigraph-memory-architecture/object-deconstruction-graph-overview",
-                  "knowledge-base/neurigraph-memory-architecture/object-deconstruction-graph-dev-documentation"
+                  "knowledge-base/aiconnected-business-platform/legacy-platform-v1-inventory",
+                  "knowledge-base/aiconnected-business-platform/legacy-business-platform-specification",
+                  "knowledge-base/aiconnected-business-platform/legacy-platform-redesign-spec",
+                  "knowledge-base/aiconnected-business-platform/legacy-platform-sidebar-spec"
                 ]
-              },
               },
               {
                 "group": "Industry Templates",
@@ -399,7 +395,9 @@
                   "knowledge-base/neurigraph-memory-architecture/hyperthyme-memory-framework/hyperthyme-junior-dev-guide",
                   "knowledge-base/neurigraph-memory-architecture/hyperthyme-memory-framework/hyperthyme-master-project-checklist",
                   "knowledge-base/neurigraph-memory-architecture/hyperthyme-memory-framework/hyperthyme-investor-overview",
-                  "knowledge-base/neurigraph-memory-architecture/hyperthyme-memory-framework/legacy-memory-recall-overview"
+                  "knowledge-base/neurigraph-memory-architecture/neurigraph-build-plan",
+                  "knowledge-base/neurigraph-memory-architecture/hyperthyme-memory-framework/legacy-memory-recall-overview",
+                  "knowledge-base/neurigraph-memory-architecture/hyperthyme-memory-framework/data-flow-reference"
                 ]
               },
               {
@@ -441,6 +439,7 @@
               "knowledge-base/neurigraph-memory-architecture/amygdala-dynamic-heat-threshold-control",
               "knowledge-base/neurigraph-memory-architecture/ai-structured-creativity-with-neurigraph",
               "knowledge-base/neurigraph-memory-architecture/cross-platform-memory-transfer-architecture",
+              "knowledge-base/neurigraph-memory-architecture/ai-terminology-reframing",
               {
                 "group": "Object Deconstruction Graph",
                 "pages": [
@@ -459,38 +458,18 @@
             ]
           },
           {
-            "group": "Acquired Intelligence",
-            "icon": "book-open",
-            "pages": [
-              "knowledge-base/neurigraph-memory-architecture/acquired-intelligence-rough-outline",
-              "knowledge-base/neurigraph-memory-architecture/ai-terminology-reframing"
-            ]
-          },
-          {
-            "group": "Spatial Computing",
-            "icon": "cube",
-            "pages": [
-              "context-window-architecture-rotating-and-infinite",
-              "the-four-dimensional-computing-system",
-              "the-stateless-user-interface",
-              "rotating-context-window",
-              "infinite-context-window",
-              "infinite-spatial-data-rotation"
-            ]
-          },
-          {
             "group": "Supporting Documentation",
             "icon": "book",
             "pages": [
               "knowledge-base/aiconnected-supporting-docs/how-will-developers-use-the-ai-connected-platform",
               "knowledge-base/aiconnected-supporting-docs/self-hosting",
               "knowledge-base/aiconnected-supporting-docs/engaging-the-dev-community",
+              "knowledge-base/aiconnected-supporting-docs/ai-connected-license-agreement",
+              "knowledge-base/aiconnected-supporting-docs/additional-considerations",
               "knowledge-base/aiconnected-supporting-docs/persona-ide-system-prompt",
               "knowledge-base/aiconnected-supporting-docs/aiConnected-fundraising-strategy",
               "knowledge-base/aiconnected-supporting-docs/aiConnected-project-memory-backup",
               "knowledge-base/aiconnected-supporting-docs/aiConnectedOS-memory-backup",
-              "knowledge-base/aiconnected-supporting-docs/additional-considerations",
-              "knowledge-base/aiconnected-supporting-docs/ai-connected-license-agreement",
               {
                 "group": "Trademark & Brand",
                 "pages": [
@@ -498,6 +477,30 @@
                   "knowledge-base/aiconnected-supporting-docs/aiconnected-trademark-and-patents/trademark-filing-preparation"
                 ]
               }
+            ]
+          },
+          {
+            "group": "Document Archive",
+            "icon": "archive",
+            "pages": [
+              "knowledge-base/aiconnected-supporting-docs/document-inventory-194-docs",
+              "knowledge-base/aiconnected-supporting-docs/doc-dump-2-64-of-258-docs"
+            ]
+          },
+          {
+            "group": "Platform AI",
+            "icon": "brain",
+            "pages": [
+              "knowledge-base/sample-user-md-configuration",
+              "user-onboarding-flow"
+            ]
+          },
+          {
+            "group": "Acquired Intelligence",
+            "icon": "book-open",
+            "pages": [
+              "knowledge-base/neurigraph-memory-architecture/acquired-intelligence-rough-outline",
+              "knowledge-base/neurigraph-memory-architecture/ai-terminology-reframing"
             ]
           },
           {
@@ -512,19 +515,26 @@
             ]
           },
           {
-            "group": "Platform AI",
-            "icon": "brain",
+            "group": "aiConnected Spatial Computing & Security",
             "pages": [
-              "knowledge-base/sample-user-md-configuration",
-              "user-onboarding-flow"
+              "context-window-architecture-rotating-and-infinite",
+              "the-four-dimensional-computing-system",
+              "the-stateless-user-interface",
+              "rotating-context-window",
+              "infinite-context-window",
+              "infinite-spatial-data-rotation"
             ]
           },
           {
-            "group": "Document Archive",
-            "icon": "archive",
+            "group": "Spatial Computing",
+            "icon": "cube",
             "pages": [
-              "knowledge-base/aiconnected-supporting-docs/document-inventory-194-docs",
-              "knowledge-base/aiconnected-supporting-docs/doc-dump-2-64-of-258-docs"
+              "context-window-architecture-rotating-and-infinite",
+              "the-four-dimensional-computing-system",
+              "the-stateless-user-interface",
+              "rotating-context-window",
+              "infinite-context-window",
+              "infinite-spatial-data-rotation"
             ]
           }
         ]
@@ -544,6 +554,7 @@
     }
   },
   "fonts": {
+    "family": "Poppins",
     "heading": {
       "family": "Poppins",
       "weight": 600
