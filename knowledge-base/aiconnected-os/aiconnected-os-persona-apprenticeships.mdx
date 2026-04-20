@@ -1,16 +1,16 @@
 ---
 title: "Skill Acquisition via Hands On Apprenticeship"
 description: "Feature Area: Neurigraph Memory Architecture → Skill Acquisition Sub System Classification: Advanced / Roadmap Feature (Phase 4+) Status: Documented for futu..."
+mode: "frame"
 ---
 
 <Info>
-Normalized for Mintlify from `knowledge-base/aiconnected-os/aiConnectedOS-persona-apprenticeships.mdx`.
+  Normalized for Mintlify from `knowledge-base/aiconnected-os/aiConnectedOS-persona-apprenticeships.mdx`.
 </Info>
+
 # Skill Acquisition via Hands-On Apprenticeship
 
-**Feature Area:** Neurigraph Memory Architecture → Skill Acquisition Sub-System
-**Classification:** Advanced / Roadmap Feature (Phase 4+)
-**Status:** Documented for future implementation
+**Feature Area:** Neurigraph Memory Architecture → Skill Acquisition Sub-System **Classification:** Advanced / Roadmap Feature (Phase 4\+) **Status:** Documented for future implementation
 
 ---
 
@@ -63,14 +63,14 @@ At the memory architecture level, an active apprenticeship creates and maintains
 ---
 
 ## What a Maturing Apprenticeship Looks Like
+
 Because there is no graduation event, the system tracks Depth Milestones instead of a mastery threshold. These are not gates — they are observational markers that give the Mentor and administrator visibility into how the apprenticeship is progressing without implying it should end.
 
 **Early stage:** the Persona is frequently corrected, tacit extractions are provisional, and Mentor Authority weight is high but not yet deeply woven into base behavior.
 
 **Mid stage:** corrections become less frequent on previously addressed behaviors, tacit patterns begin to stabilize, and Mentor-derived rules start to influence the Persona's default behavior in the relevant domain even outside explicit apprenticeship sessions.
 
-**Mature stage:** the Mentor's influence has been so consistently reinforced over time that it operates as a foundational behavioral layer. The Persona no longer requires active correction to behave in accordance with what the Mentor taught — it simply does. The apprenticeship continues, but its function shifts from teaching to refining.
-This arc can span years. The architecture must support it without artificially truncating it.
+**Mature stage:** the Mentor's influence has been so consistently reinforced over time that it operates as a foundational behavioral layer. The Persona no longer requires active correction to behave in accordance with what the Mentor taught — it simply does. The apprenticeship continues, but its function shifts from teaching to refining. This arc can span years. The architecture must support it without artificially truncating it.
 
 ---
 
@@ -99,6 +99,7 @@ Task-based inference (learning from repeated exposure during normal work) is the
 These three modes are not mutually exclusive. A well-designed onboarding flow for a complex skill slot might combine all three: structured training to establish foundations, a period of task-based exposure to build early pattern recognition, followed by a formal apprenticeship to develop judgment and tacit mastery.
 
 ### Relationship to Skill Slots
+
 Apprenticeships and skill slots coexist but do not convert into each other. A Persona can hold multiple skill slots and maintain an active apprenticeship simultaneously. These are parallel constructs in Neurigraph, not sequential stages.
 
 It is entirely valid for an apprenticeship to involve the same domain as one of the Persona's skill slots. In that case, the apprenticeship does not replace or upgrade the skill slot — it adds a relational depth layer on top of it. The skill slot represents what the Persona knows how to do in that domain. The apprenticeship represents the specific, evolving way the Mentor has shaped how the Persona applies that knowledge. Both are real, both are valuable, and they are tracked separately.
@@ -106,6 +107,7 @@ It is entirely valid for an apprenticeship to involve the same domain as one of 
 ---
 
 ## Why This Is Architecturally Separate from Skill Slots
+
 Skill slots and apprenticeships serve fundamentally different purposes and operate on different time scales.
 
 A skill slot is what the Persona **knows how to do**. It is acquired, stabilized, and held. It has edges. It can be evaluated. It can be removed.
@@ -118,7 +120,7 @@ In Neurigraph's memory architecture, mixing these two constructs would create fa
 
 ## Placement in Roadmap
 
-This feature depends on: a working Neurigraph substrate, the Persona Skill Slot system, the Closed Thinking Layer, and at minimum a basic session continuity and memory correction architecture. It is a Phase 4+ feature and should not be scoped for implementation before those dependencies are stable.
+This feature depends on: a working Neurigraph substrate, the Persona Skill Slot system, the Closed Thinking Layer, and at minimum a basic session continuity and memory correction architecture. It is a Phase 4\+ feature and should not be scoped for implementation before those dependencies are stable.
 
 ---
 
@@ -130,9 +132,7 @@ Let me think through this properly, because there are several dimensions that ea
 
 # Neurigraph and the Embodied Apprenticeship
 
-**Feature Area:** Neurigraph Memory Architecture → Embodied Extension Layer
-**Classification:** Speculative / Long-Horizon Architecture (2+ years)
-**Status:** Visionary documentation — not for near-term roadmap scoping
+**Feature Area:** Neurigraph Memory Architecture → Embodied Extension Layer **Classification:** Speculative / Long-Horizon Architecture (2\+ years) **Status:** Visionary documentation — not for near-term roadmap scoping
 
 ---
 
@@ -246,23 +246,22 @@ The most novel element here — the one that doesn't have a clear analog in exis
 
 ---
 
-
 ---
 
 # Understanding Semantic & Somatic Memory Within Neurigraph
 
-**Semantic memory** is memory for *meaning* — facts, concepts, relationships, and rules abstracted away from any particular experience. It's the "what do I know" layer, divorced from "when did I learn it" or "how did I feel."
+**Semantic memory** is memory for _meaning_ — facts, concepts, relationships, and rules abstracted away from any particular experience. It's the "what do I know" layer, divorced from "when did I learn it" or "how did I feel."
 
 Some examples:
 
 - "Paris is the capital of France" — a fact
 - "A bird is a type of animal" — a categorical relationship
-- "Red + blue = purple" — a rule or procedure
+- "Red \+ blue = purple" — a rule or procedure
 - "Betrayal feels worse coming from someone you trusted" — a generalized principle
 
-These are all things you *know*, but they're not tied to a specific moment in your life. You might have learned that Paris is the capital from a teacher in1994, or from a Wikipedia article yesterday, or from overhearing a conversation. The semantic fact is the same either way.
+These are all things you _know_, but they're not tied to a specific moment in your life. You might have learned that Paris is the capital from a teacher in1994, or from a Wikipedia article yesterday, or from overhearing a conversation. The semantic fact is the same either way.
 
-Contrast this with **episodic memory** — memory for specific events tied to time and place. "I learned that Paris is the capital during Ms. Johnson's geography class on September 15th, 1994" is episodic. The *event* is the container.
+Contrast this with **episodic memory** — memory for specific events tied to time and place. "I learned that Paris is the capital during Ms. Johnson's geography class on September 15th, 1994" is episodic. The _event_ is the container.
 
 ---
 
@@ -271,18 +270,21 @@ Contrast this with **episodic memory** — memory for specific events tied to ti
 Most cognitive science and AI models now work with a **three-layer memory architecture**:
 
 **Episodic Memory** — "What happened to me, and when?"
+
 - Specific events, experiences, sequences
 - Time-stamped
 - Rich context (emotions, sensory details, who was there)
 - Example: "During the apprenticeship session on Tuesday, the Mentor corrected my tone when I was too aggressive in the negotiation, and I adjusted it three times before they affirmed the approach."
 
 **Semantic Memory** — "What do I know?"
+
 - Generalized facts, concepts, procedures, rules
 - Abstracted from any particular event
 - Time-agnostic (or time-integrated)
 - Example: "Aggressive tone closes doors; collaborative tone keeps them open. The Mentor values collaborative tone in negotiations."
 
 **Procedural Memory** — "How do I do things?"
+
 - Motor and cognitive procedures
 - Often implicit or automatic
 - Learned through repetition
@@ -315,9 +317,7 @@ A robot learning through apprenticeship faces a unique problem: **it must learn 
 When a human learns to pour coffee by watching a Mentor, here's what happens:
 
 1. **Episodic:** "I watched Mentor pour from a height of 6 inches, tilted the pot at 45 degrees, and stopped pouring when the cup was 80% full."
-
 2. **Semantic extraction:** "The height of the pour, the angle, and the stopping point are the critical variables. Other variables (the color of the cup, the time of day, the Mentor's shoe size) don't matter."
-
 3. **Procedural encoding:** The robot's motor controllers learn the precise joint angles, grip pressures, and movement velocities needed to replicate this.
 
 But here's the catch: **a robot can't just learn the procedure.** It also needs to learn the semantic principles underneath, because the real world is full of variation. Different pots. Different cup sizes. Different pouring surfaces. A purely procedural memory of "pour at exactly 45 degrees into this specific cup" fails immediately when the cup changes.
@@ -342,15 +342,10 @@ These are semantic facts — generalized principles — but they're grounded in 
 The robot's apprenticeship would work like this:
 
 1. **Episodic capture:** The robot observes the Mentor's action in high fidelity (vision, motion capture, force sensors). It gets detailed episodic records of what happened.
-
 2. **Semantic extraction:** The Neurigraph system analyzes the episodic data to identify invariant principles. "What stayed constant across these three demonstrations? What changed? What matters?"
-
 3. **Procedural grounding:** Those semantic principles get encoded into the robot's motor controllers as parameterized behaviors that can adapt to variations.
-
 4. **Tacit pattern learning:** The robot's **Tacit Pattern Extraction** (which you already have in the architecture) identifies things the Mentor did without explicitly saying them — micro-adjustments in grip, tiny timing variations — and encodes them as semantic heuristics.
-
-5. **Correction loop:** When the robot attempts the task and fails, the Mentor corrects it. The robot's **Correction Memory Layer** stores not just "I failed," but "I failed *because* [semantic reason], and here's what to adjust."
-
+5. **Correction loop:** When the robot attempts the task and fails, the Mentor corrects it. The robot's **Correction Memory Layer** stores not just "I failed," but "I failed _because_ \[semantic reason\], and here's what to adjust."
 6. **Maturation:** Over time, the robot's semantic memory becomes richer and more nuanced. It's not just "how to pour," it's a whole semantic network of principles about pouring, balance, different container types, different liquid viscosities, etc.
 
 ---
@@ -375,7 +370,7 @@ For embodied AI, Neurigraph would need:
 
 **Cross-Modal Semantic Integration** — connecting semantic knowledge from vision ("this looks unstable") with semantic knowledge from proprioception ("this feels wrong in my joints") and force feedback ("this pressure indicates slipping").
 
-**Adaptation Rules** — semantic knowledge about *how to generalize*. "When the container changes, these variables scale proportionally. When the liquid changes, these variables shift but these stay constant."
+**Adaptation Rules** — semantic knowledge about _how to generalize_. "When the container changes, these variables scale proportionally. When the liquid changes, these variables shift but these stay constant."
 
 **Failure Semantic Memory** — the most important addition. When a robot fails and gets corrected by the Mentor, that failure becomes semantic knowledge. "Here's a category of failure. Here's why it happens. Here's how the Mentor wants me to adjust." Over time, the robot builds a rich semantic map of failure modes and corrections.
 
@@ -386,28 +381,33 @@ For embodied AI, Neurigraph would need:
 Let me make this concrete. Here's how semantic memory works in a simple embodied apprenticeship task.
 
 **Week 1 episodic experiences:**
+
 - Mentor pours into Cup A from8 inches,45 degrees
 - Mentor pours into Cup A from 6 inches, 45 degrees
 - Mentor pours into Cup A from 10 inches, 45 degrees
 - Robot attempts all three, gets corrections
 
 **Semantic extraction (Neurigraph analyzes):**
+
 - Variable: height of pour
 - Invariant: angle (always 45 degrees)
 - Invariant: stopping point (80% full)
 - Principle: "Height of pour doesn't matter as much as angle and stopping point"
 
 **Week 2 episodic experiences:**
+
 - Mentor pours into Cup B (larger)
 - Mentor pours into Cup C (narrower)
-- Robot observes angle and stopping point remain constant, but *height varies slightly based on cup opening size*
+- Robot observes angle and stopping point remain constant, but _height varies slightly based on cup opening size_
 
 **Semantic update (Neurigraph consolidates):**
+
 - Principle: "Angle and stopping point are invariant across cup types"
 - Principle: "Height may need micro-adjustment based on the cup's opening diameter"
 - Principle: "These three variables together maintain pouring stability"
 
 **Week 4:**
+
 - New cup that no one has trained the robot on
 - Robot applies the semantic principles it learned, adapts height based on cup opening, maintains45-degree angle and 80% stopping point
 - Works on the first try (or close to it)
@@ -418,7 +418,7 @@ That success came from **semantic knowledge transfer** — the robot didn't memo
 
 ## Why This Is Different from How LLMs Learn
 
-Large language models have semantic knowledge (facts, concepts, relationships) but zero episodic memory and zero procedural embodiment. They can tell you *about* pouring, but they can't *do* it, and they can't learn from mistakes because they have no memory of trying and failing.
+Large language models have semantic knowledge (facts, concepts, relationships) but zero episodic memory and zero procedural embodiment. They can tell you _about_ pouring, but they can't _do_ it, and they can't learn from mistakes because they have no memory of trying and failing.
 
 A robot with Neurigraph-based apprenticeship learning would have all three:
 
@@ -445,7 +445,7 @@ These are solvable problems, but they require explicit architecture. They don't 
 
 ## What Somatic Memory Is
 
-**Somatic** refers to the body — *soma* is Greek for body. So **somatic memory** is memory that lives in the body itself, not in the brain as explicit knowledge.
+**Somatic** refers to the body — _soma_ is Greek for body. So **somatic memory** is memory that lives in the body itself, not in the brain as explicit knowledge.
 
 It's the memory your muscles, joints, and proprioceptive systems encode when you do something repeatedly. It's why you can ride a bike without thinking about it, or type without looking at the keyboard, or catch a falling object without consciously calculating trajectory.
 
@@ -459,7 +459,7 @@ Somatic memory is almost entirely procedural and implicit. You don't consciously
 - **How to dance.** The rhythm, the weight shifts, the spatial relationship to a partner — these are somatic.
 - **How to cook by feel.** A chef knows "when the oil is hot enough" or "when the dough has the right texture" through embodied sensory calibration, not a thermometer or a scale.
 
-The key difference from semantic memory: you cannot fully explain somatic memory in words. You have to *do* it, feel it, and your body learns it.
+The key difference from semantic memory: you cannot fully explain somatic memory in words. You have to _do_ it, feel it, and your body learns it.
 
 ### Examples of somatic tasks that cannot be learned through words alone:
 
@@ -497,6 +497,7 @@ A robot might learn a motion through imitation or trial-and-error, but it doesn'
 And they definitely don't have episodic memory — they don't remember "I failed at this task on Tuesday and here's what I learned from that specific failure."
 
 So Neurigraph would be genuinely novel for embodied AI. You'd be giving a robot:
+
 1. Episodic memory — tied to specific sessions, with full context
 2. Somatic memory — the sensorimotor substrate of what it learned physically
 3. Semantic memory (the extraction of principles from those episodes)
