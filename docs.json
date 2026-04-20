@@ -23,13 +23,8 @@
     "links": [
       {
         "type": "link",
-        "label": "Sign In",
-        "href": "https://aiconnected.io/login"
-      },
-      {
-        "type": "button",
-        "label": "Get Started",
-        "href": "https://aiconnected.io/signup"
+        "label": "GitHub",
+        "href": "https://github.com/oxfordpierpont/aiConnected"
       }
     ]
   },
@@ -650,8 +645,7 @@
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/aiconnected",
-      "github": "https://github.com/aiconnected"
+      "github": "https://github.com/oxfordpierpont/aiConnected"
     }
   },
   "background": {
@@ -661,13 +655,37 @@
     }
   },
   "fonts": {
+    "family": "Montserrat",
+    "weight": 400,
     "heading": {
       "family": "Poppins",
       "weight": 600
     },
     "body": {
-      "family": "Nunito",
+      "family": "Montserrat",
       "weight": 400
     }
+  },
+  "thumbnails": {
+    "fonts": {
+      "family": "Poppins"
+    }
+  },
+  "styling": {
+    "eyebrows": "section"
+  },
+  "icons": {
+    "library": "lucide"
+  },
+  "integrations": {
+    "telemetry": {
+      "enabled": true
+    }
+  },
+  "interaction": {
+    "drilldown": true
+  },
+  "metadata": {
+    "timestamp": true
   }
 }
