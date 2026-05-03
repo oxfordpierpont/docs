@@ -242,7 +242,7 @@ Describes the three states a node's file content can be in, what moves content b
   ![Image](/images/image-12.png)
 </Frame>
 
-> **The rehydration wait is a feature, not a bug.** 
+> **The rehydration wait is a feature, not a bug.**
 >
 > **When a user shifts from talking about business to suddenly asking about their health history, a brief pause while that node wakes up is actually appropriate. It signals a context shift. The system isn't broken — it's acknowledging that you're moving somewhere that wasn't part of the current working context. A human assistant doing the same job would say "give me a moment, let me pull those files." The rehydration delay is that moment. It's honest about what's happening.**
 
@@ -329,6 +329,149 @@ Third parties — external integrations, connected applications, APIs — have z
 Defines the complete Postgres schema for every table in the Neurigraph storage and retrieval system. Each table definition includes column names, data types, constraints, indexes, and a brief description of what each column stores and why.
 
 Tables covered: the graph index (node registry, parent relationships, depth, schema names, edge registry), the metadata records table (per node schema, summary, keyword fields, embedding vector, file pointer, trigger type, timestamps), the file manifest (per node schema, file identity, compression state, storage path, last accessed, TTL), the compression state log (audit trail of compress and decompress events), the delta log (version history for evolving memory records with time coordinates), and the permission grants table (subject, target node, grant type, grantor, expiry).
+
+## Table 1: `graph_index`
+
+One shared table at the user root. Always live. Never compressed. The map of the entire graph.
+
+| Column | Type | Constraint | Purpose |
+| :-- | :-- | :-- | :-- |
+| `node_id` | uuid | PK | Permanent immutable identifier — never changes |
+| `user_id` | uuid | FK, NOT NULL | Top-level isolation boundary — every node belongs to one user |
+| `node_name` | text | NOT NULL | Human-readable label — used in cold name search |
+| `node_type` | enum | NOT NULL | `concept` or `persona` — drives access control behavior |
+| `layer_depth` | int | CHECK (0–5) | Hard depth limit enforced at DB level — max 5 |
+| `parent_node_id` | uuid | FK, nullable | Null only for root node — all others have exactly one parent |
+| `schema_name` | text | UNIQUE, NOT NULL | Postgres schema scoping all queries — e.g. `bob_family_dave` |
+| `compression_state` | enum | NOT NULL | `active`, `dormant`, or `rehydrating` — reflects file layer state |
+| `last_accessed_at` | timestamptz | NOT NULL | n8n reads this to trigger compression — most critical timestamp |
+| `node_keywords` | text\[\] | nullable | Node-level terms used in cold graph search routing |
+| `node_summary` | text | nullable | 1–2 sentence description — aids AI routing decisions |
+| `created_at` | timestamptz | NOT NULL | Set at provisioning — immutable |
+
+**Indexes:** `node_name` (cold search), `user_id`, `last_accessed_at` (n8n scheduler), `parent_node_id`
+
+---
+
+## Table 2: `metadata_records`
+
+One instance per node schema. Always live. Never compressed. The search infrastructure for every node.
+
+| Column | Type | Constraint | Purpose |
+| :-- | :-- | :-- | :-- |
+| `record_id` | uuid | PK | Unique identifier for this memory record |
+| `summary` | text | NOT NULL | 200-word distillation — basis for embedding — permanent |
+| `embedding` | vector(1536) | NOT NULL | pgvector column — generated from summary, not raw file |
+| `embedding_pending` | boolean | DEFAULT false | Set true when embedding API fails — cleared on retry success |
+| `kw_entities` | text\[\] | nullable | Named entities — people, orgs, products, places |
+| `kw_topics` | text\[\] | nullable | Concept tags — independently queryable |
+| `kw_dates` | text\[\] | nullable | Temporal markers — dates, timeframes, relative references |
+| `kw_relationships` | text\[\] | nullable | Relationship descriptors — e.g. coworker, spouse, builder |
+| `content_type` | enum | NOT NULL | `conversation`, `event`, `file_upload`, or `other` |
+| `trigger_type` | enum | NOT NULL | `conversation_end`, `chunk_threshold`, or `event_boundary` |
+| `file_pointer` | text | nullable | Supabase Storage path — set after file write completes |
+| `created_at` | timestamptz | NOT NULL | Write timestamp — immutable |
+| `last_accessed_at` | timestamptz | NOT NULL | Updated on every retrieval — drives recompress TTL |
+
+**Indexes:** `embedding` (ivfflat for pgvector), `kw_entities` (GIN), `kw_topics` (GIN), `created_at`, `content_type`
+
+---
+
+## Table 3: `file_manifest`
+
+One instance per node schema. Tracks every stored file at the individual file level. Compression is per file, not per node.
+
+| Column | Type | Constraint | Purpose |
+| :-- | :-- | :-- | :-- |
+| `file_id` | uuid | PK | Unique identifier for this stored file |
+| `record_id` | uuid | FK, NOT NULL | Links to `metadata_records` — the file's searchable representative |
+| `file_name` | text | NOT NULL | Original filename — display and identification |
+| `file_type` | enum | NOT NULL | `pdf`, `transcript`, `image`, `video`, `audio`, `code`, or `export` |
+| `storage_path` | text | NOT NULL | Full Supabase Storage path — mirrors graph hierarchy |
+| `compression_state` | enum | NOT NULL | `active`, `dormant`, or `rehydrating` — tracked per individual file |
+| `compression_format` | enum | NOT NULL | `gzip` for text-based content, `native` for binary |
+| `size_bytes` | bigint | NOT NULL | Original uncompressed size — storage cost tracking |
+| `last_accessed_at` | timestamptz | NOT NULL | Per-file dormancy clock — reset on every retrieval |
+| `recompress_after` | timestamptz | nullable | Short TTL timestamp — set on retrieval, null when dormant |
+
+**Indexes:** `record_id` (FK lookup), `compression_state`, `last_accessed_at`, `recompress_after` (n8n TTL sweep)
+
+---
+
+## Table 4: `compression_state_log`
+
+One shared audit table. Append-only. Records every compress and decompress event for every file. Never updated or deleted.
+
+| Column | Type | Constraint | Purpose |
+| :-- | :-- | :-- | :-- |
+| `log_id` | uuid | PK | Unique audit event identifier |
+| `file_id` | uuid | FK, NOT NULL | Which file this event applies to |
+| `node_id` | uuid | FK, NOT NULL | Which node the file belongs to |
+| `event_type` | enum | NOT NULL | `compressed`, `decompressed`, `recompressed`, or `failed` |
+| `triggered_by` | enum | NOT NULL | `scheduler`, `retrieval`, `ttl_expiry`, or `manual` |
+| `occurred_at` | timestamptz | NOT NULL | Exact timestamp of state transition |
+| `error_detail` | text | nullable | Populated only on failed events — flagged for manual review |
+
+**Indexes:** `file_id`, `node_id`, `event_type`, `occurred_at`
+
+**Note:** Append-only. No updates or deletes. Provides full history of every state transition across the lifecycle.
+
+---
+
+## Table 5: `delta_log`
+
+One shared table. Stores the version history of every memory record using the w-axis time coordinate. Enables point-in-time reconstruction of any record — the mechanism that allows memory to evolve without overwriting history.
+
+| Column | Type | Constraint | Purpose |
+| :-- | :-- | :-- | :-- |
+| `delta_id` | uuid | PK | Unique identifier for this version event |
+| `record_id` | uuid | FK, NOT NULL | The metadata record this delta belongs to |
+| `w_coordinate` | timestamptz | NOT NULL | Time axis — exact point-in-time position of this version |
+| `delta_payload` | jsonb | NOT NULL | The change — fields modified, values before and after |
+| `previous_delta_id` | uuid | FK, nullable | Chains deltas into a traversable history — null on first write |
+| `authored_by` | text | NOT NULL | System pipeline or persona ID that produced the change |
+| `created_at` | timestamptz | NOT NULL | When this delta was recorded — immutable |
+
+**Indexes:** `record_id`, `w_coordinate`
+
+**Note:** Append-only. Reconstruct any past state of a record by traversing its delta chain backward from a target `w_coordinate`. Full specification of delta resolution is documented in the aiConnected Security milestone specification.
+
+---
+
+## Table 6: `permission_grants`
+
+One shared table. Controls all cross-persona and third-party access to specific nodes. Access is always to a single named node — it does not cascade to parents, siblings, or children.
+
+| Column | Type | Constraint | Purpose |
+| :-- | :-- | :-- | :-- |
+| `grant_id` | uuid | PK | Unique identifier for this permission grant |
+| `subject_id` | text | NOT NULL | Who is being granted access — persona ID or third-party integration key |
+| `subject_type` | enum | NOT NULL | `persona` or `third_party` — determines which RLS policy applies |
+| `target_node_id` | uuid | FK, NOT NULL | The exact node access is granted to — no cascade |
+| `grant_type` | enum | NOT NULL | `read` or `read_write` — third parties receive `read` only |
+| `grantor_user_id` | uuid | FK, NOT NULL | User who approved the grant — always the account owner |
+| `granted_at` | timestamptz | NOT NULL | When the grant was created — immutable |
+| `expires_at` | timestamptz | nullable | Optional expiry — null means indefinite until revoked |
+| `revoked_at` | timestamptz | nullable | Set when user revokes — grant becomes inactive immediately |
+
+**Indexes:** `subject_id`, `target_node_id`, `subject_type`, `revoked_at`
+
+**Access rules enforced at the database layer via Supabase row-level security policies — not at the application layer.**
+
+---
+
+## Relationship Map
+
+```text
+graph_index
+    └── metadata_records        (per node schema — FK: record_id)
+            └── file_manifest   (per node schema — FK: file_id → record_id)
+    └── compression_state_log   (shared — FK: node_id, file_id)
+    └── delta_log               (shared — FK: record_id)
+    └── permission_grants       (shared — FK: target_node_id)
+```
+
+Every table traces back to `graph_index`. The graph index is the root of all relational integrity in the system.
 
 ---
 
