@@ -130,7 +130,7 @@
       },
       {
         "tab": "Business Planning",
-        "groups": [
+        "pages": [
           {
             "group": "Overview",
             "pages": [
@@ -143,7 +143,8 @@
             "pages": [
               "business-planning/research-and-document-requirements"
             ]
-          }
+          },
+          "fundamentals"
         ]
       },
       {
