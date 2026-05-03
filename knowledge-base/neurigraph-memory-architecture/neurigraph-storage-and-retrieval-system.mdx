@@ -64,7 +64,33 @@ This diagram shows the overall shape of the graph — how nodes branch from the 
 
 _The cross-node edges on Dave show the key structural point — Dave exists as a node inside Family, but the graph index holds edges that connect him to Employees and Fishing without those branches needing to know about each other. The graph is the map of those relationships. The node databases hold the content._
 
-Now the anatomy of a single node — what actually lives inside it.
+---
+
+**Every node is a compressed container holding compressed containers.**
+
+Like a zip file containing zip files containing zip files, all the way down to the raw content at the leaf. Nothing inside a compressed node is visible or accessible until that specific node is decompressed. Decompression doesn't cascade downward automatically — it reveals the next layer of compressed children. You then decompress only the child you need, which reveals its compressed children. You drill down one layer at a time until you reach the target, decompressing only the exact path you're traveling. Everything adjacent stays zipped.
+
+So for Dave-as-family, the traversal looks like this:
+
+Bob shell is always open. You see four compressed nodes: Business, Health, Family, Hobbies. You need Family. Decompress Family — it opens and reveals its compressed children: Parents, Siblings, Extended, In-Laws. You need Siblings. Decompress Siblings — it opens and reveals: your sister's node, compressed. Decompress your sister — it opens and reveals her compressed sub-nodes, one of which is Spouse. Decompress Spouse — Dave is there, fully accessible. Business stayed zipped. Hobbies stayed zipped. Everything inside Family that wasn't on the direct path stayed zipped.
+
+<Frame>
+  ![Image](/images/image-10.png)
+</Frame>
+
+**What this means structurally**
+
+Each node only needs to store two things in its compressed state: its own identity and a manifest — a list of what compressed children it contains. The manifest is tiny. It's not content, it's just a table of contents. When you decompress a node, you read the manifest, see the children, pick the one you need, decompress that one, read its manifest, and so on. You never open anything you don't need to open.
+
+This is identical to how a zip file actually works at the file system level. The zip container has a central directory at the end of the file that lists all contents without decompressing them. You read the directory, find the file you want, decompress only that file. Neurigraph works the same way, but the containers are nodes and the directory is the manifest.
+
+**The cross-node Dave problem is still elegantly solved**
+
+Dave exists as a leaf node in three places — Business, Family, Hobbies. Each of those is a separate compressed path. When you query "everything about Dave," the graph index already knows Dave has three anchor points. It decompresses only the specific path to each Dave-related node across each branch. Business unzips only as far as Dave in Employees. Family unzips only as far as Dave as Spouse. Hobbies unzips only as far as Fishing if Dave is connected there. Three surgical paths. Nothing else moves.
+
+**The one implementation detail this requires**
+
+The graph index — Bob's always-open root — needs to maintain a global edge registry. Every cross-node relationship Dave has must be recorded there, not buried inside a compressed node. Otherwise you'd have to decompress everything just to discover what Dave connects to. The edges live at the root. The content lives compressed in the nodes. Navigation is always free. Access is always earned by decompression.
 
 <Frame>
   ![Image](/images/image-5.png)
@@ -104,7 +130,23 @@ Now the anatomy of a single node — what actually lives inside it.
 
 ---
 
-That gives you fifteen fields total. The graph index row is intentionally lean — it carries only what is needed for navigation, cold search, and compression lifecycle management. Everything else lives inside the node's own schema.
+### **The two-phase retrieval system.**
+
+Phase one is navigation and identification. Always fast, always available, never touches a file. The metadata, keywords, summaries, and embeddings of those summaries are always uncompressed inside every node the moment you open it. The AI searches these lightweight descriptors to identify which specific files are relevant. No PDFs are opened. No videos are read. No markdown files are scanned. Just structured metadata against a focused vector search scoped to one node.
+
+Phase two is content retrieval. Only triggered after phase one has identified the right targets with confidence. Now and only now do specific files get decompressed and read in full. Not all files in the node — only the ones phase one flagged as relevant. One PDF, not a hundred. One transcript, not a library.
+
+The vector embeddings you mentioned belong entirely to phase one. You're not embedding raw files — you're embedding the summaries of those files. The embedding index is small, clean, and always live because it's built from summaries, not from raw content. That's what makes the search fast and accurate without the system ever having to open a single file during the search itself.
+
+<Frame>
+  ![Image](/images/image-11.png)
+</Frame>
+
+**The summary is the critical artifact in this entire architecture.**
+
+When a conversation gets stored at the 500k token trigger, the most important thing that gets generated is not the embedding — it's the summary. The summary is what makes phase one possible. It's the lightweight representative of the full content that lets the AI evaluate relevance without ever touching the raw file. The embedding is generated from the summary, not from the raw content. The raw content gets compressed and sits dormant. The summary never compresses. It's always there, always searchable, always fast.
+
+This also means summary quality directly determines retrieval quality. A poor summary produces a poor embedding, which produces inaccurate phase one results, which means phase two either opens the wrong files or misses the right ones. The summarization step at storage time is load-bearing — it deserves real investment in prompt engineering.
 
 ---
 
@@ -162,6 +204,14 @@ The raw content is then compressed and written to Supabase Storage at the path c
 
 The entire pipeline is designed to be atomic per memory record. A failure at any step produces no partial record. The system retries failed steps with exponential backoff before logging a pipeline failure for manual review.
 
+<Frame>
+  ![Image](/images/image-8.png)
+</Frame>
+
+Five phases, nine operations. The dashed boundary wrapping steps 3 through 8 marks the atomic zone — everything inside that boundary either completes fully or leaves no trace. The trigger and node assignment phases happen outside the atomic boundary because they are read operations — no data is written until the system knows exactly where it's going and what it will say.
+
+The three process steps (summarization, keyword extraction, embedding) run in parallel per record because none of them depend on each other's output. They all feed into the write phase together. That parallelism is where most of the pipeline's speed comes from.
+
 ---
 
 ## Section 6b — Summarization and Embedding Specification
@@ -182,15 +232,31 @@ Failure handling: if the embedding API is unavailable at write time, the metadat
 
 Describes the three states a node's file content can be in, what moves content between states, and how the lifecycle is managed automatically.
 
-Active state means the node's files are uncompressed and immediately accessible in Supabase Storage's standard retrieval tier. The node's metadata layer is always live regardless of state. Active is the state immediately after content is written and after a node is rehydrated.
+**Active (Unzipped)** state means the node's files are uncompressed and immediately accessible in Supabase Storage's standard retrieval tier. The node's metadata layer is always live regardless of state. Active is the state immediately after content is written and after a node is rehydrated.
 
-Dormant state means the node's files are compressed and written to a cold storage tier. The compression format used is gzip for text-based content and the storage provider's native compression for binary content, applied at the individual file level rather than as a single archive for the whole node. This is critical — individual file compression means a single file can be decompressed without touching any other file in the same node. The node's shell and metadata layer remain fully live in dormant state. The node is fully searchable. Only the file bytes are inaccessible without decompression.
+**Dormant (Zipped)** state means the node's files are compressed and written to a cold storage tier. The compression format used is gzip for text-based content and the storage provider's native compression for binary content, applied at the individual file level rather than as a single archive for the whole node. This is critical — individual file compression means a single file can be decompressed without touching any other file in the same node. The node's shell and metadata layer remain fully live in dormant state. The node is fully searchable. Only the file bytes are inaccessible without decompression.
 
-Rehydrating state is the transitional state when a dormant file has been requested and decompression is in progress. The calling system receives a rehydrating signal and waits. Rehydration time is a deliberate feature of the architecture — it signals a context shift and is expected behavior, not an error condition.
+**Rehydrating (Unzipping)** state is the transitional state when a dormant file has been requested and decompression is in progress. The calling system receives a rehydrating signal and waits. Rehydration time is a deliberate feature of the architecture — it signals a context shift and is expected behavior, not an error condition.
+
+<Frame>
+  ![Image](/images/image-12.png)
+</Frame>
+
+> **The rehydration wait is a feature, not a bug.** 
+>
+> **When a user shifts from talking about business to suddenly asking about their health history, a brief pause while that node wakes up is actually appropriate. It signals a context shift. The system isn't broken — it's acknowledging that you're moving somewhere that wasn't part of the current working context. A human assistant doing the same job would say "give me a moment, let me pull those files." The rehydration delay is that moment. It's honest about what's happening.**
 
 The compression trigger is time-based. A background n8n job runs on a defined schedule and checks the last accessed timestamp of every node's files. Files that have not been accessed within the configured dormancy threshold are compressed and moved to cold storage. The threshold is configurable at the system level with a sensible default. After a file is accessed through rehydration, its last accessed timestamp resets and the dormancy clock begins again.
 
 Recompression after retrieval uses a short TTL. Once a file has been retrieved and the query is complete, a TTL is set on that file's active state. When the TTL expires without further access, the file recompresses automatically. This prevents retrieved files from accumulating in active storage indefinitely.
+
+<Frame>
+  ![Image](/images/image-9.png)
+</Frame>
+
+_Three states, four transitions. The solid green arrow is the rehydration path — dormant to active via the rehydrating intermediate. The dashed amber arrow is the short TTL recompress path — a retrieved file that goes untouched after retrieval silently returns to dormant without any manual trigger. The top arrow is the primary compression path driven by n8n checking_ `last_accessed `_on schedule._
+
+**The banner at the bottom is the most important constant in the diagram — the metadata layer sits completely outside the lifecycle. No state transition touches it. A dormant node is fully searchable. Only the file bytes go cold.**
 
 ---
 
@@ -220,6 +286,10 @@ When the metadata is not sufficient and specific file content is required, phase
 
 Results from multiple nodes — for example, Dave appearing in Business, Family, and Hobbies simultaneously — are retrieved from each node independently and merged by the retrieval layer before being returned. Each node's search runs in isolation. The merge happens at the end.
 
+<Frame>
+  ![Image](/images/image-16.png)
+</Frame>
+
 ---
 
 ## Section 8b — Predictive Warming Logic
@@ -233,6 +303,12 @@ Warming does not decompress files. It opens the shell of each warmed node, makes
 Warming is a prediction, not a commitment. If the conversation does not move toward a warmed node, the warming state expires passively via TTL and those nodes return to their previous state without any files having been decompressed. No cost is incurred for a warming prediction that turned out to be wrong.
 
 Further warming beyond the third layer only occurs when the conversation explicitly moves to a currently warmed node and a new retrieval operation runs from there.
+
+<Frame>
+  ![Image](/images/image-17.png)
+</Frame>
+
+_Three warming layers fanning outward from Dave as the target. The amber node is the active query target. The teal nodes across layers 1 and 2 are warmed — shells open, metadata queryable, files still compressed. The dashed boundary is the hard stop. The gray nodes below it are cold and completely untouched regardless of how many relationships extend further._
 
 ---
 
@@ -289,5 +365,3 @@ Lists every decision that has not yet been locked and that a developer must not 
 Open questions to be resolved before build begins: the exact dormancy threshold (how many days of inactivity before files compress), the predictive warming TTL (how long a warmed node stays staged before reverting), the recompress TTL after retrieval (how many minutes after a file is accessed before it recompresses), the embedding model selection (OpenAI vs Voyage AI — cost, latency, and accuracy tradeoffs to be evaluated), the summarization target length in tokens, the chunk threshold tolerance range (how close to 500k before the system begins watching for a clean break), and the node auto-creation confidence threshold (how certain the system-level AI must be before provisioning a new node versus assigning content to an existing one).
 
 ---
-
-_End of Section Summaries. Full technical specification for each section follows in the complete document._
